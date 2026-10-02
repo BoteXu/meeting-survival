@@ -1,0 +1,15 @@
+# Local archives, logs and delivery receipts
+.qa/
+.publish/
+archives/
+screenshots/
+*.zip
+tests/engine-results.json
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+desktop.ini
+node_modules/
+.env
+.env.*

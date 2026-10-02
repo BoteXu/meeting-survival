@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163f36"><title>组会求生 · 同学，下一页。</title>
+  <style>
+:root{--paper:#f5f2e9;--ink:#183d35;--muted:#738076;--line:#d6d9ce;--green:#2b6653;--mint:#d9eadf;--yellow:#f1cc62;--red:#b9624b;--white:#fffef8;--mono:Consolas,'Courier New',monospace}
+.discipline-head{margin-top:5px}.discipline-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:17px 0 30px}.discipline{display:grid;grid-template-columns:29px 1fr;gap:6px 8px;align-items:center;text-align:left;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:9px;padding:13px 12px;transition:background .15s,transform .15s}.discipline:hover{transform:translateY(-2px)}.discipline.selected{background:#dfe9d8;border-color:var(--ink);box-shadow:2px 3px 0 #c3d0bc}.discipline>span{font-size:23px;grid-row:1/3}.discipline strong{font-size:12px}.discipline small{font-size:9px;color:var(--muted);line-height:1.6}.mentor-setup{display:flex;align-items:center;gap:14px;margin-top:22px;background:#e9ecdf;border-radius:9px;padding:12px 15px}.mentor-setup label{font-size:11px;flex-shrink:0}.mentor-setup select{font:12px 'Microsoft YaHei',sans-serif;background:var(--white);border:1px solid #b8c6b1;padding:8px 11px;border-radius:5px;color:var(--ink)}.mentor-setup p{font-size:11px;color:var(--muted);margin:0;line-height:1.8}.subject-label{display:inline-block;font-size:9px;color:#6f806c;border:1px solid #d7dfce;border-radius:20px;padding:4px 8px;margin:0 0 9px}.pocket h3,.relations-card h3{font-size:11px;color:var(--muted);margin:0 0 10px}.pocket .item{background:#f4efd8;border-color:#dcd1a7}.relations-card{border:1px solid var(--line);padding:13px;border-radius:9px;background:#ffffff66}.relations-card h3{display:flex;justify-content:space-between;gap:5px;font-size:10px}.relations-card h3 small{font-size:8px;font-weight:normal}.relations-card>div{display:flex;gap:12px}.relations-card>div>span{flex:1;min-width:0}.relations-card small{font-size:9px;color:var(--muted)}.relations-card strong{display:block;font:16px var(--mono);margin:5px 0 6px}.relations-card i{height:3px;background:linear-gradient(to right,#84a087 var(--trust),#dce3d5 var(--trust));display:block;border-radius:3px}.relation-changes{font-size:9px;color:#7d8e74;margin-top:10px}.shop-item{display:grid;grid-template-columns:43px 1fr auto;gap:14px;align-items:center;padding:17px 5px;border-bottom:1px dashed var(--line)}.shop-item .shop-icon{font-size:31px}.shop-item h3{font-size:14px;margin:0 0 7px}.shop-item p{font-size:11px;color:var(--muted);margin:0 0 7px}.shop-item small{font-size:10px;color:var(--muted)}.shop-item button{border:1px solid #a9b99f;border-radius:6px;padding:10px 13px;background:#e4ebda;color:var(--ink);font-size:11px}.break-layout{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;max-width:1050px;margin:25px auto;align-items:center}.break-scene{background:#e4eadb;border:1px solid #bbc8b1;border-radius:16px;padding:32px}.break-icon{display:block;font-size:83px;margin:30px 0}.break-scene .sticker{font-size:10px}.break-scene h1{font-size:32px;line-height:1.5;margin:24px 0 16px;letter-spacing:-1px}.break-scene>p:not(.eyebrow){font-size:13px;line-height:2;color:#687963;margin-bottom:28px}.break-career{font-size:10px;color:var(--muted);border-top:1px solid #c8d3be;padding-top:17px}.break-options h2{font-size:19px;margin:0 0 18px}.break-choice{display:grid;grid-template-columns:22px 1fr;gap:10px;text-align:left;width:100%;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:17px;margin-bottom:11px;color:var(--ink)}.break-choice:hover{border-color:var(--ink);background:#f0f3e7}.break-choice span{font:11px var(--mono);color:var(--muted);padding-top:3px;grid-row:1/3}.break-choice strong{font-size:13px;line-height:1.9}.break-choice small{font-size:10px;color:var(--muted)}.break-links{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px}.break-links button{font-size:11px}.pocket .item:last-child{margin-bottom:0}
+@media(max-width:950px){.discipline-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.mentor-setup{flex-wrap:wrap}.mentor-setup p{flex-basis:100%}.break-layout{gap:25px}.break-scene{padding:25px}.break-scene h1{font-size:27px}}
+@media(max-width:700px){.topbar{flex-wrap:wrap;gap:11px}.topbar nav{width:100%;justify-content:space-between;border-top:1px solid #dce0d3;padding-top:6px;gap:8px}.discipline-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:13px 0 27px}.discipline{padding:11px 9px;grid-template-columns:23px 1fr;gap:5px}.discipline>span{font-size:20px}.discipline strong{font-size:11px}.discipline small{font-size:8px}.discipline-head h2{font-size:14px}.discipline-head span{font-size:8px}.mentor-setup{padding:11px 12px;margin-top:18px;gap:10px}.mentor-setup p{font-size:10px}.pocket>div{display:flex;gap:7px;flex-wrap:wrap}.pocket .item{flex:1 1 130px;margin:0;padding:9px}.pocket .item strong{font-size:10px}.pocket .item small{font-size:8px}.pocket h3{font-size:10px}.relations-card{padding:10px 12px}.relations-card h3{margin-bottom:8px}.relations-card>div{gap:20px}.relations-card>div>span{display:grid;grid-template-columns:1fr auto;gap:5px}.relations-card strong{font-size:13px;margin:0}.relations-card i{grid-column:1/3}.side{gap:10px}.break-layout{grid-template-columns:1fr;gap:24px;margin:0}.break-scene{padding:23px}.break-icon{font-size:65px;margin:23px 0}.break-scene h1{font-size:25px;line-height:1.55;margin:22px 0 12px}.break-scene>p:not(.eyebrow){font-size:12px;margin-bottom:20px}.break-options h2{font-size:17px}.break-choice{padding:14px}.break-choice strong{font-size:12px}.shop-item{grid-template-columns:30px 1fr auto;gap:9px;padding:14px 0}.shop-item .shop-icon{font-size:23px}.shop-item h3{font-size:12px}.shop-item p{font-size:9px}.shop-item button{font-size:10px;padding:9px}.hero-pills{gap:7px}.hero-pills .tag{font-size:9px}.run-head .eyebrow{font-size:9px}.run-head h1{font-size:21px}}
+.progress-rail{height:5px;border-radius:4px;background:#dce0d2;margin-bottom:14px;overflow:hidden}.progress-rail span{display:block;height:100%;background:#719b80;transition:width .3s}#card-modal{width:min(530px,94vw)}#card-modal h2{font-size:20px}#card-image{width:100%;max-height:60vh;object-fit:contain;display:block;background:#e6eadb;border-radius:8px}.card-actions{display:flex;gap:14px;align-items:center;margin-top:17px}.card-actions .primary{font-size:12px;padding:10px 16px;box-shadow:none}.card-actions p{font-size:10px;margin:0}
+.career-strip{display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:13px 17px;border:1px dashed #aab99f;border-radius:9px;margin-bottom:25px;color:var(--muted);font-size:11px;background:#e9ecdf}.career-strip strong{color:var(--ink);font-size:12px}.quit{gap:18px;align-items:center;justify-content:space-between!important}.quit .request-end{border:1px solid #b6c4b3;border-radius:6px;background:#e7ecdf;padding:8px 11px;color:var(--ink);font-size:11px}.quit .request-end:disabled{background:transparent}.run-pill{white-space:nowrap}.phase-label{gap:8px;flex-wrap:wrap}.end-actions{align-items:center}@media(max-width:700px){.career-strip{gap:9px 15px;font-size:10px;padding:12px}.run-pill{font-size:9px}.run-head h1{font-size:21px}.quit{gap:8px}.quit .request-end{font-size:10px}.phase-label span:last-child{display:none}.end-actions .primary{flex-basis:100%}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Microsoft YaHei','PingFang SC',system-ui,sans-serif;font-size:14px}button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--yellow);outline-offset:4px}button:disabled{cursor:not-allowed;opacity:.5}a{color:inherit;text-decoration:none}.topbar{max-width:1300px;margin:auto;padding:24px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:2px;font-size:21px}.brand-icon{width:40px;height:40px;display:grid;place-items:center;background:var(--ink);color:var(--paper);border-radius:10px;font-size:25px;transform:rotate(-6deg)}.brand small{display:block;font:9px var(--mono);letter-spacing:1.9px;margin-top:5px}nav{display:flex;gap:20px;align-items:center}.offline{font-size:12px;color:var(--muted)}.offline i{display:inline-block;width:6px;height:6px;background:#54896e;border-radius:50%;margin-right:5px}.plain{border:0;background:none;color:var(--ink);padding:8px 0;font-size:12px}.plain span{color:var(--muted);padding-left:5px}main{max-width:1220px;margin:0 auto;padding:38px 20px 60px}footer{max-width:1220px;margin:auto;border-top:1px solid var(--line);padding:18px 20px 25px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px;letter-spacing:1px}.eyebrow{font:10px var(--mono);letter-spacing:2px;color:var(--muted);margin:0 0 13px}.hero{display:grid;grid-template-columns:1fr 1.08fr;gap:55px;align-items:center;margin:8px 0 36px}.hero-title{font-size:clamp(46px,5vw,66px);font-weight:900;line-height:1.18;letter-spacing:-3px;margin:15px 0 20px}.hero-title span{display:inline-block;position:relative}.hero-title span:after{content:'';position:absolute;bottom:2px;left:0;right:0;height:15px;background:var(--yellow);z-index:-1;transform:rotate(-2deg)}.hero-copy{font-size:15px;line-height:2;color:#66736a;margin:0 0 23px}.sticker{display:inline-block;background:var(--yellow);border:1px solid var(--ink);padding:5px 11px;transform:rotate(-3deg);font-weight:bold;font-size:11px;box-shadow:2px 2px 0 var(--ink)}.hero-pills{display:flex;gap:9px;flex-wrap:wrap}.tag{font-size:10px;border:1px solid var(--line);border-radius:20px;padding:6px 10px;background:#fff8;white-space:nowrap}.scene-frame{border:1px solid var(--ink);border-radius:18px;overflow:hidden;background:#e5e9d8;position:relative;box-shadow:5px 6px 0 #d9dbca}.scene-title{display:flex;justify-content:space-between;padding:13px 17px;background:var(--ink);color:var(--paper);font-size:11px;letter-spacing:1px}.scene{height:245px;display:block;width:100%}.scene-quote{position:absolute;top:66px;left:30px;background:var(--white);border:1px solid var(--ink);border-radius:12px;padding:12px 17px;font-size:13px;font-weight:bold;box-shadow:3px 3px 0 #183d3526;z-index:1}.scene-quote:after{content:'';position:absolute;bottom:-8px;left:29px;width:13px;height:13px;background:var(--white);border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);transform:rotate(45deg)}.scene-note{display:flex;align-items:center;justify-content:space-between;padding:13px 17px;border-top:1px solid #183d3522;font-size:10px;color:var(--muted)}.section-line{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.section-line h2{font-size:17px;margin:0}.section-line span{font-size:11px;color:var(--muted)}.roles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.role{position:relative;background:var(--white);border:1px solid var(--line);border-radius:12px;text-align:left;padding:17px 16px;color:var(--ink);transition:transform .15s,background .15s}.role:hover{transform:translateY(-3px)}.role.selected{border:2px solid var(--ink);padding:16px 15px;background:#e9efdf;box-shadow:3px 3px 0 #183d3520}.role-portrait{font-size:30px;display:inline-flex;align-items:center;justify-content:center;width:51px;height:51px;border-radius:50%;background:#eadfc9;margin-bottom:12px}.role:nth-child(2) .role-portrait{background:#dbe7dc}.role:nth-child(3) .role-portrait{background:#eee0d5}.role:nth-child(4) .role-portrait{background:#ece6c9}.role h3{font-size:15px;margin:0 0 8px}.role p{font-size:11px;line-height:1.8;color:var(--muted);margin:0 0 12px;min-height:39px}.role .skill-tag{font-size:10px;padding:4px 6px;background:#183d350a;border-radius:4px}.selected-mark{position:absolute;top:12px;right:13px;background:var(--ink);color:var(--white);width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px}.setup-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:22px;padding:20px 0}.setup-options{display:flex;gap:20px;align-items:center}.label-small{display:block;font-size:10px;color:var(--muted);margin-bottom:7px}input{border:1px solid var(--line);background:var(--white);border-radius:6px;padding:10px 12px;color:var(--ink);width:160px}.segmented{display:flex;gap:5px}.segmented button{border:1px solid var(--line);background:#fff6;padding:10px 11px;color:var(--muted);border-radius:6px;font-size:11px}.segmented button.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}.primary{display:inline-flex;align-items:center;justify-content:center;gap:22px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);border-radius:8px;padding:14px 24px;font-weight:bold;box-shadow:3px 3px 0 #b9c3b4;transition:transform .15s}.primary:hover{transform:translateY(-2px)}.primary .arrow{font-size:21px;line-height:1}.secondary{border:1px solid var(--line);background:var(--white);border-radius:8px;padding:13px 17px;color:var(--ink)}.start-area{display:flex;gap:10px}.tiny-note{font-size:11px;color:var(--muted);line-height:1.8;margin:0}.how-to{border-top:1px solid var(--line);padding-top:16px;display:flex;gap:36px;font-size:11px;color:var(--muted)}.how-to b{color:var(--ink);margin-right:7px;font:12px var(--mono)}
+.run-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:23px}.run-head h1{font-size:27px;margin:5px 0 0;letter-spacing:-1px}.run-head .eyebrow{margin:0}.run-pill{font:11px var(--mono);padding:9px 12px;border:1px solid var(--line);border-radius:30px}.board{display:grid;grid-template-columns:236px minmax(0,1fr);gap:22px}.side{display:flex;flex-direction:column;gap:16px}.identity-card{padding:18px;background:#e8eddf;border:1px solid var(--line);border-radius:12px}.identity-top{display:flex;gap:12px;align-items:center}.identity-top .role-portrait{margin:0;width:43px;height:43px;font-size:25px}.identity-top b{display:block;font-size:14px;margin-bottom:5px}.identity-top small{font-size:10px;color:var(--muted)}.identity-card p{font-size:10px;color:var(--muted);line-height:1.8;margin:14px 0 0}.stat-card{border:1px solid var(--line);border-radius:12px;background:var(--white);padding:18px}.stat{margin-bottom:19px}.stat:last-child{margin-bottom:0}.stat-row{display:flex;justify-content:space-between;align-items:center;font-size:11px;margin-bottom:9px}.stat-row strong{font:16px var(--mono);font-weight:bold}.stat-row small{font-size:9px;color:var(--muted)}.track{height:5px;border-radius:5px;background:#e9ecdf;overflow:hidden}.fill{height:100%;background:#52866c;transition:width .4s}.fill.danger{background:var(--red)}.fill.gold{background:#c2a348}.inventory h3{font-size:11px;margin:0 0 10px;color:var(--muted)}.item{display:flex;gap:10px;align-items:center;width:100%;border:1px solid var(--line);background:var(--white);padding:11px;border-radius:8px;color:var(--ink);text-align:left;margin-bottom:8px}.item .emoji{font-size:21px}.item strong{display:block;font-size:11px}.item small{display:block;font-size:9px;color:var(--muted);margin-top:4px}.side-note{border-left:2px solid #b6c4b3;padding-left:12px;color:var(--muted);font-size:11px;line-height:1.8;margin:0}.arena{min-width:0}.phase-row{display:flex;gap:5px;margin-bottom:14px}.phase-segment{flex:1;height:4px;border-radius:4px;background:#dce0d2}.phase-segment.done{background:#719b80}.phase-segment.current{background:var(--yellow)}.phase-label{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:13px}.meeting{border:1px solid var(--ink);border-radius:14px;overflow:hidden;background:var(--white);box-shadow:4px 4px 0 #d4d9cb}.meeting-scene{position:relative;background:#e6eadb}.meeting-scene .scene{height:175px}.room-label{position:absolute;top:14px;left:18px;font-size:10px;color:#597366;border:1px solid #8b9f884d;border-radius:20px;padding:5px 8px;background:#f5f5e9b3}.room-status{position:absolute;top:14px;right:16px;font-size:10px;background:#fff9;padding:5px 8px;border-radius:4px}.npc-roster{display:flex;gap:7px;position:absolute;bottom:11px;left:15px;right:15px}.npc-label{font-size:9px;background:#f7f4eaca;border:1px solid #bdc9b2;border-radius:20px;padding:5px 9px}.npc-label.talking{background:var(--ink);color:var(--white);border-color:var(--ink)}.event-area{padding:23px 28px 24px;min-height:187px}.event-meta{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:10px;margin-bottom:13px}.event-meta strong{color:var(--green)}.event-area h2{font-size:23px;line-height:1.5;margin:0 0 9px;letter-spacing:-.5px}.event-area .narration{font-size:12px;color:#667369;line-height:1.9;margin:0}.event-area blockquote{margin:11px 0 0;border-left:3px solid var(--yellow);padding-left:13px;font-size:13px;line-height:1.8}.choice-title{display:flex;justify-content:space-between;margin:22px 0 12px;font-size:11px}.choice-title span{color:var(--muted);font-size:10px}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.choice{display:flex;flex-direction:column;gap:9px;text-align:left;padding:17px 16px;border:1px solid var(--line);border-radius:11px;background:var(--white);color:var(--ink);min-height:137px;transition:transform .15s,border-color .15s}.choice:hover{transform:translateY(-3px);border-color:var(--ink);box-shadow:2px 3px 0 #183d3512}.choice-kicker{font:9px var(--mono);letter-spacing:1px;color:var(--muted);display:flex;justify-content:space-between}.choice strong{font-size:13px;line-height:1.8}.choice small{font-size:10px;color:var(--muted);line-height:1.7;margin-top:auto}.choice.risky .choice-kicker{color:var(--red)}.feedback{margin-top:17px;padding:20px 22px;background:#e9eddf;border:1px solid #b8cbb8;border-radius:12px;animation:enter .3s}.feedback .eyebrow{margin-bottom:9px}.feedback h3{font-size:17px;margin:0 0 8px}.feedback p{font-size:12px;line-height:1.85;margin:0;color:#53685b}.deltas{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}.delta{font:10px var(--mono);padding:5px 7px;border-radius:4px;background:#d6e3d4}.delta.negative{background:#efdfd2;color:#915b49}.feedback-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:17px}.feedback-bottom .primary{padding:10px 18px;font-size:12px;box-shadow:none}.feedback-bottom small{font-size:10px;color:var(--muted)}.journal{margin-top:25px}details{border-top:1px solid var(--line);padding-top:12px}summary{cursor:pointer;font-size:11px;color:var(--muted)}.journal-list{max-height:200px;overflow:auto;padding:8px 0}.journal-entry{display:flex;gap:14px;border-bottom:1px dashed var(--line);padding:9px 0;font-size:10px;line-height:1.8}.journal-entry span{flex-shrink:0;font:10px var(--mono);color:var(--muted);padding-top:3px}.journal-entry p{margin:0;color:#58685d}.warning{color:var(--red)!important}.quit{display:flex;justify-content:flex-end;margin-top:15px}.quit button{font-size:10px;color:var(--muted)}
+.ending-layout{display:grid;grid-template-columns:1fr .85fr;gap:32px;align-items:start;max-width:980px;margin:10px auto}.ending-card{background:var(--ink);color:var(--paper);padding:35px;border-radius:16px;position:relative;overflow:hidden;box-shadow:5px 6px 0 #bcc4b5}.ending-card:before{content:'';width:220px;height:220px;border:1px solid #fff1;border-radius:50%;position:absolute;top:-80px;right:-40px}.ending-card .eyebrow{color:#adc5b3}.ending-icon{display:block;font-size:64px;margin:23px 0 18px}.ending-card h1{font-size:37px;line-height:1.3;letter-spacing:-1px;margin:0 0 13px}.ending-card .subtitle{color:var(--yellow);font-size:13px;margin-bottom:24px}.ending-card .ending-copy{font-size:13px;line-height:2;color:#d0ddce}.ending-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:1px solid #fff2;margin-top:25px;padding-top:20px}.ending-stats small{display:block;font-size:9px;color:#adc5b3;margin-bottom:8px}.ending-stats strong{font:22px var(--mono)}.ending-sign{border-top:1px solid #fff2;margin-top:24px;padding-top:17px;display:flex;justify-content:space-between;font-size:10px;color:#adc5b3}.post-game{padding:15px 0}.post-game h2{font-size:22px;margin:0 0 18px}.post-game p{color:var(--muted);font-size:12px;line-height:1.9}.highlights{display:flex;flex-direction:column;gap:13px;margin:22px 0}.highlight{border:1px solid var(--line);background:var(--white);border-radius:9px;padding:14px}.highlight small{font-size:9px;color:var(--muted);display:block;margin-bottom:7px}.highlight p{margin:0;color:var(--ink);font-size:12px}.end-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.end-actions .primary{font-size:12px;box-shadow:none}.end-actions .secondary{font-size:12px}.end-journal{max-width:980px;margin:30px auto 0}.new-ending{display:inline-block;background:var(--yellow);color:var(--ink);font-size:10px;padding:5px 8px;border-radius:4px}.muted{color:var(--muted);font-size:11px;line-height:1.8}dialog{width:min(850px,94vw);max-height:85vh;border:1px solid var(--ink);background:var(--paper);border-radius:16px;padding:28px;color:var(--ink)}dialog::backdrop{background:#1233288c;backdrop-filter:blur(4px)}.dialog-head{display:flex;justify-content:space-between;gap:15px;align-items:start;margin-bottom:22px}.dialog-head h2{font-size:23px;margin:0}.close{border:1px solid var(--line);border-radius:50%;background:none;width:30px;height:30px;color:var(--ink);font-size:20px}#album-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.album-card{border:1px solid var(--line);border-radius:9px;padding:14px;background:var(--white);display:flex;gap:12px;align-items:center}.album-card .album-icon{font-size:28px}.album-card strong{font-size:12px;display:block;margin-bottom:6px}.album-card small{font-size:10px;color:var(--muted);line-height:1.7}.album-card.locked{background:#e8e9df;color:#9caa9d}.album-card.locked .album-icon{filter:grayscale(1);opacity:.4}#toast{position:fixed;left:50%;bottom:35px;transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:12px 20px;border-radius:8px;box-shadow:0 4px 20px #0002;font-size:12px;opacity:0;transition:all .25s;pointer-events:none;z-index:30;max-width:90vw}#toast.visible{opacity:1;transform:translate(-50%,0)}@keyframes enter{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:950px){.topbar{padding:20px}.hero{gap:25px}.hero-title{font-size:48px}.setup-options{gap:12px}.board{grid-template-columns:205px minmax(0,1fr);gap:15px}.choices{gap:8px}.choice{padding:13px 11px}.event-area{padding:20px}.roles{gap:8px}.role{padding:14px 11px}.role.selected{padding:13px 10px}}
+@media(max-width:700px){.topbar{padding:16px}.brand{font-size:17px;letter-spacing:1px}.brand small{font-size:7px;letter-spacing:1px}.brand-icon{width:33px;height:33px;font-size:21px}nav{gap:13px}.offline{display:none}main{padding:25px 16px 40px}.hero{grid-template-columns:1fr;gap:22px;margin-top:0}.hero-title{font-size:46px;line-height:1.17;margin-top:15px}.hero-copy{font-size:13px;margin-bottom:17px}.hero .scene{height:205px}.hero .scene-frame{box-shadow:3px 4px 0 #d9dbca}.roles{grid-template-columns:repeat(2,1fr);gap:10px}.role{padding:15px}.role.selected{padding:14px}.role p{min-height:36px}.setup-bottom{flex-direction:column;align-items:stretch;gap:20px;padding-top:5px}.setup-options{flex-wrap:wrap;justify-content:space-between;gap:15px}.segmented button{padding:10px 8px}.start-area .primary{flex:1}.how-to{gap:12px;flex-wrap:wrap;font-size:10px}.section-line h2{font-size:16px}.section-line span{font-size:10px}.board{display:flex;flex-direction:column;gap:18px}.side{display:grid;grid-template-columns:1fr;gap:10px}.identity-card{display:none}.stat-card{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;padding:13px}.stat{margin:0}.stat-row{flex-direction:column;align-items:start;gap:6px;font-size:10px}.stat-row strong{font-size:17px}.inventory{display:flex;gap:6px}.inventory h3{display:none}.item{margin:0;padding:8px;flex:1;gap:6px;min-width:0}.item .emoji{font-size:17px}.item strong{font-size:10px}.item small{font-size:8px}.side-note{display:none}.run-head h1{font-size:24px}.run-head{margin-bottom:18px}.run-pill{font-size:9px}.meeting-scene .scene{height:150px}.npc-label{font-size:8px;padding:4px 7px}.event-area{padding:20px 18px}.event-area h2{font-size:21px}.choices{grid-template-columns:1fr}.choice{min-height:0;padding:13px 15px;display:grid;grid-template-columns:1fr auto;gap:5px 10px}.choice-kicker{grid-column:1/3;font-size:8px}.choice strong{font-size:12px;grid-column:1/3}.choice small{grid-column:1/3;font-size:9px}.choice-title{margin-top:19px}.feedback{padding:17px}.feedback-bottom small{max-width:45%}.ending-layout{grid-template-columns:1fr;gap:18px;margin-top:0}.ending-card{padding:26px}.ending-card h1{font-size:33px}.post-game{padding:12px 0}.post-game h2{font-size:20px}.end-actions .primary{flex:1}footer{font-size:9px;padding:16px;gap:10px}dialog{padding:20px}#album-grid{grid-template-columns:1fr}.dialog-head h2{font-size:20px}}
+
+</style>
+</head>
+<body>
+<header class="topbar"><a href="#" id="brand" class="brand"><span class="brand-icon">组</span><span>组会求生<small>LAB MEETING SURVIVOR</small></span></a><nav><span class="offline"><i></i> 单机 · 随时开玩</span><button id="shop" class="plain">补给站 <span id="coin-count">0</span></button><button id="sound" class="plain" aria-pressed="false">音效 关</button><button id="collection" class="plain">结局图鉴 <span id="collection-count">0/22</span></button></nav></header>
+<main id="app"></main>
+<footer><span>虚构实验室 · 真实求生欲</span><span>原创娱乐小游戏 / v0.2</span></footer>
+<dialog id="album"><div class="dialog-head"><div><p class="eyebrow">THE MANY WAYS TO LEAVE A MEETING</p><h2>下班的方式不止一种。</h2></div><button id="close-album" class="close" aria-label="关闭图鉴">×</button></div><div id="album-grid"></div><p class="muted">结局收藏存在当前浏览器里。再来一局，解锁另一种人生。</p></dialog>
+<dialog id="card-modal"><div class="dialog-head"><div><p class="eyebrow">YOUR MEETING REPORT</p><h2>把这场组会带走。</h2></div><button id="close-card" class="close" aria-label="关闭结局卡">×</button></div><img id="card-image" alt="本场组会结局卡"><div class="card-actions"><button id="save-card-image" class="primary">下载图片 ↓</button><p class="muted">也可以长按或右键图片保存。</p></div></dialog>
+<dialog id="shop-modal"><div class="dialog-head"><div><p class="eyebrow">AFTER-MEETING SUPPLY STORE</p><h2>给下一场，留一点底牌。</h2></div><button id="close-shop" class="close" aria-label="关闭补给站">×</button></div><div id="shop-grid"></div><p class="muted" id="shop-note"></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+/* 原创虚构剧情。全部判断来自本地游戏规则，不使用模型或外部服务。 */
+window.MEETING_CONTENT = (() => {
+  const choice = (text, label, effects, result, flavor, flags = {}, risk = null) => ({text,label,effects,result,flavor,flags,risk});
+  const event = (id, phase, who, title, scene, quote, choices) => ({id,phase,who,title,scene,quote,choices});
+  const roles = [
+    {id:'newbie',icon:'🐣',name:'初来乍到',desc:'什么都不太会，但老师对你还有一点耐心。',skill:'师兄救我',skillDesc:'底气 +16 / 耐心 +10',stats:{mood:82,evidence:48,patience:65},effects:{evidence:16,patience:10},line:'你的备份文件叫“最终版”，天真得很珍贵。'},
+    {id:'grinder',icon:'🦉',name:'熬夜卷王',desc:'备用幻灯片有六十页。你本人只睡了三小时。',skill:'打开隐藏附录',skillDesc:'底气 +24 / 心态 −6',stats:{mood:58,evidence:83,patience:52},effects:{evidence:24,mood:-6},line:'你知道每一个参数，却忘记了今天星期几。'},
+    {id:'chill',icon:'🦥',name:'淡定摸鱼人',desc:'数据不一定漂亮，精神状态一定漂亮。',skill:'精神离线',skillDesc:'心态 +26 / 耐心 −5',stats:{mood:94,evidence:44,patience:57},effects:{mood:26,patience:-5},line:'你已经想好了，散会后去吃什么。'},
+    {id:'social',icon:'🦊',name:'学术社交王',desc:'结果还在路上，人情世故已经到站。',skill:'先夸一下老师',skillDesc:'耐心 +23 / 时间 +2 / 底气 −5',stats:{mood:75,evidence:54,patience:79},effects:{patience:23,time:2,evidence:-5},line:'你掌握了“这个问题特别好”的四十二种说法。'}
+  ];
+  const phases = ['入场','研究背景','方法介绍','第一张图','结果解释','突发状况','灵魂追问','讨论环节','总结陈词','最后一个问题'];
+  const people = {
+    boss:{name:'周老师',role:'导师',icon:'👨🏻‍🏫',color:'#667d5d'},
+    stats:{name:'林老师',role:'统计守门员',icon:'👩🏻‍💻',color:'#8e9e83'},
+    senior:{name:'陈师兄',role:'过来人',icon:'🧑🏻‍🔬',color:'#a99c79'},
+    visitor:{name:'路过的大佬',role:'恰好有空',icon:'🧔🏻',color:'#766c5f'},
+    system:{name:'实验室广播',role:'命运',icon:'📢',color:'#9f9b70'}
+  };
+  const events = [
+    event('start-screen',0,'boss','你和投影仪，只有一个能正常工作。','你的电脑屏幕正常，投影幕布上却只剩下一片蓝。所有人同时看向你。','“你先别急。大家都等着呢。”',[
+      choice('拔插一下，然后假装一切尽在掌握。','稳住现场',{mood:-4,evidence:2,patience:-3,time:-2},'HDMI 人类学。','线插好了。你获得了科研人生第一个可重复的结果。'),
+      choice('请师兄帮忙，先用白板讲开场。','抱紧大腿',{mood:4,patience:7,evidence:2,time:-3},'师兄的作用，大于转接头。','陈师兄抬头了。原来他一直在等你开口求救。',{help:1}),
+      choice('“这是我的极简主义封面。”','现场整活',{mood:8,patience:-6,time:-1},'艺术的尽头是蓝屏。','有人笑出了声。导师决定再给你一次机会。',{chaos:1}, {chance:.32,effects:{patience:-10,mood:-6},flavor:'导师没有笑。他让你阐释一下极简主义与课题的关系。'})
+    ]),
+    event('start-name',0,'boss','“今天谁汇报来着？”','你坐在投影幕旁边，导师翻开笔记本。点名系统似乎尚未启动。','“小李？小王？哦，是你。”',[
+      choice('报上姓名，把研究问题讲清楚。','常规开局',{evidence:6,patience:3,time:-2},'身份认证通过。','导师终于把名字写对了，后面还加了一个问号。'),
+      choice('“老师，我是给您订过咖啡的那个。”','建立连接',{mood:4,patience:10,evidence:-2,time:-2},'咖啡因人脉。','他记起来了。你的名字暂时被替换成“拿铁”。',{social:1}),
+      choice('“今天汇报的是一位不愿透露姓名的研究生。”','匿名参会',{mood:10,patience:-8,time:-1},'匿名审稿，实名组会。','陈师兄在桌下给你点了个赞。',{chaos:1})
+    ]),
+    event('start-deck',0,'senior','你的文件名，比题目更令人瞩目。','桌面投上大屏。最显眼的文件叫“组会最终版_真的最终_救命.pptx”。','“师弟，你这个版本管理体系挺有层次。”',[
+      choice('淡定打开，不解释私人命名习惯。','快速翻页',{mood:-2,evidence:4,time:-1},'科研命名学。','讲台上最重要的技能之一：面不改色。'),
+      choice('“这是我对工作认真负责的证据。”','重新定义',{patience:5,mood:3,time:-2},'严谨，有迹可循。','导师看了一眼修改时间：凌晨四点。他没再问。',{social:1}),
+      choice('“老师，您也在最终版里。”','把梗抛回去',{mood:12,patience:-5,time:-1},'师门喜剧人。','大家开始回忆导师发过的“最新最终修改”。',{chaos:1})
+    ]),
+    event('background-simple',1,'boss','你精心准备的背景，被一句话截停。','你才讲到第二页，导师已经抬起了手。','“这些我们都知道。你到底要干什么？”',[
+      choice('用一句话讲研究问题，直接进入正题。','直球回答',{evidence:8,patience:5,mood:-3,time:-2},'一句话，救了三页。','导师放下手。你第一次感觉到删幻灯片也能创造价值。',{rigor:1}),
+      choice('“正是因为老师您看得透，我才准备得充分。”','情绪价值',{patience:10,evidence:-4,time:-3},'台阶搭得很漂亮。','导师决定让你再讲一页。真的只有一页。',{social:1}),
+      choice('“简单说，我想毕业。”','坦诚到底',{mood:13,evidence:-3,patience:-4,time:-1},'共同的研究目标。','全体研究生低头，避免暴露自己的共鸣。',{chaos:1})
+    ]),
+    event('background-overlap',1,'visitor','隔壁组，好像也在做这个。','路过的大佬端着茶，停在了门口。茶还很烫，他暂时不打算走。','“这个题，我们前年是不是讨论过？”',[
+      choice('说明自己的切入点，与已知工作区别。','守住边界',{evidence:10,patience:4,mood:-6,time:-3},'题目相似，路线不同。','大佬点头，然后拿出手机找前年那张图。',{rigor:1}),
+      choice('“那我们真是站在巨人的肩膀上。”','友好建交',{patience:9,evidence:-3,time:-2},'巨人开始找座位。','你少了一个质疑，多了一位全程参会人员。',{social:1}),
+      choice('“老师，这说明英雄所见略同。”','高风险嘴甜',{mood:6,patience:5,time:-1},'英雄暂时认可你。','大佬笑了。导师也笑了。你不太确定是哪种笑。',{chaos:1},{chance:.45,effects:{patience:-16,evidence:-8},flavor:'大佬认真问：“所以你认为自己也是英雄？”茶突然不烫了。'})
+    ]),
+    event('background-reference',1,'stats','参考文献，竟然比你还年轻。','参考文献角落里，有一篇看起来像刚刚上线的文章。','“这篇你真的看过吗？”',[
+      choice('讲它解决了什么，以及没解决什么。','认真读过',{evidence:11,patience:2,mood:-4,time:-3},'原文阅读保护罩。','林老师找到了一个可交流的人。也可能只是一个新的提问对象。',{rigor:1}),
+      choice('“读到方法了，细节我还需要补。”','承认进度',{patience:5,evidence:2,mood:2,time:-2},'诚实有时候很省事。','林老师让你记下下一次要看的部分。',{honest:1}),
+      choice('“我和它的摘要建立了深厚感情。”','摘要派掌门',{mood:11,evidence:-7,patience:-5,time:-1},'关系止步于摘要。','陈师兄把这句话加入了实验室语录。',{chaos:1})
+    ]),
+    event('method-repeats',2,'stats','“你这个 n，到底是什么 n？”','激光笔停在一个很小的数字上。房间突然安静了。','“三个独立样本，还是同一个样本做了三遍？”',[
+      choice('把独立样本与重复测量分开说清楚。','拆开解释',{evidence:12,patience:4,mood:-5,time:-3},'这个 n 有身份证。','林老师暂时放过了你的星号。暂时。',{rigor:1}),
+      choice('“这页没写清楚，我补一张样本关系图。”','诚实补救',{evidence:4,patience:7,time:-2},'图不够，态度来凑。','导师在本子上写了“关系图”，没有写“重做”。',{honest:1}),
+      choice('“n 是一种研究者的信念。”','玄学统计',{mood:13,evidence:-9,patience:-8,time:-1},'林老师的眼镜反了一下光。','你的发言已被永久收录进统计课反面笑话。',{chaos:1})
+    ]),
+    event('method-details',2,'boss','“为什么用这个方法？”','你已经预演过十次，唯独没有预演这一句。','“隔壁都用另一个，你想过吗？”',[
+      choice('解释两种方法的取舍与适用范围。','有备而来',{evidence:10,patience:5,mood:-5,time:-3},'选择有理由。','导师说“可以”。你怀疑自己听错了。',{rigor:1}),
+      choice('“师兄教我的，我先把流程跑通了。”','师门传统',{mood:4,patience:2,evidence:-3,time:-2},'传承的火焰。','师兄缓缓抬头：这不是他预期的被引用方式。',{help:1}),
+      choice('“这个软件的配色比较适合我的 PPT。”','美学选型',{mood:13,evidence:-8,patience:-7,time:-1},'科研审美自由。','老师决定让你对方法与配色分别做一个对照。',{chaos:1,debt:1})
+    ]),
+    event('method-parameter',2,'visitor','大佬问了一个参数。','这个参数躺在补充材料第三十七页。你已经忘了自己曾经见过它。','“你当时这个值，怎么定的？”',[
+      choice('翻开备用页，解释敏感性检查。','掏出附录',{evidence:12,mood:-6,patience:3,time:-4},'备用页终于就业。','六十页附录里，总有一页等着今天。',{rigor:1}),
+      choice('“具体数值我核对后给您，先解释选择原则。”','稳妥接招',{patience:5,evidence:3,time:-2},'不记得，也可以不乱说。','大佬点头。你在笔记里画了三个星。',{honest:1}),
+      choice('“这个参数比较有灵性。”','与命运合作',{mood:12,evidence:-9,patience:-7,time:-1},'灵性没有通过同行评议。','大佬的茶杯落在桌上，发出了一个审稿人的声音。',{chaos:1})
+    ]),
+    event('plot-small',3,'boss','图做得很精致，就是看不见。','这张图你排了整整一晚上。现在，它看起来像一张邮票。','“小字是什么？你放大一点。”',[
+      choice('放大关键区域，逐个解释坐标和趋势。','现场放大',{evidence:7,patience:4,mood:-3,time:-3},'坐标轴重获新生。','投影仪终于与你的图建立了合作关系。'),
+      choice('把图发群里，请大家各自欣赏。','分布式读图',{mood:3,patience:2,time:-2},'全体低头，盛况空前。','师兄顺手回了一个表情。你不知道是在夸图还是求救。',{social:1}),
+      choice('“这是为了避免大家被细节干扰。”','极简哲学',{mood:11,evidence:-5,patience:-7,time:-1},'细节决定成败，细节消失了。','老师建议你连结果也一并极简。',{chaos:1})
+    ]),
+    event('plot-colors',3,'senior','师兄看到了你那十四种颜色。','屏幕像一盒开盖的彩笔。导师眯起了眼睛。','“这个黄色和那个黄色，有什么区别？”',[
+      choice('说清编码，承认需要重新配色。','颜色有户口',{evidence:6,patience:5,mood:-3,time:-2},'黄色之间终于有了边界。','师兄愿意把他的配色表发给你。',{honest:1}),
+      choice('直接切到黑白打印友好版。','备用救场',{evidence:9,patience:3,time:-3},'打印机的胜利。','原来这张图在失去颜色以后，反而更有尊严。',{rigor:1}),
+      choice('“老师，这个叫莫奈组学。”','印象派分析',{mood:14,evidence:-6,patience:-5,time:-1},'莫奈本人没有参会。','陈师兄笑到摘掉了口罩。',{chaos:1})
+    ]),
+    event('plot-version',3,'boss','你发现自己打开了旧版图。','颜色、标题、角标，一切都熟悉得令人不安。','“你不是说上周改过了吗？”',[
+      choice('当场找新版，把变化讲清楚。','修复现场',{evidence:7,patience:-3,mood:-7,time:-4},'版本控制大逃亡。','你在十六个“最终版”里找到了最新的那个。'),
+      choice('“这页放错了，我先说明上周的修改。”','明确承认',{patience:5,evidence:2,mood:-2,time:-2},'错误被叫出了名字。','导师让你继续。生活偶尔也有撤销键。',{honest:1}),
+      choice('“这是纵向比较的设计。”','重新包装',{mood:8,evidence:-6,patience:-4,time:-1},'历史数据复活。','导师说“那新版也放出来比较”。你欠下了一页。',{chaos:1,debt:1})
+    ]),
+    event('result-negative',4,'boss','最重要的结果，没有显著。','这张图的星号库存为零。但它确实是你做出来的。','“那你这几周，是做了个寂寞吗？”',[
+      choice('讲清效应方向、变异与当前能排除的范围。','负结果也有内容',{evidence:12,patience:4,mood:-4,time:-3},'星号不是唯一的剧情。','导师安静了一会儿，然后问了一个更具体的问题。',{rigor:1}),
+      choice('“至少知道这条路目前走不通。”','诚实复盘',{mood:6,evidence:5,patience:4,time:-2},'地图上多了一个死胡同。','没有发现宝藏，但也没有再把坑踩一遍。',{honest:1}),
+      choice('“阴性结果只是阳性结果的少年时期。”','乐观主义',{mood:14,evidence:-7,patience:-6,time:-1},'结果还在青春期。','导师表示希望它尽快成年。',{chaos:1})
+    ]),
+    event('result-perfect',4,'stats','这张图，好看得有点危险。','每一根线都按你希望的方向走。林老师反而坐直了。','“有独立检查吗？有没有更简单的解释？”',[
+      choice('展示检查结果，并指出尚未排除的解释。','结果经得起问',{evidence:12,patience:3,mood:-4,time:-3},'完美不等于无敌。','林老师终于把笔盖扣上了。',{rigor:1}),
+      choice('“目前只做了第一轮，结论先保守一点。”','降低结论',{evidence:5,patience:6,time:-2},'稳稳地落在地上。','你失去了一句漂亮口号，获得了一点导师耐心。',{honest:1}),
+      choice('“是因为结果感受到了我的诚意。”','感动数据',{mood:13,evidence:-8,patience:-5,time:-1},'诚意没有置信区间。','陈师兄说他昨晚也很有诚意，但电脑还是崩了。',{chaos:1})
+    ]),
+    event('result-surprise',4,'boss','方向反了，剧情也反了。','你的预期是一条上升线。屏幕上，它执意往下走。','“这跟你的假说，正好相反啊？”',[
+      choice('先核对方向和流程，再谈其他解释。','先检查再许愿',{evidence:10,patience:5,mood:-4,time:-3},'反向也是方向。','导师发现你没有急着给结果编一个故事。',{rigor:1}),
+      choice('“假说可能要调整，我把两种解释都列出来。”','修改地图',{mood:4,evidence:6,patience:3,time:-2},'研究计划重新导航。','你暂时不会走到原定终点，但至少还握着地图。',{honest:1}),
+      choice('“说明它有非常强的逆反心理。”','给结果做心理辅导',{mood:14,evidence:-6,patience:-5,time:-1},'数据进入叛逆期。','老师让你和数据谈谈。下周汇报谈话进展。',{chaos:1,debt:1})
+    ]),
+    event('surprise-food',5,'system','外卖到了，导师的问题也到了。','手机震动：“骑手已到达。”讲台上的你，肚子也震动了一下。','“你手机怎么一直响？”',[
+      choice('静音，守住讲台最后的体面。','压制饥饿',{mood:-9,evidence:3,patience:4,time:-2},'尊严不能蘸酱。','你的外卖正在经历另一个更漫长的组会。'),
+      choice('请求师兄代领，承诺请他喝奶茶。','师门互助',{mood:7,patience:1,time:-2},'奶茶债务增加一笔。','师兄表情很平静，截图保存得很熟练。',{help:1}),
+      choice('“老师，今天的样本需要趁热处理。”','生鲜研究',{mood:15,patience:-8,time:-1},'外卖获得了样本身份。','导师问样本是不是黄焖鸡。',{chaos:1})
+    ]),
+    event('surprise-water',5,'senior','导师的杯子空了。','你讲到一半，导师拿起了空杯子。房间里响起了不祥的杯盖声。','“你继续，我去接杯水。”',[
+      choice('趁空档重整思路，等他回来讲重点。','补满底气',{mood:5,evidence:8,time:-3},'三分钟战略喘息。','你终于把那个总是念错的词练顺了。'),
+      choice('“老师，我去接。您坐着。”','抢占茶水间',{mood:4,patience:12,time:-3},'人情世故升温到九十度。','讲台上的你，多了一项液体处理能力。',{social:1}),
+      choice('趁他出门，悄悄跳过五页。','战略性快进',{mood:9,evidence:-7,patience:-3,time:3},'时空折叠。','老师回来问“刚才那张图呢？”你把它列入稍后讲解。',{chaos:1,debt:1})
+    ]),
+    event('surprise-network',5,'system','视频会议里，大佬变成了马赛克。','远程老师的脸冻结在一个很严肃的表情上。没有人知道他是否还在。','“你这……滋……结……滋……论……”',[
+      choice('暂停确认连接，把问题记下来。','文明等待',{evidence:3,patience:5,mood:-4,time:-4},'信号没有通过显著性检验。','重新连接成功。大佬果然有问题。'),
+      choice('请师兄处理网络，先讲可独立理解的部分。','分工合作',{evidence:5,mood:2,patience:2,time:-2},'组会不是单人副本。','师兄把麦克风关了又开，像一位可靠的巫师。',{help:1}),
+      choice('“老师网络太好，已经提前看到结论了。”','网络玄学',{mood:14,patience:-5,time:-1},'马赛克没有笑，但现场笑了。','大佬恢复画面时，发现所有人都在笑。',{chaos:1})
+    ]),
+    event('question-cause',6,'boss','“所以，这是因果关系？”','你刚说完“有关联”，导师就把球踢得更远了。','“有没有可能，是另一个东西同时影响它们？”',[
+      choice('明确现有证据范围，说明还需要的检查。','结论踩刹车',{evidence:12,patience:4,mood:-6,time:-3},'一句克制，少欠三个月。','导师没听到最想听的答案，却听到了一个站得住的答案。',{rigor:1}),
+      choice('“现在还不能这么说，我把几种可能列出来。”','诚实接球',{evidence:6,patience:7,mood:1,time:-2},'未知被摆上桌面。','桌子没有塌。你也没有。',{honest:1}),
+      choice('“也可能是宇宙想让我毕业。”','宇宙级解释',{mood:15,evidence:-8,patience:-7,time:-1},'宇宙暂不提供补充材料。','导师说，那你下周问问宇宙。',{chaos:1,debt:1})
+    ]),
+    event('question-impact',6,'visitor','“做出来，有什么意义？”','这是一个字数很少、伤害很高的问题。连投影仪的风扇都安静了。','“除了发一篇文章呢？”',[
+      choice('讲一个明确能回答的问题，不放大用途。','意义落地',{evidence:10,patience:5,mood:-4,time:-3},'一个小问题，也可以是真的。','大佬说“这个角度可以”。你决定把这句话刻进脑海。',{rigor:1}),
+      choice('“意义我还在完善，先保证这个问题被回答清楚。”','务实路线',{evidence:5,patience:4,mood:3,time:-2},'先搭好一级台阶。','老师暂时不要求你一口气改变世界。',{honest:1}),
+      choice('“能减少一个研究生的焦虑。”','个人公共卫生',{mood:15,evidence:-5,patience:-4,time:-1},'研究对象包括你本人。','陈师兄举手：这个课题的样本量可以很大。',{chaos:1})
+    ]),
+    event('question-memory',6,'boss','导师翻到了上周的笔记。','你以为那本笔记只是用来画圈的。它居然有记忆。','“上次我让你看的那个，你看了吗？”',[
+      choice('拿出整理过的对照，说明处理进度。','已读已回',{evidence:10,patience:9,mood:-4,time:-3},'上周的你救了今天的你。','导师在原来的圈上画了一个勾。这个勾很值钱。',{rigor:1}),
+      choice('“还没完成，卡在这一步。我需要一个建议。”','带着卡点求助',{evidence:3,patience:4,mood:2,time:-2},'未完成，也有具体形状。','老师给了你一个能在本周做完的小步骤。',{honest:1}),
+      choice('“我正在进行一个深度的思考。”','思考型进度',{mood:10,evidence:-5,patience:-10,time:-1},'思考被要求提供截图。','导师说“你上周也是这么说的”。',{chaos:1,debt:1})
+    ]),
+    event('discussion-senior',7,'senior','师兄说：“我补充一句。”','经验告诉你，这一句通常长得像一篇综述。','“其实我觉得还可以加一个……”',[
+      choice('记下建议，追问哪一项最值得优先做。','给建议排队',{evidence:7,patience:4,mood:-3,time:-3},'补充有了优先级。','师兄认真替你划掉了三个不必要的任务。',{rigor:1}),
+      choice('“师兄，这个能不能您带我做？”','把球传回去',{mood:8,evidence:3,patience:2,time:-2},'建议附带执行人。','师兄的语速突然变慢了。',{help:1,social:1}),
+      choice('“师兄，我这篇是小论文，不是百科全书。”','拒绝无限扩容',{mood:14,patience:-6,time:-1},'论文暂时逃过增肥。','导师觉得你说得有点道理，但不喜欢你说得太有道理。',{chaos:1})
+    ]),
+    event('discussion-conflict',7,'stats','两位老师，给了相反的建议。','周老师说要扩展。林老师说要收缩。你仿佛变成了一块弹力布。','“你自己怎么想？”',[
+      choice('按研究问题提出取舍，并说明代价。','自己做选择',{evidence:12,patience:4,mood:-7,time:-3},'第一次拥有方向盘。','你说完以后，两位老师竟然都点了头。',{rigor:1}),
+      choice('“先完成最小的一步，再决定要不要扩。”','小步前进',{evidence:6,patience:8,mood:2,time:-2},'一个双方都能站的台阶。','今天的组会终于出现了共识。',{honest:1}),
+      choice('“我支持二位老师的共同意见。”','量子态站队',{mood:12,evidence:-5,patience:-4,time:-1},'共同意见尚未被观测。','两位老师一起看向你。你成功促成了共同意见。',{chaos:1})
+    ]),
+    event('discussion-quiet',7,'boss','“有没有同学提问？”','所有人都突然对桌面的纹理产生了浓厚兴趣。','“那我再问一个吧。”',[
+      choice('主动提出一个还没解决的关键问题。','把握问答',{evidence:9,patience:5,mood:-5,time:-3},'把灵魂问题变成具体问题。','导师顺着你的问题讨论了起来。',{rigor:1}),
+      choice('看向师兄，请他分享一个改进建议。','召唤队友',{evidence:4,patience:4,mood:4,time:-2},'师兄接受了眼神信号。','他问了一个你真的答得上的问题。',{help:1}),
+      choice('“没有问题，也是对研究的充分肯定。”','主动结束营业',{mood:12,patience:-8,time:1},'沉默的含义被你强行改写。','导师翻开笔记本：“是吗？”',{chaos:1})
+    ]),
+    event('summary-future',8,'boss','“你下周准备做什么？”','你已经看见散会的曙光。曙光后面跟着一张待办清单。','“具体一点，别又写继续分析。”',[
+      choice('给出一个明确的小目标和停止条件。','可执行计划',{evidence:10,patience:6,mood:-3,time:-2},'下周的你收到一份合理工作。','导师只写了两行。你觉得这已经是胜利。',{rigor:1}),
+      choice('“我先解决最影响结论的那个问题。”','先做关键事',{evidence:5,patience:6,mood:3,time:-2},'待办清单暂未无限生长。','下周的你想给今天的你寄一张感谢卡。',{honest:1}),
+      choice('“全面推进，争取取得突破性进展。”','宏观规划',{mood:10,evidence:-5,patience:-4,time:-1},'计划拥有了宏大叙事。','导师说“很好，下周我等你的突破”。',{chaos:1,debt:1})
+    ]),
+    event('summary-credits',8,'senior','致谢页，意外成为全场最佳。','小猫、室友、咖啡店、修电脑的师傅，全都出现在了致谢里。','“所以真正做这个课题的，是谁？”',[
+      choice('把各人的实际帮助和自己的工作说清楚。','贡献说明',{evidence:7,patience:4,time:-2},'每位队友都有工位。','修电脑的师傅获得了合理的技术支持定位。'),
+      choice('“老师和师兄给了我最重要的指导。”','情绪价值收尾',{patience:12,mood:5,evidence:-2,time:-2},'致谢完成定向投放。','师兄露出了今晚最自然的笑容。',{social:1}),
+      choice('“真正的第一作者，是那家二十四小时咖啡店。”','咖啡署名权',{mood:15,patience:-5,time:-1},'咖啡因成为通讯作者。','导师说发稿费的时候记得通知咖啡店。',{chaos:1})
+    ]),
+    event('summary-promise',8,'boss','导师追加了一个“很简单”的实验。','你已经切到 Thank You。导师却觉得这个单词还有很大的扩展空间。','“这个应该很快吧？顺便做一下。”',[
+      choice('说明需要的条件，请他一起确定优先级。','管理顺便',{evidence:9,patience:3,mood:-3,time:-3},'顺便也要占用时间。','导师划掉了一项任务，又加上了一项。至少总数没涨。',{rigor:1}),
+      choice('“先做小范围试验，看看有没有必要扩大。”','先探一脚',{evidence:5,patience:6,mood:2,time:-2},'工作量获得了边界。','“很快”终于被翻译成了一个具体步骤。',{honest:1}),
+      choice('“好的老师！没问题老师！”','自动回复模式',{patience:11,mood:-8,evidence:-3,time:-1},'你答应得比思考更快。','散会曙光更亮了，但你的下周更暗了。',{debt:2,social:1})
+    ]),
+    event('final-normal',9,'boss','“我最后再问一个小问题。”','你听到了整场组会里最危险的三个字：最后、小、问题。','“你觉得，今天最值得记住的是什么？”',[
+      choice('说出一条可靠结论和一条明确的未知。','稳稳落地',{evidence:10,patience:7,mood:-3,time:-2},'终于，可以关投影了。','导师合上本子。这个动作，你等了很久。',{rigor:1}),
+      choice('感谢大家，复述最关键的下一步。','平稳散会',{patience:9,mood:6,evidence:3,time:-2},'下一步，先吃饭。','导师点头。门把手终于恢复了吸引力。',{social:1}),
+      choice('“永远不要在周五晚上打开 PowerPoint。”','组会哲学',{mood:17,patience:-7,time:-1},'人生经验 +1。','所有同学的笑声，构成了今晚最显著的结果。',{chaos:1})
+    ]),
+    event('final-debt',9,'boss','你说过的“后面会讲”，终于到了后面。','导师翻回前面一页。你欠下的解释，没有被时间冲淡。','“刚才说稍后讲的那几个问题呢？”',[
+      choice('按重要性补两个关键点，明确没准备好的部分。','偿还解释债',{evidence:10,patience:5,mood:-9,time:-4},'有借有还，下次少借。','你填上了一部分坑。剩下的坑，被老师写进了下周。',{honest:1}),
+      choice('“我把这几个作为下周的重点，今天先界定结论。”','债务展期',{evidence:2,patience:2,mood:-3,time:-2},'下周的你承担了所有。','导师没有忘，只是同意让你晚一点还。',{debt:1}),
+      choice('“后面，是一个相对的时间概念。”','时间哲学',{mood:16,evidence:-8,patience:-11,time:-1},'相对论组会。','导师决定给你一个绝对的截止时间。',{chaos:1})
+    ]),
+    event('final-reverse',9,'boss','导师把激光笔交给了你。','组会接近结束。他突然问了一个你没想到的问题。','“如果你是我，你会问你自己什么？”',[
+      choice('指出最薄弱的一环，并提出能检验它的下一步。','自己审自己',{evidence:12,patience:7,mood:-5,time:-3},'你暂时成为了导师。','周老师说“这个思路对了”。你确认了两遍。',{rigor:1}),
+      choice('“我会问，这个人是不是该去吃饭了。”','关爱研究者',{mood:12,patience:5,evidence:-2,time:-1},'人本主义组会。','导师看了看时间。居然同意了。',{social:1}),
+      choice('“我会问，这么优秀的学生怎么还没毕业。”','自我推销',{mood:15,patience:-6,time:-1},'毕业申请没有走正式流程。','全场笑了，但教务系统没有笑。',{chaos:1})
+    ])
+  ];
+  events.push(
+    event('start-cat',0,'system','一只猫，比你更早进入会议室。','实验室的猫坐在讲台上，不肯把激光笔还给你。','“它今天也要汇报吗？”',[
+      choice('先安顿猫，再安顿研究问题。','有序开局',{mood:8,evidence:2,patience:3,time:-3},'第一位参会者已经满意。','它走到导师身边睡下了，显然知道这里谁说了算。'),
+      choice('“老师，它是来监督我有没有进展的。”','监督体系',{mood:6,patience:6,time:-2},'猫咪成为课题督导。','导师说这个监督机制很有效，建议长期保留。',{social:1}),
+      choice('“它是第一作者，我负责播放 PPT。”','跨物种署名',{mood:15,evidence:-4,patience:-5,time:-1},'通讯作者喵了一声。','陈师兄指出，它的睡眠时间远多于人类第一作者。',{chaos:1})
+    ]),
+    event('background-title',1,'boss','你的题目，长得像一张火车票。','你读完题目以后，自己都需要喝一口水。','“能不能给我一个短一点的名字？”',[
+      choice('删掉修饰，把问题本身留下。','题目减肥',{evidence:7,patience:5,time:-2},'终于一口气能念完。','老师的笔记本上，总算装得下你的课题。',{rigor:1}),
+      choice('“内部就叫那个还没做完的课题。”','师门暗号',{mood:5,patience:3,evidence:1,time:-2},'命名诚实得令人心疼。','在场每个人，都有一个名字完全相同的课题。',{honest:1}),
+      choice('“简称：救救孩子。”','情绪化摘要',{mood:14,evidence:-5,patience:-5,time:-1},'字数合规，内容求救。','陈师兄问这是不是下一次组会的正式标题。',{chaos:1})
+    ]),
+    event('method-ai',2,'stats','师兄问：“你这个是不是 AI 做的？”','你讲的是流程，他关心的是谁熬了夜。','“这部分你自己能讲明白吗？”',[
+      choice('把关键步骤、检查和自己的判断讲清楚。','讲清楚就是底气',{evidence:11,patience:4,mood:-4,time:-3},'工具退场，理解上场。','林老师说她看重的是你能不能解释并检查。',{rigor:1}),
+      choice('“有辅助，最终判断我自己复核过。”','明明白白用工具',{evidence:5,patience:6,time:-2},'工具有了工作说明。','陈师兄开始偷偷问你怎么减少排版时间。',{honest:1}),
+      choice('“主要是我负责焦虑，AI 负责鼓励我。”','人机情绪协作',{mood:14,evidence:-5,patience:-4,time:-1},'协作没有改善睡眠。','所有研究生都对这种分工表示熟悉。',{chaos:1})
+    ]),
+    event('plot-emoji',3,'senior','图注里，混进了一个表情。','你原本留给自己的提醒“这张还得改😭”，成功参加了组会。','“这个符号，是新标记吗？”',[
+      choice('承认是工作备注，把图的意思讲清楚。','清理工作痕迹',{evidence:4,patience:5,mood:-3,time:-2},'图注摘下了情绪滤镜。','这张图终于恢复了只谈结果的身份。',{honest:1}),
+      choice('“这是我给自己加的风险提示。”','现场解释',{patience:4,mood:4,evidence:1,time:-2},'风险提示过于直观。','老师要求以后每页都说明具体风险。',{social:1}),
+      choice('“表示作者已达到统计学意义上的悲伤。”','情绪显著',{mood:15,evidence:-6,patience:-6,time:-1},'悲伤不需要额外样本。','林老师说，这个标记她倒是每天都用。',{chaos:1})
+    ]),
+    event('result-screenshot',4,'boss','导师想要你的一张图。现在。','老师拿起手机，准备发给一位“正好在做这个”的朋友。','“你把这张图先发我。”',[
+      choice('发去清楚标注范围和待检查事项的版本。','结果带着说明书',{evidence:8,patience:5,time:-3},'这张图拥有了出门须知。','导师说发图别忘了带一句说明。你已经带了三句。',{rigor:1}),
+      choice('“老师，还没核对完，我晚点发确认版。”','先把图拦下来',{evidence:5,patience:3,mood:4,time:-2},'朋友圈暂时没有新剧情。','你为一张图争取到了检查的时间。',{honest:1}),
+      choice('“老师，这张图还没做好社交准备。”','保护内向的图',{mood:14,evidence:-4,patience:-5,time:-1},'图获得了人格。','老师问，它什么时候愿意和别人交流。',{chaos:1,debt:1})
+    ]),
+    event('surprise-reminder',5,'system','你的电脑，弹出了喝水提醒。','提醒文字盖住结果：“坐太久了，起来活动一下。”','“这个系统比我还关心你。”',[
+      choice('关掉提醒，重新聚焦关键结果。','继续营业',{evidence:4,patience:3,mood:-3,time:-2},'电脑暂时收回了关怀。','你继续讲。喝水提醒转入后台焦虑。'),
+      choice('趁机提议全体喝水，换个姿势继续。','集体回血',{mood:11,patience:8,time:-4},'组会发生了短暂的人体工学革命。','林老师终于伸直了腰。',{social:1}),
+      choice('“老师，这是我的独立伦理委员会。”','系统代言',{mood:15,evidence:-3,patience:-5,time:-1},'操作系统发起了人文关怀。','导师批准委员会发言一次，仅此一次。',{chaos:1})
+    ]),
+    event('question-own',6,'visitor','大佬拿出手机，开始讲他的旧课题。','他表示这个和你的很像。五分钟以后，已经不像了。','“我简单说一下当年的情况。”',[
+      choice('认真听，整理成对当前问题有用的两点。','前辈故事',{evidence:4,patience:4,mood:-6,time:-7},'简单说了七分钟。','你听懂了一些经验，也听见食堂窗口拉下卷帘的声音。',{rigor:1}),
+      choice('找个空档，请他帮忙指出下一步。','把往事接到今天',{evidence:2,patience:5,mood:-3,time:-5},'故事总算回到了你的课题。','他给了一个建议，又想起了另一段往事。',{social:1}),
+      choice('“老师，这段可以录成系列播客。”','启动传媒副业',{mood:14,evidence:-4,patience:-7,time:-1},'大佬认真考虑起了节目名。','你的汇报暂时让位于一个文化产业项目。',{chaos:1})
+    ]),
+    event('discussion-loop',7,'boss','组会，开始讨论组会本身。','先是有人问要不要提前半小时，然后有人问要不要隔周一次。','“大家对组会有什么建议？”',[
+      choice('提议限定问题、提前共享材料，说明好处。','优化组会',{evidence:3,patience:5,mood:-5,time:-6},'六分钟讨论如何少开六分钟。','导师决定下次再开一次短会，专门讨论这个建议。',{rigor:1}),
+      choice('建议固定一个可预期的结束时间。','保护晚饭',{evidence:1,patience:4,mood:3,time:-4},'终于有人提出散会的存在。','大家点头。至于今天几点结束，还要再讨论一下。',{honest:1}),
+      choice('“我建议开组会的组会，再开一次组会来决定。”','递归组会',{mood:16,evidence:-4,patience:-6,time:-1},'会议栈即将溢出。','陈师兄说你已经掌握了行政管理的核心技术。',{chaos:1})
+    ])
+  );
+  const endings = [
+    {id:'legend',icon:'🏆',title:'组会战神',subtitle:'你关上投影仪，全场竟然鼓了掌。',desc:'问题一个个落地，老师一句句点头。师兄说他在这个实验室待了五年，第一次见到散会时有人舍不得走。你决定谨慎对待这句话。',hint:'稳住心态，攒足底气，也留住导师耐心。'},
+    {id:'comedian',icon:'🎤',title:'实验室脱口秀冠军',subtitle:'结果不一定显著，笑声一定显著。',desc:'师兄连夜整理出“你的十句经典发言”。导师说下次注意严肃一点，嘴角却没有完全放下。你在学术道路旁边，意外开辟了一条喜剧赛道。',hint:'多次整活，活着走出会议室。'},
+    {id:'diplomat',icon:'🫖',title:'师门外交官',subtitle:'你让每一位老师都觉得自己说得对。',desc:'建议很多，分歧更少。你的致谢页被评为本场最佳。散会后，大家纷纷找你聊合作，唯独你的研究结果暂时无人提起。',hint:'把情绪价值拉满，让导师耐心留在高位。'},
+    {id:'honest',icon:'🧭',title:'清醒的幸存者',subtitle:'“这个我还不知道。”也可以是一个好答案。',desc:'你没把未知包装成突破，也没有把一个小发现说成改变世界。导师留下了几条可做的建议。你带着一个清晰的下一步，和完整的自我，走出了会议室。',hint:'多次坦诚说明边界，平稳完成汇报。'},
+    {id:'debt',icon:'📋',title:'下周任务富豪',subtitle:'你成功散会了。代价是你的下周。',desc:'你每说一次“没问题”，下周就少一块自由。最后你收获了长达两页的任务清单。师兄拍了拍你：没有关系，至少今天下班了。',hint:'多答应一点，多留几个“下周再说”。'},
+    {id:'escape',icon:'🍜',title:'准点干饭传说',subtitle:'你用时间管理，战胜了无限讨论。',desc:'老师看了一眼钟，终于说“今天先这样”。你像一个早就部署好的程序，立刻关闭电脑、整理包、走向门口。外卖还没凉。科研暂时也没有。',hint:'让模拟时间耗尽时，仍保有足够底气和耐心。'},
+    {id:'survivor',icon:'🌱',title:'平凡但完整地下班',subtitle:'没有惊天突破，也没有当场崩溃。',desc:'你答上了几个问题，也承认了几个不会的。导师说“回去再想想”。你觉得这已经很好：今天的组会结束了，而你还愿意打开下一份幻灯片。',hint:'撑过最后一个问题，就是一场胜利。'},
+    {id:'mood',icon:'🫠',title:'灵魂先行下班',subtitle:'人还在讲台，意识已经走到校门口。',desc:'你听见导师在说话，但每一个字都像隔着水。陈师兄接过激光笔，说“我来补充一下”。这一次，你真心感谢这五个字。先休息，下一局再来。',hint:'心态耗尽。咖啡和角色技能可能救场。'},
+    {id:'patience',icon:'🌋',title:'导师开启第二阶段',subtitle:'“你坐下。我来给大家讲一下。”',desc:'导师拿走激光笔，开始了他自己的汇报。你原本担心讲不够十五分钟，现在开始担心晚饭。组会副本已升级，下次进场请携带更多耐心。',hint:'导师耐心耗尽。嘴甜也要选好时机。'},
+    {id:'overtime',icon:'🕰️',title:'无限组会体验卡',subtitle:'时间到了，问题还没有到头。',desc:'你以为时钟会替你结束一切。导师却说“我们把这个讲清楚再走”。师兄默默取消了外卖订单，投影仪的风扇转出了命运的声音。',hint:'时间用完时，底气或导师耐心没能撑住。'}
+  ];
+  return {roles,phases,people,events,endings};
+})();
+
+</script><script>
+/* v0.2：虚构课题路线、导师性格、剧情回声与场外生活。 */
+(() => {
+  const C=window.MEETING_CONTENT;
+  const q=(text,label,effects,result,flavor,flags={},risk=null)=>({text,label,effects,result,flavor,flags,risk});
+  const add=(id,phase,who,title,scene,quote,choices,extra={})=>C.events.push({id,phase,who,title,scene,quote,choices,...extra});
+  C.projects=[
+    {id:'classic',icon:'🧪',name:'实验室日常',desc:'仪器有脾气，冰箱有秘密。',effects:{evidence:4,mood:-2},tag:'实验室路线'},
+    {id:'data',icon:'💻',name:'数据炼丹',desc:'代码能跑，原因不明。',effects:{evidence:7,mood:-5},tag:'数据路线'},
+    {id:'theory',icon:'🪐',name:'理论宇宙',desc:'公式很美，讲台很冷。',effects:{evidence:5,patience:-2},tag:'理论路线'},
+    {id:'field',icon:'🧭',name:'田野漂流',desc:'人在外面，组会追了出来。',effects:{mood:7,evidence:-3},tag:'田野路线'}
+  ];
+  C.personas=[
+    {id:'warm',name:'捧场型',icon:'🍵',desc:'先肯定一下，再问个问题。整活和诚实更容易被接住。',interrupt:.18,initial:{patience:5}},
+    {id:'detail',name:'细节控',icon:'🔍',desc:'他会看图注，也会看图注的图注。认真解释更吃香。',interrupt:.23,initial:{evidence:3}},
+    {id:'story',name:'往事型',icon:'📻',desc:'“当年我读博士的时候……”插话更多，时间更紧。',interrupt:.34,initial:{time:4}},
+    {id:'strict',name:'冷面型',icon:'🧊',desc:'激光笔就是他的表情。诚实有用，嘴硬容易出事。',interrupt:.25,initial:{patience:-5,evidence:4}}
+  ];
+  C.shop=[
+    {id:'backup',icon:'🗂️',name:'神秘备用页',cost:3,desc:'底气 +16 · 导师耐心 +3',effects:{evidence:16,patience:3},flavor:'你切到备用页。它准备了三个月，就等这三十秒。'},
+    {id:'snack',icon:'🍪',name:'口袋小饼干',cost:2,desc:'心态 +15 · 时间 −1',effects:{mood:15,time:-1},flavor:'你在讲台侧面咬了一口。人生重新出现了甜味。'},
+    {id:'laser',icon:'🔦',name:'祖传激光笔',cost:4,desc:'耐心 +13 · 时间 +2',effects:{patience:13,time:2},flavor:'激光点落在哪里，大家就看哪里。你暂时掌握了会议室。'},
+    {id:'memo',icon:'📓',name:'上周的笔记本',cost:3,desc:'底气 +8 · 还掉 1 笔解释债',effects:{evidence:8},flags:{debt:-1},flavor:'笔记本里真的写了上周的问题。你填上了一个坑。'},
+    {id:'catnip',icon:'🐈',name:'猫咪应援卡',cost:4,desc:'心态 +12 · 猫缘 +1',effects:{mood:12},flags:{cat:1},flavor:'会议室的猫走过来，给你的电脑蹭了一下。你获得了跨物种支持。'}
+  ];
+  const routes={
+    classic:[
+      ['lab-fridge',1,'boss','你的背景，放在冰箱第三层。','导师让你解释课题起源。你突然想起最初只是想弄清那盒无人认领的东西。','“最开始为什么做这个？”',[
+        q('讲问题的来龙去脉，把冰箱传说留到散会。','认真起源',{evidence:8,patience:4,time:-2},'故事找到了问题。','导师第一次觉得这盒东西可能有一个归属。',{rigor:1}),
+        q('“大家总问那是谁的，我决定给它一个答案。”','师门公共服务',{mood:6,patience:5,time:-2},'实验室未解之谜。','师兄终于不再假装看不见冰箱第三层。',{honest:1}),
+        q('“因为它比我的毕业时间更神秘。”','悬疑开题',{mood:13,patience:-4,time:-1},'冰箱开始承担叙事功能。','老师说这个悬念可以留到下一次。',{chaos:1,debt:1})]],
+      ['lab-instrument',2,'senior','仪器今天只认师兄。','你按了三次启动，什么都没发生。师兄站过去，它亮了。','“这机器是不是对你有意见？”',[
+        q('记下状态和操作差异，说明还在定位问题。','区别有记录',{evidence:9,patience:3,time:-3},'它还没有被证明有灵魂。','师兄把他的使用习惯写了下来。',{rigor:1}),
+        q('邀请师兄和你一起讲这段流程。','师门联机',{mood:6,evidence:4,patience:4,time:-2},'仪器有了指定联系人。','师兄的责任感和存在感同时增加。',{help:1}),
+        q('“我们之间缺少一段信任建立期。”','设备心理学',{mood:14,evidence:-5,patience:-5,time:-1},'仪器暂不接受访谈。','老师让你先把它当成机器试试。',{chaos:1})]],
+      ['lab-photo',3,'boss','你的实验照片，拍出了电影感。','灯光、角度、滤镜都很好，唯独看不出重点。','“这是结果图，还是宣传片？”',[
+        q('切到未修饰的版本，解释关键位置。','让重点露脸',{evidence:9,patience:5,mood:-3,time:-2},'结果摘下了电影滤镜。','老师总算看到了你一直在指的地方。',{rigor:1}),
+        q('“这张用于记录，正式图还在整理。”','说明用途',{evidence:4,patience:5,time:-2},'宣传与汇报各有位置。','师兄偷偷问你用的什么灯。',{honest:1}),
+        q('“老师，这是科研纪录片的先导片。”','学术影视化',{mood:15,evidence:-5,patience:-5,time:-1},'你获得了导演身份。','导师把片名改成了《何时出结果》。',{chaos:1})]],
+      ['lab-label',4,'stats','样本的名字，已经不认识自己。','A1、A1新、真A1、A1不要用。老师看得比你还困惑。','“这个 A1 到底是哪一个？”',[
+        q('拿出对应记录，按来源重新说明。','给名字发身份证',{evidence:11,patience:4,mood:-4,time:-3},'终于不是猜名字游戏。','林老师接受了这个对应关系，建议你下次别靠形容词。',{rigor:1}),
+        q('承认命名混乱，把已核对的部分先分出来。','整理比狡辩快',{evidence:5,patience:6,time:-2},'混乱有了边界。','师兄说他也曾经有一个“最终最终真的别改”。',{honest:1}),
+        q('“这个体系充分保留了研究者的情绪变化。”','情绪命名法',{mood:14,evidence:-6,patience:-5,time:-1},'名字里全是人生。','导师希望结果里也能保留一点清晰。',{chaos:1})]],
+      ['lab-cat-results',6,'boss','猫坐在你的关键结果上。','桌上的打印图被猫压住了一半。它看起来比任何人都满意。','“这半张，能讲完吗？”',[
+        q('拿出电子版，顺手给猫留一张废纸。','合理分工',{evidence:7,mood:5,time:-2},'猫有了自己的预印本。','它没有质疑你的结论。',{cat:1,rigor:1}),
+        q('“先等一下，这位评审还没看完。”','尊重猫评审',{mood:12,patience:4,time:-3},'评审周期不可预测。','猫把图往旁边推了两厘米，算是小修。',{cat:1,social:1}),
+        q('“它已经通过肉垫投票了。”','猫咪表决制',{mood:15,patience:-4,evidence:-3,time:-1},'投票只有一票，但很软。','师兄决定给它做一张参会证。',{cat:1,chaos:1})]],
+      ['lab-glove',7,'senior','师兄发现你兜里还有一只手套。','它在你掏激光笔的时候飞到了桌上。','“你这是实验没做完，还是组会没准备好？”',[
+        q('承认刚忙完，明确讲已经完成的工作。','今天确实很忙',{evidence:6,patience:4,mood:-3,time:-2},'一只手套，很多进度。','师兄把它放到你包旁边。',{honest:1}),
+        q('“留着提醒自己，别把任务全带回宿舍。”','生活边界',{mood:9,patience:3,time:-2},'手套回到了实验室。','你有了一次合理的自我关怀。',{social:1}),
+        q('“这是我和实验室签订契约的凭证。”','契约型研究生',{mood:15,patience:-5,time:-1},'实验室没有盖章。','导师说契约里应该写着下周还要汇报。',{chaos:1,debt:1})]],
+      ['lab-summary',8,'boss','实验室的猫走向了致谢页。','你准备收尾，它却跳上了键盘。','“这个课题负责人，有什么总结？”',[
+        q('把总结讲清楚，让猫担任时间监督。','人猫合作',{evidence:8,patience:5,time:-2},'两位负责人完成了收尾。','猫在你说完以后打了一个哈欠，时机非常精准。',{cat:1,rigor:1}),
+        q('给猫一个正式致谢，感谢师兄帮忙。','队友都要被看见',{mood:8,patience:8,time:-2},'致谢页完成跨物种扩容。','老师说你们组的团队氛围不错。',{cat:1,social:1,help:1}),
+        q('“它负责课题，我负责读它的表情。”','猫咪接管',{mood:16,evidence:-4,patience:-5,time:-1},'管理权转移完毕。','导师第一次对课题负责人提出了“少睡一点”的建议。',{cat:1,chaos:1})]]
+    ],
+    data:[
+      ['data-loader',1,'boss','数据还没读完，组会已经开始。','你的电脑风扇声音比你的开场白大。','“这个进度条什么时候结束？”',[
+        q('展示已完成的部分，说明剩余任务。','先讲可讲的',{evidence:8,patience:4,time:-2},'进度条不代表你的全部人生。','老师暂时接受了等待的存在。',{rigor:1}),
+        q('“已完成的检查在这里，剩下的不影响今天讨论。”','划清今天的范围',{evidence:5,patience:5,time:-2},'汇报与加载各走各的。','师兄终于停止盯着那个百分数。',{honest:1}),
+        q('“它已经在努力毕业了。”','替电脑求情',{mood:14,evidence:-4,patience:-4,time:-1},'电脑获得了研究生身份。','导师问它什么时候能提交学位论文。',{chaos:1,robot:1})]],
+      ['data-comments',2,'stats','代码注释里写着“别碰，能跑”。','你忘了收起共享屏幕，现场看见了这条珍贵的经验。','“为什么不能碰？”',[
+        q('解释依赖和检查，把注释补成真正的说明。','让代码说人话',{evidence:11,patience:4,mood:-4,time:-3},'玄学注释开始就业。','林老师觉得这句至少比没有注释好。',{rigor:1}),
+        q('“这段需要再整理，我先说明输入和输出。”','把黑箱打开一点',{evidence:5,patience:5,time:-2},'能跑之后，还要能懂。','你对这一段代码的敬畏减少了一点。',{honest:1}),
+        q('“它是一个脆弱但勤奋的同事。”','代码人格化',{mood:15,evidence:-5,patience:-5,time:-1},'代码被加入了实验室群。','师兄提议让它也轮流汇报。',{chaos:1,robot:1})]],
+      ['data-progress',3,'senior','你把训练进度条当成了结果图。','它的颜色很好看，数字也一直在增加。','“所以结果是什么？”',[
+        q('切到实际检查结果，区分运行与表现。','完成不是成功',{evidence:11,patience:4,time:-3},'进度条顺利退居后台。','师兄说这页其实挺适合放在实验室群催进度。',{rigor:1}),
+        q('“这只是运行状态，今天的结果在下一页。”','正确归位',{evidence:6,patience:4,time:-2},'一页状态，一页结果。','老师没有再和进度条交流。',{honest:1}),
+        q('“最主要的结果，是它坚持跑完了。”','机器毅力研究',{mood:14,evidence:-6,patience:-5,time:-1},'电脑接受了精神文明奖。','导师希望你本人也坚持讲完。',{chaos:1,robot:1})]],
+      ['data-accuracy',4,'stats','这个模型，准确率高得让人睡不着。','林老师坐直了。你突然理解了什么叫甜蜜的负担。','“有没有什么不该进去的东西进去了？”',[
+        q('按检查记录解释数据划分与可能的捷径。','漂亮也要检查',{evidence:12,patience:4,mood:-5,time:-3},'模型暂时不能靠走后门毕业。','老师让你把这段检查放进正式汇报。',{rigor:1}),
+        q('“我也觉得需要再查一遍，先不把这个数当结论。”','先守住结论',{evidence:5,patience:6,time:-2},'高分暂时进入观察期。','电脑风扇开始像是在叹气。',{honest:1}),
+        q('“它可能提前看过考试答案。”','模型坦白局',{mood:15,evidence:-5,patience:-4,time:-1},'模型要求聘请辩护律师。','林老师说，至少你提出了正确的怀疑。',{chaos:1,robot:1})]],
+      ['data-model-reply',6,'boss','AI 在你的笔记里说“这是突破”。','导师往下看了一行，发现它还说你“极具洞察力”。','“它对谁都是这么说的吗？”',[
+        q('展示自己的核对，解释哪些话不能当证据。','把彩虹屁关小一点',{evidence:11,patience:4,time:-3},'突破回到了待检查列表。','老师表示，它比自己更会鼓励学生。',{rigor:1}),
+        q('“是的，它主要负责在凌晨安慰我。”','明确工作分工',{mood:7,evidence:4,patience:5,time:-2},'AI 转岗情绪支持部。','师兄表示这个部门他也急需。',{honest:1,robot:1}),
+        q('“老师，您能不能也学习一下它的沟通方式？”','对导师提出小修',{mood:17,patience:-10,time:-1},'你的建议获得了沉默。','AI 尚未预料到这个真实世界后果。',{chaos:1,robot:1})]],
+      ['data-server',7,'system','服务器掉线了。它选择了离开。','你正准备现场展示，终端只回了一个冷冰冰的断开提示。','“我们这台服务器今天状态怎么样？”',[
+        q('改用已有结果说明，记录需要恢复的步骤。','准备了备份',{evidence:9,patience:3,mood:-3,time:-3},'演示离线，汇报在线。','服务器没有参加组会，但也没有阻止你参加。',{rigor:1}),
+        q('请师兄处理连接，继续讲讨论部分。','队友接力',{evidence:4,mood:4,patience:3,time:-2},'服务器得到了一位熟悉的联系人。','师兄说它每逢组会都会多一点脾气。',{help:1}),
+        q('“它在履行断开工作连接的权利。”','机器劳动保护',{mood:15,patience:-5,time:-1},'服务器暂时比你自由。','导师决定先把你的连接保持住。',{chaos:1,robot:1})]],
+      ['data-summary',8,'boss','“电脑忙了一周，那你呢？”','你听出了这句话的含义，电脑也听出了风扇的压力。','“你自己的贡献是什么？”',[
+        q('说明自己提出的问题、做的检查和判断。','研究者有工位',{evidence:10,patience:6,mood:-3,time:-2},'你从运行按钮后面走了出来。','老师说这部分下次要讲得更早。',{rigor:1}),
+        q('“我把没必要继续跑的路线停掉了。”','及时停止也是工作',{evidence:7,patience:5,time:-2},'算力没有继续陪跑。','师兄表示，及时停掉失败任务真的很难。',{honest:1}),
+        q('“我为它提供电、网络和情绪价值。”','人类运维员',{mood:15,evidence:-5,patience:-5,time:-1},'人类与机器交换了职位。','电脑没有提出加薪，但你的电费提出了。',{chaos:1,robot:1})]]
+    ],
+    theory:[
+      ['theory-name',1,'boss','题目里出现了三个“统一”。','你说自己提出了统一解释、统一框架和统一表述。','“能不能先统一一下字体？”',[
+        q('先说具体问题，收起宏大的修饰词。','宇宙缩成一页',{evidence:9,patience:4,time:-2},'这个宇宙终于有了边界。','老师愿意先听一个能讲清的小问题。',{rigor:1}),
+        q('“我先解释这一部分，其他还在整理。”','把宇宙切块',{evidence:5,patience:6,time:-2},'宇宙暂时不要求一次讲完。','你在讲台上重新获得了重力。',{honest:1}),
+        q('“字体的不统一，是理论对多样性的包容。”','排版宇宙学',{mood:15,evidence:-5,patience:-5,time:-1},'宋体与黑体达成了停战。','导师决定让它们在下周统一。',{chaos:1,recursive:1})]],
+      ['theory-assumption',2,'stats','一个假设，支撑了整座大厦。','林老师指着“为简单起见”。那四个字现在并不简单。','“不做这个假设呢？”',[
+        q('说明这个假设的作用和失效范围。','给大厦看地基',{evidence:12,patience:4,mood:-5,time:-3},'为简单起见，先别简单。','林老师接受了你明确画出的范围。',{rigor:1}),
+        q('“现在还不能推广，我先把这一种情况讲完。”','承认边界',{evidence:6,patience:6,time:-2},'大厦只开放了第一层。','老师暂时不要求你建一座城市。',{honest:1}),
+        q('“不做这个假设，我可能也做不完这个课题。”','存在主义假设',{mood:15,evidence:-6,patience:-5,time:-1},'研究者成为了假设的一部分。','师兄觉得这个约束确实很强。',{chaos:1})]],
+      ['theory-formula',3,'boss','一页公式，容纳了整个银河。','老师没有说话，只是把激光笔往左挪了三次。','“能从哪一个开始看？”',[
+        q('只保留关键一步，先解释它在回答什么。','给公式留呼吸',{evidence:10,patience:5,time:-3},'星系之间出现了道路。','你终于看见有人开始跟着点头。',{rigor:1}),
+        q('画一个直观例子，再回到表达式。','给银河装导航',{evidence:7,patience:6,time:-3},'例子把大家接回了地面。','师兄决定把这个例子记下来。',{social:1}),
+        q('“这页属于沉浸式体验，不建议逐字阅读。”','公式展览',{mood:15,evidence:-5,patience:-6,time:-1},'老师没有购买展览门票。','他要求导览讲解。',{chaos:1,recursive:1})]],
+      ['theory-sign',4,'senior','一个负号，让你的结论转了弯。','你一直很熟悉这页，直到师兄指向角落。','“这里是不是少了一个符号？”',[
+        q('当场核对，把会改变的部分说清楚。','把符号请回来',{evidence:9,patience:4,mood:-4,time:-3},'负号重新取得了居住权。','师兄的视力获得了全组的尊重。',{rigor:1}),
+        q('“这个需要核对，我先不继续推结论。”','及时暂停',{evidence:4,patience:6,time:-2},'宇宙没有继续往错的方向扩张。','你在出错后，做了一个能解释的决定。',{honest:1}),
+        q('“这是为了留下开放性问题。”','符号开放日',{mood:15,evidence:-6,patience:-6,time:-1},'一个负号，打开了一整个下午。','导师说这个问题下周必须关闭。',{chaos:1,debt:1})]],
+      ['theory-circle',6,'boss','“你是不是用结论证明了结论？”','你绕了一大圈，走回了开头。老师的表情像看见了一条环形跑道。','“这一段的起点在哪里？”',[
+        q('区分前提和结论，把每一步重新列出来。','拆掉环形跑道',{evidence:11,patience:4,mood:-4,time:-3},'这一次，起点和终点分开了。','导师终于找到了可以下笔的地方。',{rigor:1}),
+        q('“这里论证还不够，我先停在能确定的部分。”','把圆切开',{evidence:6,patience:6,time:-2},'未完成的证明有了形状。','师兄建议你从一个更小的例子开始。',{honest:1}),
+        q('“这是一种理论上的自给自足。”','闭环经济',{mood:16,evidence:-6,patience:-6,time:-1},'论证实现了内部循环。','导师宣布这个经济体需要外部审计。',{chaos:1,recursive:1})]],
+      ['theory-metaphor',7,'visitor','大佬认为你的理论像一碗面。','他说这个比喻最容易理解，然后开始讲配料。','“主干是面条，边界条件是汤……”',[
+        q('借比喻说明对应关系，指出不能对应的地方。','比喻有使用说明',{evidence:8,patience:4,time:-4},'面没有承担全部理论责任。','你和大佬对这碗面达成了部分共识。',{rigor:1}),
+        q('把比喻记下来，请他指出最关键的难点。','一碗面换一个建议',{evidence:5,patience:6,time:-3},'你暂时记住了晚饭和理论。','大佬觉得你很善于抓重点。',{social:1}),
+        q('“老师，那我能不能先去验证这碗面？”','理论落地食堂',{mood:17,patience:-6,time:-1},'实验地点被设为面馆。','你的胃对此表现出高度支持。',{chaos:1})]],
+      ['theory-summary',8,'boss','你准备总结，理论准备重新开始。','结论页下面写着“由此可得到一个新的问题”。','“能不能今天先不新？”',[
+        q('总结已回答的部分，把新问题放到备忘。','宇宙暂停键',{evidence:9,patience:7,time:-2},'今天的宇宙终于有了句号。','老师说这是一个很好的结束位置。',{rigor:1}),
+        q('“先把这一小步站稳，再说下一步。”','一级台阶',{evidence:6,patience:7,time:-2},'你没有继续向大家推销银河。','师兄觉得这句话可以贴在门口。',{honest:1}),
+        q('“总结也是另一种形式的开题。”','无限递归',{mood:16,evidence:-4,patience:-6,time:-1},'组会开始调用自己。','投影仪似乎在发出求救信号。',{chaos:1,recursive:1})]]
+    ],
+    field:[
+      ['field-arrival',1,'boss','你在路上，组会也在路上。','远程会议背景里出现了车站广播。老师终于问你在哪。','“你今天怎么汇报？”',[
+        q('说明环境，把可以清楚讲的材料先共享。','移动汇报',{evidence:7,patience:4,time:-2},'车站变成了临时讲台。','导师让你先找个安全安静的位置。',{rigor:1}),
+        q('“我回程中，今天先汇报已整理的记录。”','说明实际进度',{evidence:5,patience:5,mood:3,time:-2},'旅程与组会有了交接。','师兄开始研究你身后的发车时刻。',{honest:1,wander:1}),
+        q('“我正在现场感受流动性的概念。”','移动理论实践',{mood:15,evidence:-4,patience:-4,time:-1},'车站广播成为背景文献。','导师要求你先别流动得太快。',{chaos:1,wander:1})]],
+      ['field-interview',2,'stats','采访对象，反过来采访了你。','你还没问第二个问题，对方已经问到你的毕业计划。','“那最后到底是谁在做访谈？”',[
+        q('说明记录与提问的调整，把角色变化讲清楚。','现场有变化',{evidence:10,patience:4,time:-3},'访谈记录里多了研究者的位置。','林老师终于知道这段对话是怎么发生的。',{rigor:1}),
+        q('“对方的问题让我发现了原提纲的盲点。”','把意外写下来',{evidence:6,patience:5,time:-2},'提纲没有独自走完全程。','你带回了一个原先没想到的问题。',{honest:1,wander:1}),
+        q('“我们进行了对称性知识交换。”','双向求知',{mood:15,evidence:-4,patience:-5,time:-1},'你提供了自己的延毕风险。','师兄建议下次带一张自己的问题清单。',{chaos:1,wander:1})]],
+      ['field-map',3,'senior','地图上的点，连起来像一只鸭子。','你辛苦整理的路线图，首先获得了形状上的关注。','“你这个采集路线，有什么设计？”',[
+        q('解释路线选择与覆盖范围，不谈鸭子。','路线有理由',{evidence:10,patience:4,time:-3},'鸭子恢复了地理身份。','师兄表示他不是故意破坏严肃气氛。',{rigor:1}),
+        q('把不能覆盖的部分标出来，说明下一步。','地图也有空白',{evidence:6,patience:5,time:-2},'空白不是被偷偷藏起来的。','老师问了一个更适合你回答的问题。',{honest:1}),
+        q('“这说明研究路线具有很强的鸭迫感。”','地图整活',{mood:16,evidence:-5,patience:-5,time:-1},'鸭子成为现场高频词。','老师提醒你致谢里暂时不用加鸭子。',{chaos:1,wander:1})]],
+      ['field-souvenir',4,'boss','你的结果旁边，有一盒当地特产。','共享屏幕的右下角，出现了一个购物订单。','“你出差的主要收获是什么？”',[
+        q('展示明确整理的发现，把订单关掉。','收获分开装',{evidence:9,patience:4,mood:-2,time:-2},'特产退出正式结论。','导师决定先听你的发现。',{rigor:1}),
+        q('“研究记录在这里，特产准备分给大家。”','旅程有两份收获',{evidence:4,patience:8,mood:4,time:-2},'师门获得了可食用的背景材料。','师兄开始认真等散会。',{social:1,wander:1}),
+        q('“最确定的结论，是这个点心挺好吃。”','可重复的快乐',{mood:16,evidence:-6,patience:-4,time:-1},'点心获得了口头推荐。','老师表示研究收获还需要补充。',{chaos:1,wander:1})]],
+      ['field-weather',6,'visitor','大佬问你为什么没去另一个地方。','他说那里条件更好。你看了一眼当时的天气记录。','“那么近，怎么没顺便去一下？”',[
+        q('说明实际条件、范围和取舍。','顺便也有成本',{evidence:10,patience:4,time:-3},'地图上的近，不等于旅途的近。','大佬终于把那天的雨纳入了讨论。',{rigor:1}),
+        q('“当时条件不允许，我把这部分留作后续。”','接受旅程边界',{evidence:5,patience:6,mood:3,time:-2},'计划没有假装自己控制天气。','师兄给你发了一个同款淋雨表情。',{honest:1,wander:1}),
+        q('“那天宇宙对我进行了随机分组。”','天气试验',{mood:16,evidence:-4,patience:-5,time:-1},'雨水没有事先告知。','导师希望下次带好雨具和备选路线。',{chaos:1,wander:1})]],
+      ['field-local',7,'senior','当地人给你的课题起了外号。','这个外号比正式题目短，也比正式题目好记。','“他们怎么理解你在做的事情？”',[
+        q('比较两种理解，把沟通差异说清楚。','理解也是现场材料',{evidence:9,patience:5,time:-3},'题目有了另一面镜子。','师兄说这个观察值得记下来。',{rigor:1}),
+        q('“他们的说法让我调整了提问方式。”','向现场学习',{evidence:6,patience:5,mood:3,time:-2},'提纲愿意听人说话了。','你不再只把外号当成一个笑话。',{honest:1,wander:1}),
+        q('“我觉得他们比开题委员会更会起名。”','民间命名学',{mood:16,patience:-5,time:-1},'委员会暂时没有投票。','师兄想知道这个外号到底是什么。',{chaos:1,wander:1})]],
+      ['field-summary',8,'boss','下一次组会，你准备在哪里？','导师看了看地图，再看了看你的摄像头。','“别让我下次在景区找你。”',[
+        q('给出清楚的整理计划，说明下一次能讨论什么。','旅行落到记录上',{evidence:9,patience:6,time:-2},'路线走完，材料继续走。','导师终于从你的行程里看见了一个节点。',{rigor:1}),
+        q('“我先把这次的记录讲明白，再决定下一站。”','让旅程沉淀',{evidence:6,patience:7,mood:3,time:-2},'下一站暂时不抢今天的位置。','师兄愿意陪你整理第一轮记录。',{honest:1,wander:1,help:1}),
+        q('“我的工位是一个地理概念。”','流动工位',{mood:17,evidence:-4,patience:-5,time:-1},'你拥有了一张很大的办公桌。','导师希望这张桌子也能按时交汇报。',{chaos:1,wander:1})]]
+    ]
+  };
+  for(const [project,list] of Object.entries(routes))for(const row of list)add(...row,{project});
+  add('echo-cat',5,'system','那位猫评审，又来检查了。','它径直走到你的电脑前。师兄已经给它准备了一个座位。','“它对这次的结果怎么看？”',[
+    q('给它挪出位置，继续讲你的检查。','评审与作者分工',{mood:8,evidence:5,time:-2},'猫同意先听你讲。','它用尾巴挡住了导师的笔记本。',{cat:1,rigor:1}),
+    q('“至少它没有让我加一组对照。”','珍惜猫评审',{mood:12,patience:4,time:-2},'最友善的一位评审。','林老师说猫没有给意见，不代表她也没有。',{cat:1,social:1}),
+    q('让猫坐主位，你替它播放幻灯片。','交接管理权',{mood:17,evidence:-4,patience:-6,time:-1},'组会有了新的主席。','导师开始怀疑自己的会议室使用权限。',{cat:1,chaos:1})],{requires:'cat'});
+  add('echo-robot',5,'system','电脑收到了一封“组会邀请”。','师兄真的把你的电脑当成同事了。桌上还有一张写着它名字的参会卡。','“它今天汇报哪一部分？”',[
+    q('你负责解释，电脑负责展示。','人机各司其职',{evidence:7,patience:3,time:-2},'运行与判断分开坐了。','电脑仍然没有主动提问。',{rigor:1}),
+    q('“它不参加讨论，怕影响大家下班。”','机器很有礼貌',{mood:9,patience:5,time:-2},'全体同学希望向它学习。','导师看了一眼自己已经打开的笔记本。',{robot:1,social:1}),
+    q('“它要求先讨论待遇，再讨论结果。”','成立机器工会',{mood:17,patience:-6,time:-1},'电脑风扇代表全体发言。','打印机在走廊里响了两声，表示支持。',{robot:1,chaos:1})],{requires:'robot'});
+  add('echo-recursive',7,'boss','你上次的循环论证，催生了循环组会。','有人提出要再开一个会，讨论如何解释上一个会。','“你给我们捋一下这几场的关系。”',[
+    q('列出每场实际回答的问题，结束这条链。','把会议拆平',{evidence:8,patience:5,time:-3},'会议终于不再套娃。','老师找到了可以直接停止的一层。',{rigor:1}),
+    q('建议把问题写下来，不再为它单开一场。','以文档换会议',{mood:7,patience:5,time:-2},'文档救了一个下午。','师兄认为这是今日最有价值的贡献。',{honest:1}),
+    q('“每场会议都在证明上一场会议有必要。”','会议永动机',{mood:18,evidence:-5,patience:-6,time:-1},'会议系统获得了永续能源。','投影仪决定退出这个无限循环。',{recursive:1,chaos:1})],{requires:'recursive'});
+  const shared=[
+    ['shared-calendar',0,'boss','日历提醒，把组会安排到了 2099 年。','大家都收到了一封很乐观的邀请。','“这是你预计毕业的时间吗？”',[
+      q('改正时间，平静开始汇报。','修复时间线',{evidence:3,patience:4,time:-2},'你回到了今年。','教务系统暂时无需跨世纪工作。'),
+      q('“我已经改好，也给大家加了结束提醒。”','顺手保护下班',{mood:4,patience:6,time:-2},'日历获得了结束时间。','这只是提醒，尚未具有强制效力。',{social:1}),
+      q('“老师，我对这个课题的投入是长期的。”','世纪课题',{mood:15,patience:-5,time:-1},'老师接受了你的长期心态。','下周的汇报安排仍然存在。',{chaos:1,debt:1})]],
+    ['shared-font',1,'senior','你的字体，在投影仪里换了一个人生。','标题像武侠片，正文像超市传单。','“这是你设计的新风格？”',[
+      q('切到兼容版本，把研究问题说清楚。','兼容地球',{evidence:6,patience:4,time:-2},'字体平安回家。','师兄建议你给投影仪也留一份备用版。'),
+      q('“格式变了，今天讨论的内容没有变。”','把注意力接回来',{evidence:4,patience:5,time:-2},'研究问题暂时胜过了字体。','大家开始听你说话。',{honest:1}),
+      q('“这是学术报告的江湖版。”','武侠开题',{mood:15,evidence:-4,patience:-5,time:-1},'导师要求你先交代门派。','师兄想给这套风格取名“华山论图”。',{chaos:1})]],
+    ['shared-shortcut',2,'boss','老师问，你有没有考虑过更简单的办法。','你投入的时间突然变成了一个很沉重的行李箱。','“不用这么复杂可以吗？”',[
+      q('比较复杂与简单方案，说明具体差别。','复杂要有理由',{evidence:10,patience:4,mood:-4,time:-3},'方法通过了行李检查。','老师让你把简单方案放在前面。',{rigor:1}),
+      q('“值得先试，我不想让之前的投入绑住现在。”','轻装前进',{evidence:6,patience:6,mood:3,time:-2},'行李箱少了一个锁。','师兄说这是一个很难但很好的决定。',{honest:1}),
+      q('“简单的话，就显得我这周不够忙。”','工作量表演',{mood:15,evidence:-6,patience:-6,time:-1},'复杂度不再承担绩效证明。','导师给你安排了一次简单方案汇报。',{chaos:1,debt:1})]],
+    ['shared-animate',3,'system','你给图加了动画，它不肯停。','一根箭头转了三圈，又一根线滑了进来。','“你让它别动了，我们先看清楚。”',[
+      q('切到静态版，直接讲重点。','箭头停止营业',{evidence:6,patience:5,time:-2},'结果终于站稳。','投影仪像是松了一口气。'),
+      q('关掉动画，承认它确实干扰理解。','放过大家的眼睛',{evidence:4,patience:6,time:-2},'动画不再参加问答。','师兄看清了第三条线的颜色。',{honest:1}),
+      q('“它代表研究进展的活跃状态。”','动态进度',{mood:15,evidence:-5,patience:-6,time:-1},'箭头比你更有进展。','导师问什么时候能进入静态完成状态。',{chaos:1})]],
+    ['shared-pizza',4,'senior','师兄把饼图看成了披萨。','你的结果里有八个扇区，每个都颜色鲜艳。','“你这个比例，能换个更清楚的画法吗？”',[
+      q('换一张更方便比较的图。','披萨回到餐桌',{evidence:8,patience:4,time:-2},'八块结果不用靠角度辨认了。','师兄终于停止讨论口味。',{rigor:1}),
+      q('先讲最关键的两个比例，记下重画建议。','简化今天的信息',{evidence:5,patience:5,time:-2},'大家没有被八块同时淹没。','老师说这两个值得单独放一页。',{honest:1}),
+      q('“我们也可以边吃边讨论，增强代入感。”','可食用可视化',{mood:16,patience:-5,time:-1},'研究经费暂未批准芝士。','大家对建议的热情超过了对饼图的热情。',{chaos:1})]],
+    ['shared-delivery',5,'boss','导师的快递，比导师本人先散会。','手机显示门卫即将下班。导师第一次看了时间。','“我去拿一下，你们继续。”',[
+      q('趁空档把关键结论整理成一句话。','准备收尾',{evidence:7,mood:5,time:-3},'你为他回来后的问题做好了准备。','门卫暂时拯救了会议室。',{rigor:1}),
+      q('“老师，我帮您拿，大家先整理一下讨论。”','师门快递员',{patience:11,mood:4,time:-3},'关系得到了一次包裹加成。','师兄提醒你别拿错隔壁组的箱子。',{social:1,help:1}),
+      q('“快递已经替我们示范了按时离开。”','物流哲学',{mood:16,patience:-5,time:1},'下班的道路突然具体起来。','导师问你是不是也在门卫那边登记了。',{chaos:1})]],
+    ['shared-title-copy',6,'boss','“你能用不带术语的话再说一遍吗？”','你刚刚使用了四个缩写、两种框架和一个“本质上”。','“就当我第一次听。”',[
+      q('用一个具体例子，把问题和判断讲清楚。','把术语换成台阶',{evidence:10,patience:5,mood:-3,time:-3},'问题终于不需要口令。','老师说这个例子比标题好理解。',{rigor:1}),
+      q('“我先讲能确认的那一点，其他暂时不展开。”','减少信息量',{evidence:6,patience:6,time:-2},'简化没有变成夸大。','你把大家重新接回了同一页。',{honest:1}),
+      q('“就是我还没搞明白，但特别想搞明白。”','赤诚开题',{mood:16,evidence:-3,patience:-3,time:-1},'研究动机的纯度很高。','老师表示至少这个动机他听懂了。',{chaos:1})]],
+    ['shared-cross-group',7,'visitor','隔壁组的老师，闻着讨论声来了。','他表示只是路过，随后拉开了一把椅子。','“我可能帮你们想到一个新角度。”',[
+      q('请他明确最关键的一点，与你的问题对上。','接住新角度',{evidence:8,patience:4,time:-4},'路过的人拥有了一个清楚的问题。','导师觉得这个角度可以留作下一步。',{rigor:1}),
+      q('记下建议，感谢他把问题拆小一点。','友好收集',{evidence:4,patience:8,time:-3},'新增一位联系人，新增一段讨论。','师兄默默把晚饭时间往后挪。',{social:1}),
+      q('“老师，今天的空座位已经满了。”','会议室限流',{mood:16,patience:-7,time:-1},'椅子没有执行限流策略。','隔壁老师认为你很会活跃气氛。',{chaos:1})]],
+    ['shared-thanks',8,'boss','Thank You 后面，还藏了十四页。','导师看见右下角页码，突然产生了新的兴趣。','“后面怎么还有这么多？”',[
+      q('说明它们是备用材料，只展示今天需要的一页。','备用不等于加演',{evidence:8,patience:6,time:-2},'十四页没有全部获得出场费。','你为今天争取到了一个合理的句号。',{rigor:1}),
+      q('“这是为问题准备的，今天没有问到就先不讲。”','有备无须全用',{evidence:5,patience:7,time:-2},'备用页获得了继续待命的资格。','师兄觉得这句话很适合抄进汇报模板。',{honest:1}),
+      q('“这是彩蛋，需要老师买下一场门票。”','学术加场',{mood:17,patience:-6,time:-1},'你开始出售组会季票。','导师表示本来就要参加，不能重复收费。',{chaos:1})]]
+  ];
+  for(const row of shared)add(...row);
+  C.breaks=[
+    {id:'break-food',icon:'🍜',title:'散会以后，食堂只剩最后一个窗口。',scene:'师兄问你要不要一起去。你脑子里还残留着三个未回答的问题。',choices:[
+      {text:'和师兄吃饭，顺便把今天的梗讲完。',hint:'下场心态 +8 · 师兄信任 +4',effects:{moodBoost:8,senior:4},flavor:'你把一场组会消化成了三个笑话。'},
+      {text:'先吃饭，今天的问题明天再想。',hint:'下场心态 +12',effects:{moodBoost:12},flavor:'饭是热的。你决定先认真对待这一点。'},
+      {text:'点最便宜的套餐，把找零攒起来。',hint:'摸鱼币 +2 · 下场心态 +4',effects:{coins:2,moodBoost:4},flavor:'胃和口袋都获得了有限但明确的满足。'}]},
+    {id:'break-cat',icon:'🐈',title:'猫蹲在走廊里，等一个下班的人。',scene:'它看见你，走过来蹭了蹭。实验室里又有人开始讨论。',choices:[
+      {text:'陪它待五分钟。',hint:'下场心态 +8 · 猫缘 +1',effects:{moodBoost:8,cat:1},flavor:'你们谁也没有问对方本周进展。'},
+      {text:'给它做一张“课题负责人”的门牌。',hint:'猫缘 +1 · 师兄信任 +3',effects:{cat:1,senior:3},flavor:'师兄负责把门牌贴在足够低的位置。'},
+      {text:'拍照发到师门群，提醒大家也该下班了。',hint:'实验室声望 +3 · 下场心态 +5',effects:{reputation:3,moodBoost:5},flavor:'导师回复了一个猫的表情。你不知道是什么意思。'}]},
+    {id:'break-message',icon:'📱',title:'导师在晚上十一点发了一条“有空看看”。',scene:'附件名字很长。你看了一眼日历，明天不是组会。',choices:[
+      {text:'先确认收到，明天再安排。',hint:'导师信任 +3 · 下场心态 +5',effects:{boss:3,moodBoost:5},flavor:'你没有假装已经看完，也没有把夜晚全部交出去。'},
+      {text:'把今天欠的解释先列成一张小清单。',hint:'还掉 1 笔解释债 · 下场底气 +5',effects:{debt:-1,evidenceBoost:5},flavor:'这份清单少而明确，至少不会自己无限增长。'},
+      {text:'把手机翻过去，先保证今晚睡着。',hint:'下场心态 +12',effects:{moodBoost:12},flavor:'屏幕朝下以后，房间终于变暗了。'}]},
+    {id:'break-library',icon:'📚',title:'你在图书馆遇到了林老师。',scene:'她问你，今天那个问题后来想得怎么样。手里还拿着一杯茶。',choices:[
+      {text:'请她帮你拆解最卡住的一步。',hint:'统计老师信任 +5 · 下场底气 +7',effects:{stats:5,evidenceBoost:7},flavor:'一个问题被拆成了两步，没有变成二十步。'},
+      {text:'承认还没想完，约好下次带着记录来。',hint:'统计老师信任 +4 · 下场心态 +4',effects:{stats:4,moodBoost:4},flavor:'她表示很正常，不用在走廊里现场完成。'},
+      {text:'“我今天先来还书，再来还问题。”',hint:'下场心态 +8 · 摸鱼币 +1',effects:{moodBoost:8,coins:1},flavor:'她笑了。你终于知道这位老师也会笑。'}]},
+    {id:'break-server',icon:'💻',title:'电脑跑完了一个任务，正好赶上你回宿舍。',scene:'通知上写着“完成”。你知道它和“成功”还差一个检查。',choices:[
+      {text:'记下要检查的内容，明天处理。',hint:'下场底气 +8 · 下场心态 +4',effects:{evidenceBoost:8,moodBoost:4},flavor:'电脑完成了它的部分，你保留了自己的睡眠。'},
+      {text:'给它发一条“辛苦了”，然后关通知。',hint:'下场心态 +10 · 机器缘 +1',effects:{moodBoost:10,robot:1},flavor:'电脑没有回复，但风扇已经停了。'},
+      {text:'检查后把重复任务撤掉，节省一笔资源。',hint:'摸鱼币 +2 · 下场底气 +4',effects:{coins:2,evidenceBoost:4},flavor:'你没有把“继续运行”当成必须。'}]},
+    {id:'break-walk',icon:'🌳',title:'回去的路上，有一条平时没走过的小路。',scene:'天还没完全黑。今天不会再开组会了。至少没有通知。',choices:[
+      {text:'走一小段，暂时不想课题。',hint:'下场心态 +12 · 漂流经历 +1',effects:{moodBoost:12,wander:1},flavor:'树没有问你这个月发了什么。'},
+      {text:'顺手记下一条今天真正有用的建议。',hint:'还掉 1 笔解释债 · 下场底气 +5',effects:{debt:-1,evidenceBoost:5},flavor:'有用的建议终于离开了那一整页杂乱笔记。'},
+      {text:'约师兄一起走，聊点课题以外的事。',hint:'师兄信任 +5 · 下场心态 +6',effects:{senior:5,moodBoost:6},flavor:'师兄原来还有别的爱好。你今天才知道。'}]},
+    {id:'break-printer',icon:'🖨️',title:'打印机吐出了一张无人认领的备用页。',scene:'上面有一个非常清楚的图。你想起了那张总讲不明白的幻灯片。',choices:[
+      {text:'学它的组织方式，整理自己的备用页。',hint:'获得神秘备用页 ×1',effects:{item:'backup'},flavor:'你没有拿走别人的内容，只带走了一种更清楚的表达方式。'},
+      {text:'把上周问题整理进自己的笔记。',hint:'获得上周的笔记本 ×1',effects:{item:'memo'},flavor:'这个笔记本，终于不只记录“老师又问了”。'},
+      {text:'去补给站旁边捡到一张优惠券。',hint:'摸鱼币 +2',effects:{coins:2},flavor:'这次偶遇产生了一个实用但不宏大的后果。'}]},
+    {id:'break-rest',icon:'🛋️',title:'群里开始讨论下次组会的时间。',scene:'这次消息还没淹没屏幕。你有机会先安排自己的生活。',choices:[
+      {text:'把准备和休息都写进日历。',hint:'下场心态 +7 · 下场底气 +5',effects:{moodBoost:7,evidenceBoost:5},flavor:'日历第一次没有把每一格都写满。'},
+      {text:'给师兄回一个“请准时结束”的表情。',hint:'师兄信任 +4 · 下场心态 +6',effects:{senior:4,moodBoost:6},flavor:'他回了一个更复杂的表情。你们达成了共识。'},
+      {text:'先买一包零食，为未来的自己做点准备。',hint:'获得口袋小饼干 ×1',effects:{item:'snack'},flavor:'未来不确定，但这包饼干很确定。'}]}
+  ];
+  C.endings.push(
+    {id:'cat-chair',icon:'🐈',title:'猫咪成为课题负责人',subtitle:'你负责汇报，它负责不理所有人。',desc:'猫在组会主位上睡得很稳，师兄替它做了参会证。导师对它的态度出奇温和。你意识到这间实验室真正缺的，也许不是一位新的老师，而是一位睡得好的负责人。',hint:'攒够猫缘，让猫多次参加组会。'},
+    {id:'robot-union',icon:'🤖',title:'机器工会正式成立',subtitle:'电脑要求散会，打印机附议。',desc:'你给电脑准备了席位和情绪价值，它却开始争取自己的下班时间。服务器远程表示支持。师兄决定替大家做一张排班表：所有人都可以下班，终于也包括你。',hint:'在数据路线里，反复把机器当成同事。'},
+    {id:'recursive',icon:'🌀',title:'会议永动机',subtitle:'一个组会，正在证明另一个组会的必要性。',desc:'今天的结论是需要下一场会议；下一场会议的目标是解释今天的结论。投影仪首先退出了循环。你们最终靠拔掉电源，获得了一个物理层面的句号。',hint:'在理论路线里，多次触发循环与套娃。'},
+    {id:'senior-heir',icon:'🤝',title:'师兄的指定继承人',subtitle:'“我那套备用材料，回头都发你。”',desc:'你求过帮助，也真正接住了建议。师兄决定把多年积攒的配色、模板和会议室插座地图交给你。实验室的传承，有时就是一个人愿意把另一个人从讲台上接下来。',hint:'多找师兄合作，把他的信任攒到高位。'},
+    {id:'field-legend',icon:'🗺️',title:'工位遍布整个地图',subtitle:'导师在地图上找你，师兄在群里找你。',desc:'你带回过记录、特产和一堆发生在计划外的故事。每一个临时工位都见过你的电脑。散会以后，你终于确认下一站可以先是一个不讨论研究的地方。',hint:'在田野路线里，积累足够多的漂流经历。'},
+    {id:'graduation',icon:'🎓',title:'导师说：可以送审了',subtitle:'这句话没有附带“但是”。你等了两秒。',desc:'很多场组会以后，解释债一点点还完，问题一点点讲清。导师合上笔记本，说可以推进下一步了。你没有立刻欢呼，只是认真确认这句话确实不带一个新的“顺便”。',hint:'多场积累后，认真、稳妥地完成一场高质量汇报。'}
+  );
+  // 旧事件也能种下后续剧情，存档中的事件 ID 保持可用。
+  const cat=C.events.find(e=>e.id==='start-cat');for(const c of cat.choices)c.flags.cat=1;
+  const loop=C.events.find(e=>e.id==='discussion-loop');loop.choices[2].flags.recursive=1;
+})();
+
+</script><script>
+/* 学科共用生涯规则，各有自己的问题与笑点。均为虚构娱乐文本。 */
+(() => {
+  const C=window.MEETING_CONTENT;
+  Object.assign(C.projects.find(p=>p.id==='classic'),{name:'生物 · 基础医学',desc:'仪器有脾气，实验室有猫。'});
+  Object.assign(C.projects.find(p=>p.id==='data'),{name:'计算机 · AI',desc:'程序能跑，研究者想跑。'});
+  Object.assign(C.projects.find(p=>p.id==='theory'),{name:'数学',desc:'证明有边界，组会没有。'});
+  Object.assign(C.projects.find(p=>p.id==='field'),{name:'社会 · 人类学',desc:'你在田野，组会在找你。'});
+  const definitions=[
+    ['clinical','🩺','临床医学','课题在手，排班在后。',{mood:5,evidence:2},'shift'],
+    ['physics','🔭','物理','宇宙很大，误差条很长。',{evidence:6,patience:-2},'quantum'],
+    ['chemistry','⚗️','化学 · 材料','谱图很密，瓶签很小。',{evidence:5,mood:-2},'material'],
+    ['economics','📈','经济 · 管理','假设很强，预算很弱。',{evidence:4,patience:3},'market'],
+    ['humanities','📜','文学 · 历史','正文八页，脚注十八页。',{patience:5,evidence:2},'footnote'],
+    ['art','🎨','艺术 · 设计','甲方说好，但再改一下。',{mood:8,patience:-3},'client']
+  ];
+  for(const [id,icon,name,desc,effects,flag] of definitions)C.projects.push({id,icon,name,desc,effects,flag,tag:name+'路线'});
+  const lessons={
+    clinical:[
+      [1,'boss','你的背景页里，混进了一张排班表。','老师看见了七个班次，没看见课题的标题。','“你今天汇报的是研究，还是生存状态？”',
+        ['切回题目，说清今天真正要讨论的问题。','排班退居幕后。','老师暂时没有追问你昨晚睡了多久。'],
+        ['“研究进度在下一页，排班解释了我的黑眼圈。”','工作量有了可见的形状。','师兄表示那两圈比任何图注都清楚。'],
+        ['“排班是暴露，组会是结局。”','你的人生获得了一个研究框架。','林老师说至少变量定义还算清楚。']],
+      [2,'stats','“你这个数，是患者数还是图像数？”','林老师停在那个数字上，场面逐渐严肃。','“同一个人的几张图，怎么放进这里的？”',
+        ['分开解释人数、图像数和分析里的处理。','数字有了对应的人。','林老师要求下次把这个关系直接画出来。'],
+        ['“这一页没写清，我补一张结构示意再讲结果。”','结构图获得了新的工作。','老师没有把一次排版问题升级成整个下午。'],
+        ['“这说明患者对课题的参与感很强。”','参与感没有替数字作解释。','师兄替你找到了下一张更清楚的幻灯片。']],
+      [3,'senior','你的图例，收集了整个科室的缩写。','三位老师读出了三个不同的全称。','“你先统一一下，这几个都是什么意思？”',
+        ['逐一给出全称，把不必要的缩写展开。','缩写之间结束了争夺。','结果终于不用先通过口令验证。'],
+        ['先留一个关键指标，其他挪到备用页。','每个人都找到了同一个重点。','师兄说这页突然变得可以呼吸。'],
+        ['“这是科室限定的身份认证系统。”','组会变成了缩写入场考试。','导师要求你先把门打开。']],
+      [4,'boss','结果还没更新，排班已经更新了。','导师问本周进展，手机同时提示新排班。','“下周你能把哪一部分做完？”',
+        ['把已完成的整理和可行的下一步分开讲。','计划装得进真实的一周。','老师先圈住了一个明确的小目标。'],
+        ['“我先完成最关键的一步，其他需要协调。”','一周暂时没有被安排成三周。','师兄愿意帮你整理其中一页。'],
+        ['“下周有几个我？我确认一下再回答。”','排班开始挑战时空。','导师表示目前预算只够支持一个你。']],
+      [6,'visitor','“这个什么时候能用到临床？”','你刚刚讲完一张初步结果，问题已经跨过了很多台阶。','“能不能直接用起来？”',
+        ['讲清当前只回答了什么，哪些步骤还没完成。','结论留在证据能站住的位置。','大佬开始问一个更具体的研究问题。'],
+        ['“现在还不能跳到应用，我先把这一阶段讲明白。”','台阶重新一层层出现。','老师没有让你在讲台上把路一次走完。'],
+        ['“今天能立即应用的，是对我的心理安慰。”','研究者暂时成为唯一受益者。','师兄表示这个应用场景需求很大。']],
+      [7,'system','值班提醒，在讨论最热闹时响了。','师兄刚要“补充一句”，你手机上的通知先补充了三行。','“你是不是要去交班？”',
+        ['简明总结，并约定如何补上未讲清的部分。','工作有了一次清楚的交接。','导师让你把关键记录发到群里。'],
+        ['请师兄接住讨论，自己先去履行安排。','两个任务没有继续挤在一个人身上。','师兄接过了激光笔，也接住了你的感谢。'],
+        ['“我可以把灵魂留在这里，身体先去。”','你提出了尚未成熟的分身技术。','导师表示灵魂也需要记笔记。']],
+      [8,'boss','出科汇报还没结束，下一科已经在群里点名。','你看了一眼手机，再看了一眼 Thank You。','“总结一下，今天你学到了什么？”',
+        ['总结一条可靠认识和一个仍需解决的问题。','今天的任务有了明确句号。','下一科暂时没有接管这张总结页。'],
+        ['“我需要把安排、研究和休息一起规划。”','计划终于看见了人的存在。','师兄觉得这比再多一页待办更实际。'],
+        ['“第一，组会需要散会。第二，我需要复制粘贴。”','你的总结受到了全体研究生欢迎。','教务系统没有提供复制你本人的功能。']]
+    ],
+    physics:[
+      [1,'boss','题目写着宇宙，图里只有一颗小点。','你花了四页介绍宏大的问题，现在轮到这颗点出场。','“先告诉我，这个点在干什么。”',
+        ['把具体观测与大问题的关系讲清楚。','宇宙先从一个小问题开始。','老师终于找到了可以跟着看的方向。'],
+        ['“现在只讨论这一小部分，整体还有很多未知。”','宇宙没有被一页图承包。','大家暂时不要求你解释所有东西。'],
+        ['“宇宙很大，今天的经费只够拍这个点。”','预算完成了空间尺度转换。','师兄建议把这句话放在经费申请前面。']],
+      [2,'stats','单位对不上，老师的眉毛对上了。','一边写着秒，另一边看起来像另一种时间。','“这个量纲，你再检查一下。”',
+        ['核对定义和单位，解释转换在哪里。','量纲回到了同一个世界。','林老师终于松开了那个小小的下标。'],
+        ['“这页标注需要改，我先把实际使用的单位讲清楚。”','标注错误没有继续放大。','师兄愿意帮你再检查一遍图注。'],
+        ['“这是跨越时间尺度的表达自由。”','单位暂时没有获得表达自由。','老师要求它先履行基本义务。']],
+      [3,'senior','误差条，比你的结论更有存在感。','它们伸得很长，几乎在画面中央握了手。','“你准备怎么解释这个范围？”',
+        ['说明变异来源和当前可分辨的范围。','范围成为了结果的一部分。','师兄说这比只指着那颗点更有信息。'],
+        ['“现在不能下更强的结论，我先说明能确定的部分。”','结论没有超过图里的空间。','老师觉得这至少是一张诚实的图。'],
+        ['“这是宇宙对我表达的宽容。”','宇宙提供了一条很宽的拥抱。','导师希望下次拥抱能稍微收窄一点。']],
+      [4,'boss','结果与理论差了一点，刚好差在重点。','老师在两条线之间来回指。激光笔像一个犹豫的导航。','“这段偏差意味着什么？”',
+        ['把模型、条件与观测分别检查后再讨论。','偏差没有被急着封成新发现。','老师让你先把这几项差别列在一张表里。'],
+        ['“有几种可能，我目前还不能区分。”','不知道有了具体的备选解释。','师兄建议先试最容易排查的一个。'],
+        ['“它们只是在学术上保持一点距离。”','两条线进入了礼貌社交。','导师希望它们下周能谈得更清楚。']],
+      [6,'visitor','“为什么不是那个效应？”','大佬轻轻说出一个名字，大家好像都听懂了。你也努力看起来听懂。','“你排除过吗？”',
+        ['说清已经检查的条件和仍缺的部分。','陌生名字被放进了具体问题里。','大佬愿意把他的判断拆成两步。'],
+        ['“这点我需要核对，先不把它排除。”','你没有在讲台上借来一个结论。','师兄替你记下了准确的拼写。'],
+        ['“我目前主要排除了今晚按时下班的可能。”','你对一个可观测事件给出了预测。','大佬觉得这个预测的条件很充分。']],
+      [7,'boss','导师让你“做一个思想实验”。','你松了一口气，至少思想不需要预约仪器。','“如果把这里改掉，会怎么样？”',
+        ['一步步说条件变化会影响哪一项。','思想实验也有清楚的记录。','老师开始把问题缩小到一条关系上。'],
+        ['先用最简单的情况推演，指出不确定处。','想象力和边界一起出现了。','师兄觉得这个例子比前面那页更清楚。'],
+        ['“如果把组会时间改掉，我会更快乐。”','实验因变量非常明确。','导师说可以保留这个假说，但今天先不做。']],
+      [8,'boss','“今天有什么新认识？”','你看了一眼宇宙背景图，决定别再把话说得那么大。','“具体一点。”',
+        ['总结一个明确的限制与一个值得继续的问题。','宇宙暂时容纳了一个小句号。','老师认为下一步终于能对得上今天的结果。'],
+        ['“我们知道哪里还说不清，也知道先查哪里。”','未知不再是一整片黑。','你在图上画出了一个可以走过去的方向。'],
+        ['“观测组会，会改变研究生的精神状态。”','观察者效应发生在讲台上。','师兄表示这是他反复经历的现象。']]
+    ],
+    chemistry:[
+      [1,'boss','你的课题名，比瓶签大得多。','正式题目很宏大，桌面照片里只有一排很小的瓶子。','“先告诉我，你要比较什么。”',
+        ['用清楚的比较说明核心问题。','瓶子终于不只是背景装饰。','老师把两个条件圈在了同一行。'],
+        ['“先把这一组差别讲明白，其他还没展开。”','课题回到了能拿稳的一小部分。','师兄不再试图从照片里读完整题目。'],
+        ['“主要比较研究者在做完前后的精神状态。”','你的材料承担了人文关怀。','导师表示这个变化肉眼可见。']],
+      [2,'senior','瓶签写着“新”，没有写有多新。','新一、新二、更新、最新。你突然觉得日期是一个伟大的发明。','“这几个到底怎么对应？”',
+        ['按记录给出对应关系，重新整理名称。','“新”退出了独立编号体系。','师兄觉得它终于不用靠回忆维持秩序。'],
+        ['把已核对的部分分开，说明还需检查的内容。','混乱没有被当成一个整体带过去。','老师让你下次带一张更清楚的对应表。'],
+        ['“材料本身可能知道，但还没告诉我。”','瓶子拒绝参加访谈。','导师建议你先问一下自己的笔记本。']],
+      [3,'stats','谱图里每个峰，都想拥有姓名。','标注挤在一起，像一张拥挤的点名表。','“最关键的是哪几个？”',
+        ['只保留关键标注，说明判断对应的依据。','峰获得了合理的出场顺序。','林老师终于看见了你想强调的那一个。'],
+        ['先讲能确定的部分，模糊处留作待检查。','点名没有变成强行认亲。','师兄说这比给每个峰都编一段故事更稳妥。'],
+        ['“它们是在争夺组会发言权。”','峰的发言时间暂未排定。','导师请你担任主持人，不要让它们一起说话。']],
+      [4,'boss','颜色变了，所有人都看向了你。','你用很兴奋的语气介绍这个变化。老师却拿出了另一个问题。','“除了颜色，还有什么能支持判断？”',
+        ['分开讲外观与其他检查，不把它们混成结论。','颜色回到了它能表达的范围。','老师开始关心下一张更具体的图。'],
+        ['“目前只记录到这个现象，解释还需要补。”','观察和解释暂时保持距离。','师兄觉得这比直接命名一个新机制省事。'],
+        ['“至少说明它比我的生活更有色彩。”','材料获得了文艺评价。','导师问它的性能是不是也同样丰富。']],
+      [6,'visitor','“稳定吗？”这个问题比你想得长。','你准备回答一个字，随后意识到需要说明是哪一种稳定。','“什么条件下，多久，怎么看？”',
+        ['把条件和检查范围说清楚。','稳定不是一个没有边界的形容词。','大佬愿意先讨论你确实观察过的部分。'],
+        ['“现在只检查了这些范围，其他还不知道。”','一句未知挡住了一串夸张结论。','老师把下一步缩成了一个更小的问题。'],
+        ['“最不稳定的变量，现在站在讲台上。”','研究者被列入了波动来源。','师兄把冰美式往你那边挪了一点。']],
+      [7,'senior','老师希望它“什么性能都好一点”。','清单从两条变成了六条，材料暂时没有发表意见。','“能不能兼顾？”',
+        ['讨论具体取舍，把优先目标列出来。','材料没有被要求成为万能选手。','老师终于同意先看一个最重要的方向。'],
+        ['“先把一个目标做好，再判断是否值得扩展。”','工作计划不再无限拉伸。','师兄认为这是对材料和人都比较公平的安排。'],
+        ['“它如果能什么都做好，可能就来当导师了。”','材料准备申请教职。','导师对它的论文列表表达了兴趣。']],
+      [8,'boss','你准备给材料一个很响亮的名字。','总结页上的名称，听起来像一款即将发布的手机。','“名字先放一放，今天做到了什么？”',
+        ['总结能支持的结果和仍有的限制。','名称暂时不承担性能承诺。','老师没有要求你在下周发布新品。'],
+        ['“先把现象讲清楚，名字可以最后再定。”','材料获得了一个临时但诚实的身份。','师兄表示瓶签终于有机会写短一点。'],
+        ['“它目前叫：下次一定。”','名称自动生成了下一场汇报。','导师把这个名字写进了下周待办。']]
+    ],
+    economics:[
+      [1,'boss','你的研究背景，比生活预算更乐观。','背景页画着增长曲线。你昨天刚算完这个月的饭钱。','“这个现象为什么值得研究？”',
+        ['提出清楚的比较和需要解释的差异。','增长曲线找到了自己的问题。','老师暂时不要求你解释所有人的预算。'],
+        ['“这个问题还小，但能对应一段明确的现象。”','宏观题目缩成了可讨论的范围。','师兄觉得这比口号容易跟进。'],
+        ['“因为我的效用函数主要由散会时间决定。”','个人偏好被正式公开。','导师问能不能考虑到其他参会者。']],
+      [2,'stats','“你这个工具，凭什么是好工具？”','老师把那个漂亮的名字圈了起来。','“关键条件在哪里？”',
+        ['逐个解释条件和可能失败的地方。','工具没有只靠名字获得信任。','林老师让你把最关键的一条放到前面。'],
+        ['“有一条还需要核对，我先降低结论强度。”','模型的边界被明确保留。','老师没有逼你临场补完全部论证。'],
+        ['“它的名字听起来比较像一个好工具。”','命名学没有通过识别检查。','师兄建议你也给自己起一个好毕业的名字。']],
+      [3,'senior','回归表宽得像一张床。','屏幕只显示到第七列，后面还有一整排。','“你想让我们看哪一个数？”',
+        ['先展示最关键的结果，把其他列移到备用。','回归表恢复了可阅读的宽度。','师兄第一次不用横着转头。'],
+        ['按问题分开讲，避免同时让大家记住所有列。','每一列有了自己的出场顺序。','老师没有再对着屏幕找最后一格。'],
+        ['“这张表有很强的横向发展空间。”','空间很大，注意力有限。','导师要求它先完成纵向解释。']],
+      [4,'boss','你做了很多稳健性检查，导师还想再来一个。','表格已经排到附录第十二页。','“那换一种设定呢？”',
+        ['说明哪些检查对应关键疑问，哪些重复。','附录不再按重量计算价值。','老师同意先做最能区分解释的一项。'],
+        ['“可以先判断这项会改变什么，再决定要不要加。”','检查开始拥有明确目的。','师兄说终于不是谁列得多谁赢了。'],
+        ['“继续加的话，附录可以独立申请学位。”','附录有了自己的导师需求。','老师愿意给它再安排一个问题。']],
+      [6,'visitor','“这个结果能说明因果吗？”','你刚讲完一条关联，大佬已经拿出了一个更强的词。','“有没有别的解释？”',
+        ['说清识别条件、已检查的部分和剩余疑问。','因果没有被一个系数自动授予。','大佬把问题缩成了最关键的一条。'],
+        ['“现在我只能这么解释，不能再往前跳。”','结论没有借用未来的证据。','老师暂时接受了这个明确的界限。'],
+        ['“唯一明确的因果，是组会导致我饿了。”','研究者提供了一条即时感受。','林老师提醒你这个表述也别说得太满。']],
+      [7,'boss','老师把模型里的“理性人”指给了你。','你看着那个假设，想起自己昨晚凌晨三点还在改字体。','“这个假设适合这里吗？”',
+        ['说明假设作用，以及不适用时会有什么差别。','理性人不再无处不在。','老师觉得这个取舍终于能被讨论。'],
+        ['“这是简化，但现实里的偏离需要单独说明。”','现实没有被偷偷藏到脚注。','师兄觉得这页比开场更有说服力。'],
+        ['“如果研究生足够理性，现在应该去吃饭。”','效用最大化出现了可执行方案。','导师表示约束条件还没有放开。']],
+      [8,'boss','“政策启示呢？”你准备了六条。','每条都很宏大，似乎任何研究都能用。','“哪些是你的结果真正支持的？”',
+        ['只保留有明确对应关系的内容，删掉泛泛建议。','启示终于有了证据地址。','老师让你把删掉的部分留在个人愿望里。'],
+        ['“现在更适合说明一个限制，启示需要继续讨论。”','总结没有替结果发出更大的声音。','师兄认为这样更容易回答下一轮问题。'],
+        ['“第一条：组会的边际收益正在下降。”','你尝试启动散会的成本收益分析。','导师表示下一分钟可能还有一项重要收益。']]
+    ],
+    humanities:[
+      [1,'boss','你的研究背景，从远古开始讲起。','你讲了三分钟，题目的时代还没有出现。','“能不能先到你要讨论的那一年？”',
+        ['缩到真正相关的背景，直接提出问题。','历史获得了一次合理的快进。','老师终于知道今天要去哪个时代。'],
+        ['“我先讲这个小范围，其他放到需要时再补。”','时代没有一次全部挤进会议室。','师兄合上了提前翻开的年表。'],
+        ['“老师，我们现在已经比刚才接近了几百年。”','叙事完成了相对进展。','导师希望速度再快一点。']],
+      [2,'senior','你找到了一份很关键的材料，但它不太好读。','纸张、字迹、版本差异都在为难人。','“这一段你怎么确认的？”',
+        ['说明来源与比对，区分可确定和不确定的读法。','一段文字有了来路和边界。','师兄愿意陪你再核对那个最难的字。'],
+        ['“这个读法还不能完全确定，我把备选留着。”','疑问没有被擦掉。','老师要求你把理由也一起写在旁边。'],
+        ['“它可能也不愿意参加今天的组会。”','史料获得了休会意愿。','导师建议先把它能说的部分讲出来。']],
+      [3,'boss','正文八页，脚注十八页。','你以为严谨靠这个展示，老师却找不到主要论点。','“你先说一句自己的判断。”',
+        ['先讲论点，再说明最关键的支持材料。','脚注不再占据全部讲台。','老师开始按你的主线提问。'],
+        ['“引用很多，但我自己的归纳还需要再收紧。”','严谨没有伪装成数量。','师兄觉得这个问题终于被叫出了名字。'],
+        ['“脚注比较勤奋，正文比较内向。”','文章内部形成了性格分工。','导师希望内向的正文也能开口。']],
+      [4,'stats','两份材料，讲了两个不一样的故事。','你本来想让它们互相支持，它们却先吵了起来。','“你准备怎么处理这种差别？”',
+        ['比较来源、语境与能支持的部分。','分歧没有被强行拼成一致。','老师认为差别本身也需要解释。'],
+        ['“目前还不能合起来，我先分别保留。”','两种叙述各有自己的位置。','师兄帮你记下了需要再看的第三份材料。'],
+        ['“它们可能是两位不太合得来的合作者。”','史料开始讨论团队关系。','导师要求先别给它们安排团建。']],
+      [6,'visitor','“这个概念，是他们自己的还是你的？”','一个你已经用得很顺手的词，突然变得不太稳定。','“你有没有把现在的理解带回去？”',
+        ['说明概念来源与使用边界，区分不同层次。','概念获得了清楚的时间坐标。','大佬终于知道你把哪个问题交给了它。'],
+        ['“这里可能需要调整，我先把原来的表述留出来。”','原文没有被方便的概念盖住。','老师建议你重新检查这一段的表达。'],
+        ['“这个概念主要是为了让我能按时交稿。”','概念拥有了一个很现实的功能。','导师说交稿也需要它解释得通。']],
+      [7,'boss','导师问：“还能不能再补一点文献？”','你的参考文献已经有几页。问题是他的“再一点”没有页数。','“这个方向你也看一下。”',
+        ['请他确认最需要补的一个问题，针对性查阅。','书单没有扩张成一座图书馆。','老师圈出了一条真正相关的线索。'],
+        ['“我先把现有论证整理好，再补最缺的一段。”','读书与写作暂时没有互相取消。','师兄想把这个顺序也用在自己身上。'],
+        ['“继续补的话，我可以给书单单独开题。”','书单申请了一个独立的课题编号。','导师对新开题表现出了兴趣。']],
+      [8,'boss','你用了三种方式表达同一句结论。','修辞很漂亮，大家却不知道哪一句是最后一句。','“现在可以总结了吗？”',
+        ['留下一个明确判断，说明还缺哪一块。','结论收好了自己的修辞行李。','老师知道该把哪一句记进本子里。'],
+        ['“这一阶段，我能确定的只有这一点。”','一条小结论站到了桌上。','师兄觉得它比三条漂亮话更好记。'],
+        ['“结束是一种开放性的叙事策略。”','组会获得了文学理论依据。','导师决定用一个更朴素的“今天先这样”。']]
+    ],
+    art:[
+      [1,'boss','你展示了三种风格，老师问为什么不是第四种。','色板排得很漂亮，选择问题却刚刚开始。','“为什么用这个方向？”',
+        ['说明目标、对象与设计取舍。','风格不再只靠心情选中。','老师终于开始讨论你确实想解决的问题。'],
+        ['“这几个方向还在比较，我先讲这一版的理由。”','未定稿不再假装已经定稿。','师兄表示还有比较空间也挺正常。'],
+        ['“因为这一版最像能让我按时毕业的样子。”','风格承担了精神支持功能。','导师希望它也支持使用者的需求。']],
+      [2,'senior','你解释了灵感来源，对方问使用场景。','你讲天空、海浪和情绪，老师翻到了一张实际任务图。','“它到底用在哪里？”',
+        ['把形式与实际场景对应起来。','灵感找到了可以站的地面。','师兄终于知道这张图为什么存在。'],
+        ['“场景这部分我还在补，先说现在能解决的点。”','设计没有把尚未考虑的部分藏起来。','老师把下一步缩成了一个具体的检查。'],
+        ['“目前主要用于让我的桌面看起来很专业。”','作品获得了一个坦诚的早期场景。','导师说还可以再往外走一点。']],
+      [3,'boss','“挺好。但能不能高级一点？”','你听到了两种无法直接拼起来的评价。','“就是那种高级。”',
+        ['请他具体说希望改变哪种体验或特征。','形容词有了可以讨论的对象。','老师终于指出了一个明确的位置。'],
+        ['提供两个小调整，让对方比较。','“高级”被拆成了两个选择。','师兄表示至少不是整个推翻。'],
+        ['“我把文件夹名字改成高级版可以吗？”','文件管理先完成了升级。','导师没有被文件名直接说服。']],
+      [4,'visitor','甲方希望“简单一点，但信息再多一点”。','对方的两只手比画出了两种相反的方向。','“你应该懂我的意思吧？”',
+        ['讨论重点与信息层级，说明不能同时满足的取舍。','相反要求开始排优先级。','大佬终于选出了今天更重要的一项。'],
+        ['先给出一个小范围改动，再确认是否符合预期。','整版重做暂时没有发生。','师兄说这个确认动作救了一个晚上。'],
+        ['“那我做一个既大又小的量子界面。”','界面进入了叠加状态。','甲方要求它先把最主要的一面显示出来。']],
+      [6,'boss','“这个用户真的会这样用吗？”','你预演了很多完美路径，老师指向了一个你没准备的操作。','“如果点错了呢？”',
+        ['展示检查或讨论，明确还没覆盖的情况。','使用者不再只能走你画好的路。','老师认为这页值得放到前面。'],
+        ['“这里还需要确认，我先不把设想当成事实。”','预想与实际有了边界。','师兄想帮你找一个愿意试用的人。'],
+        ['“理想用户从不点错，只是现实用户有点理想主义。”','用户没有接受这个定义。','导师替现实用户又点了一下。']],
+      [7,'senior','老师突然想起了你的第一版。','你已经改了六次。第六次之后，他认真地说出了这句话。','“我觉得还是最初那个更自然。”',
+        ['比较各版改动和目标，决定保留哪些。','版本没有被简单地倒带。','师兄第一次觉得记录修改理由很有用。'],
+        ['“那我把第一版的优点和现在的改进合起来。”','原稿与改稿完成了友好交接。','老师表示这可能更接近他的意思。'],
+        ['“我已经让第一版进入历史档案了，要走调阅流程。”','设计稿建立了博物馆。','导师申请了即时访问权限。']],
+      [8,'boss','你终于说“这版定了”，群里又来一条消息。','消息只有五个字：再小改一下。','“能不能顺便？”',
+        ['明确改动范围和目标，记录后再结束。','小改没有继续长成重做。','老师认可了一个清楚的收尾位置。'],
+        ['“先把这版确认，下一项作为独立调整。”','作品保住了今天的版本号。','师兄想把这句话永久设成快捷回复。'],
+        ['“我的人生也可以顺便小改一下吗？”','研究生请求进入修改队列。','导师建议先从按时吃饭开始。']]
+    ]
+  };
+  for(const [project,rows] of Object.entries(lessons)){
+    const flag=C.projects.find(p=>p.id===project).flag;
+    for(let i=0;i<rows.length;i++){
+      const [phase,who,title,scene,quote,...options]=rows[i];
+      const templates=[{label:'认真解释',effects:{evidence:10,patience:4,mood:-3,time:-3},flags:{rigor:1}},{label:'诚实沟通',effects:{evidence:5,patience:6,mood:2,time:-2},flags:{honest:1,[flag]:1}},{label:'现场整活',effects:{mood:14,evidence:-4,patience:-5,time:-1},flags:{chaos:1,[flag]:1}}];
+      const choices=options.map(([text,result,flavor],j)=>({text,result,flavor,...templates[j],risk:null}));
+      C.events.push({id:project+'-chapter-'+i,phase,who,title,scene,quote,choices,project});
+    }
+  }
+  const newEndings=[
+    ['clinical','shift','🩺','排班表没能战胜我','你讲完了，也把自己安排回了生活。','你把研究、排班和休息重新放进同一张日历。导师终于不再问“怎么还没做完”，而是问“哪一步先做”。下一次组会还会来，但今天，你确实可以先吃一顿完整的饭。'],
+    ['physics','quantum','🔭','实验室宇宙管理员','宇宙没有解释完，会议室终于关灯了。','你对误差、假设和有限的时间形成了一种平静的尊重。师兄说今天最大的发现是组会也可以有边界。你暂时管理不了宇宙，但至少管理住了今晚的离开路线。'],
+    ['chemistry','material','⚗️','材料也想按时下班','瓶子回到架上，你回到人间。','你没有让一份材料承担所有愿望，也没有让自己变成一台永远开机的仪器。师兄替你保留了最清楚的一张谱图。你觉得这是对人和材料都很友好的结局。'],
+    ['economics','market','📉','组会达到均衡','全体参会者一致同意，继续开会的收益不够了。','导师收起笔记本，师兄收起电脑，你收起对晚饭的担忧。没有人需要再证明这场会议必须继续。离开会议室的那一刻，你第一次觉得一个均衡真的很好理解。'],
+    ['humanities','footnote','📜','脚注建了一座城','你终于把主论点从城门里带了出来。','材料很多，读法不同，结论仍然可以清楚。导师把你的那一句判断记了下来。散会以后，脚注继续安静地站在纸上，而你决定暂时离开它们，去过一个没有编号的晚上。'],
+    ['art','client','🎨','甲方选择了第一版','经过六次修改，第一版以崭新的身份胜出。','你没有白改：至少你知道了每一次要求真正想改变什么。师兄替第一版加了一个新的版本号。导师说这次不用再小改了。你小心地把这句话也保存成了一个文件。']
+  ];
+  C.disciplineEndings=[];
+  for(const [project,flag,icon,title,subtitle,desc] of newEndings){const id='discipline-'+project;C.endings.push({id,icon,title,subtitle,desc,hint:'在'+C.projects.find(p=>p.id===project).name+'路线里，多次选择学科专属的沟通或整活。'});C.disciplineEndings.push({id,project,flag});}
+})();
+
+</script><script>
+window.MEETING_ENGINE = (() => {
+  'use strict';
+  const C=window.MEETING_CONTENT;
+  const difficulties={normal:{name:'正常组会',time:39,tax:0},friday:{name:'周五晚八点',time:35,tax:1},surprise:{name:'大佬突袭',time:31,tax:2}};
+  const flagKeys=['chaos','rigor','honest','social','help','debt','cat','robot','recursive','wander','shift','quantum','material','market','footnote','client'];
+  const clamp=(x,max=100)=>Math.max(0,Math.min(max,x));
+  const blankFlags=()=>Object.fromEntries(flagKeys.map(k=>[k,0]));
+  const blankBag=()=>Object.fromEntries(C.shop.map(i=>[i.id,0]));
+  function random(s){s.rng=(s.rng+0x6D2B79F5)>>>0;let t=s.rng;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;}
+  function apply(s,effects){const deltas={};for(const [key,v] of Object.entries(effects)){if(!(key in s.stats))continue;const old=s.stats[key];s.stats[key]=clamp(old+v,key==='time'?65:100);deltas[key]=s.stats[key]-old;}return deltas;}
+  function addFlags(s,flags){for(const [key,v] of Object.entries(flags||{}))s.flags[key]=Math.max(0,(s.flags[key]||0)+v);}
+  function weighted(s,pool){let total=0;const weights=pool.map(e=>{const w=e.requires?3:e.project?3:1;total+=w;return w;});let r=random(s)*total;for(let i=0;i<pool.length;i++){r-=weights[i];if(r<0)return pool[i];}return pool.at(-1);}
+  function selectEvent(s){
+    if(s.wrapUp===2){s.phase=9;s.eventId=s.flags.debt>=2?'final-debt':s.stats.evidence>=82?'final-reverse':'final-normal';return;}
+    const persona=C.personas.find(p=>p.id===s.persona);
+    if(s.wrapUp===1||s.progress>=100){s.phase=8;s.wrapUp=1;}
+    else if(s.choicesMade===0)s.phase=0;
+    else if(s.choicesMade>=3&&random(s)<persona.interrupt&&!s.interrupted){s.phase=[5,6,7][Math.floor(random(s)*3)];s.interrupted=true;}
+    else{s.phase=s.progress<18?1:s.progress<34?2:s.progress<50?3:s.progress<66?4:s.progress<76?5:s.progress<88?6:7;s.interrupted=false;}
+    const all=C.events.filter(e=>e.phase===s.phase&&(!e.project||e.project===s.project)&&(!e.requires||s.flags[e.requires]>0));
+    const fresh=all.filter(e=>!s.seen.includes(e.id)&&!s.recentEvents.includes(e.id));
+    const notThisMeeting=all.filter(e=>!s.seen.includes(e.id));
+    let pool=fresh.length?fresh:notThisMeeting.length?notThisMeeting:all.filter(e=>e.id!==s.eventId);
+    const introduced=s.seen.some(id=>C.events.find(e=>e.id===id)?.project===s.project);
+    const introduction=fresh.filter(e=>e.project===s.project&&!e.requires);
+    if(s.phase>=1&&s.phase<=3&&!introduced&&introduction.length)pool=introduction;
+    s.eventId=weighted(s,pool.length?pool:all).id;s.seen.push(s.eventId);
+  }
+  function create({role='newbie',difficulty='normal',name='小同学',seed=1,project='classic',persona='random',career={}}={}){
+    const r=C.roles.find(r=>r.id===role)||C.roles[0],d=difficulties[difficulty]||difficulties.normal,p=C.projects.find(p=>p.id===project)||C.projects[0];
+    const growth=Math.min(12,Math.floor((career.experience||0)/60)*3),debt=Math.min(3,Math.max(0,Math.floor(career.debt||0)));
+    const s={version:3,role:r.id,difficulty:difficulties[difficulty]?difficulty:'normal',name:String(name).trim().slice(0,12)||'小同学',seed:seed>>>0,rng:seed>>>0,project:p.id,persona:'warm',phase:0,eventId:'',progress:0,wrapUp:0,interrupted:false,seen:[],recentEvents:Array.isArray(career.recentEvents)?career.recentEvents.slice(-35):[],lastRequestRound:-1,meetingNumber:(career.meetings||0)+1,experienceAtStart:career.experience||0,careerApplied:false,stats:{...r.stats,time:d.time},flags:{...blankFlags(),debt,cat:Math.min(1,career.cat||0),robot:Math.min(1,career.robot||0),wander:Math.min(1,career.wander||0)},used:{skill:false,coffee:false,charm:false},bag:{...blankBag(),...career.bag},relations:{boss:50,stats:50,senior:50,...career.relations},log:[],pending:null,ended:false,ending:null,choicesMade:0};
+    s.persona=C.personas.some(p=>p.id===persona)?persona:C.personas[Math.floor(random(s)*C.personas.length)].id;
+    apply(s,{evidence:growth,mood:Math.floor(growth/2)+(career.moodBoost||0),patience:Math.round(((career.reputation??50)-50)/10)-debt*2});
+    apply(s,{evidence:career.evidenceBoost||0});apply(s,p.effects);apply(s,C.personas.find(p=>p.id===s.persona).initial);
+    if(s.difficulty==='surprise')apply(s,{patience:-8});selectEvent(s);return s;
+  }
+  function current(s){return C.events.find(e=>e.id===s.eventId);}
+  function previewChoice(s,choice){const c=typeof choice==='number'?current(s)?.choices[choice]:choice;if(!c)return null;
+    const effects={...c.effects},tax=difficulties[s.difficulty].tax;
+    if(tax){effects.patience=(effects.patience||0)-tax;effects.mood=(effects.mood||0)-tax;}
+    const plus=(k,v)=>effects[k]=(effects[k]||0)+v;
+    if(s.persona==='warm'&&(c.flags.chaos||c.flags.social||c.flags.honest))plus('patience',2);
+    if(s.persona==='detail'){if(c.flags.rigor){plus('patience',3);plus('evidence',2);}if(c.flags.chaos)plus('patience',-3);}
+    if(s.persona==='story'&&[6,7].includes(current(s).phase))plus('time',-1);
+    if(s.persona==='strict'){if(c.flags.honest)plus('patience',2);if(c.flags.chaos)plus('patience',-3);}
+    if(s.relations.boss>=70&&c.flags.social)plus('patience',1);
+    if(s.relations.stats>=70&&c.flags.rigor)plus('evidence',2);
+    return {effects,chance:c.risk?clamp(c.risk.chance+(s.persona==='strict'?.08:0),1):0};
+  }
+  function rapport(s,c){const change={boss:0,stats:0,senior:0};
+    if(c.flags.rigor){change.boss++;change.stats+=3;}
+    if(c.flags.honest){change.boss++;change.stats+=2;}
+    if(c.flags.social){change.boss+=3;change.senior++;}
+    if(c.flags.help)change.senior+=5;
+    if(c.flags.chaos){change.senior+=2;change.boss-=s.persona==='strict'?3:1;}
+    const actual={};for(const [k,v] of Object.entries(change)){const old=s.relations[k];s.relations[k]=clamp(old+v);actual[k]=s.relations[k]-old;}return actual;
+  }
+  function decideEnding(s){const st=s.stats,f=s.flags;
+    if(st.mood<=0)return 'mood';if(st.patience<=0)return 'patience';if(st.time<=0)return st.evidence>=55&&st.patience>=30?'escape':'overtime';if(s.wrapUp!==2)return null;
+    if(s.meetingNumber>=8&&s.experienceAtStart>=150&&f.rigor>=4&&st.evidence>=85&&st.patience>=55&&f.debt<=1)return 'graduation';
+    if(f.cat>=2)return 'cat-chair';
+    if(s.project==='data'&&f.robot>=2)return 'robot-union';
+    if(s.project==='theory'&&f.recursive>=2)return 'recursive';
+    if(s.project==='field'&&f.wander>=3)return 'field-legend';
+    const discipline=C.disciplineEndings.find(e=>e.project===s.project);if(discipline&&f[discipline.flag]>=3)return discipline.id;
+    if(s.relations.senior>=80&&f.help>=3)return 'senior-heir';
+    if(f.chaos>=5)return 'comedian';if(f.debt>=3)return 'debt';
+    if(st.evidence>=85&&st.patience>=65&&st.mood>=35)return 'legend';if(f.social>=4&&st.patience>=75)return 'diplomat';if(f.honest>=4)return 'honest';return 'survivor';
+  }
+  function terminal(s){return s.stats.mood<=0?'mood':s.stats.patience<=0?'patience':s.stats.time<=0?decideEnding(s):null;}
+  function choose(s,index){if(s.ended||s.pending)return null;const e=current(s),c=e?.choices[index];if(!c)return null;
+    const preview=previewChoice(s,c),effects={...preview.effects},unlucky=c.risk?random(s)<preview.chance:false;
+    if(unlucky)for(const [k,v] of Object.entries(c.risk.effects))effects[k]=(effects[k]||0)+v;
+    const deltas=apply(s,effects),relations=rapport(s,c);addFlags(s,c.flags);
+    if(e.phase===8)s.wrapUp=2;
+    if(e.phase!==8&&e.phase!==9)s.progress=clamp(s.progress+(c.flags.chaos?4:c.flags.social?7:9)+Math.floor(random(s)*5));
+    s.choicesMade++;const record={phase:s.phase,eventId:e.id,title:e.title,answer:c.text,result:c.result,flavor:unlucky?c.risk.flavor:c.flavor,deltas,relations,unlucky,type:'choice'};s.log.push(record);s.pending=record;s.ending=terminal(s)||(e.phase===9?decideEnding(s):null);return record;
+  }
+  function advance(s){if(s.ended||!s.pending)return false;if(s.ending){s.ended=true;s.pending=null;return true;}s.pending=null;selectEvent(s);return true;}
+  function useItem(s,id){if(s.ended||s.pending)return null;
+    const role=C.roles.find(r=>r.id===s.role),standard={skill:{title:role.skill,effects:role.effects,flavor:'你使用了角色专属技能。讲台上的世界，稍微友好了一点。'},coffee:{title:'冰美式续命',effects:{mood:17,time:-1},flavor:'一口冰美式。你的灵魂重新与身体取得联系。'},charm:{title:'师兄的眼神',effects:{patience:15,evidence:s.relations.senior>=70?8:4},flavor:'师兄及时补充了一句，导师终于把笔放下了。'}};
+    let item=standard[id],fromBag=false;
+    if(item){if(s.used[id])return null;s.used[id]=true;}
+    else{const stocked=C.shop.find(i=>i.id===id);if(!stocked||!(s.bag[id]>0))return null;item={title:stocked.name,effects:stocked.effects,flags:stocked.flags,flavor:stocked.flavor};s.bag[id]--;fromBag=true;}
+    const deltas=apply(s,item.effects);addFlags(s,item.flags);const record={phase:s.phase,title:item.title,result:item.title,flavor:item.flavor,deltas,type:'item',fromBag,itemId:id};s.log.push(record);
+    const end=terminal(s);if(end){s.ending=end;s.pending=record;}return record;
+  }
+  function requestEnd(s){if(s.ended||s.pending||s.wrapUp||s.choicesMade<5||s.lastRequestRound===s.choicesMade)return null;s.lastRequestRound=s.choicesMade;
+    const accepted=(s.stats.evidence>=60&&s.stats.patience>=40)||s.stats.time<=8,deltas=apply(s,{time:-1,...(accepted?{}:{patience:-4})});
+    const record={phase:s.phase,type:'request',title:'申请散会',result:accepted?'导师终于允许你收尾。':'“先把这个问题讲清楚。”',flavor:accepted?'你说出了大家都想说的话：“要不我们先总结一下？”导师看了一眼时间，点头了。':'你试着合上电脑。导师伸出一根手指，表示只是再问一个问题。你应该知道这句话的分量。',deltas};s.log.push(record);s.pending=record;if(accepted)s.wrapUp=1;s.ending=terminal(s);return record;
+  }
+  function score(s){return clamp(Math.round(s.stats.evidence*.45+s.stats.patience*.25+s.stats.mood*.2+Math.min(s.choicesMade,10)));}
+  function upgrade(old){if(!old||![2,3].includes(old.version))return old;
+    if(old.version===3)return old;
+    const s=JSON.parse(JSON.stringify(old));Object.assign(s,{version:3,project:'classic',persona:'warm',experienceAtStart:0,recentEvents:[],bag:blankBag(),relations:{boss:50,stats:50,senior:50}});s.flags={...blankFlags(),...s.flags};return s;
+  }
+  function isValid(s){return !!s&&s.version===3&&C.roles.some(r=>r.id===s.role)&&C.projects.some(p=>p.id===s.project)&&C.personas.some(p=>p.id===s.persona)&&Object.hasOwn(difficulties,s.difficulty)&&typeof s.name==='string'&&s.name.length<=12&&Number.isInteger(s.phase)&&s.phase>=0&&s.phase<10&&current(s)?.phase===s.phase&&Number.isInteger(s.rng)&&Number.isInteger(s.seed)&&Number.isFinite(s.progress)&&s.progress>=0&&s.progress<=100&&[0,1,2].includes(s.wrapUp)&&Number.isInteger(s.meetingNumber)&&s.meetingNumber>0&&Number.isFinite(s.experienceAtStart)&&s.experienceAtStart>=0&&typeof s.careerApplied==='boolean'&&Array.isArray(s.seen)&&s.seen.length<200&&Array.isArray(s.recentEvents)&&s.stats&&['mood','evidence','patience','time'].every(k=>Number.isFinite(s.stats[k])&&s.stats[k]>=0&&s.stats[k]<=(k==='time'?65:100))&&s.flags&&flagKeys.every(k=>Number.isInteger(s.flags[k])&&s.flags[k]>=0)&&s.used&&['skill','coffee','charm'].every(k=>typeof s.used[k]==='boolean')&&s.bag&&C.shop.every(i=>Number.isInteger(s.bag[i.id])&&s.bag[i.id]>=0)&&s.relations&&['boss','stats','senior'].every(k=>Number.isFinite(s.relations[k])&&s.relations[k]>=0&&s.relations[k]<=100)&&Array.isArray(s.log)&&s.log.length<250&&(s.pending===null||(typeof s.pending==='object'&&typeof s.pending.result==='string'))&&typeof s.ended==='boolean'&&(s.ending===null||C.endings.some(e=>e.id===s.ending))&&(!s.ended||s.ending!==null)&&Number.isInteger(s.choicesMade)&&s.choicesMade>=0&&s.choicesMade<200;}
+  return {create,current,choose,advance,useItem,requestEnd,previewChoice,score,isValid,upgrade,difficulties,blankBag};
+})();
+
+</script><script>
+(() => {
+  'use strict';
+  const C=window.MEETING_CONTENT,E=window.MEETING_ENGINE;
+  const $=s=>document.querySelector(s),app=$('#app');
+  const SAVE='meeting-survival-v2-save',ALBUM='meeting-survival-v1-album',SETTINGS='meeting-survival-v1-settings',CAREER='meeting-survival-v1-career';
+  const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function read(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback;}catch{return fallback;}}
+  function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true;}catch{return false;}}
+  function remove(key){try{localStorage.removeItem(key);}catch{}}
+  let state=null,selectedRole='newbie',difficulty='normal',playerName='小同学',selectedProject='classic',selectedPersona='random',toastTimer;
+  let album=read(ALBUM,[]);if(!Array.isArray(album))album=[];album=album.filter(x=>C.endings.some(e=>e.id===x.id)&&Number.isFinite(x.score));
+  let saved=E.upgrade(read(SAVE,null));if(!E.isValid(saved))saved=null;
+  const freshCareer=()=>({meetings:0,experience:0,reputation:50,debt:0,totalTurns:0,history:[],coins:4,bag:E.blankBag(),relations:{boss:50,stats:50,senior:50},recentEvents:[],moodBoost:0,evidenceBoost:0,cat:0,robot:0,wander:0,intermission:null});
+  let career=read(CAREER,freshCareer());
+  if(!career||!['meetings','experience','reputation','debt','totalTurns'].every(k=>Number.isFinite(career[k])&&career[k]>=0)||!Array.isArray(career.history))career=freshCareer();
+  career={...freshCareer(),...career,bag:{...E.blankBag(),...career.bag},relations:{boss:50,stats:50,senior:50,...career.relations}};
+  for(const key of ['coins','moodBoost','evidenceBoost','cat','robot','wander'])if(!Number.isFinite(career[key])||career[key]<0)career[key]=0;
+  for(const item of C.shop)if(!Number.isInteger(career.bag[item.id])||career.bag[item.id]<0)career.bag[item.id]=0;
+  for(const key of ['boss','stats','senior'])if(!Number.isFinite(career.relations[key])||career.relations[key]<0||career.relations[key]>100)career.relations[key]=50;
+  if(!Array.isArray(career.recentEvents))career.recentEvents=[];
+  const careerRank=()=>career.experience>=360?'实验室传说':career.experience>=160?'组会老油条':career.experience>=60?'会议室常客':'初入师门';
+  let soundOn=read(SETTINGS,{}).sound===true,audioCtx=null;
+  const names={mood:'心态',evidence:'底气',patience:'导师耐心',time:'时间'};
+  const icons={mood:'◒',evidence:'▥',patience:'☕',time:'◷'};
+  const scrollTop=()=>window.scrollTo({top:0,behavior:'instant'});
+  function toast(text){const node=$('#toast');node.textContent=text;node.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove('visible'),2700);}
+  function play(kind='click'){
+    if(!soundOn)return;
+    try{audioCtx??=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();const tones=kind==='ending'?[440,554,659]:kind==='item'?[523,659]:kind==='bad'?[220,185]:[392];tones.forEach((freq,i)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain(),at=audioCtx.currentTime+i*.11;o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(.06,at+.012);g.gain.exponentialRampToValueAtTime(.001,at+.15);o.connect(g);g.connect(audioCtx.destination);o.start(at);o.stop(at+.17);});}catch{}
+  }
+  function save(){write(SAVE,state);saved=state;}
+  function updateAlbumCount(){$('#collection-count').textContent=`${new Set(album.map(a=>a.id)).size}/${C.endings.length}`;$('#coin-count').textContent=`${career.coins} 币`;}
+  function drawPerson(x,y,hair,shirt,accessory='',flip=false){return `<g transform="translate(${x} ${y}) ${flip?'scale(-1 1)':''}"><path d="M-29 62 Q-33 14 0 10 Q33 14 29 62" fill="${shirt}" stroke="#344d39" stroke-width="1.5"/><path d="M-20 45 L-37 56 L-19 66 M20 45 L40 56 L22 66" fill="none" stroke="#344d39" stroke-width="8" stroke-linecap="round"/><rect x="-7" y="4" width="14" height="16" rx="4" fill="#dcc09e"/><ellipse cx="0" cy="-8" rx="22" ry="26" fill="#e5caab" stroke="#344d39" stroke-width="1.5"/><path d="M-23 -10 Q-25 -38 3 -37 Q28 -36 23 -9 L17 -21 Q1 -15 -11 -22 L-20 -8Z" fill="${hair}"/><path d="M-9 -5 h2 M7 -5 h2 M-5 7 Q0 10 5 7" fill="none" stroke="#344d39" stroke-width="2" stroke-linecap="round"/>${accessory==='glasses'?'<g fill="none" stroke="#344d39" stroke-width="1.5"><rect x="-16" y="-11" width="13" height="10" rx="3"/><rect x="3" y="-11" width="13" height="10" rx="3"/><path d="M-3 -7 H3"/></g>':''}${accessory==='sleep'?'<path d="M-12 0 h7 M5 0 h7" stroke="#9e8064" stroke-width="1"/>':''}</g>`;}
+  function boardGraphic(){const subject=state?.project||selectedProject;const base='<g fill="none" stroke="#7d9574" stroke-width="2">';let art='';
+    if(subject==='humanities')art='<path d="M442 48h66 M442 59h57 M442 70h64 M442 81h49 M442 92h61 M442 103h40"/>';
+    else if(subject==='art')art='<circle cx="462" cy="69" r="14" fill="#dbc98b"/><path d="M479 105l12-36 24 36Z" fill="#a6bc94"/><path d="M442 103l18-10 14 7"/>';
+    else if(subject==='physics')art='<circle cx="480" cy="78" r="6" fill="#d3b959"/><ellipse cx="480" cy="78" rx="36" ry="18" transform="rotate(-25 480 78)"/><circle cx="511" cy="63" r="4" fill="#b4c2a5"/>';
+    else if(subject==='theory')art='<path d="M444 100q32-55 66-12 M448 49h14 M455 42v14 M480 48h20 M487 43l7 10"/><path d="M440 111h76"/>';
+    else if(subject==='clinical')art='<path d="M439 86h16l8-16 9 34 9-27 8 9h24"/><path d="M451 49h15 M459 42v15"/>';
+    else if(subject==='chemistry')art='<path d="M454 61l18-10 18 10v21l-18 10-18-10Z M490 61l17-8 M490 82l17 9 M454 72h-14"/><circle cx="507" cy="52" r="4" fill="#d3b959"/>';
+    else if(subject==='field')art='<path d="M441 53l20 11 23-14 30 15v42l-28-12-25 14-20-10Z M461 64v45 M484 50l2 45"/><circle cx="482" cy="78" r="4" fill="#d3b959"/>';
+    else if(subject==='classic')art='<ellipse cx="457" cy="73" rx="15" ry="22"/><ellipse cx="495" cy="86" rx="18" ry="14"/><circle cx="457" cy="71" r="5" fill="#cdb95e"/><circle cx="496" cy="85" r="4" fill="#cdb95e"/>';
+    else art='<path d="M448 107H516 M448 107V66 M453 98l13-6 13 5 12-19 15-14"/><circle cx="506" cy="64" r="4" fill="#d7b550"/>';
+    return base+art+'</g>';}
+  function scene(active='boss',home=false){const person=C.people[active]||C.people.boss;return `<svg class="scene" viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" aria-label="虚构实验室：三位老师坐在长桌前，你在投影幕旁汇报" role="img"><defs><pattern id="wall-${home?'h':'g'}" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".6" fill="#536749" opacity=".1"/></pattern></defs><rect width="580" height="250" fill="#e6eadb"/><rect width="580" height="250" fill="url(#wall-${home?'h':'g'})"/><path d="M0 191 H580" stroke="#afbe9f"/><path d="M419 18 h122 v123 H419z" fill="#f8f7e9" stroke="#83977b" stroke-width="2"/><path d="M430 26 H532 V127 H430z" fill="#fffdf3"/>${boardGraphic()}<rect x="22" y="26" width="51" height="70" rx="2" fill="#d7dcc7" stroke="#83977b"/><path d="M32 39h29 M32 47h22 M32 63h28 M32 72h16" stroke="#9eaf93" stroke-width="2"/><circle cx="348" cy="37" r="16" fill="#f7f4e4" stroke="#879877" stroke-width="2"/><path d="M348 26v12l9 5" stroke="#66795b" stroke-width="2" fill="none"/><g opacity=".4"><rect x="88" y="34" width="182" height="44" rx="4" fill="#bac9ae"/><text x="106" y="60" font-size="14" font-family="Microsoft YaHei,sans-serif" fill="#395d41">${home?'同学，下一页。':escape(person.name)+'正在思考'}</text></g>${drawPerson(143,141,'#434b3c','#789072','glasses')}${drawPerson(246,149,'#494636','#a8b28b','glasses')}${drawPerson(350,143,'#64634e','#c6b688','sleep')}${drawPerson(493,159,'#465748','#749a81','',true)}<path d="M68 205 L392 205 L419 173 L96 173 Z" fill="#c3b497" stroke="#647458" stroke-width="2"/><path d="M68 205 h324 v12 H68Z" fill="#a39277" stroke="#647458" stroke-width="1.5"/><path d="M95 217 V249 M370 217 V249" stroke="#5d6d53" stroke-width="8"/><path d="M456 202h63v13h-63z M462 215v35 M514 215v35" stroke="#536e56" stroke-width="3" fill="#9cac8a"/><rect x="211" y="159" width="32" height="21" rx="2" fill="#e9ecde" stroke="#738666" transform="rotate(-5 227 170)"/><path d="M218 165h17 M218 170h14" stroke="#a6b297"/><path d="M115 162h14v14h-14z M129 164q10 0 7 7h-7" fill="#f0eee0" stroke="#738666" stroke-width="1.5"/><path d="M322 159h12v16h-12z M334 161q9 0 6 7h-6" fill="#d9dbbd" stroke="#738666" stroke-width="1.5"/><path d="M477 207l-15 8 8 11 M504 207l12 10-8 9" stroke="#385943" stroke-width="8" fill="none" stroke-linecap="round"/><rect x="527" y="166" width="25" height="37" rx="3" fill="#d2b756" stroke="#637453"/><path d="M539 166v-15 M535 149l4-11 4 11" stroke="#73885b" stroke-width="2" fill="#9baf79"/></svg>`;}
+
+  function disciplinesMarkup(){return `<div class="section-line discipline-head"><h2>选一门学科，换一种组会人生。</h2><span>每门都有自己的问题与梗</span></div><div class="discipline-grid">${C.projects.map(p=>`<button class="discipline ${selectedProject===p.id?'selected':''}" data-project="${p.id}" aria-pressed="${selectedProject===p.id}"><span>${p.icon}</span><strong>${p.name}</strong><small>${p.desc}</small></button>`).join('')}</div>`;}
+  function pocketMarkup(){const owned=C.shop.filter(i=>state.bag[i.id]>0);if(!owned.length)return '';return `<section class="pocket"><h3>口袋里还有 ${owned.reduce((n,i)=>n+state.bag[i.id],0)} 张底牌</h3><div>${owned.map(i=>`<button class="item" data-item="${i.id}" ${state.pending?'disabled':''}><span class="emoji">${i.icon}</span><span><strong>${i.name} ×${state.bag[i.id]}</strong><small>${i.desc}</small></span></button>`).join('')}</div></section>`;}
+  function relationsMarkup(){return `<section class="relations-card"><h3>师门关系 <small>信任越高，合作越顺</small></h3><div>${['boss','stats','senior'].map(id=>`<span><small>${C.people[id].name}</small><strong>${state.relations[id]}</strong><i style="--trust:${state.relations[id]}%"></i></span>`).join('')}</div></section>`;}
+  function showShop(){updateAlbumCount();const active=state&&!state.ended;$('#shop-grid').innerHTML=C.shop.map(i=>`<article class="shop-item"><span class="shop-icon">${i.icon}</span><div><h3>${i.name}</h3><p>${i.desc}</p><small>背包里有 ${career.bag[i.id]} 个</small></div><button data-buy="${i.id}" ${active||career.coins<i.cost||career.bag[i.id]>=5?'disabled':''}>${i.cost} 摸鱼币</button></article>`).join('');$('#shop-note').textContent=active?'汇报中先顾好讲台。散会后或回到门口，可以购买供下一场使用的道具。':`你有 ${career.coins} 枚摸鱼币。没有现实付款，每场结束都会赚一些；新买的道具下一场入场时装进口袋。`;
+    $('#shop-grid').querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>{const item=C.shop.find(i=>i.id===b.dataset.buy);if(!item||career.coins<item.cost||career.bag[item.id]>=5||(state&&!state.ended))return;career.coins-=item.cost;career.bag[item.id]++;write(CAREER,career);showShop();play('item');toast(`${item.name}已装进背包，下一场可用。`);});if(!$('#shop-modal').open)$('#shop-modal').showModal();
+  }
+  function renderBreak(){if(!state?.ended)return;const key=`${state.meetingNumber}-${state.seed}`;if(!career.intermission||career.intermission.key!==key){const last=career.intermission?.eventId;const options=C.breaks.filter(e=>e.id!==last);career.intermission={key,eventId:options[state.seed%options.length].id,resolved:false,chosenTitle:'',flavor:''};write(CAREER,career);}const inter=career.intermission,e=C.breaks.find(e=>e.id===inter.eventId);
+    app.innerHTML=`<section class="break-layout"><div class="break-scene"><p class="eyebrow">AFTER THE MEETING / 场外生活</p><span class="break-icon">${e.icon}</span><span class="sticker">今天暂时没有人问你“为什么”</span><h1>${e.title}</h1><p>${e.scene}</p><div class="break-career">${careerRank()} · 摸鱼币 ${career.coins} · 已参加 ${career.meetings} 场</div></div><div class="break-options">${inter.resolved?`<div class="feedback"><p class="eyebrow">生活继续往前走</p><h3>${escape(inter.chosenTitle)}</h3><p>${escape(inter.flavor)}</p><div class="feedback-bottom"><small>奖励已经记下，重看也不会重复领取。</small><button id="break-next" class="primary">进入下一场组会 ↗</button></div></div>`:`<h2>散会以后，先做点什么？</h2>${e.choices.map((c,i)=>`<button class="break-choice" data-break="${i}"><span>0${i+1}</span><strong>${c.text}</strong><small>${c.hint}</small></button>`).join('')}`}<div class="break-links"><button id="break-shop" class="secondary">逛逛补给站</button><button id="break-door" class="plain">回到门口 · 进度会保留</button></div></div></section>`;
+    app.querySelectorAll('[data-break]').forEach(b=>b.onclick=()=>{if(career.intermission.resolved)return;const c=e.choices[Number(b.dataset.break)];if(!c)return;for(const [k,v] of Object.entries(c.effects)){if(k==='item')career.bag[v]++;else if(['boss','stats','senior'].includes(k))career.relations[k]=Math.max(0,Math.min(100,career.relations[k]+v));else if(k==='reputation')career.reputation=Math.max(0,Math.min(100,career.reputation+v));else if(k==='debt')career.debt=Math.max(0,career.debt+v);else if(['coins','moodBoost','evidenceBoost','cat','robot','wander'].includes(k))career[k]=Math.min(k==='coins'?1000000:30,career[k]+v);}career.intermission.resolved=true;career.intermission.chosenTitle=c.text;career.intermission.flavor=c.flavor;write(CAREER,career);updateAlbumCount();play('item');renderBreak();});
+    if($('#break-next'))$('#break-next').onclick=()=>{selectedRole=state.role;difficulty=state.difficulty;playerName=state.name;selectedProject=state.project;selectedPersona=state.personaMode||'random';start();};$('#break-shop').onclick=showShop;$('#break-door').onclick=()=>{landing();scrollTop();};scrollTop();
+  }
+  function landing(){state=null;updateAlbumCount();app.innerHTML=`<section class="hero"><div><span class="sticker">学术浓度很高 · 求生欲更高</span><h1 class="hero-title">同学，<br>你能<span>活着散会</span>吗？</h1><p class="hero-copy">一场组会，长度未知。<br>老师只是问个小问题，你的人生却出现了大问题。</p><div class="hero-pills"><span class="tag">🎲 随机剧情</span><span class="tag">🧩 选择有后果</span><span class="tag">🏅 ${C.endings.length} 种结局</span><span class="tag">🎓 ${C.projects.length} 门学科</span><span class="tag">♾ 不限回合 · 连续生涯</span></div></div><div class="scene-frame"><div class="scene-title"><span>研究生生存观察室</span><span>ROOM 404</span></div><div class="scene-quote">“我就再问一个小问题。”</div>${scene('boss',true)}<div class="scene-note"><span>本场汇报：你 / 提问嘉宾：全体</span><span>散会时间：待定</span></div></div></section><section aria-label="选择角色"><div class="career-strip"><span>📖 你的组会生涯</span><strong>${careerRank()}</strong><span>已参加 ${career.meetings} 场</span><span>经验 ${career.experience}</span><span>实验室声望 ${career.reputation}</span><span>摸鱼币 ${career.coins}</span></div>${disciplinesMarkup()}<div class="section-line"><h2>再选一个人设。</h2><span>每个角色都有一次专属救场技能</span></div><div class="roles">${C.roles.map(r=>`<button class="role ${r.id===selectedRole?'selected':''}" data-role="${r.id}" aria-pressed="${r.id===selectedRole}">${r.id===selectedRole?'<span class="selected-mark">✓</span>':''}<span class="role-portrait" aria-hidden="true">${r.icon}</span><h3>${r.name}</h3><p>${r.desc}</p><span class="skill-tag">✦ ${r.skill}</span></button>`).join('')}</div><div class="mentor-setup"><label for="mentor-style">今天的导师风格</label><select id="mentor-style"><option value="random" ${selectedPersona==='random'?'selected':''}>每场随机</option>${C.personas.map(p=>`<option value="${p.id}" ${selectedPersona===p.id?'selected':''}>${p.icon} ${p.name}</option>`).join('')}</select><p id="mentor-hint">${selectedPersona==='random'?'同一个周老师，也可能有完全不同的组会气场。':C.personas.find(p=>p.id===selectedPersona).desc}</p></div><div class="setup-bottom"><div class="setup-options"><label><span class="label-small">老师怎么称呼你</span><input id="player-name" maxlength="12" value="${escape(playerName)}" autocomplete="off" placeholder="小同学"></label><div><span class="label-small">今天是什么局</span><div class="segmented" role="group" aria-label="难度">${Object.entries(E.difficulties).map(([id,d])=>`<button data-difficulty="${id}" class="${id===difficulty?'active':''}" aria-pressed="${id===difficulty}">${d.name}</button>`).join('')}</div></div></div><div class="start-area">${saved?`<button id="resume" class="secondary">${saved.ended?'查看上场报告':'接着上次那场'}</button>`:''}<button id="start" class="primary">进入会议室 <span class="arrow">↗</span></button></div></div><div class="how-to"><span><b>01</b>选回应，推进剧情</span><span><b>02</b>心态或耐心归零就翻车</span><span><b>03</b>带底牌入场，低谷记得救场</span><span><b>04</b>想下班？找机会申请散会</span></div></section>`;
+    app.querySelectorAll('[data-role]').forEach(b=>b.onclick=()=>{playerName=$('#player-name').value;selectedRole=b.dataset.role;play();landing();});
+    app.querySelectorAll('[data-difficulty]').forEach(b=>b.onclick=()=>{playerName=$('#player-name').value;difficulty=b.dataset.difficulty;play();landing();});
+    app.querySelectorAll('[data-project]').forEach(b=>b.onclick=()=>{playerName=$('#player-name').value;selectedProject=b.dataset.project;play();landing();});
+    $('#mentor-style').onchange=e=>{selectedPersona=e.target.value;$('#mentor-hint').textContent=selectedPersona==='random'?'同一个周老师，也可能有完全不同的组会气场。':C.personas.find(p=>p.id===selectedPersona).desc;};
+    $('#player-name').oninput=e=>{playerName=e.target.value;};
+    $('#player-name').onkeydown=e=>{if(e.key==='Enter')start();};
+    $('#start').onclick=start;
+    if($('#resume'))$('#resume').onclick=()=>{state=JSON.parse(JSON.stringify(saved));play();render();scrollTop();};
+  }
+  function start(){playerName=$('#player-name')?.value||playerName;const seed=new Uint32Array(1);if(window.crypto?.getRandomValues)crypto.getRandomValues(seed);else seed[0]=Math.floor(Math.random()*4294967296);state=E.create({role:selectedRole,difficulty,name:playerName,seed:seed[0],project:selectedProject,persona:selectedPersona,career});state.personaMode=selectedPersona;career.moodBoost=0;career.evidenceBoost=0;write(CAREER,career);save();play();render();scrollTop();}
+  function statView(key){const value=state.stats[key],low=key==='time'?value<=5:value<=25,width=key==='time'?value/65*100:value;return `<div class="stat"><div class="stat-row"><span>${icons[key]} ${key==='time'?'剩余时间':names[key]}</span><strong class="${low?'warning':''}">${value}<small>${key==='time'?' min':' /100'}</small></strong></div><div class="track"><div class="fill ${low?'danger':key==='evidence'?'gold':''}" style="width:${width}%"></div></div></div>`;}
+  function deltasView(deltas){return `<div class="deltas">${Object.entries(deltas).filter(([,v])=>v!==0).map(([k,v])=>`<span class="delta ${v<0?'negative':''}">${names[k]} ${v>0?'+':''}${v}${k==='time'?' min':''}</span>`).join('')||'<span class="delta">已经满格，稳住就好</span>'}</div>`;}
+  function effectText(effects){return Object.entries(effects).filter(([,v])=>v!==0).map(([k,v])=>`${names[k]} ${v>0?'+':''}${v}`).join(' · ');}
+  function journal(){return `<div class="journal"><details><summary>查看组会实录 · ${state.log.length} 条现场记录</summary><div class="journal-list">${state.log.map(r=>`<div class="journal-entry"><span>${r.type==='item'?'道具':r.type==='request'?'散会':String(r.phase+1).padStart(2,'0')}</span><p><strong>${escape(r.type==='choice'?r.answer:r.title)}</strong><br>${escape(r.flavor)}</p></div>`).join('')||'<p class="muted">会议才刚开始，大家还很友善。</p>'}</div></details></div>`;}
+  function feedback(){const p=state.pending;return `<div class="feedback" role="status"><p class="eyebrow">${p.unlucky?'PLOT TWIST · 有一点翻车':'MEETING UPDATE · 现场反馈'}</p><h3>${escape(p.result)}</h3><p>${escape(p.flavor)}</p>${deltasView(p.deltas)}${p.relations?`<div class="relation-changes">${Object.entries(p.relations).filter(([,v])=>v!==0).map(([id,v])=>`${C.people[id].name}信任 ${v>0?'+':''}${v}`).join(' · ')}</div>`:''}<div class="feedback-bottom"><small>${state.ending?'这一场组会，有了自己的结局。':state.flags.debt>=2?'导师的小本本上，多了几件“下周再说”。':'你还在场上。下一页，还得继续。'}</small><button id="next" class="primary">${state.ending?'看看我的结局':'继续汇报'} <span>→</span></button></div></div>`;}
+  function render(){if(state.ended){ending();return;}const e=E.current(state),role=C.roles.find(r=>r.id===state.role),who=C.people[e.who],subject=C.projects.find(p=>p.id===state.project),mentor=C.personas.find(p=>p.id===state.persona);updateAlbumCount();
+    const low=state.stats.patience<=30?'空气有点凝固':state.stats.mood<=30?'你的灵魂正在加载':state.stats.patience>=80?'老师今天心情不错':'大家暂时很友善';
+    app.innerHTML=`<div class="run-head"><div><p class="eyebrow">${subject.icon} ${subject.name} / ${escape(E.difficulties[state.difficulty].name)}</p><h1>${escape(state.name)}，轮到你了。</h1></div><span class="run-pill">第 ${state.meetingNumber} 场 · ROUND ${String(state.choicesMade+1).padStart(2,'0')}</span></div><div class="board"><aside class="side"><div class="identity-card"><div class="identity-top"><span class="role-portrait">${role.icon}</span><div><b>${escape(state.name)}</b><small>${role.name} / ${careerRank()}</small></div></div><p>${role.line}</p></div><section class="stat-card" aria-label="本场状态">${['mood','evidence','patience','time'].map(statView).join('')}</section><section class="inventory" aria-label="救场道具"><h3>你的最后一点底牌</h3>${[{id:'skill',icon:'✦',name:role.skill,desc:role.skillDesc},{id:'coffee',icon:'🥤',name:'冰美式续命',desc:'心态 +17 / 时间 −1'},{id:'charm',icon:'🤝',name:'师兄的眼神',desc:`耐心 +15 / 底气 +${state.relations.senior>=70?8:4}`}].map(i=>`<button class="item" data-item="${i.id}" ${state.used[i.id]||state.pending?'disabled':''}><span class="emoji">${i.icon}</span><span><strong>${i.name}${state.used[i.id]?' · 已用':''}</strong><small>${i.desc}</small></span></button>`).join('')}</section>${pocketMarkup()}${relationsMarkup()}<p class="side-note">${state.flags.debt>0?`导师已经记下 ${state.flags.debt} 笔“之后再说”。<br>最后一页，可能还不是最后。`:'老师的“最后一个问题”，<br>通常只是一个开场白。'}<br><small>时间为游戏模拟时间，慢慢选就好。</small></p></aside><section class="arena"><div class="progress-rail" role="progressbar" aria-label="汇报进度" aria-valuenow="${state.progress}" aria-valuemin="0" aria-valuemax="100"><span style="width:${state.progress}%"></span></div><div class="phase-label"><span>正在进行：${C.phases[state.phase]}</span><span>汇报进度 ${state.progress}%</span><span>${state.phase<3?'先混个脸熟':state.phase<7?'真正的组会，现在才开始':'曙光就在前方，应该吧'}</span></div><div class="meeting"><div class="meeting-scene"><span class="room-label">${mentor.icon} 周老师 · ${mentor.name}</span><span class="room-status">${low}</span>${scene(e.who)}<div class="npc-roster">${['boss','stats','senior',...(e.who==='visitor'?['visitor']:[])].map(id=>`<span class="npc-label ${e.who===id?'talking':''}">${C.people[id].name} · ${C.people[id].role}</span>`).join('')}</div></div><div class="event-area"><div class="event-meta"><strong>${who.icon} ${who.name}</strong><span>/ ${who.role}</span></div><h2>${e.title}</h2><p class="subject-label">${e.project?subject.icon+' 学科专属':e.requires?'↩ 之前的选择，又回来了':'🎲 公共组会事件'}</p><p class="narration">${state.phase===0&&state.meetingNumber>1?'这是你的第 '+state.meetingNumber+' 场组会。'+(state.flags.debt?'导师还记得你上次答应的事。':'你比初次入场时，更有一点底气。')+' ':''}${e.scene}</p><blockquote>${e.quote}</blockquote></div></div>${state.pending?feedback():`<div class="choice-title"><strong>你怎么接这一招？</strong><span>没有标准答案，只有现场后果</span></div><div class="choices">${e.choices.map((c,i)=>`<button class="choice ${c.risk?'risky':''}" data-choice="${i}"><span class="choice-kicker"><span>${String(i+1).padStart(2,'0')} / ${c.label}</span><span>${c.risk?'⚡':''}</span></span><strong>${c.text}</strong><small>${effectText(E.previewChoice(state,c).effects)}${c.risk?`<br>另有 ${Math.round(E.previewChoice(state,c).chance*100)}% 的翻车概率`:''}</small></button>`).join('')}</div>`}${journal()}<div class="quit"><button id="request-end" class="request-end" ${state.pending||state.wrapUp||state.choicesMade<5||state.lastRequestRound===state.choicesMade?'disabled':''}>${state.wrapUp?'已经进入收尾':state.choicesMade<5?'再讲几页才能申请散会':'举手：申请散会'}</button><button id="quit" class="plain">回到门口 · 进度会保留</button></div></section></div>`;
+    app.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{const result=E.choose(state,Number(b.dataset.choice));if(!result)return;save();play(result.unlucky?'bad':'click');render();if(window.innerWidth<=700)$('.feedback').scrollIntoView({behavior:'smooth',block:'center'});});
+    app.querySelectorAll('[data-item]').forEach(b=>b.onclick=()=>{const result=E.useItem(state,b.dataset.item);if(!result)return;if(result.fromBag){career.bag[result.itemId]=Math.max(0,career.bag[result.itemId]-1);write(CAREER,career);}save();play('item');render();toast(`${result.title}：${effectText(result.deltas)}`);});
+    if($('#next'))$('#next').onclick=()=>{if(E.advance(state)){save();play();render();if(window.innerWidth<=700)$('.arena')?.scrollIntoView({behavior:'instant',block:'start'});}};
+    if($('#request-end'))$('#request-end').onclick=()=>{const result=E.requestEnd(state);if(!result)return;save();play();render();if(window.innerWidth<=700)$('.feedback')?.scrollIntoView({behavior:'smooth',block:'center'});};
+    $('#quit').onclick=()=>{save();landing();scrollTop();};
+  }
+  function applyCareer(){
+    if(state.careerApplied)return;
+    const key=`${state.meetingNumber}-${state.seed}`;
+    if(!career.history.some(h=>h.key===key)){
+      const changes={legend:10,comedian:3,diplomat:10,honest:8,debt:0,escape:3,survivor:4,mood:-5,patience:-5,overtime:-3,'cat-chair':4,'robot-union':4,recursive:2,'senior-heir':8,'field-legend':6,graduation:12};
+      career.meetings++;career.experience+=10+state.choicesMade;career.totalTurns+=state.choicesMade;
+      career.reputation=Math.max(0,Math.min(100,career.reputation+(changes[state.ending]||0)));
+      career.debt=Math.min(3,Math.max(0,state.flags.debt-(state.flags.rigor>=4?2:state.flags.honest>=4?1:0)));
+      const earned=state.stats.mood>0&&state.stats.patience>0?3:1;
+      career.coins+=earned;state.coinsEarned=earned;career.relations={...state.relations};
+      career.recentEvents=[...career.recentEvents,...state.seen].slice(-35);
+      career.history.push({key,ending:state.ending,rounds:state.choicesMade,project:state.project});
+      write(CAREER,career);
+    }
+    state.careerApplied=true;save();
+  }
+  function ending(){applyCareer();const end=C.endings.find(e=>e.id===state.ending),role=C.roles.find(r=>r.id===state.role);let isNew=!album.some(x=>x.id===end.id);const mark=album.find(x=>x.id===end.id);const score=E.score(state);if(!mark){album.push({id:end.id,score});write(ALBUM,album);}else if(score>mark.score){mark.score=score;write(ALBUM,album);}updateAlbumCount();
+    const comic=state.log.findLast(r=>r.type==='choice'&&C.events.find(e=>e.id===r.eventId)?.choices.some(c=>c.text===r.answer&&c.flags.chaos));
+    const last=state.log.filter(r=>r.type==='choice').at(-1);
+    app.innerHTML=`<div class="ending-layout"><article class="ending-card" id="ending-card"><p class="eyebrow">ROOM 404 / 本场求生报告</p>${isNew?'<span class="new-ending">✦ 解锁新结局</span>':'<span class="new-ending">再次抵达这个结局</span>'}<span class="ending-icon">${end.icon}</span><h1>${end.title}</h1><p class="subtitle">${end.subtitle}</p><p class="ending-copy">${end.desc}</p><div class="ending-stats"><div><small>本场评分</small><strong>${score}<small style="display:inline"> /100</small></strong></div><div><small>撑过回合</small><strong>${state.choicesMade}<small style="display:inline"> 回合</small></strong></div><div><small>整活次数</small><strong>${state.flags.chaos}</strong></div></div><div class="ending-sign"><span>${escape(state.name)} / ${role.name}</span><span>组会求生 · ${String(state.seed).slice(-6)}</span></div></article><section class="post-game"><p class="eyebrow">THE MEETING IS OVER. PROBABLY.</p><h2>散会之后，你留下了什么？</h2><p>第 ${state.meetingNumber} 场组会结束。你${state.flags.rigor>=4?'认真守住了自己的结论':state.flags.chaos>=4?'贡献了大量精神娱乐':state.flags.social>=3?'展示了成熟的人情世故':'试着把每个问题接住'}。<br>本场获得 ${10+state.choicesMade} 点经验。摸鱼币 +${state.coinsEarned||0}。下一场，老师还记得你。</p><div class="highlights"><div class="highlight"><small>全场名场面</small><p>${escape(comic?.answer||last?.answer||'你勇敢地走进了会议室。')}</p></div><div class="highlight"><small>散会时的你</small><p>心态 ${state.stats.mood} · 底气 ${state.stats.evidence} · 导师耐心 ${state.stats.patience}</p></div><div class="highlight"><small>导师的小本本</small><p>${state.flags.debt?`还记着 ${state.flags.debt} 笔“下周再说”。祝下周的你好运。`:'今天的坑，今天填。导师暂时没记下新的解释债。'}</p></div></div><div class="end-actions"><button id="continue-career" class="primary">去看看散会后的生活 <span>↗</span></button><button id="replay" class="secondary">换个人设</button><button id="download" class="secondary">保存结局卡</button><button id="copy" class="secondary">复制战绩</button></div><p class="muted">已参加 ${career.meetings} 场 · 生涯经验 ${career.experience} · ${careerRank()}。结局收藏 ${new Set(album.map(a=>a.id)).size}/${C.endings.length}。</p></section></div><div class="end-journal">${journal()}</div>`;
+    $('#continue-career').onclick=()=>{selectedRole=state.role;difficulty=state.difficulty;playerName=state.name;selectedProject=state.project;selectedPersona=state.personaMode||'random';renderBreak();};
+    $('#replay').onclick=()=>{selectedRole=state.role;selectedProject=state.project;playerName=state.name;play();landing();scrollTop();};
+    $('#download').onclick=exportCard;
+    $('#copy').onclick=async()=>{const text=`我在《组会求生》里解锁了「${end.title}」${end.icon}\n${end.subtitle}\n角色：${role.name} · 撑过 ${state.choicesMade} 回合 · 评分 ${score}/100\n名场面：${comic?.answer||last?.answer||'我走进了会议室'}\n你能活着散会吗？`;try{await navigator.clipboard.writeText(text);toast('战绩已复制，可以发给朋友。');}catch{const area=document.createElement('textarea');area.value=text;document.body.append(area);area.select();const ok=document.execCommand('copy');area.remove();toast(ok?'战绩已复制。':'此浏览器未允许复制，请保存结局卡。');}};
+    if(isNew)play('ending');scrollTop();
+  }
+  function wrapText(ctx,text,x,y,maxWidth,lineHeight,maxLines=100){let line='',lines=0;for(const ch of text){if(ctx.measureText(line+ch).width>maxWidth&&line){ctx.fillText(line,x,y);y+=lineHeight;line=ch;lines++;if(lines>=maxLines)return y;}else line+=ch;}if(line)ctx.fillText(line,x,y);return y+lineHeight;}
+  function exportCard(){const end=C.endings.find(e=>e.id===state.ending),role=C.roles.find(r=>r.id===state.role),canvas=document.createElement('canvas');canvas.width=1000;canvas.height=1280;const ctx=canvas.getContext('2d');ctx.fillStyle='#f5f2e9';ctx.fillRect(0,0,1000,1280);ctx.fillStyle='#183d35';ctx.fillRect(50,50,900,1180);ctx.fillStyle='#adc5b3';ctx.font='22px Microsoft YaHei, sans-serif';ctx.fillText('组会求生 / ROOM 404',100,125);ctx.strokeStyle='#ffffff30';ctx.beginPath();ctx.moveTo(100,160);ctx.lineTo(900,160);ctx.stroke();ctx.font='104px Segoe UI Emoji, sans-serif';ctx.fillText(end.icon,100,305);ctx.fillStyle='#f5f2e9';ctx.font='bold 66px Microsoft YaHei, sans-serif';let y=wrapText(ctx,end.title,100,405,800,85);ctx.fillStyle='#f1cc62';ctx.font='27px Microsoft YaHei, sans-serif';y=wrapText(ctx,end.subtitle,100,y+25,800,44);ctx.fillStyle='#d0ddce';ctx.font='29px Microsoft YaHei, sans-serif';y=wrapText(ctx,end.desc,100,y+43,800,54);ctx.strokeStyle='#ffffff30';ctx.beginPath();ctx.moveTo(100,920);ctx.lineTo(900,920);ctx.stroke();ctx.fillStyle='#adc5b3';ctx.font='24px Microsoft YaHei, sans-serif';ctx.fillText('本场评分',100,975);ctx.fillText('撑过回合',390,975);ctx.fillText('整活次数',680,975);ctx.fillStyle='#f5f2e9';ctx.font='bold 54px Consolas, sans-serif';ctx.fillText(`${E.score(state)}/100`,100,1045);ctx.fillText(`${state.choicesMade}`,390,1045);ctx.fillText(String(state.flags.chaos),680,1045);ctx.fillStyle='#adc5b3';ctx.font='24px Microsoft YaHei, sans-serif';ctx.fillText(`${state.name} / ${role.name}`,100,1140);ctx.fillText('你能活着散会吗？',100,1180);const imageUrl=canvas.toDataURL('image/png');$('#card-image').src=imageUrl;$('#card-modal').showModal();$('#save-card-image').onclick=()=>{const a=document.createElement('a');a.href=imageUrl;a.download=`组会求生_${end.title}.png`;a.click();toast('已发起下载；也可以直接保存预览图片。');};}
+  function showAlbum(){updateAlbumCount();$('#album-grid').innerHTML=C.endings.map(e=>{const known=album.find(a=>a.id===e.id);return `<article class="album-card ${known?'':'locked'}"><span class="album-icon">${known?e.icon:'🔒'}</span><div><strong>${known?e.title:'未解锁结局'}</strong><small>${known?`最佳评分 ${known.score}/100 · ${e.subtitle}`:e.hint}</small></div></article>`;}).join('');$('#album').showModal();}
+  $('#shop').onclick=showShop;
+  $('#close-shop').onclick=()=>$('#shop-modal').close();
+  $('#close-card').onclick=()=>$('#card-modal').close();
+  $('#collection').onclick=showAlbum;
+  $('#close-album').onclick=()=>$('#album').close();
+  $('#album').onclick=e=>{if(e.target===$('#album')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}};
+  $('#sound').textContent=`音效 ${soundOn?'开':'关'}`;$('#sound').setAttribute('aria-pressed',String(soundOn));
+  $('#sound').onclick=()=>{soundOn=!soundOn;write(SETTINGS,{sound:soundOn});$('#sound').textContent=`音效 ${soundOn?'开':'关'}`;$('#sound').setAttribute('aria-pressed',String(soundOn));play('item');};
+  $('#brand').onclick=e=>{e.preventDefault();if(state)save();landing();scrollTop();};
+  document.addEventListener('keydown',e=>{if(e.repeat||e.ctrlKey||e.altKey||e.metaKey||['INPUT','TEXTAREA','BUTTON','SUMMARY'].includes(document.activeElement?.tagName)||$('#album').open||$('#card-modal').open||$('#shop-modal').open)return;if(!state||state.ended)return;if(['1','2','3'].includes(e.key)&&!state.pending){app.querySelector(`[data-choice="${Number(e.key)-1}"]`)?.click();}else if(e.key==='Enter'&&state.pending){$('#next')?.click();}});
+  landing();
+})();
+
+</script>
+</body>
+</html>
