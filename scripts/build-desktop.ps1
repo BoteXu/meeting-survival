@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = 'Stop'
 $gameRoot = Split-Path -Parent $PSScriptRoot
 $packagePath = Join-Path $gameRoot '.publish\应用版'
 New-Item -ItemType Directory -Force -Path $packagePath | Out-Null
@@ -11,6 +11,6 @@ $iconPath = Join-Path $gameRoot 'icons\app.ico'
 if ($LASTEXITCODE -ne 0) { throw 'Desktop launcher compilation failed.' }
 Copy-Item -LiteralPath (Join-Path $gameRoot '组会求生_直接玩.html') -Destination $packagePath
 Copy-Item -LiteralPath (Join-Path $gameRoot 'docs\APPS.md') -Destination (Join-Path $packagePath '安装与存档说明.md')
-$zipPath = Join-Path $gameRoot '.publish\meeting-survival-windows-v0.12.0.zip'
+$zipPath = Join-Path $gameRoot '.publish\meeting-survival-windows-v0.13.0.zip'
 Compress-Archive -LiteralPath $exePath,(Join-Path $packagePath '组会求生_直接玩.html'),(Join-Path $packagePath '安装与存档说明.md') -DestinationPath $zipPath -Force
 Write-Output $zipPath
