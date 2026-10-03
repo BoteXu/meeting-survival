@@ -17,7 +17,7 @@ window.MEETING_CAMPUS=(() => {
   function setStyle(w,id){if(!enabled(w)||w.log.length||w.pending||!C.researchStyles.some(s=>s.id===id))return false;w.campus.research.style=id;return true;}
   function dispatch(w,location,rand){if(!enabled(w)||w.status!=='life'||w.pending||w.campus.plan||!C.locations.some(l=>l.id===location))return null;
     const g=w.campus,stories=C.campusEvents.filter(e=>e.location===location&&e.story&&g.stories[e.story.person].chapter===e.story.chapter&&g.bonds[e.story.person]>=e.story.trust&&g.stories[e.story.person].lastWeek!==w.number);
-    const normal=C.campusEvents.filter(e=>e.location===location&&!e.story),fresh=normal.filter(e=>!w.seen.includes(e.id));
+    const normal=[...C.campusEvents,...(w.config.uncertainty!==false?(window.MEETING_LIFE_SURPRISES?.locations||[]):[])].filter(e=>e.location===location&&!e.story),fresh=normal.filter(e=>!w.seen.includes(e.id));
     const pool=stories.length?stories:fresh.length?fresh:normal;
     const e=pool[Math.floor(rand(w)*pool.length)];g.plan={day:w.day,slot:w.slot,location,original:w.eventId};w.eventId=e.id;w.seen.push(e.id);return e;
   }
@@ -40,11 +40,11 @@ window.MEETING_CAMPUS=(() => {
   function afterChoice(w,e,c,record){if(!enabled(w))return;const g=w.campus,r=g.research,location=g.plan?.location,changes=previewWork(w,c);
     const actual={};for(const [k,v] of Object.entries(changes)){const before=r[k];r[k]=clamp(before+v);actual[k]=r[k]-before;}
     if(location){g.visits[location]=(g.visits[location]||0)+1;g.weekVisits[location]=(g.weekVisits[location]||0)+1;}
-    for(const k of ['boss','stats','senior'])g.bonds[k]=clamp(g.bonds[k]+(c.career?.[k]||0));
+    for(const k of ['boss','stats','senior'])g.bonds[k]=window.MEETING_UNCERTAINTY&&w.config.uncertainty!==false?window.MEETING_UNCERTAINTY.changeTrust(g.bonds[k],c.career?.[k]||0):clamp(g.bonds[k]+(c.career?.[k]||0));
     if(record.taskDone)g.weekTaskDone++;
     const card=c.card&&!record.unlucky?C.workCards.find(a=>a.id===c.card):null;let newCard=false;
     if(card&&!g.cards.includes(card.id)){g.cards.push(card.id);newCard=true;}
-    let story=null;if(e.story){const s=g.stories[e.story.person];s.chapter++;s.lastWeek=w.number;s.decisions.push(c.decision);story={person:e.story.person,chapter:s.chapter};if(s.chapter===3)badge(g,'story-'+e.story.person);}
+    let story=null;if(e.story&&(!e.surprise||c.continueOriginal)){const s=g.stories[e.story.person];s.chapter++;s.lastWeek=w.number;s.decisions.push(c.decision);story={person:e.story.person,chapter:s.chapter};if(s.chapter===3)badge(g,'story-'+e.story.person);}
     if(C.locations.every(l=>g.visits[l.id]>0))badge(g,'explorer');
     record.campus={location,work:actual,card:card?.id||null,newCard,story};g.latest=record.campus;
   }

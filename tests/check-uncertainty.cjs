@@ -1,0 +1,38 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const root=path.resolve(__dirname,'..'),scope={window:{}};vm.createContext(scope);
+for(const f of ['content.js','content-expand.js','content-disciplines.js','content-v03.js','content-week.js','campus-content.js','campus-engine.js','preparation.js','uncertainty.js','life-surprise-content.js','life-surprises.js','content-expansion-v06.js','engine.js','week-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),scope,{filename:f});
+const {MEETING_CONTENT:C,MEETING_ENGINE:E,MEETING_WEEK:W,MEETING_PREPARATION:P,MEETING_UNCERTAINTY:V}=scope.window,copy=x=>JSON.parse(JSON.stringify(x));
+const cfg=project=>({project,role:'newbie',difficulty:'normal',persona:'random',campus:true,preparation:true});
+function week(project,seed,prepared=true){const w=W.create(cfg(project),seed);w.config.uncertainty=false;w.surprise=null;for(let i=0;i<9;i++){i<5&&prepared?P.dispatch(w,P.kinds[i]):W.useLocation(w,'home');assert(W.choose(w,0));W.advance(w);}return w;}
+function enter(w,seed,career={}){return E.create({...w.config,uncertainty:true,seed,career,weekContext:W.meetingContext(w)});}
+const outcomes={careful:{scores:[],failures:0},first:{scores:[],failures:0},chaos:{scores:[],failures:0}},variants=new Set(),questions=new Set(),profiles=new Set(),orders=new Set();let meetings=0,crises=0,chains=0,replays=0,earlyFailures=0;
+function index(s,policy){const e=E.current(s),available=e.choices.map((c,i)=>({c,i})).filter(x=>cAvailable(x.c));if(policy==='first')return available[0].i;
+ if(policy==='chaos')return (available.find(x=>x.c.hardStop)||available.find(x=>x.c.flags.chaos)||available.at(-1)).i;
+ return available.sort((a,b)=>value(b.c)-value(a.c))[0].i;
+ function value(c){return (c.hardStop?-100:0)+(c.flags.chaos?-8:0)+(c.approach===s.live.round.observed?4:0)+(c.prepared?.available?2:0)+(c.flags.honest?1:0);}}
+const cAvailable=c=>c.prepared?.available!==false;
+function play(s,policy='careful',inspect=false){let count=0;while(!s.ended&&count++<180){assert(E.isValid(s));if(s.pending){assert(E.advance(s));continue;}const e=E.current(s),snapshot=JSON.stringify(s);E.current(s);for(let i=0;i<3;i++)E.previewChoice(s,i);assert.equal(JSON.stringify(s),snapshot,'查看选项不消耗随机数、不重抽反应');
+ if(s.choicesMade<10)assert.equal(E.requestEnd(s),null,'十次问答前不能正常申请散会');
+ if(e.prepKind){questions.add(s.project+':'+e.prepKind);for(let i=0;i<3;i++)if(!cAvailable(e.choices[i])){assert.equal(E.choose(s,i),null);assert.equal(JSON.stringify(s),snapshot);}}
+ if(e.flaw){variants.add(s.live.crisisId);crises++;for(let i=0;i<3;i++){const clone=copy(s),choice=E.current(clone).choices[i],preview=E.previewChoice(clone,i);assert(preview.available);for(const k of ['evidence','patience','mood'])assert(preview.effects[k]<0);const result=E.choose(clone,i);for(const k of ['evidence','patience','mood'])assert(result.deltas[k]<=0,'危机三种处理均有实际代价');if(choice.hardStop){assert.equal(clone.ending,'failure-'+clone.project);E.advance(clone);assert(clone.ended);}}}
+ if(e.id==='live-followup'){assert(s.live.crisisDone);chains++;}
+ const chosen=index(s,policy);if(inspect){const restored=E.upgrade(copy(s));assert.deepEqual(copy(E.current(restored)),copy(e));const first=E.choose(restored,chosen);const actual=E.choose(s,chosen);assert.deepEqual(copy(actual),copy(first));assert.equal(JSON.stringify(s),JSON.stringify(restored));replays++;}else assert(E.choose(s,chosen));
+ }assert(s.ended);if(s.ending&&C.endings.find(e=>e.id===s.ending).kind!=='failure'){assert(s.choicesMade>=10);assert(s.live.crisisDone&&s.live.followupDone);}
+ if(s.choicesMade<10)earlyFailures++;assert(s.choicesMade<80,'组会可以结束，不无限追问');return s;}
+for(const p of C.projects)for(let seed=1;seed<=24;seed++){const w=week(p.id,seed,true);for(const policy of Object.keys(outcomes)){const s=enter(w,seed*109+C.projects.indexOf(p)*53);profiles.add(JSON.stringify(s.live.profiles));orders.add(s.live.round.order.join(','));play(s,policy,seed===1&&policy==='careful');const o=outcomes[policy];o.scores.push(E.score(s));if(C.endings.find(e=>e.id===s.ending).kind==='failure')o.failures++;meetings++;}}
+assert.equal(variants.size,4);assert.equal(questions.size,144);assert(orders.size===6&&profiles.size>100);assert(crises>100&&chains>100);assert(earlyFailures>0,'普通组会存在提前翻车');
+// 满信任仍然不能拒绝核对；新场次继承关系但不继承100免疫。
+const trusted=E.create({seed:73,career:{relations:{boss:100,stats:100,senior:100}}});for(const v of Object.values(trusted.relations))assert(v<95);trusted.eventId='live-flaw-records';trusted.phase=5;V.prepareRound(trusted,()=>.5);const fatal=E.current(trusted).choices.findIndex(c=>c.hardStop);trusted.relations={boss:100,stats:100,senior:100};const doomed=E.choose(trusted,fatal);assert(doomed.live.hardStop);assert.equal(trusted.ending,'failure-classic');assert(trusted.relations.boss<=70);E.advance(trusted);assert(trusted.ended);
+// 按最温和的路线长期玩，关系有波动，不会同时永驻100。
+let career={relations:{boss:100,stats:100,senior:100}},relationshipDrops=0,maxTrust=0;for(let i=1;i<=60;i++){const s=play(E.create({seed:4100+i,career}));for(const id of ['boss','stats','senior']){if(s.relations[id]<career.relations[id])relationshipDrops++;maxTrust=Math.max(maxTrust,s.relations[id]);assert(s.relations[id]<100);}career={relations:copy(s.relations),meetings:i};}assert(relationshipDrops>20);
+// 漏洞在周末留下对应补查，未补完会进入下一周；补错类别不销项。
+const w=week('classic',117),s=play(enter(w,781));assert(s.live.flaw);assert(W.completeMeeting(w,s));const task=w.tasks.find(t=>t.liveFlaw);assert(task);const kind=task.prepKind;P.dispatch(w,kind==='literature'?'rehearsal':'literature');W.choose(w,0);W.advance(w);assert(!task.done);const remaining=copy(w);const next=W.create(w.config,819,remaining,2);const nextState=enter(next,941);assert.equal(nextState.weekContext.unresolvedFlaws.length,1);nextState.eventId='live-flaw-'+nextState.live.crisisId;nextState.phase=5;V.prepareRound(nextState,()=>.5);assert(E.current(nextState).title.includes('上周'));
+if(kind==='boundary'&&P.level(w.preparation,w.config.project,'record')<1){P.dispatch(w,'record');W.choose(w,0);W.advance(w);}P.dispatch(w,kind);assert(W.choose(w,0));W.advance(w);assert(task.done);
+// 进行中的老存档维持原来的选项、数值和随机数。
+const old=E.create({seed:28,uncertainty:false});E.choose(old,0);const migrated=E.upgrade(copy(old));assert(!migrated.live);assert.deepEqual(copy(migrated),copy(old));E.advance(migrated);assert(E.isValid(migrated));
+for(const o of Object.values(outcomes)){o.count=o.scores.length;o.average=Math.round(o.scores.reduce((a,b)=>a+b,0)/o.count*10)/10;o.min=Math.min(...o.scores);o.max=Math.max(...o.scores);o.failureRate=Math.round(o.failures/o.count*1000)/10;delete o.scores;}
+assert(outcomes.careful.max-outcomes.careful.min>=25,'充分准备与谨慎回答仍有明显分数波动');assert(outcomes.careful.average>outcomes.chaos.average,'有依据的谨慎处理仍总体更有帮助');
+assert.equal(C.disciplineFailureIds.length,36);
+// 每条学科的失败确实通过实际危机选择触发，并留下补查任务。
+for(const project of C.projects){const s=E.create({project:project.id,seed:917});s.eventId='live-flaw-records';s.phase=5;V.prepareRound(s,()=>.5);const fatal=E.current(s).choices.findIndex(c=>c.hardStop);E.choose(s,fatal);E.advance(s);assert.equal(s.ending,'failure-'+project.id);assert(s.ended);const w=W.create(cfg(project.id),108);w.status='meeting';s.weekContext=W.meetingContext(w);assert(W.completeMeeting(w,s));assert(w.tasks.some(t=>t.liveFlaw));}
+const result={passed:true,disciplineFailureEndings:36,meetings,disciplines:36,crises,chains,questionVariants:questions.size,profileVariants:profiles.size,choiceOrders:orders.size,replayedAnswers:replays,earlyFailures,relationshipDrops,maxTrust,outcomes};fs.writeFileSync(path.join(root,'.qa/uncertainty-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));

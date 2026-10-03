@@ -55,8 +55,8 @@ window.MEETING_PREPARATION=(() => {
   function init(w,previous){if(!enabled(w))return;const old=previous?.preparation;const carried=kinds.map(kind=>{const pool=old?.sources.filter(a=>a.route===w.config.project&&a.kind===kind)||[],best=Math.max(0,...pool.map(a=>a.level));return pool.filter(a=>a.level===best).at(-1);}).filter(Boolean);w.preparation={version:1,sources:carried.map(a=>({...a,level:['literature','method'].includes(a.kind)?a.level:Math.min(a.level,1)}))};}
   const level=(book,route,kind)=>Math.max(0,...(book?.sources||[]).filter(a=>a.route===route&&a.kind===kind).map(a=>a.level));
   const source=(book,route,kind,minimum=1)=>(book?.sources||[]).filter(a=>a.route===route&&a.kind===kind&&a.level>=minimum).at(-1)||null;
-  function gains(e,index,unlucky=false){const result={...(recipes[e.id+':'+index]||{})};if(unlucky)for(const k of Object.keys(result))result[k]=Math.min(result[k],1);return result;}
-  function lifePreview(w,e,index){const result=gains(e,index),needs=e.prepKind==='boundary'&&index===0?{record:1}:{};return {gains:result,needs,available:!Object.keys(needs).some(k=>level(w.preparation,w.config.project,k)<needs[k])};}
+  function gains(e,index,unlucky=false){const result={...(e.choices[index]?.preparationGains??recipes[e.id+':'+index]??{})};if(unlucky)for(const k of Object.keys(result))result[k]=Math.min(result[k],1);return result;}
+  function lifePreview(w,e,index){const result=gains(e,index),needs=e.prepKind==='boundary'&&result.boundary===2?{record:1}:{};return {gains:result,needs,available:!Object.keys(needs).some(k=>level(w.preparation,w.config.project,k)<needs[k])};}
   function afterLife(w,e,index,record){if(!enabled(w))return;const gained=gains(e,index,record.unlucky),sources=[];
     for(const [kind,strength] of Object.entries(gained)){const a={kind,level:strength,route:w.config.project,week:w.number,day:w.day,eventId:e.id,action:record.answer,title:e.title};w.preparation.sources.push(a);sources.push(a);}
     w.preparation.sources=w.preparation.sources.slice(-100);const repaired=[];
@@ -67,11 +67,12 @@ window.MEETING_PREPARATION=(() => {
     for(const record of w.log){const e=C.lifeEvents.find(e=>e.id===record.eventId)||C.campusEvents.find(e=>e.id===record.eventId);const index=e?.choices.findIndex(c=>c.text===record.answer);if(index>=0){const day=w.day;w.day=record.day;afterLife(w,e,index,record);w.day=day;}}
     if(w.pending&&w.log.at(-1)?.eventId===w.pending.eventId)w.pending.preparation=copy(w.log.at(-1).preparation);return w;
   }
-  function dispatch(w,kind){if(!enabled(w)||!w.campus||w.status!=='life'||w.pending||w.campus?.plan||!kinds.includes(kind))return null;const e=C.preparationEvents.find(e=>e.project===w.config.project&&e.prepKind===kind);w.campus.plan={day:w.day,slot:w.slot,location:e.location,original:w.eventId,preparation:kind};w.eventId=e.id;w.seen.push(e.id);return e;}
+  function lifeEvent(w,raw){if(!raw||!w.taskFocus||raw.prepKind!==w.taskFocus.kind)return raw;const e=copy(raw),t=w.taskFocus.topic;e.title=names[e.prepKind]+'补查 · '+t;e.scene=`这半天具体补查「${t}」。它来自生活或组会上尚未处理的疑点。核对来源、条件和仍不能解释的部分后，才能完成对应待办。`;e.choices[0].text=`打开来源与记录，正式核对「${t}」并写明边界。`;e.choices[1].text=`先查找「${t}」的材料线索，完整核对留到以后。`;return e;}
+  function dispatch(w,kind){if(!enabled(w)||!w.campus||w.status!=='life'||w.pending||w.campus?.plan||!kinds.includes(kind))return null;const e=C.preparationEvents.find(e=>e.project===w.config.project&&e.prepKind===kind),task=w.tasks.find(t=>!t.done&&t.liveFlaw&&t.route===w.config.project&&t.prepKind===kind);w.taskFocus=task?{kind,topic:task.topic||task.title}:null;w.campus.plan={day:w.day,slot:w.slot,location:e.location,original:w.eventId,preparation:kind};w.eventId=e.id;w.seen.push(e.id);return lifeEvent(w,e);}
   function context(w,ctx){if(enabled(w)){ctx.preparation=copy(w.preparation);ctx.preparation.taskReceipts=w.log.filter(r=>r.taskDone&&r.preparation?.sources.length).map(r=>({week:w.number,day:r.day,action:r.answer,eventId:r.eventId,task:r.taskDone,route:w.config.project}));}return ctx;}
   const active=s=>!!s.weekContext?.preparation;
   function meetingInit(s){if(active(s))s.preparation={version:1,answered:[],gaps:[],attempts:[]};}
-  function scheduledQuestion(s){if(!active(s)||s.wrapUp||s.choicesMade<1||s.choicesMade>4)return null;return C.preparationQuestions.find(e=>e.project===s.project&&e.prepKind===kinds[s.choicesMade-1]);}
+  function scheduledQuestion(s){if(!active(s)||s.wrapUp)return null;const index=s.live?s.live.prepSchedule.indexOf(s.choicesMade):s.choicesMade-1;if(index<0||index>3)return null;return C.preparationQuestions.find(e=>e.project===s.project&&e.prepKind===kinds[index]);}
   function requirement(e,c){if(e.prepKind)return c.flags?.rigor?{kind:e.prepKind,minimum:2}:null;if(!c.flags?.rigor&&!(['plot-version','plot-small'].includes(e.id)&&c===e.choices[0]))return null;if(e.answerKind)return {kind:e.answerKind,minimum:2};if(common[e.id])return {kind:common[e.id][0],minimum:common[e.id][1]};
     if(e.project&&e.phase>=1&&e.phase<=4)return {kind:kinds[e.phase-1],minimum:e.phase===1?1:2};return null;
   }
@@ -93,5 +94,5 @@ window.MEETING_PREPARATION=(() => {
   function afterMeeting(w,s){if(!enabled(w)||!s.preparation)return;w.meeting.preparation=copy(s.preparation);
     for(const gap of s.preparation.gaps)if(!w.tasks.some(t=>!t.done&&t.prepKind===gap.kind&&t.route===gap.route))w.tasks.push({title:`补查${names[gap.kind]}：${topic(gap.route,gap.kind)}`,done:false,from:w.number,prepKind:gap.kind,route:gap.route,question:gap.question});
   }
-  return {kinds,names,icons,topic,enabled,bookValid,init,level,source,gains,lifePreview,afterLife,upgrade,dispatch,context,active,meetingInit,scheduledQuestion,event,afterAnswer,afterMeeting};
+  return {kinds,names,icons,topic,enabled,bookValid,init,level,source,gains,lifePreview,afterLife,upgrade,dispatch,lifeEvent,context,active,meetingInit,scheduledQuestion,event,afterAnswer,afterMeeting};
 })();

@@ -1,6 +1,6 @@
 window.MEETING_PREPARATION_UI=(() => {
  const P=window.MEETING_PREPARATION,C=window.MEETING_CONTENT,$=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const status=n=>n>=2?'已核对，可完整回答':n===1?'只有线索，完整回答未解锁':'尚未准备';
+ const status=n=>n>=2?'已核对，可据此回答':n===1?'只有线索，完整回答未解锁':'尚未准备';
  const origin=a=>a?`第${a.week}周 · ${C.weekDays[a.day]}「${a.action}」`:'还没有相应的行动记录';
  function ledger(book,route){return `<div class="preparation-ledger">${P.kinds.map(kind=>{const n=P.level(book,route,kind),a=P.source(book,route,kind,n);return `<article class="${n>=2?'ready':n===1?'partial':'missing'}"><strong>${P.icons[kind]} ${P.names[kind]}</strong><span>${esc(P.topic(route,kind))}</span><b>${status(n)}</b><small>${esc(origin(a))}</small></article>`;}).join('')}</div>`;}
  function lifeHint(w,e,index){if(!P.enabled(w))return '';const p=P.lifePreview(w,e,index);return `<span class="preparation-life-hint">${Object.entries(p.gains).map(([kind,n])=>`${P.icons[kind]} ${P.names[kind]} → ${n===2?'已核对，解锁完整回答':'线索，尚不能完整回答'}`).join(' · ')||'这项行动不增加回答依据'}${!p.available?'<br>🔒 先获得结果与原始材料的线索，才能核对解释边界。':''}</span>`;}
