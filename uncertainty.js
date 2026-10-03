@@ -24,7 +24,7 @@ window.MEETING_UNCERTAINTY=(()=>{
     if(v.crisisDone&&!v.followupDone)return {id:'live-followup',phase:6};
     if(!v.crisisDone&&s.choicesMade>=v.crisisAt)return {id:'live-flaw-'+v.crisisId,phase:5};return null;
   }
-  function prepareRound(s,rand){if(!active(s))return;const v=s.live,raw=window.MEETING_WORLD?.question(s)||window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),id=['boss','stats','senior'].includes(raw?.who)?raw.who:'boss',p=v.profiles[id];
+  function prepareRound(s,rand){if(!active(s))return;const v=s.live,raw=window.MEETING_PUBLICATION?.question(s)||window.MEETING_ROUTE_STORIES?.question(s)||window.MEETING_WORLD?.question(s)||window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),id=['boss','stats','senior'].includes(raw?.who)?raw.who:'boss',p=v.profiles[id];
     const focus=rand(s)<(id==='boss'?1-(C.personas.find(p=>p.id===s.persona)?.volatility??.36):.64)?p.preference:modes[Math.floor(rand(s)*modes.length)];
     const observed=rand(s)<.76?focus:modes[Math.floor(rand(s)*modes.length)];
     v.round={eventId:s.eventId,examiner:id,focus,observed,pressure:p.severity+(s.choicesMade>=5?1:0),tone:Math.floor(rand(s)*5)-2,order:shuffle([0,1,2],rand,s)};
@@ -90,6 +90,6 @@ window.MEETING_UNCERTAINTY=(()=>{
   function choiceHint(s,c){if(!active(s))return '';if(c.hardStop)return '拒绝核对已暴露的矛盾，会直接结束本场。';const tradeoff={detail:'解释更细，会占用时间，也可能引出新问题。',brief:'先保住节奏，细节可能被继续追问。',cautious:'收窄当前承诺，也可能被认为进展不足。',cooperate:'借助同门复核，会牵动关系与后续分工。',direct:'当场给出立场，对方可能继续追着依据问。',deflect:'试着缓和或转移话题，对方未必接得住。'}[c.approach];return (s.eventId.startsWith('live-')?'这次没有无损回应。':'')+tradeoff+' 现场后果选后揭晓。';}
   function summary(s){if(!active(s))return '';return `现场观察：${clues[s.live.round.observed]} 性格与关注点会变化，这只是线索。${s.live.socialWeek?person(s,'boss').name+'这周'+s.live.socialWeek.events.boss.text:''}正常收尾需完成至少10次问答；状态归零会提前翻车。`;}
   function failureEnding(s,final=false){if(!active(s)||!s.live.crisisDone||!s.live.flaw)return null;return (s.stats.mood<=0||s.stats.patience<=0||s.stats.time<=0||(final&&s.stats.evidence<35))&&C.endings.some(e=>e.id==='failure-'+(s.live.flaw.route||s.project))?'failure-'+(s.live.flaw.route||s.project):null;}
-  function person(s,id){if(s?.live?.group)return window.MEETING_GROUP.person(s,id);return {...C.people[id],...(id==='senior'?s?.live?.socialWeek?.cast?.senior:{})};}
+  function person(s,id){if(s?.live?.group)return window.MEETING_GROUP.person(s,id);const faculty=window.MEETING_MENTORS?.find(s?.mentorId);if(faculty&&['boss','stats'].includes(id))return {...C.people[id],name:faculty.name+'老师',role:faculty.title};return {...C.people[id],...(id==='senior'?s?.live?.socialWeek?.cast?.senior:{})};}
   return {active,init,canWrap,schedule,prepareRound,rawEvent,decorate,preview,roll,rapport,changeTrust,afterMeeting,valid,score,choiceHint,summary,person,failureEnding};
 })();

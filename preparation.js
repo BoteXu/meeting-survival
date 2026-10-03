@@ -56,7 +56,7 @@ window.MEETING_PREPARATION=(() => {
   const level=(book,route,kind)=>Math.max(0,...(book?.sources||[]).filter(a=>a.route===route&&a.kind===kind).map(a=>a.level));
   const source=(book,route,kind,minimum=1)=>(book?.sources||[]).filter(a=>a.route===route&&a.kind===kind&&a.level>=minimum).at(-1)||null;
   function gains(e,index,unlucky=false){const result={...(e.choices[index]?.preparationGains??recipes[e.id+':'+index]??{})};if(unlucky)for(const k of Object.keys(result))result[k]=Math.min(result[k],1);return result;}
-  function lifePreview(w,e,index){const result=gains(e,index),needs=e.prepKind==='boundary'&&result.boundary===2?{record:1}:{};return {gains:result,needs,available:!Object.keys(needs).some(k=>level(w.preparation,e.choices[index].preparationRoute||e.project||window.MEETING_MIX?.route(w)||w.config.project,k)<needs[k])};}
+  function lifePreview(w,e,index){const result=gains(e,index),needs=e.prepKind==='boundary'&&result.boundary===2?{record:1}:{};return {gains:result,needs,available:e.choices[index]?.publicationAvailable!==false&&!Object.keys(needs).some(k=>level(w.preparation,e.choices[index].preparationRoute||e.project||window.MEETING_MIX?.route(w)||w.config.project,k)<needs[k])};}
   function afterLife(w,e,index,record){if(!enabled(w))return;const gained=gains(e,index,record.unlucky),sources=[],route=e.choices[index].preparationRoute||e.project||window.MEETING_MIX?.route(w)||w.config.project;
     for(const [kind,strength] of Object.entries(gained)){const a={kind,level:strength,route,week:w.number,day:w.day,eventId:e.id,action:record.answer,title:e.title};w.preparation.sources.push(a);sources.push(a);}
     w.preparation.sources=w.preparation.sources.slice(-100);const repaired=[];

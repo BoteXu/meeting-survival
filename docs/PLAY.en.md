@@ -18,4 +18,6 @@ Messages may be unreliable, and checking may produce no immediate reply. Reserve
 
 Seven modes change the campus rhythm. Shared-seed challenges start with an independent career. Share the run code and a report from the same week; friends can play in their own language and paste reports to compare choices. There are no live multiplayer rooms.
 
+Supervisor profiles show one to three research directions and different career levels. Choose one of their directions or keep your original topic. Supervisors can apply for promotion over several weeks; reviews may pass or be deferred. Discipline storylines take three real time slots, with final delivery in a later week. A project with three verified records and a limited conclusion can become a manuscript. Revisions need manuscript-specific work records; resubmission still awaits review. Each paper keeps its own version while new projects start fresh. Accepted work and your relationship may lead to a PhD invitation, which you can accept, defer or decline.
+
 English, Japanese and Korean story text is machine-translated; key terms and sample pages were reviewed. All translation data is bundled locally. No network connection or API key is needed to play.
