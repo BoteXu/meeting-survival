@@ -1,9 +1,9 @@
 /* All people, institutions, reviews and study milestones are fictional game content. */
 window.MEETING_ACADEMIC_CONTENT=(()=>{
-  const stages=[{id:'master',name:'硕士阶段',weeks:12,desc:'12个游戏周构成一个阶段，开题、中期和毕业逐步到来。'}, {id:'doctor',name:'博士阶段',weeks:24,desc:'24个游戏周，多轮研究与年度检查，成果和合作都需要安排。'}, {id:'free',name:'自由生涯',weeks:16,desc:'没有学位倒计时，年度展示和申请窗口仍会出现，可以一直继续。'}];
+  const stages=[{id:'master',name:'硕士阶段',weeks:156,desc:'约三学年的游戏时间线：开题、中期、年度报告、申请与毕业检查逐步到来。'}, {id:'doctor',name:'博士阶段',weeks:208,desc:'约四学年的游戏时间线，多轮研究与年度检查，成果和合作需要持续安排。'}, {id:'free',name:'自由生涯',weeks:52,desc:'没有学位倒计时，年度展示和申请窗口仍会出现，可以一直继续。'}];
   const scenarios=[
     {id:'regular',name:'普通入组',desc:'按所选阶段开始，人物、经费和事件继续随机。'},
-    {id:'poor-finish',name:'穷组冲毕业',desc:'低经费、较近的毕业目标，资源排期和缩小范围更重要。'},
+    {id:'poor-finish',name:'穷组冲毕业',desc:'从毕业前八周开始，低经费和较近的目标让排期与缩小范围更重要。'},
     {id:'mentor-away',name:'导师长期出差',desc:'主导师前六周在外，远程回复有延迟，同门协作更重要。'},
     {id:'tiny-lab',name:'两个人的小组',desc:'你和一位导师，没有现成同门帮忙；可以寻找组外合作。'},
     {id:'last-eight',name:'毕业前八周',desc:'从已有线索开始，八周内争取完成学位检查，成果仍需实际核对。'},

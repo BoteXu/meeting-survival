@@ -1,0 +1,17 @@
+/* Hierarchy stays readable in both the directory and phone layouts. */
+.taxonomy-families{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin:20px 0}
+.taxonomy-families button{display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-height:112px;border:1px solid #a8b3a4;background:#fbfaf3;color:#183d35;padding:14px;border-radius:12px;text-align:left}
+.taxonomy-families button>span{font-size:25px}.taxonomy-families strong{font-size:16px}.taxonomy-families small{color:#45574c;font-size:12px}
+.taxonomy-families button.active{background:#183d35;color:#fffdf3;border-color:#183d35}.taxonomy-families button.active small{color:#e1ecde}
+.taxonomy-path{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:14px 18px;background:#e8ecdf;border-radius:10px;color:#244738;margin-bottom:14px}
+.taxonomy-path button{color:#183d35;text-decoration:underline;font-weight:700;background:transparent;border:0;padding:4px}
+.taxonomy-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.taxonomy-fields button{padding:16px;background:#f7f6ed;border:1px solid #9aab99;border-radius:10px;text-align:left;color:#183d35;display:flex;flex-direction:column;gap:8px}
+.taxonomy-fields small{color:#45574c}.taxonomy-fields button.selected{background:#dce8d5;border:2px solid #345c44}
+.taxonomy-note,.taxonomy-route-choice p{line-height:1.7;color:#314b3b}.taxonomy-route-choice{padding:18px;background:#e8eedf;border-radius:12px;margin-top:18px}
+.localization-note{max-width:1200px;margin:14px auto;padding:12px 18px;background:#f2e7c5;color:#493719;border:1px solid #9b8754;border-radius:9px;font-size:14px;line-height:1.6}.localization-note[hidden]{display:none}
+.taxonomy-route-choice button{background:#fffdf6;color:#183d35;border-color:#899d86}
+.discipline-grid[hidden],.discipline[hidden],.direction-options[hidden],#discipline-search[hidden]{display:none!important}
+button:disabled{cursor:default;opacity:.6}.taxonomy-families button:focus-visible,.taxonomy-fields button:focus-visible,.taxonomy-path button:focus-visible{outline:3px solid #9b5b12;outline-offset:3px}
+@media(max-width:1000px){.taxonomy-families{grid-template-columns:repeat(4,minmax(0,1fr))}.taxonomy-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.taxonomy-families{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.taxonomy-families button{min-height:105px}.taxonomy-fields{grid-template-columns:1fr}.taxonomy-path{padding:12px;font-size:14px}.taxonomy-route-choice button{width:100%;white-space:normal}}

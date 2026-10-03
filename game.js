@@ -62,7 +62,7 @@
     app.querySelectorAll('[data-project]').forEach(b=>b.onclick=()=>{playerName=$('#player-name').value;selectedProject=b.dataset.project;play();landing();});
 
     $('#player-name').oninput=e=>{playerName=e.target.value;};
-    $('#player-name').onkeydown=e=>{if(e.key==='Enter')start();};
+    $('#player-name').onkeydown=e=>{if(e.key==='Enter')$('#start')?.click();};
     window.MEETING_MIX?.bind();$('#start').onclick=start;
     if($('#resume'))$('#resume').onclick=()=>{state=JSON.parse(JSON.stringify(saved));play();render();scrollTop();};
   }
@@ -121,11 +121,11 @@
   $('#sound').onclick=()=>{soundOn=!soundOn;write(SETTINGS,{sound:soundOn});$('#sound').textContent=`音效 ${soundOn?'开':'关'}`;$('#sound').setAttribute('aria-pressed',String(soundOn));play('item');};
   $('#brand').onclick=e=>{e.preventDefault();if(state)save();landing();scrollTop();};
   document.addEventListener('keydown',e=>{if(e.repeat||e.ctrlKey||e.altKey||e.metaKey||['INPUT','TEXTAREA','BUTTON','SELECT','SUMMARY'].includes(document.activeElement?.tagName)||$('#album').open||$('#card-modal').open||$('#shop-modal').open)return;if(!state||state.ended)return;if(['1','2','3'].includes(e.key)&&!state.pending){app.querySelector(`[data-choice="${Number(e.key)-1}"]`)?.click();}else if(e.key==='Enter'&&state.pending){$('#next')?.click();}});
-  window.MEETING_APP={getCareer:()=>career,clearSavedMeeting:()=>{saved=null;remove(SAVE);},getSaved:()=>saved,getState:()=>state,getMenuConfig:()=>({name:$('#player-name')?.value||playerName,project:selectedProject,role:selectedRole,difficulty,persona:selectedPersona,...(window.MEETING_ACADEMY_UI?.menuConfig()||{}),...(window.MEETING_MIX?.config(selectedProject)||{}),...(window.MEETING_DIRECTIONS?.menuConfig({project:selectedProject,...(window.MEETING_MIX?.config(selectedProject)||{})})||{})}),persistCareer:()=>{write(CAREER,career);updateAlbumCount();},clearView:()=>{state=null;},landing:()=>{landing();window.MEETING_WEEK_UI?.enhanceLanding();},toast,showShop,
+  window.MEETING_APP={getCareer:()=>career,clearSavedMeeting:()=>{saved=null;remove(SAVE);},getSaved:()=>saved,getState:()=>state,getMenuConfig:()=>({...window.MEETING_TIMELINE_UI?.menuConfig(),...window.MEETING_EXPERIENCE_UI?.menuConfig(),name:$('#player-name')?.value||playerName,project:selectedProject,role:selectedRole,difficulty,persona:selectedPersona,...(window.MEETING_ACADEMY_UI?.menuConfig()||{}),...(window.MEETING_MIX?.config(selectedProject)||{}),...(window.MEETING_DIRECTIONS?.menuConfig({project:selectedProject,...(window.MEETING_MIX?.config(selectedProject)||{})})||{}),...(window.MEETING_TAXONOMY?.menuConfig()||{})}),persistCareer:()=>{write(CAREER,career);updateAlbumCount();},clearView:()=>{state=null;},landing:()=>{landing();},toast,showShop,
     startWith:(config,weekContext=null)=>{selectedRole=config.role;difficulty=config.difficulty;playerName=config.name;selectedProject=config.project;selectedPersona=config.persona;const seed=new Uint32Array(1);crypto.getRandomValues(seed);const run=weekContext?.world?.challenge?weekContext.world.runCareer:career;state=E.create({...config,seed:weekContext?.world?window.MEETING_WORLD.derive(weekContext.world.root,weekContext.number,1):seed[0],career:run,weekContext});state.personaMode=config.persona;if(!weekContext?.world?.challenge){career.moodBoost=0;career.evidenceBoost=0;write(CAREER,career);}save();render();scrollTop();},
     restoreMeeting:id=>{if(saved?.weekContext?.weekId!==id||saved.ended)return false;state=JSON.parse(JSON.stringify(saved));render();return true;}
   };
-  const originalLanding=landing;landing=()=>{originalLanding();window.MEETING_WEEK_UI?.enhanceLanding();};
-  const originalRender=render;render=()=>{originalRender();if(state?.weekContext&&!state.ended){window.MEETING_WEEK_UI?.decorateMeeting(state);window.MEETING_PREPARATION_UI?.decorateMeeting(state);window.MEETING_ACADEMY_UI?.meeting(state);}};
+  const originalLanding=landing;landing=()=>{window.MEETING_DASHBOARD_UI?.clear();originalLanding();window.MEETING_WEEK_UI?.enhanceLanding();};
+  const originalRender=render;render=()=>{originalRender();window.MEETING_TIMELINE_UI?.meeting();if(state?.weekContext&&!state.ended){window.MEETING_WEEK_UI?.decorateMeeting(state);window.MEETING_PREPARATION_UI?.decorateMeeting(state);window.MEETING_ACADEMY_UI?.meeting(state);}};
   landing();
 })();
