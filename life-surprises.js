@@ -106,7 +106,7 @@ window.MEETING_LIFE_SURPRISES=(()=>{
       if(!w.tasks.some(t=>!t.done&&t.title===title))w.tasks.push({title,topic:incident.title,prepKind:kind,route:incident.project,done:false,from:w.number,liveFlaw:true});
       receipt.flavor='这个学科疑点还没有核对完，已经进入具体补查待办。如果带到周五，老师可能沿着它继续追问。';
     }
-    if(c.supportPath){const trust=w.campus?.bonds?.[c.supportPath]??w.config.relations?.[c.supportPath]??50,social=w.socialWeek?.events?.[c.supportPath]?.effects.support||0,probability=c.supportPath==='recover'?.55:Math.max(.15,Math.min(.9,.2+trust*.006+(buff?.support||0)+social)),success=rand(w)<probability;receipt.support={path:c.supportPath,trust,success};
+    if(c.supportPath){const trust=w.campus?.bonds?.[c.supportPath]??w.config.relations?.[c.supportPath]??50,social=w.socialWeek?.events?.[c.supportPath]?.effects.support||0,probability=c.supportPath==='recover'?.55:Math.max(.15,Math.min(.9,.2+trust*.006+(buff?.support||0)+social+(w.world?.mode==='lucky'?.08:0))),success=rand(w)<probability;receipt.support={path:c.supportPath,trust,success};
       if(success){add({notes:6,slides:9,stress:-8});receipt.flavor=c.supportPath==='recover'?'部分文件和材料恢复了。但这半天用在了恢复上，原定的完整准备还没有做。':c.supportPath==='senior'?'师兄腾出了设备，你重新整理了思路。得到帮助不等于已经核对完材料。':'老师愿意帮助协调，也要求你说清现有缺口和后续安排。';if(c.supportPath!=='recover')c.career[c.supportPath]=2;}
       else{add({notes:-6,slides:-10,stress:9});receipt.failed=true;c.preparationGains={};receipt.flavor=c.supportPath==='recover'?'这次没能恢复材料。你先记下损失和需要重建的部分，原安排也没有完成。':c.supportPath==='senior'?'师兄眼下没有可借的设备。你需要另找办法，原定准备暂时停下。':'老师眼下没有接住这次求助。信任会影响回应，但不会保证支持；你仍需要自己安排下一步。';if(c.supportPath!=='recover')c.career[c.supportPath]=-2;}
     }

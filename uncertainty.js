@@ -11,7 +11,7 @@ window.MEETING_UNCERTAINTY=(()=>{
     s.live={version:1,minAnswers:10,crisisAt:6+Math.floor(rand(s)*3),crisisId:['method','counterexample','records','promise'][Math.floor(rand(s)*4)],crisisDone:false,followupDone:false,flaw:null,badAnswers:0,goodAnswers:0,round:null,prepSchedule:schedule.slice(0,4),profiles:{}};
     const carried=s.weekContext?.unresolvedFlaws?.[0];if(carried)s.live.crisisId={method:'method',record:'records',boundary:'counterexample'}[carried.prepKind]||'promise';
     for(const id of ['boss','stats','senior']){
-      s.live.profiles[id]={preference:modes[Math.floor(rand(s)*modes.length)],severity:1+Math.floor(rand(s)*3),temper:Math.floor(rand(s)*5)-2};
+      const cast=id==='boss'?C.personas.find(p=>p.id===s.persona):null;s.live.profiles[id]={preference:cast?.focus||modes[Math.floor(rand(s)*modes.length)],severity:Math.min(5,1+Math.floor(rand(s)*3)+(cast?.severity||0)),temper:Math.floor(rand(s)*5)-2};
       // 熟悉仍有帮助，但旧的100信任不等于这周的免死金牌。
       s.relations[id]=clamp(Math.round(50+(s.relations[id]-50)*.72+rand(s)*8-4),0,95);
     }
@@ -24,8 +24,8 @@ window.MEETING_UNCERTAINTY=(()=>{
     if(v.crisisDone&&!v.followupDone)return {id:'live-followup',phase:6};
     if(!v.crisisDone&&s.choicesMade>=v.crisisAt)return {id:'live-flaw-'+v.crisisId,phase:5};return null;
   }
-  function prepareRound(s,rand){if(!active(s))return;const v=s.live,raw=window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),id=['boss','stats','senior'].includes(raw?.who)?raw.who:'boss',p=v.profiles[id];
-    const focus=rand(s)<.64?p.preference:modes[Math.floor(rand(s)*modes.length)];
+  function prepareRound(s,rand){if(!active(s))return;const v=s.live,raw=window.MEETING_WORLD?.question(s)||window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),id=['boss','stats','senior'].includes(raw?.who)?raw.who:'boss',p=v.profiles[id];
+    const focus=rand(s)<(id==='boss'?1-(C.personas.find(p=>p.id===s.persona)?.volatility??.36):.64)?p.preference:modes[Math.floor(rand(s)*modes.length)];
     const observed=rand(s)<.76?focus:modes[Math.floor(rand(s)*modes.length)];
     v.round={eventId:s.eventId,examiner:id,focus,observed,pressure:p.severity+(s.choicesMade>=5?1:0),tone:Math.floor(rand(s)*5)-2,order:shuffle([0,1,2],rand,s)};
   }

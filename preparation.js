@@ -60,7 +60,7 @@ window.MEETING_PREPARATION=(() => {
   function afterLife(w,e,index,record){if(!enabled(w))return;const gained=gains(e,index,record.unlucky),sources=[],route=e.choices[index].preparationRoute||e.project||window.MEETING_MIX?.route(w)||w.config.project;
     for(const [kind,strength] of Object.entries(gained)){const a={kind,level:strength,route,week:w.number,day:w.day,eventId:e.id,action:record.answer,title:e.title};w.preparation.sources.push(a);sources.push(a);}
     w.preparation.sources=w.preparation.sources.slice(-100);const repaired=[];
-    for(const task of w.tasks.filter(t=>!t.done&&t.prepKind&&t.route===route&&!e.id.startsWith('side-story-'))){if((gained[task.prepKind]||0)>=2){task.done=true;repaired.push(task.title);}}
+    for(const task of w.tasks.filter(t=>!t.done&&t.prepKind&&t.route===route&&!e.id.startsWith('side-story-')&&!e.id.startsWith('world-'))){if((gained[task.prepKind]||0)>=2){task.done=true;repaired.push(task.title);}}
     record.preparation={sources:copy(sources),repaired};if(repaired.length){if(!record.taskDone&&w.campus)w.campus.weekTaskDone++;record.taskDone=[record.taskDone,...repaired].filter(Boolean).join('；');}
   }
   function upgrade(w){if(!w||!w.config.campus||w.status==='meeting'||w.meeting||w.day>=5||enabled(w))return w;w.config.preparation=true;init(w,null);

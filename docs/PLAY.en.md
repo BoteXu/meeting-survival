@@ -12,4 +12,10 @@ For interdisciplinary play, choose two disciplines. Alongside questions from eac
 
 Normal meetings require at least ten responses before wrap-up. You may fail earlier if morale, patience or time runs out. Life continues after failure. Saves stay in this browser; switching language preserves progress.
 
+Each discipline has nine playable research directions, for 432 in total. Neighboring directions share a method, subject or context; search the listed targets and inspect the connection. Confirming a pivot uses a time slot and starts a new project version. Older work provides clues; full answers require fresh verification.
+
+Messages may be unreliable, and checking may produce no immediate reply. Reserved opportunities still need actual attendance. Characters have their own plans, your choices change later invitations, and meeting follow-ups can lead to more requests.
+
+Seven modes change the campus rhythm. Shared-seed challenges start with an independent career. Share the run code and a report from the same week; friends can play in their own language and paste reports to compare choices. There are no live multiplayer rooms.
+
 English, Japanese and Korean story text is machine-translated; key terms and sample pages were reviewed. All translation data is bundled locally. No network connection or API key is needed to play.

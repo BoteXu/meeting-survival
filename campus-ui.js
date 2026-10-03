@@ -24,7 +24,7 @@ window.MEETING_CAMPUS_UI=(() => {
     }
     if(w.status==='report'){
       const report=g.report;const upgrades=insert(`<div class="campus-report"><h3>${report?.success?'🎯 本周挑战完成':'📒 挑战留待下一次'} · ${quest.name}</h3><p>${quest.desc}</p><p>本周获得1点成长。可用成长点：<strong>${g.points}</strong>。解锁的能力会继续带到以后每周。</p>${report?.success&&!report.claimed?'<button id="claim-challenge" class="secondary">领取挑战奖励 · +2摸鱼币</button>':''}${r.stage===3?'<button id="new-research" class="primary">这份作品完成了 · 开启下一个小课题</button>':''}<div class="talent-grid">${C.talents.map(t=>`<button data-talent="${t.id}" ${g.points<1||g.talents.includes(t.id)?'disabled':''} class="${g.talents.includes(t.id)?'selected':''}"><strong>${t.icon} ${t.name} ${g.talents.includes(t.id)?'✓':''}</strong><small>${t.desc}</small><em>${g.talents.includes(t.id)?'已解锁':'1点成长'}</em></button>`).join('')}</div></div>`,$('.week-board'));
-      if($('#claim-challenge'))$('#claim-challenge').onclick=()=>{const earned=G.claimReport(w);save();A.getCareer().coins+=earned;A.persistCareer();render();};
+      if($('#claim-challenge'))$('#claim-challenge').onclick=()=>{const earned=G.claimReport(w);save();if(w.world?.challenge){w.world.runCareer.coins+=earned;save();}else{A.getCareer().coins+=earned;A.persistCareer();}render();};
       if($('#new-research'))$('#new-research').onclick=()=>{if(G.restartResearch(w))update();};upgrades.querySelectorAll('[data-talent]').forEach(b=>b.onclick=()=>{if(G.buyTalent(w,b.dataset.talent))update();});
     }
   }

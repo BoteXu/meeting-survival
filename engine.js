@@ -15,7 +15,7 @@ window.MEETING_ENGINE = (() => {
     if(s.wrapUp===2){s.phase=9;s.eventId=s.flags.debt>=2?'final-debt':s.stats.evidence>=82?'final-reverse':'final-normal';finish();return;}
     const crisis=V?.schedule(s);if(crisis){s.phase=crisis.phase;s.eventId=crisis.id;s.seen.push(crisis.id);finish();return;}
     const prepared=window.MEETING_PREPARATION?.scheduledQuestion(s);if(prepared){s.phase=prepared.phase;s.eventId=prepared.id;s.seen.push(prepared.id);finish();return;}
-    const mixed=window.MEETING_MIX?.scheduledJoint(s)||window.MEETING_ASSIGNMENTS?.scheduled(s)||window.MEETING_SIDE_STORIES?.scheduled(s);if(mixed){s.phase=mixed.phase;s.eventId=mixed.id;s.seen.push(mixed.id);finish();return;}
+    const mixed=window.MEETING_MIX?.scheduledJoint(s)||window.MEETING_ASSIGNMENTS?.scheduled(s)||window.MEETING_SIDE_STORIES?.scheduled(s)||window.MEETING_WORLD?.scheduled(s);if(mixed){s.phase=mixed.phase;s.eventId=mixed.id;s.seen.push(mixed.id);finish();return;}
     const persona=C.personas.find(p=>p.id===s.persona);
     if((s.wrapUp===1||s.progress>=100)&&(V?.canWrap(s)??true)){s.phase=8;s.wrapUp=1;}
     else if(s.choicesMade===0)s.phase=0;
@@ -35,14 +35,14 @@ window.MEETING_ENGINE = (() => {
     const r=C.roles.find(r=>r.id===role)||C.roles[0],d=difficulties[difficulty]||difficulties.normal,p=C.projects.find(p=>p.id===project)||C.projects[0];
     const growth=Math.min(12,Math.floor((career.experience||0)/60)*3),debt=Math.min(3,Math.max(0,Math.floor(career.debt||0)));
     const s={version:3,role:r.id,difficulty:difficulties[difficulty]?difficulty:'normal',name:String(name).trim().slice(0,12)||'小同学',seed:seed>>>0,rng:seed>>>0,project:p.id,persona:'warm',phase:0,eventId:'',progress:0,wrapUp:0,interrupted:false,seen:[],recentEvents:Array.isArray(career.recentEvents)?career.recentEvents.slice(-35):[],lastRequestRound:-1,meetingNumber:(career.meetings||0)+1,experienceAtStart:career.experience||0,careerApplied:false,stats:{...r.stats,time:d.time},flags:{...blankFlags(),debt,cat:Math.min(1,career.cat||0),robot:Math.min(1,career.robot||0),wander:Math.min(1,career.wander||0)},used:{skill:false,coffee:false,charm:false},bag:{...blankBag(),...career.bag},relations:{boss:50,stats:50,senior:50,...career.relations},log:[],pending:null,ended:false,ending:null,choicesMade:0};
-    s.persona=C.personas.some(p=>p.id===persona)?persona:C.personas[Math.floor(random(s)*C.personas.length)].id;
+    if(persona==='random'&&weekContext?.group?.members[0]?.mentorStyle)persona=weekContext.group.members[0].mentorStyle;s.persona=C.personas.some(p=>p.id===persona)?persona:C.personas[Math.floor(random(s)*C.personas.length)].id;
     apply(s,{evidence:growth,mood:Math.floor(growth/2)+(career.moodBoost||0),patience:Math.round(((career.reputation??50)-50)/10)-debt*2});
     apply(s,{evidence:career.evidenceBoost||0});apply(s,p.effects);apply(s,C.personas.find(p=>p.id===s.persona).initial);
     s.weekContext=weekContext?JSON.parse(JSON.stringify(weekContext)):null;
     if(s.weekContext){apply(s,s.weekContext.deltas);s.flags.debt=Math.min(6,s.flags.debt+s.weekContext.debt);}
-    window.MEETING_MIX?.meetingInit(s,{project:s.project,mixProjects},random);window.MEETING_PREPARATION?.meetingInit(s);if(uncertainty)window.MEETING_UNCERTAINTY?.init(s,random,career);if(s.difficulty==='surprise')apply(s,{patience:-8});selectEvent(s);return s;
+    window.MEETING_MIX?.meetingInit(s,{project:s.project,mixProjects},random);window.MEETING_PREPARATION?.meetingInit(s);if(uncertainty)window.MEETING_UNCERTAINTY?.init(s,random,career);window.MEETING_WORLD?.meetingInit(s);if(s.difficulty==='surprise')apply(s,{patience:-8});selectEvent(s);return s;
   }
-  function current(s){const raw=window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||window.MEETING_UNCERTAINTY?.rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),prepared=window.MEETING_PREPARATION?.event(s,raw)||raw;return window.MEETING_UNCERTAINTY?.decorate(s,prepared)||prepared;}
+  function current(s){const raw=window.MEETING_WORLD?.question(s)||window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||window.MEETING_UNCERTAINTY?.rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),prepared=window.MEETING_PREPARATION?.event(s,raw)||raw;return window.MEETING_UNCERTAINTY?.decorate(s,prepared)||prepared;}
   function previewChoice(s,choice){const c=typeof choice==='number'?current(s)?.choices[choice]:choice;if(!c)return null;
     const effects={...c.effects},tax=difficulties[s.difficulty].tax;
     if(tax){effects.patience=(effects.patience||0)-tax;effects.mood=(effects.mood||0)-tax;}
@@ -89,7 +89,7 @@ window.MEETING_ENGINE = (() => {
     if((t.rest||0)>=3&&st.mood>=35)return 'rest-is-progress';
     return null;
   }
-  function decideEnding(s){const st=s.stats,f=s.flags;const liveFailure=window.MEETING_UNCERTAINTY?.failureEnding(s,s.wrapUp===2);if(liveFailure)return liveFailure;const opportunity=window.MEETING_ASSIGNMENTS?.ending(s)||window.MEETING_MIX?.ending(s)||window.MEETING_SIDE_STORIES?.ending(s);if(opportunity)return opportunity;const expanded=window.MEETING_EXPANSION?.decideEnding(s);if(expanded)return expanded;
+  function decideEnding(s){const st=s.stats,f=s.flags;const liveFailure=window.MEETING_UNCERTAINTY?.failureEnding(s,s.wrapUp===2);if(liveFailure)return liveFailure;const opportunity=window.MEETING_WORLD?.ending(s)||window.MEETING_CAST?.ending(s)||window.MEETING_ASSIGNMENTS?.ending(s)||window.MEETING_MIX?.ending(s)||window.MEETING_SIDE_STORIES?.ending(s);if(opportunity)return opportunity;const expanded=window.MEETING_EXPANSION?.decideEnding(s);if(expanded)return expanded;
     const campus=window.MEETING_CAMPUS?.decideEnding(s,s.wrapUp===2);if(campus)return campus;
     const weekly=weeklyEnding(s,s.wrapUp===2);if(weekly)return weekly;
     if(st.mood<=0)return 'mood';if(st.patience<=0)return 'patience';if(st.time<=0)return st.evidence>=55&&st.patience>=30?'escape':'overtime';if(s.wrapUp!==2)return null;
@@ -111,7 +111,7 @@ window.MEETING_ENGINE = (() => {
     const deltas=apply(s,effects),relations=rapport(s,c,reaction);addFlags(s,c.flags);
     if(e.phase===8)s.wrapUp=2;
     if(e.phase!==8&&e.phase!==9)s.progress=clamp(s.progress+(c.flags.chaos?4:c.flags.social?7:9)+Math.floor(random(s)*5));
-    s.choicesMade++;const record={phase:s.phase,eventId:e.id,title:e.title,answer:c.text,result:reaction?(reaction.hardStop?'核对被拒绝，组会当场结束。':e.flaw?'漏洞被点名，下一轮继续追问。':reaction.negative?'这次回应没有接住追问。':reaction.positive?'这次回应接住了现场。':'对方暂时继续听。'):c.result,flavor:reaction?reaction.text+(riskUnlucky?' '+c.risk.flavor:''):riskUnlucky?c.risk.flavor:c.flavor,deltas,relations,unlucky,type:'choice'};if(reaction)record.live=reaction;window.MEETING_PREPARATION?.afterAnswer(s,e,c,c.sourceIndex??index,record);window.MEETING_ASSIGNMENTS?.afterAnswer(s,e,record);window.MEETING_SIDE_STORIES?.afterAnswer(s,e,record);window.MEETING_MIX?.afterAnswer(s,e,c,record);s.log.push(record);s.pending=record;s.ending=terminal(s)||(e.phase===9?decideEnding(s):null);if(reaction?.hardStop)s.ending=window.MEETING_UNCERTAINTY?.failureEnding(s)||'patience';return record;
+    s.choicesMade++;const record={phase:s.phase,eventId:e.id,title:e.title,answer:c.text,result:reaction?(reaction.hardStop?'核对被拒绝，组会当场结束。':e.flaw?'漏洞被点名，下一轮继续追问。':reaction.negative?'这次回应没有接住追问。':reaction.positive?'这次回应接住了现场。':'对方暂时继续听。'):c.result,flavor:reaction?reaction.text+(riskUnlucky?' '+c.risk.flavor:''):riskUnlucky?c.risk.flavor:c.flavor,deltas,relations,unlucky,type:'choice'};if(reaction)record.live=reaction;window.MEETING_PREPARATION?.afterAnswer(s,e,c,c.sourceIndex??index,record);window.MEETING_ASSIGNMENTS?.afterAnswer(s,e,record);window.MEETING_SIDE_STORIES?.afterAnswer(s,e,record);window.MEETING_WORLD?.afterAnswer(s,e,c,record);window.MEETING_MIX?.afterAnswer(s,e,c,record);s.log.push(record);s.pending=record;s.ending=terminal(s)||(e.phase===9?decideEnding(s):null);if(reaction?.hardStop)s.ending=window.MEETING_UNCERTAINTY?.failureEnding(s)||'patience';return record;
   }
   function advance(s){if(s.ended||!s.pending)return false;if(s.ending){s.ended=true;s.pending=null;return true;}s.pending=null;selectEvent(s);return true;}
   function useItem(s,id){if(s.ended||s.pending)return null;
