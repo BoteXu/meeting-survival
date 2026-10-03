@@ -1,0 +1,497 @@
+[
+  {
+    "mode": "active",
+    "state": {
+      "version": 3,
+      "role": "newbie",
+      "difficulty": "normal",
+      "name": "小同学",
+      "seed": 32,
+      "rng": 1831565845,
+      "project": "clinical",
+      "persona": "detail",
+      "phase": 0,
+      "eventId": "start-name",
+      "progress": 0,
+      "wrapUp": 0,
+      "interrupted": false,
+      "seen": [
+        "start-name"
+      ],
+      "recentEvents": [],
+      "lastRequestRound": -1,
+      "meetingNumber": 1,
+      "experienceAtStart": 0,
+      "careerApplied": false,
+      "stats": {
+        "mood": 87,
+        "evidence": 53,
+        "patience": 65,
+        "time": 39
+      },
+      "flags": {
+        "chaos": 0,
+        "rigor": 0,
+        "honest": 0,
+        "social": 0,
+        "help": 0,
+        "debt": 0,
+        "cat": 0,
+        "robot": 0,
+        "recursive": 0,
+        "wander": 0,
+        "shift": 0,
+        "quantum": 0,
+        "material": 0,
+        "market": 0,
+        "footnote": 0,
+        "client": 0
+      },
+      "used": {
+        "skill": false,
+        "coffee": false,
+        "charm": false
+      },
+      "bag": {
+        "backup": 0,
+        "snack": 0,
+        "laser": 0,
+        "memo": 0,
+        "catnip": 0
+      },
+      "relations": {
+        "boss": 50,
+        "stats": 50,
+        "senior": 50
+      },
+      "log": [],
+      "pending": null,
+      "ended": false,
+      "ending": null,
+      "choicesMade": 0
+    }
+  },
+  {
+    "mode": "pending",
+    "state": {
+      "version": 3,
+      "role": "newbie",
+      "difficulty": "normal",
+      "name": "小同学",
+      "seed": 32,
+      "rng": 3663131658,
+      "project": "clinical",
+      "persona": "detail",
+      "phase": 0,
+      "eventId": "start-name",
+      "progress": 10,
+      "wrapUp": 0,
+      "interrupted": false,
+      "seen": [
+        "start-name"
+      ],
+      "recentEvents": [],
+      "lastRequestRound": -1,
+      "meetingNumber": 1,
+      "experienceAtStart": 0,
+      "careerApplied": false,
+      "stats": {
+        "mood": 91,
+        "evidence": 51,
+        "patience": 75,
+        "time": 37
+      },
+      "flags": {
+        "chaos": 0,
+        "rigor": 0,
+        "honest": 0,
+        "social": 1,
+        "help": 0,
+        "debt": 0,
+        "cat": 0,
+        "robot": 0,
+        "recursive": 0,
+        "wander": 0,
+        "shift": 0,
+        "quantum": 0,
+        "material": 0,
+        "market": 0,
+        "footnote": 0,
+        "client": 0
+      },
+      "used": {
+        "skill": false,
+        "coffee": false,
+        "charm": false
+      },
+      "bag": {
+        "backup": 0,
+        "snack": 0,
+        "laser": 0,
+        "memo": 0,
+        "catnip": 0
+      },
+      "relations": {
+        "boss": 53,
+        "stats": 50,
+        "senior": 51
+      },
+      "log": [
+        {
+          "phase": 0,
+          "eventId": "start-name",
+          "title": "“今天谁汇报来着？”",
+          "answer": "“老师，我是给您订过咖啡的那个。”",
+          "result": "咖啡因人脉。",
+          "flavor": "他记起来了。你的名字暂时被替换成“拿铁”。",
+          "deltas": {
+            "mood": 4,
+            "patience": 10,
+            "evidence": -2,
+            "time": -2
+          },
+          "relations": {
+            "boss": 3,
+            "stats": 0,
+            "senior": 1
+          },
+          "unlucky": false,
+          "type": "choice"
+        }
+      ],
+      "pending": {
+        "phase": 0,
+        "eventId": "start-name",
+        "title": "“今天谁汇报来着？”",
+        "answer": "“老师，我是给您订过咖啡的那个。”",
+        "result": "咖啡因人脉。",
+        "flavor": "他记起来了。你的名字暂时被替换成“拿铁”。",
+        "deltas": {
+          "mood": 4,
+          "patience": 10,
+          "evidence": -2,
+          "time": -2
+        },
+        "relations": {
+          "boss": 3,
+          "stats": 0,
+          "senior": 1
+        },
+        "unlucky": false,
+        "type": "choice"
+      },
+      "ended": false,
+      "ending": null,
+      "choicesMade": 1
+    }
+  },
+  {
+    "mode": "ended",
+    "state": {
+      "version": 3,
+      "role": "newbie",
+      "difficulty": "normal",
+      "name": "小同学",
+      "seed": 32,
+      "rng": 2207636727,
+      "project": "clinical",
+      "persona": "detail",
+      "phase": 9,
+      "eventId": "final-reverse",
+      "progress": 100,
+      "wrapUp": 2,
+      "interrupted": true,
+      "seen": [
+        "start-name",
+        "clinical-chapter-0",
+        "shared-shortcut",
+        "clinical-chapter-4",
+        "plot-small",
+        "shared-pizza",
+        "surprise-water",
+        "question-impact",
+        "clinical-chapter-5",
+        "summary-credits"
+      ],
+      "recentEvents": [],
+      "lastRequestRound": -1,
+      "meetingNumber": 1,
+      "experienceAtStart": 0,
+      "careerApplied": false,
+      "stats": {
+        "mood": 67,
+        "evidence": 100,
+        "patience": 100,
+        "time": 9
+      },
+      "flags": {
+        "chaos": 0,
+        "rigor": 7,
+        "honest": 0,
+        "social": 0,
+        "help": 0,
+        "debt": 0,
+        "cat": 0,
+        "robot": 0,
+        "recursive": 0,
+        "wander": 0,
+        "shift": 0,
+        "quantum": 0,
+        "material": 0,
+        "market": 0,
+        "footnote": 0,
+        "client": 0
+      },
+      "used": {
+        "skill": false,
+        "coffee": false,
+        "charm": false
+      },
+      "bag": {
+        "backup": 0,
+        "snack": 0,
+        "laser": 0,
+        "memo": 0,
+        "catnip": 0
+      },
+      "relations": {
+        "boss": 57,
+        "stats": 71,
+        "senior": 50
+      },
+      "log": [
+        {
+          "phase": 0,
+          "eventId": "start-name",
+          "title": "“今天谁汇报来着？”",
+          "answer": "报上姓名，把研究问题讲清楚。",
+          "result": "身份认证通过。",
+          "flavor": "导师终于把名字写对了，后面还加了一个问号。",
+          "deltas": {
+            "evidence": 6,
+            "patience": 3,
+            "time": -2
+          },
+          "relations": {
+            "boss": 0,
+            "stats": 0,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        },
+        {
+          "phase": 1,
+          "eventId": "clinical-chapter-0",
+          "title": "你的背景页里，混进了一张排班表。",
+          "answer": "切回题目，说清今天真正要讨论的问题。",
+          "result": "排班退居幕后。",
+          "flavor": "老师暂时没有追问你昨晚睡了多久。",
+          "deltas": {
+            "evidence": 12,
+            "patience": 7,
+            "mood": -3,
+            "time": -3
+          },
+          "relations": {
+            "boss": 1,
+            "stats": 3,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        },
+        {
+          "phase": 2,
+          "eventId": "shared-shortcut",
+          "title": "老师问，你有没有考虑过更简单的办法。",
+          "answer": "比较复杂与简单方案，说明具体差别。",
+          "result": "方法通过了行李检查。",
+          "flavor": "老师让你把简单方案放在前面。",
+          "deltas": {
+            "evidence": 12,
+            "patience": 7,
+            "mood": -4,
+            "time": -3
+          },
+          "relations": {
+            "boss": 1,
+            "stats": 3,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        },
+        {
+          "phase": 6,
+          "eventId": "clinical-chapter-4",
+          "title": "“这个什么时候能用到临床？”",
+          "answer": "讲清当前只回答了什么，哪些步骤还没完成。",
+          "result": "结论留在证据能站住的位置。",
+          "flavor": "大佬开始问一个更具体的研究问题。",
+          "deltas": {
+            "evidence": 12,
+            "patience": 7,
+            "mood": -3,
+            "time": -3
+          },
+          "relations": {
+            "boss": 1,
+            "stats": 3,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        },
+        {
+          "phase": 3,
+          "eventId": "plot-small",
+          "title": "图做得很精致，就是看不见。",
+          "answer": "放大关键区域，逐个解释坐标和趋势。",
+          "result": "坐标轴重获新生。",
+          "flavor": "投影仪终于与你的图建立了合作关系。",
+          "deltas": {
+            "evidence": 5,
+            "patience": 4,
+            "mood": -3,
+            "time": -3
+          },
+          "relations": {
+            "boss": 0,
+            "stats": 0,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        },
+        {
+          "phase": 4,
+          "eventId": "shared-pizza",
+          "title": "师兄把饼图看成了披萨。",
+          "answer": "换一张更方便比较的图。",
+          "result": "八块结果不用靠角度辨认了。",
+          "flavor": "师兄终于停止讨论口味。",
+          "deltas": {
+            "evidence": 0,
+            "patience": 7,
+            "time": -2
+          },
+          "relations": {
+            "boss": 1,
+            "stats": 3,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        },
+        {
+          "phase": 5,
+          "eventId": "surprise-water",
+          "title": "导师的杯子空了。",
+          "answer": "趁空档重整思路，等他回来讲重点。",
+          "result": "三分钟战略喘息。",
+          "flavor": "你终于把那个总是念错的词练顺了。",
+          "deltas": {
+            "mood": 5,
+            "evidence": 0,
+            "time": -3
+          },
+          "relations": {
+            "boss": 0,
+            "stats": 0,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        },
+        {
+          "phase": 6,
+          "eventId": "question-impact",
+          "title": "“做出来，有什么意义？”",
+          "answer": "讲一个明确能回答的问题，不放大用途。",
+          "result": "一个小问题，也可以是真的。",
+          "flavor": "大佬说“这个角度可以”。你决定把这句话刻进脑海。",
+          "deltas": {
+            "evidence": 0,
+            "patience": 0,
+            "mood": -4,
+            "time": -3
+          },
+          "relations": {
+            "boss": 1,
+            "stats": 3,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        },
+        {
+          "phase": 7,
+          "eventId": "clinical-chapter-5",
+          "title": "值班提醒，在讨论最热闹时响了。",
+          "answer": "简明总结，并约定如何补上未讲清的部分。",
+          "result": "工作有了一次清楚的交接。",
+          "flavor": "导师让你把关键记录发到群里。",
+          "deltas": {
+            "evidence": 0,
+            "patience": 0,
+            "mood": -3,
+            "time": -3
+          },
+          "relations": {
+            "boss": 1,
+            "stats": 3,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        },
+        {
+          "phase": 8,
+          "eventId": "summary-credits",
+          "title": "致谢页，意外成为全场最佳。",
+          "answer": "把各人的实际帮助和自己的工作说清楚。",
+          "result": "每位队友都有工位。",
+          "flavor": "修电脑的师傅获得了合理的技术支持定位。",
+          "deltas": {
+            "evidence": 0,
+            "patience": 0,
+            "time": -2
+          },
+          "relations": {
+            "boss": 0,
+            "stats": 0,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        },
+        {
+          "phase": 9,
+          "eventId": "final-reverse",
+          "title": "导师把激光笔交给了你。",
+          "answer": "指出最薄弱的一环，并提出能检验它的下一步。",
+          "result": "你暂时成为了导师。",
+          "flavor": "周老师说“这个思路对了”。你确认了两遍。",
+          "deltas": {
+            "evidence": 0,
+            "patience": 0,
+            "mood": -5,
+            "time": -3
+          },
+          "relations": {
+            "boss": 1,
+            "stats": 3,
+            "senior": 0
+          },
+          "unlucky": false,
+          "type": "choice"
+        }
+      ],
+      "pending": null,
+      "ended": true,
+      "ending": "legend",
+      "choicesMade": 11
+    }
+  }
+]

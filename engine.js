@@ -2,7 +2,7 @@ window.MEETING_ENGINE = (() => {
   'use strict';
   const C=window.MEETING_CONTENT;
   const difficulties={normal:{name:'正常组会',time:39,tax:0},friday:{name:'周五晚八点',time:35,tax:1},surprise:{name:'大佬突袭',time:31,tax:2}};
-  const flagKeys=['chaos','rigor','honest','social','help','debt','cat','robot','recursive','wander','shift','quantum','material','market','footnote','client'];
+  const flagKeys=['chaos','rigor','honest','social','help','debt','cat','robot','recursive','wander','shift','quantum','material','market','footnote','client',...(C.extraFlags||[])];
   const clamp=(x,max=100)=>Math.max(0,Math.min(max,x));
   const blankFlags=()=>Object.fromEntries(flagKeys.map(k=>[k,0]));
   const blankBag=()=>Object.fromEntries(C.shop.map(i=>[i.id,0]));
@@ -17,22 +17,25 @@ window.MEETING_ENGINE = (() => {
     else if(s.choicesMade===0)s.phase=0;
     else if(s.choicesMade>=3&&random(s)<persona.interrupt&&!s.interrupted){s.phase=[5,6,7][Math.floor(random(s)*3)];s.interrupted=true;}
     else{s.phase=s.progress<18?1:s.progress<34?2:s.progress<50?3:s.progress<66?4:s.progress<76?5:s.progress<88?6:7;s.interrupted=false;}
-    const all=C.events.filter(e=>e.phase===s.phase&&(!e.project||e.project===s.project)&&(!e.requires||s.flags[e.requires]>0));
+    const all=C.events.filter(e=>e.phase===s.phase&&(!e.project||e.project===s.project)&&(!e.requires||s.flags[e.requires]>0)&&(!e.weekRequires||(s.weekContext?.traits?.[e.weekRequires]||0)>0));
     const fresh=all.filter(e=>!s.seen.includes(e.id)&&!s.recentEvents.includes(e.id));
     const notThisMeeting=all.filter(e=>!s.seen.includes(e.id));
     let pool=fresh.length?fresh:notThisMeeting.length?notThisMeeting:all.filter(e=>e.id!==s.eventId);
     const introduced=s.seen.some(id=>C.events.find(e=>e.id===id)?.project===s.project);
     const introduction=fresh.filter(e=>e.project===s.project&&!e.requires);
     if(s.phase>=1&&s.phase<=3&&!introduced&&introduction.length)pool=introduction;
+    const echoes=pool.filter(e=>e.weekRequires);if(echoes.length&&(s.phase===0||random(s)<.65))pool=echoes;
     s.eventId=weighted(s,pool.length?pool:all).id;s.seen.push(s.eventId);
   }
-  function create({role='newbie',difficulty='normal',name='小同学',seed=1,project='classic',persona='random',career={}}={}){
+  function create({role='newbie',difficulty='normal',name='小同学',seed=1,project='classic',persona='random',career={},weekContext=null}={}){
     const r=C.roles.find(r=>r.id===role)||C.roles[0],d=difficulties[difficulty]||difficulties.normal,p=C.projects.find(p=>p.id===project)||C.projects[0];
     const growth=Math.min(12,Math.floor((career.experience||0)/60)*3),debt=Math.min(3,Math.max(0,Math.floor(career.debt||0)));
     const s={version:3,role:r.id,difficulty:difficulties[difficulty]?difficulty:'normal',name:String(name).trim().slice(0,12)||'小同学',seed:seed>>>0,rng:seed>>>0,project:p.id,persona:'warm',phase:0,eventId:'',progress:0,wrapUp:0,interrupted:false,seen:[],recentEvents:Array.isArray(career.recentEvents)?career.recentEvents.slice(-35):[],lastRequestRound:-1,meetingNumber:(career.meetings||0)+1,experienceAtStart:career.experience||0,careerApplied:false,stats:{...r.stats,time:d.time},flags:{...blankFlags(),debt,cat:Math.min(1,career.cat||0),robot:Math.min(1,career.robot||0),wander:Math.min(1,career.wander||0)},used:{skill:false,coffee:false,charm:false},bag:{...blankBag(),...career.bag},relations:{boss:50,stats:50,senior:50,...career.relations},log:[],pending:null,ended:false,ending:null,choicesMade:0};
     s.persona=C.personas.some(p=>p.id===persona)?persona:C.personas[Math.floor(random(s)*C.personas.length)].id;
     apply(s,{evidence:growth,mood:Math.floor(growth/2)+(career.moodBoost||0),patience:Math.round(((career.reputation??50)-50)/10)-debt*2});
     apply(s,{evidence:career.evidenceBoost||0});apply(s,p.effects);apply(s,C.personas.find(p=>p.id===s.persona).initial);
+    s.weekContext=weekContext?JSON.parse(JSON.stringify(weekContext)):null;
+    if(s.weekContext){apply(s,s.weekContext.deltas);s.flags.debt=Math.min(6,s.flags.debt+s.weekContext.debt);}
     if(s.difficulty==='surprise')apply(s,{patience:-8});selectEvent(s);return s;
   }
   function current(s){return C.events.find(e=>e.id===s.eventId);}
@@ -56,7 +59,33 @@ window.MEETING_ENGINE = (() => {
     if(c.flags.chaos){change.senior+=2;change.boss-=s.persona==='strict'?3:1;}
     const actual={};for(const [k,v] of Object.entries(change)){const old=s.relations[k];s.relations[k]=clamp(old+v);actual[k]=s.relations[k]-old;}return actual;
   }
+  function weeklyEnding(s,final=false){const w=s.weekContext;if(!w)return null;const t=w.traits,r=w.resources,st=s.stats,f=s.flags;
+    if(st.mood<=0&&(t.night||0)>=3)return 'coffee-crash';
+    if(st.mood<=0&&r.energy<=25)return 'sleep-mode';
+    if(st.patience<=0&&r.stress>=45)return 'silent-room';
+    if(st.time<=0&&(t.deadline||0)>=2)return 'deadline-chased';
+    if(!final)return null;
+    if((t.promise||0)>=3&&f.debt>=3)return 'promise-avalanche';
+    if(r.slides<=35&&t.erased&&!t.backup)return 'slide-ghost';
+    if(r.energy<=20&&(t.night||0)>=2)return 'sleep-mode';
+    if(st.evidence<35&&r.slides<40)return 'empty-stage';
+    if(st.evidence<55&&r.notes<50&&f.honest<2)return 'question-lost';
+    if((t.folder||0)>=3&&f.rigor>=2)return 'folder-empire';
+    if((t.meal||0)>=3&&(f.social>=2||f.chaos>=3))return 'meal-marshal';
+    if((t.meme||0)>=2&&f.chaos>=4)return 'emoji-defense';
+    if((t.printer||0)>=2&&f.chaos>=2)return 'printer-poet';
+    if((t.collaboration||0)>=3&&f.social>=3)return 'chair-election';
+    if((t.chaos||0)>=3&&f.chaos>=3)return 'meeting-meme';
+    if((t.alarm||0)>=2&&(f.honest>=3||f.social>=3))return 'alarm-author';
+    if((t.late||0)>=2&&f.social>=3&&st.time<=10)return 'weekend-portal';
+    if((t.pivot||0)>=2&&f.honest>=3)return 'pivot-route';
+    if((t.negative||0)>=2&&f.rigor>=3)return 'negative-result';
+    if((t.collaboration||0)>=3&&f.help>=2)return 'collaborative-escape';
+    if((t.rest||0)>=3&&st.mood>=35)return 'rest-is-progress';
+    return null;
+  }
   function decideEnding(s){const st=s.stats,f=s.flags;
+    const weekly=weeklyEnding(s,s.wrapUp===2);if(weekly)return weekly;
     if(st.mood<=0)return 'mood';if(st.patience<=0)return 'patience';if(st.time<=0)return st.evidence>=55&&st.patience>=30?'escape':'overtime';if(s.wrapUp!==2)return null;
     if(s.meetingNumber>=8&&s.experienceAtStart>=150&&f.rigor>=4&&st.evidence>=85&&st.patience>=55&&f.debt<=1)return 'graduation';
     if(f.cat>=2)return 'cat-chair';
@@ -68,7 +97,7 @@ window.MEETING_ENGINE = (() => {
     if(f.chaos>=5)return 'comedian';if(f.debt>=3)return 'debt';
     if(st.evidence>=85&&st.patience>=65&&st.mood>=35)return 'legend';if(f.social>=4&&st.patience>=75)return 'diplomat';if(f.honest>=4)return 'honest';return 'survivor';
   }
-  function terminal(s){return s.stats.mood<=0?'mood':s.stats.patience<=0?'patience':s.stats.time<=0?decideEnding(s):null;}
+  function terminal(s){return weeklyEnding(s)|| (s.stats.mood<=0?'mood':s.stats.patience<=0?'patience':s.stats.time<=0?decideEnding(s):null);}
   function choose(s,index){if(s.ended||s.pending)return null;const e=current(s),c=e?.choices[index];if(!c)return null;
     const preview=previewChoice(s,c),effects={...preview.effects},unlucky=c.risk?random(s)<preview.chance:false;
     if(unlucky)for(const [k,v] of Object.entries(c.risk.effects))effects[k]=(effects[k]||0)+v;
@@ -92,7 +121,7 @@ window.MEETING_ENGINE = (() => {
   }
   function score(s){return clamp(Math.round(s.stats.evidence*.45+s.stats.patience*.25+s.stats.mood*.2+Math.min(s.choicesMade,10)));}
   function upgrade(old){if(!old||![2,3].includes(old.version))return old;
-    if(old.version===3)return old;
+    if(old.version===3){const s=JSON.parse(JSON.stringify(old));s.flags={...blankFlags(),...s.flags};s.weekContext??=null;return s;}
     const s=JSON.parse(JSON.stringify(old));Object.assign(s,{version:3,project:'classic',persona:'warm',experienceAtStart:0,recentEvents:[],bag:blankBag(),relations:{boss:50,stats:50,senior:50}});s.flags={...blankFlags(),...s.flags};return s;
   }
   function isValid(s){return !!s&&s.version===3&&C.roles.some(r=>r.id===s.role)&&C.projects.some(p=>p.id===s.project)&&C.personas.some(p=>p.id===s.persona)&&Object.hasOwn(difficulties,s.difficulty)&&typeof s.name==='string'&&s.name.length<=12&&Number.isInteger(s.phase)&&s.phase>=0&&s.phase<10&&current(s)?.phase===s.phase&&Number.isInteger(s.rng)&&Number.isInteger(s.seed)&&Number.isFinite(s.progress)&&s.progress>=0&&s.progress<=100&&[0,1,2].includes(s.wrapUp)&&Number.isInteger(s.meetingNumber)&&s.meetingNumber>0&&Number.isFinite(s.experienceAtStart)&&s.experienceAtStart>=0&&typeof s.careerApplied==='boolean'&&Array.isArray(s.seen)&&s.seen.length<200&&Array.isArray(s.recentEvents)&&s.stats&&['mood','evidence','patience','time'].every(k=>Number.isFinite(s.stats[k])&&s.stats[k]>=0&&s.stats[k]<=(k==='time'?65:100))&&s.flags&&flagKeys.every(k=>Number.isInteger(s.flags[k])&&s.flags[k]>=0)&&s.used&&['skill','coffee','charm'].every(k=>typeof s.used[k]==='boolean')&&s.bag&&C.shop.every(i=>Number.isInteger(s.bag[i.id])&&s.bag[i.id]>=0)&&s.relations&&['boss','stats','senior'].every(k=>Number.isFinite(s.relations[k])&&s.relations[k]>=0&&s.relations[k]<=100)&&Array.isArray(s.log)&&s.log.length<250&&(s.pending===null||(typeof s.pending==='object'&&typeof s.pending.result==='string'))&&typeof s.ended==='boolean'&&(s.ending===null||C.endings.some(e=>e.id===s.ending))&&(!s.ended||s.ending!==null)&&Number.isInteger(s.choicesMade)&&s.choicesMade>=0&&s.choicesMade<200;}

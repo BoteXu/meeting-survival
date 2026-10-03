@@ -1,0 +1,1153 @@
+{
+  "sleep-mode": {
+    "config": {
+      "name": "可达性",
+      "project": "sports",
+      "role": "social",
+      "persona": "story",
+      "difficulty": "friday"
+    },
+    "seed": 133535354,
+    "meetingSeed": 444264000,
+    "actions": [
+      2,
+      0,
+      2,
+      2,
+      2,
+      0,
+      2,
+      2,
+      0
+    ],
+    "choices": [
+      2,
+      2,
+      1,
+      0,
+      0,
+      2,
+      1,
+      2,
+      2,
+      1,
+      2,
+      2,
+      1,
+      0,
+      0
+    ],
+    "policy": 3,
+    "items": true,
+    "traits": {
+      "unfinished": 0,
+      "night": 3,
+      "late": 1,
+      "study": 2,
+      "meme": 2,
+      "chaos": 3,
+      "promise": 1,
+      "deadline": 2,
+      "erased": 1,
+      "backup": 1
+    },
+    "resources": {
+      "energy": 16,
+      "notes": 55,
+      "slides": 63,
+      "stress": 60
+    }
+  },
+  "slide-ghost": {
+    "config": {
+      "name": "可达性",
+      "project": "military",
+      "role": "newbie",
+      "persona": "detail",
+      "difficulty": "surprise"
+    },
+    "seed": 2297031082,
+    "meetingSeed": 2621771640,
+    "actions": [
+      0,
+      1,
+      2,
+      0,
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "choices": [
+      0,
+      0,
+      2,
+      0,
+      2,
+      1,
+      2,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0
+    ],
+    "policy": 3,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "study": 2,
+      "alarm": 1,
+      "collaboration": 4,
+      "meme": 2,
+      "chaos": 2,
+      "printer": 1,
+      "pivot": 1,
+      "erased": 1,
+      "negative": 1
+    },
+    "resources": {
+      "energy": 57,
+      "notes": 92,
+      "slides": 34,
+      "stress": 4
+    }
+  },
+  "promise-avalanche": {
+    "config": {
+      "name": "可达性",
+      "project": "food",
+      "role": "newbie",
+      "persona": "strict",
+      "difficulty": "surprise"
+    },
+    "seed": 3925975816,
+    "meetingSeed": 1469440946,
+    "actions": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      2,
+      0,
+      1,
+      2
+    ],
+    "choices": [
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      0,
+      0,
+      1,
+      1,
+      2,
+      0,
+      0,
+      0
+    ],
+    "policy": 3,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "promise": 5,
+      "deadline": 4,
+      "collaboration": 2,
+      "printer": 1,
+      "backup": 2,
+      "folder": 1,
+      "negative": 1,
+      "meal": 2,
+      "chaos": 1
+    },
+    "resources": {
+      "energy": 75,
+      "notes": 44,
+      "slides": 57,
+      "stress": 42
+    }
+  },
+  "empty-stage": {
+    "config": {
+      "name": "可达性",
+      "project": "law",
+      "role": "newbie",
+      "persona": "warm",
+      "difficulty": "normal"
+    },
+    "seed": 3254078495,
+    "meetingSeed": 1322666031,
+    "actions": [
+      0,
+      2,
+      0,
+      1,
+      2,
+      2,
+      1,
+      2,
+      0
+    ],
+    "choices": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "policy": 2,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "study": 2,
+      "alarm": 1,
+      "promise": 2,
+      "deadline": 2,
+      "folder": 1,
+      "collaboration": 2,
+      "printer": 2,
+      "chaos": 2,
+      "erased": 1,
+      "backup": 1,
+      "meal": 1
+    },
+    "resources": {
+      "energy": 75,
+      "notes": 74,
+      "slides": 23,
+      "stress": 23
+    }
+  },
+  "silent-room": {
+    "config": {
+      "name": "可达性",
+      "project": "theory",
+      "role": "chill",
+      "persona": "story",
+      "difficulty": "normal"
+    },
+    "seed": 66373094,
+    "meetingSeed": 3110218121,
+    "actions": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0,
+      2,
+      2
+    ],
+    "choices": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "policy": 2,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "study": 4,
+      "alarm": 1,
+      "promise": 3,
+      "deadline": 2,
+      "collaboration": 1,
+      "pivot": 1,
+      "backup": 2,
+      "folder": 1,
+      "night": 2
+    },
+    "resources": {
+      "energy": 0,
+      "notes": 93,
+      "slides": 75,
+      "stress": 47
+    }
+  },
+  "coffee-crash": {
+    "config": {
+      "name": "可达性",
+      "project": "classic",
+      "role": "grinder",
+      "persona": "strict",
+      "difficulty": "surprise"
+    },
+    "seed": 2921064840,
+    "meetingSeed": 3679089340,
+    "actions": [
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      2,
+      2,
+      2
+    ],
+    "choices": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "policy": 0,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "night": 3,
+      "late": 3,
+      "promise": 3,
+      "deadline": 4,
+      "rest": 1,
+      "meal": 1,
+      "collaboration": 1,
+      "pivot": 1,
+      "meme": 2,
+      "chaos": 1
+    },
+    "resources": {
+      "energy": 24,
+      "notes": 45,
+      "slides": 63,
+      "stress": 57
+    }
+  },
+  "deadline-chased": {
+    "config": {
+      "name": "可达性",
+      "project": "psychology",
+      "role": "social",
+      "persona": "warm",
+      "difficulty": "surprise"
+    },
+    "seed": 3532104627,
+    "meetingSeed": 2724684534,
+    "actions": [
+      2,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      2
+    ],
+    "choices": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "policy": 0,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "promise": 2,
+      "deadline": 2,
+      "study": 3,
+      "rest": 2,
+      "meal": 1,
+      "negative": 1,
+      "collaboration": 2,
+      "pivot": 1,
+      "backup": 1,
+      "alarm": 1,
+      "late": 2
+    },
+    "resources": {
+      "energy": 57,
+      "notes": 90,
+      "slides": 64,
+      "stress": 16
+    }
+  },
+  "question-lost": {
+    "config": {
+      "name": "可达性",
+      "project": "mechanical",
+      "role": "social",
+      "persona": "warm",
+      "difficulty": "friday"
+    },
+    "seed": 3818810794,
+    "meetingSeed": 4070814055,
+    "actions": [
+      2,
+      0,
+      1,
+      2,
+      0,
+      2,
+      1,
+      1,
+      0
+    ],
+    "choices": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "policy": 2,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "folder": 2,
+      "chaos": 1,
+      "study": 1,
+      "rest": 1,
+      "meal": 2,
+      "promise": 2,
+      "deadline": 2,
+      "backup": 3,
+      "printer": 1,
+      "negative": 1
+    },
+    "resources": {
+      "energy": 84,
+      "notes": 49,
+      "slides": 70,
+      "stress": 19
+    }
+  },
+  "folder-empire": {
+    "config": {
+      "name": "可达性",
+      "project": "pharmacy",
+      "role": "grinder",
+      "persona": "strict",
+      "difficulty": "normal"
+    },
+    "seed": 569128421,
+    "meetingSeed": 3890409572,
+    "actions": [
+      2,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    "choices": [
+      1,
+      1,
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "policy": 5,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "folder": 3,
+      "chaos": 1,
+      "study": 2,
+      "meal": 2,
+      "collaboration": 1,
+      "promise": 2,
+      "deadline": 2,
+      "negative": 1,
+      "backup": 4,
+      "rest": 1,
+      "alarm": 1
+    },
+    "resources": {
+      "energy": 77,
+      "notes": 64,
+      "slides": 74,
+      "stress": 18
+    }
+  },
+  "meal-marshal": {
+    "config": {
+      "name": "可达性",
+      "project": "humanities",
+      "role": "grinder",
+      "persona": "warm",
+      "difficulty": "surprise"
+    },
+    "seed": 644246252,
+    "meetingSeed": 4277976748,
+    "actions": [
+      2,
+      2,
+      1,
+      2,
+      0,
+      2,
+      0,
+      0,
+      2
+    ],
+    "choices": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "policy": 4,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "folder": 3,
+      "chaos": 2,
+      "promise": 3,
+      "deadline": 3,
+      "rest": 1,
+      "meal": 3,
+      "negative": 1,
+      "study": 2,
+      "backup": 3
+    },
+    "resources": {
+      "energy": 82,
+      "notes": 46,
+      "slides": 64,
+      "stress": 38
+    }
+  },
+  "emoji-defense": {
+    "config": {
+      "name": "可达性",
+      "project": "humanities",
+      "role": "social",
+      "persona": "detail",
+      "difficulty": "normal"
+    },
+    "seed": 1890473480,
+    "meetingSeed": 1405635757,
+    "actions": [
+      0,
+      2,
+      2,
+      0,
+      1,
+      1,
+      2,
+      2,
+      1
+    ],
+    "choices": [
+      0,
+      0,
+      2,
+      1,
+      0,
+      2,
+      0,
+      2,
+      1,
+      0,
+      0,
+      2,
+      1
+    ],
+    "policy": 3,
+    "items": true,
+    "traits": {
+      "unfinished": 0,
+      "study": 3,
+      "promise": 1,
+      "deadline": 1,
+      "chaos": 3,
+      "negative": 1,
+      "collaboration": 2,
+      "pivot": 2,
+      "erased": 1,
+      "meme": 2
+    },
+    "resources": {
+      "energy": 62,
+      "notes": 74,
+      "slides": 44,
+      "stress": 17
+    }
+  },
+  "printer-poet": {
+    "config": {
+      "name": "可达性",
+      "project": "veterinary",
+      "role": "social",
+      "persona": "detail",
+      "difficulty": "normal"
+    },
+    "seed": 2086723467,
+    "meetingSeed": 978915160,
+    "actions": [
+      2,
+      0,
+      0,
+      1,
+      2,
+      1,
+      0,
+      2,
+      0
+    ],
+    "choices": [
+      2,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2,
+      1,
+      1,
+      0,
+      2
+    ],
+    "policy": 3,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "promise": 2,
+      "deadline": 2,
+      "study": 1,
+      "meal": 1,
+      "collaboration": 4,
+      "printer": 2,
+      "chaos": 1,
+      "pivot": 1,
+      "backup": 3,
+      "folder": 1,
+      "night": 2
+    },
+    "resources": {
+      "energy": 28,
+      "notes": 72,
+      "slides": 78,
+      "stress": 19
+    }
+  },
+  "chair-election": {
+    "config": {
+      "name": "可达性",
+      "project": "electrical",
+      "role": "newbie",
+      "persona": "warm",
+      "difficulty": "normal"
+    },
+    "seed": 4274104341,
+    "meetingSeed": 764862195,
+    "actions": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "choices": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "policy": 1,
+    "items": true,
+    "traits": {
+      "unfinished": 0,
+      "study": 2,
+      "collaboration": 3,
+      "rest": 1,
+      "meal": 1,
+      "promise": 1,
+      "pivot": 1,
+      "negative": 1,
+      "backup": 1
+    },
+    "resources": {
+      "energy": 75,
+      "notes": 85,
+      "slides": 55,
+      "stress": 0
+    }
+  },
+  "meeting-meme": {
+    "config": {
+      "name": "可达性",
+      "project": "art",
+      "role": "grinder",
+      "persona": "warm",
+      "difficulty": "friday"
+    },
+    "seed": 1402838505,
+    "meetingSeed": 4084922359,
+    "actions": [
+      0,
+      0,
+      2,
+      2,
+      2,
+      1,
+      2,
+      2,
+      0
+    ],
+    "choices": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "policy": 5,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "study": 2,
+      "meal": 2,
+      "chaos": 3,
+      "promise": 1,
+      "deadline": 2,
+      "collaboration": 1,
+      "pivot": 1,
+      "night": 2,
+      "erased": 1,
+      "backup": 1
+    },
+    "resources": {
+      "energy": 39,
+      "notes": 56,
+      "slides": 58,
+      "stress": 41
+    }
+  },
+  "alarm-author": {
+    "config": {
+      "name": "可达性",
+      "project": "history",
+      "role": "newbie",
+      "persona": "story",
+      "difficulty": "friday"
+    },
+    "seed": 3741292062,
+    "meetingSeed": 792007730,
+    "actions": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1
+    ],
+    "choices": [
+      0,
+      0,
+      1,
+      0,
+      2,
+      2,
+      0,
+      1,
+      2,
+      1,
+      0,
+      0,
+      1
+    ],
+    "policy": 3,
+    "items": true,
+    "traits": {
+      "unfinished": 0,
+      "study": 3,
+      "alarm": 2,
+      "rest": 2,
+      "meal": 1,
+      "collaboration": 3,
+      "negative": 2,
+      "pivot": 1,
+      "backup": 1
+    },
+    "resources": {
+      "energy": 71,
+      "notes": 100,
+      "slides": 62,
+      "stress": 0
+    }
+  },
+  "weekend-portal": {
+    "config": {
+      "name": "可达性",
+      "project": "languages",
+      "role": "chill",
+      "persona": "detail",
+      "difficulty": "friday"
+    },
+    "seed": 259387396,
+    "meetingSeed": 160937343,
+    "actions": [
+      1,
+      2,
+      2,
+      2,
+      0,
+      2,
+      1,
+      2,
+      2
+    ],
+    "choices": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "policy": 1,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "collaboration": 1,
+      "promise": 3,
+      "deadline": 4,
+      "meme": 4,
+      "chaos": 2,
+      "backup": 2,
+      "printer": 1,
+      "late": 2
+    },
+    "resources": {
+      "energy": 61,
+      "notes": 32,
+      "slides": 53,
+      "stress": 46
+    }
+  },
+  "pivot-route": {
+    "config": {
+      "name": "可达性",
+      "project": "civil",
+      "role": "chill",
+      "persona": "detail",
+      "difficulty": "surprise"
+    },
+    "seed": 2374782971,
+    "meetingSeed": 1270823065,
+    "actions": [
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1
+    ],
+    "choices": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "policy": 1,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "night": 1,
+      "late": 1,
+      "study": 5,
+      "folder": 1,
+      "negative": 1,
+      "collaboration": 2,
+      "pivot": 2,
+      "backup": 2,
+      "rest": 1,
+      "alarm": 1
+    },
+    "resources": {
+      "energy": 33,
+      "notes": 100,
+      "slides": 73,
+      "stress": 10
+    }
+  },
+  "rest-is-progress": {
+    "config": {
+      "name": "可达性",
+      "project": "art",
+      "role": "chill",
+      "persona": "detail",
+      "difficulty": "friday"
+    },
+    "seed": 1911787425,
+    "meetingSeed": 2918745030,
+    "actions": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      1,
+      2,
+      0,
+      1
+    ],
+    "choices": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "policy": 0,
+    "items": true,
+    "traits": {
+      "unfinished": 0,
+      "rest": 3,
+      "collaboration": 2,
+      "meal": 1,
+      "promise": 1,
+      "deadline": 1,
+      "chaos": 2,
+      "pivot": 1,
+      "meme": 2,
+      "backup": 1,
+      "alarm": 1,
+      "study": 1
+    },
+    "resources": {
+      "energy": 100,
+      "notes": 49,
+      "slides": 70,
+      "stress": 2
+    }
+  },
+  "negative-result": {
+    "config": {
+      "name": "可达性",
+      "project": "chemistry",
+      "role": "grinder",
+      "persona": "story",
+      "difficulty": "friday"
+    },
+    "seed": 929161338,
+    "meetingSeed": 3714789306,
+    "actions": [
+      2,
+      1,
+      0,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "choices": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "policy": 0,
+    "items": false,
+    "traits": {
+      "unfinished": 0,
+      "promise": 3,
+      "deadline": 2,
+      "collaboration": 3,
+      "study": 2,
+      "folder": 1,
+      "negative": 2,
+      "pivot": 1,
+      "backup": 1
+    },
+    "resources": {
+      "energy": 61,
+      "notes": 85,
+      "slides": 52,
+      "stress": 12
+    }
+  },
+  "collaborative-escape": {
+    "config": {
+      "name": "可达性",
+      "project": "clinical",
+      "role": "chill",
+      "persona": "story",
+      "difficulty": "surprise"
+    },
+    "seed": 1838799652,
+    "meetingSeed": 2913874218,
+    "actions": [
+      0,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      0,
+      2
+    ],
+    "choices": [
+      1,
+      1,
+      1,
+      2,
+      0,
+      1,
+      2,
+      2,
+      2,
+      1,
+      0,
+      0,
+      0,
+      2,
+      1
+    ],
+    "policy": 5,
+    "items": true,
+    "traits": {
+      "unfinished": 0,
+      "folder": 2,
+      "backup": 3,
+      "collaboration": 3,
+      "meal": 2,
+      "chaos": 2,
+      "pivot": 1,
+      "negative": 1,
+      "promise": 1
+    },
+    "resources": {
+      "energy": 61,
+      "notes": 67,
+      "slides": 73,
+      "stress": 16
+    }
+  }
+}
