@@ -30,11 +30,17 @@
 .work-cards button:disabled:not(.selected){opacity:.75}.campus-locations button:disabled:not(.selected){opacity:.7}
 
 </style>
+<style>
+.preparation-board{border:1px solid #bfcbb2;border-radius:14px;padding:21px;margin:20px 0;background:#fcfaf1}.preparation-board .section-line{margin:0 0 12px}.preparation-board h3{font-size:18px;margin:0}.preparation-board>p,.preparation-plans>p{font-size:12px;line-height:1.8;color:#63765b}.preparation-ledger{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.preparation-ledger article{border:1px dashed #bfc8b3;border-radius:10px;padding:13px;display:flex;flex-direction:column;gap:9px;background:#f1eee3}.preparation-ledger article.ready{border-style:solid;background:#e4ecd7;border-color:#7d976c}.preparation-ledger article.partial{background:#f1e5c9}.preparation-ledger strong{font-size:12px}.preparation-ledger span,.preparation-ledger small{font-size:10px;line-height:1.7;color:#66735a;overflow-wrap:anywhere}.preparation-ledger b{font-size:11px;color:#4c6742}.preparation-plans{margin-top:20px;padding-top:15px;border-top:1px solid #d4dac9}.preparation-plans h4{font-size:14px;margin:0}.preparation-plans>div{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.preparation-plans button{font:inherit;text-align:left;display:flex;flex-direction:column;gap:8px;border-radius:9px;border:1px solid #aeba9f;background:#e8eddc;padding:12px;cursor:pointer}.preparation-plans strong{font-size:12px}.preparation-plans small{font-size:10px;line-height:1.7;color:#6e7c61}.preparation-plans button:hover:enabled{background:#d8e3c9}.preparation-plans button:disabled{opacity:.65;cursor:default}.preparation-life-hint{font-size:11px;line-height:1.8;color:#557044}.life-choice:disabled{opacity:.72;cursor:default}.preparation-choice-hint{display:block;font-size:11px;line-height:1.8;margin-top:10px;border-top:1px dashed #c0c8b4;padding-top:8px}.preparation-choice-hint.ready{color:#507043}.preparation-choice-hint.missing{color:#8b7043}.choice:disabled{cursor:default;background:#eeeade;border-style:dashed;opacity:.78}.choice:disabled:hover{transform:none;box-shadow:none}.preparation-feedback,.preparation-answer-source{font-size:12px;line-height:1.8;color:#476b3c}.preparation-meeting{margin:15px 0;padding:13px;background:#e7eadc;border-radius:10px;font-size:12px}.preparation-meeting summary{cursor:pointer;margin-bottom:10px}.preparation-review{margin:20px 0;padding:20px;border-radius:12px;background:#e7eadb}.preparation-review h3{font-size:16px}.preparation-review>p{font-size:12px}.preparation-review>div{display:flex;flex-direction:column;gap:7px;padding:13px 0;border-top:1px solid #cbd2bd}.preparation-review strong{font-size:12px}.preparation-review span{font-size:11px;line-height:1.8;color:#617458}
+@media(max-width:850px){.preparation-ledger{grid-template-columns:repeat(3,minmax(0,1fr))}.preparation-plans>div{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.preparation-board{padding:15px}.preparation-board .section-line{display:block}.preparation-board .section-line>span{display:block;margin-top:7px}.preparation-ledger,.preparation-plans>div{grid-template-columns:repeat(2,minmax(0,1fr))}.preparation-ledger article{padding:11px}.preparation-board h3{font-size:16px}.preparation-plans button{padding:11px}.preparation-review{padding:15px}}
+
+</style>
 </head>
 <body>
 <header class="topbar"><a href="#" id="brand" class="brand"><span class="brand-icon">组</span><span>组会求生<small>LAB MEETING SURVIVOR</small></span></a><nav><span class="offline"><i></i> 单机 · 随时开玩</span><button id="calendar" class="plain">我的一周</button><button id="shop" class="plain">补给站 <span id="coin-count">0</span></button><button id="sound" class="plain" aria-pressed="false">音效 关</button><button id="collection" class="plain">结局图鉴 <span id="collection-count">0/88</span></button></nav></header>
 <main id="app"></main>
-<footer><span>虚构实验室 · 真实求生欲</span><span>原创娱乐小游戏 / v0.4</span></footer>
+<footer><span>虚构实验室 · 真实求生欲</span><span>原创娱乐小游戏 / v0.5</span></footer>
 <dialog id="album"><div class="dialog-head"><div><p class="eyebrow">THE MANY WAYS TO LEAVE A MEETING</p><h2>下班的方式不止一种。</h2></div><button id="close-album" class="close" aria-label="关闭图鉴">×</button></div><div id="album-grid"></div><p class="muted">结局收藏存在当前浏览器里。再来一局，解锁另一种人生。</p></dialog>
 <dialog id="card-modal"><div class="dialog-head"><div><p class="eyebrow">YOUR MEETING REPORT</p><h2>把这场组会带走。</h2></div><button id="close-card" class="close" aria-label="关闭结局卡">×</button></div><img id="card-image" alt="本场组会结局卡"><div class="card-actions"><button id="save-card-image" class="primary">下载图片 ↓</button><p class="muted">也可以长按或右键图片保存。</p></div></dialog>
 <dialog id="shop-modal"><div class="dialog-head"><div><p class="eyebrow">AFTER-MEETING SUPPLY STORE</p><h2>给下一场，留一点底牌。</h2></div><button id="close-shop" class="close" aria-label="关闭补给站">×</button></div><div id="shop-grid"></div><p class="muted" id="shop-note"></p></dialog>
@@ -1410,6 +1416,105 @@ window.MEETING_CAMPUS=(() => {
 })();
 
 </script><script>
+window.MEETING_PREPARATION=(() => {
+  'use strict';
+  const C=window.MEETING_CONTENT,copy=x=>JSON.parse(JSON.stringify(x));
+  const kinds=['literature','method','record','boundary','rehearsal'];
+  const names={literature:'背景与文献',method:'方法与依据',record:'结果与原始材料',boundary:'结论边界',rehearsal:'表达与预演'};
+  const icons={literature:'📖',method:'🔧',record:'🗒️',boundary:'🔍',rehearsal:'🎤'};
+  const topic=(route,kind)=>{const p=C.projects.find(p=>p.id===route);return ({literature:p.topics[0],method:p.topics[1],record:p.topics[2],boundary:p.topics[2]+'的解释边界',rehearsal:'三句话讲清'+p.topics[0]})[kind];};
+  const recipes={};const add=(id,index,skills)=>recipes[id+':'+index]=skills;
+  const rows={
+    'life-0':[{literature:1},null,null], 'life-1':[null,{method:1},null], 'life-2':[{literature:1},null,null],
+    'life-3':[{literature:1},{literature:1},null], 'life-4':[{method:1,boundary:1},{method:1},null], 'life-5':[{boundary:1},null,null],
+    'life-6':[{record:1,boundary:1},{boundary:1},null], 'life-8':[{rehearsal:1},null,null],
+    'life-9':[{rehearsal:1},{boundary:1},null], 'life-10':[{rehearsal:2},{boundary:1},null],
+    'life-12':[null,{boundary:1},null], 'life-13':[null,{rehearsal:1},null], 'life-14':[null,{boundary:2},null],
+    'life-15':[null,{boundary:1},null], 'life-16':[{record:1},{boundary:1},null], 'life-17':[null,{literature:1},null],
+    'life-18':[{record:1},null,null], 'life-19':[null,{literature:1},null], 'life-20':[null,{method:1},null],
+    'campus-0':[{literature:2,boundary:1},{literature:2},null], 'campus-1':[{literature:1,method:1},{literature:1,boundary:1},null],
+    'campus-2':[{literature:2},{literature:1},null], 'campus-3':[{literature:1},{literature:1,rehearsal:1},{literature:2}],
+    'campus-4':[{method:2,record:1},{record:1},{method:1}], 'campus-5':[{record:2,boundary:2},{method:1},null],
+    'campus-6':[{method:1,record:1},{record:1},null], 'campus-7':[{boundary:1,method:1},{record:1},null],
+    'campus-8':[{method:1},null,null], 'campus-9':[null,{boundary:1},null], 'campus-10':[{rehearsal:1},{method:1},null],
+    'campus-11':[{rehearsal:1},null,null], 'campus-12':[{rehearsal:2},{method:1,boundary:1},null],
+    'campus-13':[{literature:1,rehearsal:1},{boundary:1},null], 'campus-14':[{rehearsal:1},{rehearsal:2},null],
+    'campus-15':[{boundary:1,rehearsal:1},{record:1},null], 'campus-16':[null,null,{record:1}],
+    'campus-18':[null,{rehearsal:1},null], 'campus-20':[null,{boundary:1},null],
+    'campus-21':[{literature:1},null,null], 'campus-22':[{record:1},null,null], 'campus-23':[{rehearsal:1},null,null],
+    'story-boss-0':[{literature:1},{method:1},null], 'story-boss-1':[{boundary:1},{boundary:1},null], 'story-boss-2':[{rehearsal:1},{rehearsal:1},null],
+    'story-stats-0':[{method:1,boundary:1},{method:1},null], 'story-stats-1':[{record:1,boundary:1},{record:1},null], 'story-stats-2':[{method:1,record:1,boundary:1},{method:1},null],
+    'story-senior-0':[null,null,null], 'story-senior-1':[{rehearsal:1},null,null], 'story-senior-2':[null,null,null]
+  };
+  for(const [id,choices] of Object.entries(rows))choices.forEach((skills,i)=>{if(skills)add(id,i,skills);});
+  for(const p of C.projects){for(let day=0;day<3;day++){const kind=kinds[day];add(`life-${p.id}-${day}`,0,{[kind]:2});add(`life-${p.id}-${day}`,1,{[kind]:1});}add(`life-${p.id}-feedback`,0,{record:2});add(`life-${p.id}-feedback`,1,{boundary:1});}
+  C.preparationKinds=kinds.map(id=>({id,name:names[id],icon:icons[id]}));C.preparationEvents=[];C.preparationQuestions=[];
+  const taskWords={literature:['精读背景材料','读原文，核对它解决的问题、依据与局限','只读摘要，记下待核对线索','收藏标题，先把引用页做漂亮'],method:['核对方法与依据','对照记录，逐项核对做法、适用条件与取舍','请同门讲一遍，先记下关键线索','复制一张流程图，暂时不核对'],record:['检查结果与原始材料','打开原始材料，核对来源、对应关系与实际结果','只看总结页，先记录待检查的地方','整理配色，暂时不打开原始材料'],boundary:['梳理解释边界','对照已有材料，写清支持、不能支持与其他解释','先列出可能的解释，标明尚未检查','把结论写得很大，先营造气势'],rehearsal:['练习组会表达','计时讲一遍，请空椅子追问，再修改重点','只顺一遍标题，标出卡住的地方','给结束页加一个散会表情包']};
+  for(const p of C.projects)for(const kind of kinds){const words=taskWords[kind],t=topic(p.id,kind),effect={literature:{notes:13,energy:-9},method:{notes:10,energy:-10},record:{notes:11,slides:5,energy:-12},boundary:{notes:8,slides:5,energy:-7},rehearsal:{slides:12,energy:-7,stress:-3}}[kind];
+    const e={id:`prepare-${p.id}-${kind}`,project:p.id,prepKind:kind,location:{literature:'library',method:'lab',record:'lab',boundary:'library',rehearsal:'mentor'}[kind],title:words[0]+' · '+t,scene:`这半天专门准备「${t}」。材料与问题均为游戏内的虚构内容；真正核对过的内容，才会成为周五可用的回答依据。`,choices:[
+      {text:words[1],flavor:`你留下了「${t}」的核对笔记，记录了依据和不知道的部分。周五问到这里，可以打开这份记录回答。`,effects:effect,traits:{study:1,...(kind==='boundary'?{negative:1}:{})},career:{},work:{progress:kind==='record'?9:4,quality:5},card:{literature:'index',method:'raw',record:'raw',boundary:'counter',rehearsal:'summary'}[kind]},
+      {text:words[2],flavor:'这次留下的是线索，还没有核对到能完整作答。你可以在组会上说明目前知道的部分。',effects:{notes:6,energy:-3,stress:-2},traits:{study:1},career:{},work:{progress:2,quality:1}},
+      {text:words[3],flavor:'页面热闹了一点，这个问题的回答依据还没有增加。',effects:{slides:6,energy:2},traits:{chaos:1},career:{},work:{},card:'meme'}]};
+    C.preparationEvents.push(e);add(e.id,0,{[kind]:2});add(e.id,1,{[kind]:1});
+    if(kind!=='rehearsal')C.preparationQuestions.push({id:`prepared-question-${p.id}-${kind}`,project:p.id,phase:kinds.indexOf(kind)+1,prepKind:kind,who:kind==='method'?'stats':kind==='record'?'senior':'boss',title:({literature:'“你真的读过这部分材料吗？”',method:'“为什么这样做，依据是什么？”',record:'“这页结论，能对回原始材料吗？”',boundary:'“这份材料到底支持到哪一步？”'})[kind],scene:`老师指着「${t}」问了一句。你这周是否真的核对过，会决定现在能给出哪一种回答。`,quote:'“不用把话说得很满，把依据拿出来就行。”',choices:[
+      {label:'拿出准备',text:({literature:'对照精读笔记，说明已有工作、依据与未解决的问题。',method:'拿出核对过的步骤，解释适用条件与取舍。',record:'打开核对记录，讲清来源、对应关系与实际结果。',boundary:'对照检查笔记，区分支持的判断、其他解释和未知部分。'})[kind],result:'这份回答有一条可追溯的来路。',flavor:'你讲的不是临时借来的词，而是自己这周核对过的内容。',effects:{evidence:7,patience:4,time:-3},flags:{rigor:1}},
+      {label:'说明现状',text:'先说明准备到了哪里，不把未知装成结论。',result:'你把不知道的部分具体地留下了。',flavor:'导师把这个缺口写成一项可以补好的任务，没有要求你当场编出答案。',effects:{evidence:-2,patience:3,time:-2},flags:{honest:1}},
+      {label:'冒险硬答',text:'凭印象硬答，试着把这个问题带过去。',result:'你用一段流畅的话试图填上缺口。',flavor:'这次暂时没有被追问穿，但这段话还不能代替核对过的记录。',effects:{mood:5,patience:-4,time:-2},flags:{chaos:1,debt:1},risk:{chance:.65,effects:{evidence:-12,patience:-10,mood:-8},flavor:'老师顺着一个具体细节追问，印象没有变成依据。你把需要补的内容记了下来。'}}]});
+  }
+  const common={
+    'background-simple':['literature',1],'background-overlap':['literature',2],'background-reference':['literature',2],'background-title':['literature',1],
+    'method-repeats':['method',2],'method-details':['method',2],'method-parameter':['method',2],'method-ai':['method',2],'shared-shortcut':['method',2],
+    'plot-small':['record',1],'plot-version':['record',2],'result-negative':['boundary',2],'result-perfect':['record',2],'result-surprise':['record',2],'result-screenshot':['boundary',2],
+    'question-cause':['boundary',2],'question-impact':['literature',1],'question-memory':['record',2],'shared-title-copy':['rehearsal',1],
+    'week-echo-study':['method',2],'week-echo-negative':['boundary',2],'week-echo-promise':['record',2]
+  };
+  const enabled=w=>w?.config?.preparation===true;
+  const bookValid=b=>b&&b.version===1&&Array.isArray(b.sources)&&b.sources.length<=100&&b.sources.every(a=>kinds.includes(a.kind)&&[1,2].includes(a.level)&&C.projects.some(p=>p.id===a.route)&&Number.isInteger(a.week)&&typeof a.action==='string'&&typeof a.eventId==='string');
+  function init(w,previous){if(!enabled(w))return;const old=previous?.preparation;const carried=kinds.map(kind=>{const pool=old?.sources.filter(a=>a.route===w.config.project&&a.kind===kind)||[],best=Math.max(0,...pool.map(a=>a.level));return pool.filter(a=>a.level===best).at(-1);}).filter(Boolean);w.preparation={version:1,sources:carried.map(a=>({...a,level:['literature','method'].includes(a.kind)?a.level:Math.min(a.level,1)}))};}
+  const level=(book,route,kind)=>Math.max(0,...(book?.sources||[]).filter(a=>a.route===route&&a.kind===kind).map(a=>a.level));
+  const source=(book,route,kind,minimum=1)=>(book?.sources||[]).filter(a=>a.route===route&&a.kind===kind&&a.level>=minimum).at(-1)||null;
+  function gains(e,index,unlucky=false){const result={...(recipes[e.id+':'+index]||{})};if(unlucky)for(const k of Object.keys(result))result[k]=Math.min(result[k],1);return result;}
+  function lifePreview(w,e,index){const result=gains(e,index),needs=e.prepKind==='boundary'&&index===0?{record:1}:{};return {gains:result,needs,available:!Object.keys(needs).some(k=>level(w.preparation,w.config.project,k)<needs[k])};}
+  function afterLife(w,e,index,record){if(!enabled(w))return;const gained=gains(e,index,record.unlucky),sources=[];
+    for(const [kind,strength] of Object.entries(gained)){const a={kind,level:strength,route:w.config.project,week:w.number,day:w.day,eventId:e.id,action:record.answer,title:e.title};w.preparation.sources.push(a);sources.push(a);}
+    w.preparation.sources=w.preparation.sources.slice(-100);const repaired=[];
+    for(const task of w.tasks.filter(t=>!t.done&&t.prepKind&&t.route===w.config.project)){if((gained[task.prepKind]||0)>=2){task.done=true;repaired.push(task.title);}}
+    record.preparation={sources:copy(sources),repaired};if(repaired.length)record.taskDone=[record.taskDone,...repaired].filter(Boolean).join('；');
+  }
+  function upgrade(w){if(!w||!w.config.campus||w.status==='meeting'||w.meeting||w.day>=5||enabled(w))return w;w.config.preparation=true;init(w,null);
+    for(const record of w.log){const e=C.lifeEvents.find(e=>e.id===record.eventId)||C.campusEvents.find(e=>e.id===record.eventId);const index=e?.choices.findIndex(c=>c.text===record.answer);if(index>=0){const day=w.day;w.day=record.day;afterLife(w,e,index,record);w.day=day;}}
+    if(w.pending&&w.log.at(-1)?.eventId===w.pending.eventId)w.pending.preparation=copy(w.log.at(-1).preparation);return w;
+  }
+  function dispatch(w,kind){if(!enabled(w)||!w.campus||w.status!=='life'||w.pending||w.campus?.plan||!kinds.includes(kind))return null;const e=C.preparationEvents.find(e=>e.project===w.config.project&&e.prepKind===kind);w.campus.plan={day:w.day,slot:w.slot,location:e.location,original:w.eventId,preparation:kind};w.eventId=e.id;w.seen.push(e.id);return e;}
+  function context(w,ctx){if(enabled(w)){ctx.preparation=copy(w.preparation);ctx.preparation.taskReceipts=w.log.filter(r=>r.taskDone&&r.preparation?.sources.length).map(r=>({week:w.number,day:r.day,action:r.answer,eventId:r.eventId,task:r.taskDone,route:w.config.project}));}return ctx;}
+  const active=s=>!!s.weekContext?.preparation;
+  function meetingInit(s){if(active(s))s.preparation={version:1,answered:[],gaps:[],attempts:[]};}
+  function scheduledQuestion(s){if(!active(s)||s.wrapUp||s.choicesMade<1||s.choicesMade>4)return null;return C.preparationQuestions.find(e=>e.project===s.project&&e.prepKind===kinds[s.choicesMade-1]);}
+  function requirement(e,c){if(e.prepKind)return c.flags?.rigor?{kind:e.prepKind,minimum:2}:null;if(!c.flags?.rigor&&!(['plot-version','plot-small'].includes(e.id)&&c===e.choices[0]))return null;if(common[e.id])return {kind:common[e.id][0],minimum:common[e.id][1]};
+    if(e.project&&e.phase>=1&&e.phase<=4)return {kind:kinds[e.phase-1],minimum:e.phase===1?1:2};return null;
+  }
+  function event(s,original){if(!active(s)||!original)return original;const e=copy(original),book=s.weekContext.preparation;
+    if(e.id==='question-memory'&&!s.weekContext.carryTasks.length){e.title='导师翻开了这周的进展记录。';e.scene='老师指着本周的记录，想确认你已经核对到了哪一步。';e.quote='“这周具体检查了什么？”';e.choices[0].result='本周的核对有了回执。';e.choices[0].flavor='老师在这周的记录旁做了一个标记。';e.choices[2].flavor='导师建议把思考落实到一个可以检查的问题。';}
+    e.choices=e.choices.map((c,index)=>{const req=requirement(e,c);if(req){const got=level(book,s.project,req.kind),a=source(book,s.project,req.kind,req.minimum);c.prepared={...req,level:got,available:got>=req.minimum,source:copy(a)};if(c.prepared.available){c.effects.evidence=(c.effects.evidence||0)+3;c.effects.patience=(c.effects.patience||0)+2;}}
+      if(e.id==='question-memory'&&index===0&&s.weekContext.carryTasks.length){const receipt=book.taskReceipts?.at(-1);if(!receipt){c.prepared.available=false;c.prepared.reason='需要本周实际补查过上次组会的遗留事项；整理文件或收拾工位不算核对。';}else if(c.prepared.available)c.prepared.source={...copy(receipt),kind:'record',level:2};}
+      if(e.prepKind&&index===1){const got=level(book,s.project,e.prepKind);c.text=got>=2?'这部分已经核对过，请同门一起复查一个仍不确定的细节。':got===1?'只掌握了线索，说明目前知道的部分，约好补做核对。':'这部分还没有准备，承认答不了，记下一个具体补查任务。';c.flags=got>=2?{help:1,honest:1}:{honest:1,debt:1};}
+      if(e.prepKind&&index===2){const got=level(book,s.project,e.prepKind);c.risk.chance=got>=2?.2:got===1?.5:.75;c.prepBluff={kind:e.prepKind,level:got};}return c;});return e;
+  }
+  function afterAnswer(s,e,c,index,record){if(!active(s))return;const req=c.prepared,kind=req?.kind||e.prepKind;if(!kind)return;const book=s.weekContext.preparation;
+    const answered=!!req?.available,needsGap=!answered&&((e.prepKind&&index===1&&level(book,s.project,kind)<2)||c.prepBluff);
+    const a=answered?req.source:source(book,s.project,kind);record.preparation={kind,status:answered?'answered':c.prepBluff?'bluff':'partial',source:a?copy(a):null,gap:!!needsGap};
+    s.preparation.attempts.push({eventId:e.id,title:e.title,...copy(record.preparation)});
+    if(answered&&!s.preparation.answered.includes(kind))s.preparation.answered.push(kind);
+    if(needsGap&&!s.preparation.gaps.some(g=>g.kind===kind))s.preparation.gaps.push({kind,question:e.title,route:s.project});
+  }
+  function afterMeeting(w,s){if(!enabled(w)||!s.preparation)return;w.meeting.preparation=copy(s.preparation);
+    for(const gap of s.preparation.gaps)if(!w.tasks.some(t=>!t.done&&t.prepKind===gap.kind&&t.route===gap.route))w.tasks.push({title:`补查${names[gap.kind]}：${topic(gap.route,gap.kind)}`,done:false,from:w.number,prepKind:gap.kind,route:gap.route,question:gap.question});
+  }
+  return {kinds,names,icons,topic,enabled,bookValid,init,level,source,gains,lifePreview,afterLife,upgrade,dispatch,context,active,meetingInit,scheduledQuestion,event,afterAnswer,afterMeeting};
+})();
+
+</script>
+<script>
 window.MEETING_ENGINE = (() => {
   'use strict';
   const C=window.MEETING_CONTENT;
@@ -1424,6 +1529,7 @@ window.MEETING_ENGINE = (() => {
   function weighted(s,pool){let total=0;const weights=pool.map(e=>{const w=e.requires?3:e.project?3:1;total+=w;return w;});let r=random(s)*total;for(let i=0;i<pool.length;i++){r-=weights[i];if(r<0)return pool[i];}return pool.at(-1);}
   function selectEvent(s){
     if(s.wrapUp===2){s.phase=9;s.eventId=s.flags.debt>=2?'final-debt':s.stats.evidence>=82?'final-reverse':'final-normal';return;}
+    const prepared=window.MEETING_PREPARATION?.scheduledQuestion(s);if(prepared){s.phase=prepared.phase;s.eventId=prepared.id;s.seen.push(prepared.id);return;}
     const persona=C.personas.find(p=>p.id===s.persona);
     if(s.wrapUp===1||s.progress>=100){s.phase=8;s.wrapUp=1;}
     else if(s.choicesMade===0)s.phase=0;
@@ -1448,9 +1554,9 @@ window.MEETING_ENGINE = (() => {
     apply(s,{evidence:career.evidenceBoost||0});apply(s,p.effects);apply(s,C.personas.find(p=>p.id===s.persona).initial);
     s.weekContext=weekContext?JSON.parse(JSON.stringify(weekContext)):null;
     if(s.weekContext){apply(s,s.weekContext.deltas);s.flags.debt=Math.min(6,s.flags.debt+s.weekContext.debt);}
-    if(s.difficulty==='surprise')apply(s,{patience:-8});selectEvent(s);return s;
+    window.MEETING_PREPARATION?.meetingInit(s);if(s.difficulty==='surprise')apply(s,{patience:-8});selectEvent(s);return s;
   }
-  function current(s){return C.events.find(e=>e.id===s.eventId);}
+  function current(s){const raw=C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId);return window.MEETING_PREPARATION?.event(s,raw)||raw;}
   function previewChoice(s,choice){const c=typeof choice==='number'?current(s)?.choices[choice]:choice;if(!c)return null;
     const effects={...c.effects},tax=difficulties[s.difficulty].tax;
     if(tax){effects.patience=(effects.patience||0)-tax;effects.mood=(effects.mood||0)-tax;}
@@ -1461,7 +1567,7 @@ window.MEETING_ENGINE = (() => {
     if(s.persona==='strict'){if(c.flags.honest)plus('patience',2);if(c.flags.chaos)plus('patience',-3);}
     if(s.relations.boss>=70&&c.flags.social)plus('patience',1);
     if(s.relations.stats>=70&&c.flags.rigor)plus('evidence',2);
-    return {effects,chance:c.risk?clamp(c.risk.chance+(s.persona==='strict'?.08:0),1):0};
+    return {effects,chance:c.risk?clamp(c.risk.chance+(s.persona==='strict'?.08:0),1):0,available:c.prepared?.available!==false,preparation:c.prepared||null};
   }
   function rapport(s,c){const change={boss:0,stats:0,senior:0};
     if(c.flags.rigor){change.boss++;change.stats+=3;}
@@ -1511,13 +1617,13 @@ window.MEETING_ENGINE = (() => {
     if(st.evidence>=85&&st.patience>=65&&st.mood>=35)return 'legend';if(f.social>=4&&st.patience>=75)return 'diplomat';if(f.honest>=4)return 'honest';return 'survivor';
   }
   function terminal(s){return window.MEETING_CAMPUS?.decideEnding(s)||weeklyEnding(s)|| (s.stats.mood<=0?'mood':s.stats.patience<=0?'patience':s.stats.time<=0?decideEnding(s):null);}
-  function choose(s,index){if(s.ended||s.pending)return null;const e=current(s),c=e?.choices[index];if(!c)return null;
+  function choose(s,index){if(s.ended||s.pending)return null;const e=current(s),c=e?.choices[index];if(!c||c.prepared?.available===false)return null;
     const preview=previewChoice(s,c),effects={...preview.effects},unlucky=c.risk?random(s)<preview.chance:false;
     if(unlucky)for(const [k,v] of Object.entries(c.risk.effects))effects[k]=(effects[k]||0)+v;
     const deltas=apply(s,effects),relations=rapport(s,c);addFlags(s,c.flags);
     if(e.phase===8)s.wrapUp=2;
     if(e.phase!==8&&e.phase!==9)s.progress=clamp(s.progress+(c.flags.chaos?4:c.flags.social?7:9)+Math.floor(random(s)*5));
-    s.choicesMade++;const record={phase:s.phase,eventId:e.id,title:e.title,answer:c.text,result:c.result,flavor:unlucky?c.risk.flavor:c.flavor,deltas,relations,unlucky,type:'choice'};s.log.push(record);s.pending=record;s.ending=terminal(s)||(e.phase===9?decideEnding(s):null);return record;
+    s.choicesMade++;const record={phase:s.phase,eventId:e.id,title:e.title,answer:c.text,result:c.result,flavor:unlucky?c.risk.flavor:c.flavor,deltas,relations,unlucky,type:'choice'};window.MEETING_PREPARATION?.afterAnswer(s,e,c,index,record);s.log.push(record);s.pending=record;s.ending=terminal(s)||(e.phase===9?decideEnding(s):null);return record;
   }
   function advance(s){if(s.ended||!s.pending)return false;if(s.ending){s.ended=true;s.pending=null;return true;}s.pending=null;selectEvent(s);return true;}
   function useItem(s,id){if(s.ended||s.pending)return null;
@@ -1555,16 +1661,16 @@ window.MEETING_WEEK=(() => {
   function create(config,seed=1,previous=null,number=1){
     const tasks=(previous?.tasks||[]).filter(t=>!t.done).map(t=>({...t}));
     const resources=previous?{energy:clamp(Math.round(previous.resources.energy*.45+40)),notes:clamp(Math.round(previous.resources.notes*.35+25)),slides:25,stress:clamp(Math.round(previous.resources.stress*.4+tasks.length*4))}:{energy:75,notes:30,slides:25,stress:20};
-    const w={version:1,id:`week-${number}-${seed>>>0}`,number,seed:seed>>>0,rng:seed>>>0,config:{...config},day:0,slot:0,status:'life',resources,traits:{unfinished:tasks.length},tasks,seen:[],log:[],pending:null,eventId:'',meeting:null,reportApplied:false};window.MEETING_CAMPUS?.init(w,previous);select(w);return w;
+    const w={version:1,id:`week-${number}-${seed>>>0}`,number,seed:seed>>>0,rng:seed>>>0,config:{...config},day:0,slot:0,status:'life',resources,traits:{unfinished:tasks.length},tasks,seen:[],log:[],pending:null,eventId:'',meeting:null,reportApplied:false};window.MEETING_CAMPUS?.init(w,previous);window.MEETING_PREPARATION?.init(w,previous);select(w);return w;
   }
-  function current(w){return C.lifeEvents.find(e=>e.id===w.eventId)||C.campusEvents?.find(e=>e.id===w.eventId);}
-  function choose(w,index){if(w.status!=='life'||w.pending)return null;const e=current(w),c=e?.choices[index];if(!c)return null;
+  function current(w){return C.lifeEvents.find(e=>e.id===w.eventId)||C.campusEvents?.find(e=>e.id===w.eventId)||C.preparationEvents?.find(e=>e.id===w.eventId);}
+  function choose(w,index){if(w.status!=='life'||w.pending)return null;const e=current(w),c=e?.choices[index];if(!c||(window.MEETING_PREPARATION?.enabled(w)&&!window.MEETING_PREPARATION.lifePreview(w,e,index).available))return null;
     const effects=window.MEETING_CAMPUS?.preview(w,c)||c.effects,unlucky=c.risk?random(w)<c.risk.chance:false;
     if(unlucky)for(const [k,v] of Object.entries(c.risk.effects))effects[k]=(effects[k]||0)+v;
     const deltas={};for(const [k,v] of Object.entries(effects)){const old=w.resources[k];w.resources[k]=clamp(old+v);deltas[k]=w.resources[k]-old;}
     for(const [k,v] of Object.entries(c.traits))w.traits[k]=(w.traits[k]||0)+v;
-    const task=c.career.taskDone?w.tasks.find(t=>!t.done):null;if(task)task.done=true;
-    const record={day:w.day,slot:w.slot,eventId:e.id,title:e.title,answer:c.text,flavor:unlucky?c.risk.flavor:c.flavor,deltas,traits:{...c.traits},career:{...c.career},taskDone:task?.title||null,unlucky};window.MEETING_CAMPUS?.afterChoice(w,e,c,record);w.log.push(record);w.pending=record;return record;
+    const task=c.career.taskDone?w.tasks.find(t=>!t.done&&!t.prepKind):null;if(task)task.done=true;
+    const record={day:w.day,slot:w.slot,eventId:e.id,title:e.title,answer:c.text,flavor:unlucky?c.risk.flavor:c.flavor,deltas,traits:{...c.traits},career:{...c.career},taskDone:task?.title||null,unlucky};window.MEETING_CAMPUS?.afterChoice(w,e,c,record);window.MEETING_PREPARATION?.afterLife(w,e,index,record);w.log.push(record);w.pending=record;return record;
   }
   function advance(w){if(!w.pending||w.status!=='life')return false;w.pending=null;window.MEETING_CAMPUS?.nextFragment(w);
     if(w.day===4){w.status='meeting';return true;}
@@ -1572,15 +1678,15 @@ window.MEETING_WEEK=(() => {
     if(w.day===7){w.day=6;w.status='report';window.MEETING_CAMPUS?.settleReport(w);return true;}select(w);return true;
   }
   function meetingContext(w){const r=w.resources,t=w.traits;
-    const ctx={weekId:w.id,number:w.number,resources:{...r},traits:{...t},sourceActions:w.log.map(r=>({day:r.day,answer:r.answer,traits:{...r.traits}})),carryTasks:w.tasks.filter(t=>!t.done).map(t=>t.title),deltas:{mood:Math.round((r.energy-65)*.3-(r.stress-25)*.25),evidence:Math.round((r.notes+r.slides-100)*.18),time:-Math.min(8,(t.late||0)*2)},debt:Math.min(3,Math.floor((t.promise||0)/2)+w.tasks.filter(t=>!t.done).length)};return window.MEETING_CAMPUS?.context(w,ctx)||ctx;
+    const ctx={weekId:w.id,number:w.number,resources:{...r},traits:{...t},sourceActions:w.log.map(r=>({day:r.day,answer:r.answer,traits:{...r.traits}})),carryTasks:w.tasks.filter(t=>!t.done).map(t=>t.title),deltas:{mood:Math.round((r.energy-65)*.3-(r.stress-25)*.25),evidence:Math.round((r.notes+r.slides-100)*.18),time:-Math.min(8,(t.late||0)*2)},debt:Math.min(3,Math.floor((t.promise||0)/2)+w.tasks.filter(t=>!t.done).length)};window.MEETING_CAMPUS?.context(w,ctx);return window.MEETING_PREPARATION?.context(w,ctx)||ctx;
   }
   function completeMeeting(w,s){if(s.weekContext?.weekId!==w.id||!s.ended||w.meeting)return false;
     const ending=C.endings.find(e=>e.id===s.ending);w.meeting={seed:s.seed,ending:s.ending,title:ending.title,kind:ending.kind,stats:{...s.stats},rounds:s.choicesMade,score:window.MEETING_ENGINE.score(s)};
     const titles=[];if(s.flags.debt>0)titles.push('兑现组会上答应补充的内容');if(s.stats.evidence<55)titles.push(`重新梳理${C.projects.find(p=>p.id===s.project).topics[2]}`);if(ending.kind==='failure')titles.push('复盘一个卡住的问题，把下周目标缩小');if(!titles.length)titles.push('整理这次反馈，保留下一步最想研究的问题');
     for(const title of titles)if(!w.tasks.some(t=>!t.done&&t.title===title))w.tasks.push({title,done:false,from:w.number});
-    window.MEETING_CAMPUS?.afterMeeting(w,s);w.resources.energy=clamp(w.resources.energy-15);w.resources.stress=clamp(w.resources.stress+(ending.kind==='failure'?15:5));w.day=5;w.slot=0;w.status='life';w.pending=null;select(w);return true;
+    window.MEETING_CAMPUS?.afterMeeting(w,s);window.MEETING_PREPARATION?.afterMeeting(w,s);w.resources.energy=clamp(w.resources.energy-15);w.resources.stress=clamp(w.resources.stress+(ending.kind==='failure'?15:5));w.day=5;w.slot=0;w.status='life';w.pending=null;select(w);return true;
   }
-  function isValid(w){return !!w&&w.version===1&&typeof w.id==='string'&&Number.isInteger(w.number)&&w.number>0&&Number.isInteger(w.rng)&&C.projects.some(p=>p.id===w.config?.project)&&Number.isInteger(w.day)&&w.day>=0&&w.day<7&&[0,1].includes(w.slot)&&['life','meeting','report'].includes(w.status)&&['energy','notes','slides','stress'].every(k=>Number.isFinite(w.resources?.[k])&&w.resources[k]>=0&&w.resources[k]<=100)&&w.traits&&Object.values(w.traits).every(v=>Number.isInteger(v)&&v>=0)&&Array.isArray(w.tasks)&&Array.isArray(w.log)&&w.log.length<=13&&Array.isArray(w.seen)&&(!w.pending||w.log.at(-1)?.eventId===w.pending.eventId)&&(!w.config.campus||window.MEETING_CAMPUS?.isValid(w.campus))&&(w.status!=='life'||current(w)?.day===w.day||(current(w)?.location===w.campus?.plan?.location&&w.campus.plan.day===w.day&&w.campus.plan.slot===w.slot));}
+  function isValid(w){return !!w&&w.version===1&&typeof w.id==='string'&&Number.isInteger(w.number)&&w.number>0&&Number.isInteger(w.rng)&&C.projects.some(p=>p.id===w.config?.project)&&Number.isInteger(w.day)&&w.day>=0&&w.day<7&&[0,1].includes(w.slot)&&['life','meeting','report'].includes(w.status)&&['energy','notes','slides','stress'].every(k=>Number.isFinite(w.resources?.[k])&&w.resources[k]>=0&&w.resources[k]<=100)&&w.traits&&Object.values(w.traits).every(v=>Number.isInteger(v)&&v>=0)&&Array.isArray(w.tasks)&&Array.isArray(w.log)&&w.log.length<=13&&Array.isArray(w.seen)&&(!w.pending||w.log.at(-1)?.eventId===w.pending.eventId)&&(!w.config.campus||window.MEETING_CAMPUS?.isValid(w.campus))&&(!w.config.preparation||window.MEETING_PREPARATION?.bookValid(w.preparation))&&(w.status!=='life'||current(w)?.day===w.day||(current(w)?.location===w.campus?.plan?.location&&w.campus.plan.day===w.day&&w.campus.plan.slot===w.slot));}
   const dispatch=(w,location)=>window.MEETING_CAMPUS?.dispatch(w,location,random)||null;
   return {create,current,choose,advance,useLocation:dispatch,meetingContext,completeMeeting,isValid};
 })();
@@ -1661,7 +1767,7 @@ window.MEETING_WEEK=(() => {
   function feedback(){const p=state.pending;return `<div class="feedback" role="status"><p class="eyebrow">${p.unlucky?'PLOT TWIST · 有一点翻车':'MEETING UPDATE · 现场反馈'}</p><h3>${escape(p.result)}</h3><p>${escape(p.flavor)}</p>${deltasView(p.deltas)}${p.relations?`<div class="relation-changes">${Object.entries(p.relations).filter(([,v])=>v!==0).map(([id,v])=>`${C.people[id].name}信任 ${v>0?'+':''}${v}`).join(' · ')}</div>`:''}<div class="feedback-bottom"><small>${state.ending?'这一场组会，有了自己的结局。':state.flags.debt>=2?'导师的小本本上，多了几件“下周再说”。':'你还在场上。下一页，还得继续。'}</small><button id="next" class="primary">${state.ending?'看看我的结局':'继续汇报'} <span>→</span></button></div></div>`;}
   function render(){if(state.ended){ending();return;}const e=E.current(state),role=C.roles.find(r=>r.id===state.role),who=C.people[e.who],subject=C.projects.find(p=>p.id===state.project),mentor=C.personas.find(p=>p.id===state.persona);updateAlbumCount();
     const low=state.stats.patience<=30?'空气有点凝固':state.stats.mood<=30?'你的灵魂正在加载':state.stats.patience>=80?'老师今天心情不错':'大家暂时很友善';
-    app.innerHTML=`<div class="run-head"><div><p class="eyebrow">${subject.icon} ${subject.name} / ${escape(E.difficulties[state.difficulty].name)}</p><h1>${escape(state.name)}，轮到你了。</h1></div><span class="run-pill">第 ${state.meetingNumber} 场 · ROUND ${String(state.choicesMade+1).padStart(2,'0')}</span></div><div class="board"><aside class="side"><div class="identity-card"><div class="identity-top"><span class="role-portrait">${role.icon}</span><div><b>${escape(state.name)}</b><small>${role.name} / ${careerRank()}</small></div></div><p>${role.line}</p></div><section class="stat-card" aria-label="本场状态">${['mood','evidence','patience','time'].map(statView).join('')}</section><section class="inventory" aria-label="救场道具"><h3>你的最后一点底牌</h3>${[{id:'skill',icon:'✦',name:role.skill,desc:role.skillDesc},{id:'coffee',icon:'🥤',name:'冰美式续命',desc:'心态 +17 / 时间 −1'},{id:'charm',icon:'🤝',name:'师兄的眼神',desc:`耐心 +15 / 底气 +${state.relations.senior>=70?8:4}`}].map(i=>`<button class="item" data-item="${i.id}" ${state.used[i.id]||state.pending?'disabled':''}><span class="emoji">${i.icon}</span><span><strong>${i.name}${state.used[i.id]?' · 已用':''}</strong><small>${i.desc}</small></span></button>`).join('')}</section>${pocketMarkup()}${relationsMarkup()}<p class="side-note">${state.flags.debt>0?`导师已经记下 ${state.flags.debt} 笔“之后再说”。<br>最后一页，可能还不是最后。`:'老师的“最后一个问题”，<br>通常只是一个开场白。'}<br><small>时间为游戏模拟时间，慢慢选就好。</small></p></aside><section class="arena"><div class="progress-rail" role="progressbar" aria-label="汇报进度" aria-valuenow="${state.progress}" aria-valuemin="0" aria-valuemax="100"><span style="width:${state.progress}%"></span></div><div class="phase-label"><span>正在进行：${C.phases[state.phase]}</span><span>汇报进度 ${state.progress}%</span><span>${state.phase<3?'先混个脸熟':state.phase<7?'真正的组会，现在才开始':'曙光就在前方，应该吧'}</span></div><div class="meeting"><div class="meeting-scene"><span class="room-label">${mentor.icon} 周老师 · ${mentor.name}</span><span class="room-status">${low}</span>${scene(e.who)}<div class="npc-roster">${['boss','stats','senior',...(e.who==='visitor'?['visitor']:[])].map(id=>`<span class="npc-label ${e.who===id?'talking':''}">${C.people[id].name} · ${C.people[id].role}</span>`).join('')}</div></div><div class="event-area"><div class="event-meta"><strong>${who.icon} ${who.name}</strong><span>/ ${who.role}</span></div><h2>${e.title}</h2><p class="subject-label">${e.project?subject.icon+' 学科专属':e.requires?'↩ 之前的选择，又回来了':'🎲 公共组会事件'}</p><p class="narration">${state.phase===0&&state.meetingNumber>1?'这是你的第 '+state.meetingNumber+' 场组会。'+(state.flags.debt?'导师还记得你上次答应的事。':'你比初次入场时，更有一点底气。')+' ':''}${e.scene}</p><blockquote>${e.quote}</blockquote></div></div>${state.pending?feedback():`<div class="choice-title"><strong>你怎么接这一招？</strong><span>没有标准答案，只有现场后果</span></div><div class="choices">${e.choices.map((c,i)=>`<button class="choice ${c.risk?'risky':''}" data-choice="${i}"><span class="choice-kicker"><span>${String(i+1).padStart(2,'0')} / ${c.label}</span><span>${c.risk?'⚡':''}</span></span><strong>${c.text}</strong><small>${effectText(E.previewChoice(state,c).effects)}${c.risk?`<br>另有 ${Math.round(E.previewChoice(state,c).chance*100)}% 的翻车概率`:''}</small></button>`).join('')}</div>`}${journal()}<div class="quit"><button id="request-end" class="request-end" ${state.pending||state.wrapUp||state.choicesMade<5||state.lastRequestRound===state.choicesMade?'disabled':''}>${state.wrapUp?'已经进入收尾':state.choicesMade<5?'再讲几页才能申请散会':'举手：申请散会'}</button><button id="quit" class="plain">回到门口 · 进度会保留</button></div></section></div>`;
+    app.innerHTML=`<div class="run-head"><div><p class="eyebrow">${subject.icon} ${subject.name} / ${escape(E.difficulties[state.difficulty].name)}</p><h1>${escape(state.name)}，轮到你了。</h1></div><span class="run-pill">第 ${state.meetingNumber} 场 · ROUND ${String(state.choicesMade+1).padStart(2,'0')}</span></div><div class="board"><aside class="side"><div class="identity-card"><div class="identity-top"><span class="role-portrait">${role.icon}</span><div><b>${escape(state.name)}</b><small>${role.name} / ${careerRank()}</small></div></div><p>${role.line}</p></div><section class="stat-card" aria-label="本场状态">${['mood','evidence','patience','time'].map(statView).join('')}</section><section class="inventory" aria-label="救场道具"><h3>你的最后一点底牌</h3>${[{id:'skill',icon:'✦',name:role.skill,desc:role.skillDesc},{id:'coffee',icon:'🥤',name:'冰美式续命',desc:'心态 +17 / 时间 −1'},{id:'charm',icon:'🤝',name:'师兄的眼神',desc:`耐心 +15 / 底气 +${state.relations.senior>=70?8:4}`}].map(i=>`<button class="item" data-item="${i.id}" ${state.used[i.id]||state.pending?'disabled':''}><span class="emoji">${i.icon}</span><span><strong>${i.name}${state.used[i.id]?' · 已用':''}</strong><small>${i.desc}</small></span></button>`).join('')}</section>${pocketMarkup()}${relationsMarkup()}<p class="side-note">${state.flags.debt>0?`导师已经记下 ${state.flags.debt} 笔“之后再说”。<br>最后一页，可能还不是最后。`:'老师的“最后一个问题”，<br>通常只是一个开场白。'}<br><small>时间为游戏模拟时间，慢慢选就好。</small></p></aside><section class="arena"><div class="progress-rail" role="progressbar" aria-label="汇报进度" aria-valuenow="${state.progress}" aria-valuemin="0" aria-valuemax="100"><span style="width:${state.progress}%"></span></div><div class="phase-label"><span>正在进行：${C.phases[state.phase]}</span><span>汇报进度 ${state.progress}%</span><span>${state.phase<3?'先混个脸熟':state.phase<7?'真正的组会，现在才开始':'曙光就在前方，应该吧'}</span></div><div class="meeting"><div class="meeting-scene"><span class="room-label">${mentor.icon} 周老师 · ${mentor.name}</span><span class="room-status">${low}</span>${scene(e.who)}<div class="npc-roster">${['boss','stats','senior',...(e.who==='visitor'?['visitor']:[])].map(id=>`<span class="npc-label ${e.who===id?'talking':''}">${C.people[id].name} · ${C.people[id].role}</span>`).join('')}</div></div><div class="event-area"><div class="event-meta"><strong>${who.icon} ${who.name}</strong><span>/ ${who.role}</span></div><h2>${e.title}</h2><p class="subject-label">${e.project?subject.icon+' 学科专属':e.requires?'↩ 之前的选择，又回来了':'🎲 公共组会事件'}</p><p class="narration">${state.phase===0&&state.meetingNumber>1?'这是你的第 '+state.meetingNumber+' 场组会。'+(state.flags.debt?'导师还记得你上次答应的事。':'你比初次入场时，更有一点底气。')+' ':''}${e.scene}</p><blockquote>${e.quote}</blockquote></div></div>${state.pending?feedback():`<div class="choice-title"><strong>你怎么接这一招？</strong><span>没有标准答案，只有现场后果</span></div><div class="choices">${e.choices.map((c,i)=>`<button class="choice ${c.risk?'risky':''}" data-choice="${i}" ${c.prepared?.available===false?'disabled':''}><span class="choice-kicker"><span>${String(i+1).padStart(2,'0')} / ${c.label}</span><span>${c.risk?'⚡':''}</span></span><strong>${c.text}</strong><small>${effectText(E.previewChoice(state,c).effects)}${c.risk?`<br>另有 ${Math.round(E.previewChoice(state,c).chance*100)}% 的翻车概率`:''}</small>${window.MEETING_PREPARATION_UI?.choiceHint(state,c)||''}</button>`).join('')}</div>`}${journal()}<div class="quit"><button id="request-end" class="request-end" ${state.pending||state.wrapUp||state.choicesMade<5||state.lastRequestRound===state.choicesMade?'disabled':''}>${state.wrapUp?'已经进入收尾':state.choicesMade<5?'再讲几页才能申请散会':'举手：申请散会'}</button><button id="quit" class="plain">回到门口 · 进度会保留</button></div></section></div>`;
     app.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{const result=E.choose(state,Number(b.dataset.choice));if(!result)return;save();play(result.unlucky?'bad':'click');render();if(window.innerWidth<=700)$('.feedback').scrollIntoView({behavior:'smooth',block:'center'});});
     app.querySelectorAll('[data-item]').forEach(b=>b.onclick=()=>{const result=E.useItem(state,b.dataset.item);if(!result)return;if(result.fromBag){career.bag[result.itemId]=Math.max(0,career.bag[result.itemId]-1);write(CAREER,career);}save();play('item');render();toast(`${result.title}：${effectText(result.deltas)}`);});
     if($('#next'))$('#next').onclick=()=>{if(E.advance(state)){save();play();render();if(window.innerWidth<=700)$('.arena')?.scrollIntoView({behavior:'instant',block:'start'});}};
@@ -1685,7 +1791,7 @@ window.MEETING_WEEK=(() => {
     state.careerApplied=true;save();
   }
   function ending(){applyCareer();window.MEETING_WEEK_UI?.onMeetingEnded(state);const end=C.endings.find(e=>e.id===state.ending),role=C.roles.find(r=>r.id===state.role);let isNew=!album.some(x=>x.id===end.id);const mark=album.find(x=>x.id===end.id);const score=E.score(state);if(!mark){album.push({id:end.id,score});write(ALBUM,album);}else if(score>mark.score){mark.score=score;write(ALBUM,album);}updateAlbumCount();
-    const comic=state.log.findLast(r=>r.type==='choice'&&C.events.find(e=>e.id===r.eventId)?.choices.some(c=>c.text===r.answer&&c.flags.chaos));
+    const comic=state.log.findLast(r=>r.type==='choice'&&(C.events.find(e=>e.id===r.eventId)||C.preparationQuestions?.find(e=>e.id===r.eventId))?.choices.some(c=>c.text===r.answer&&c.flags.chaos));
     const last=state.log.filter(r=>r.type==='choice').at(-1);
     app.innerHTML=`<div class="ending-layout"><article class="ending-card" id="ending-card"><p class="eyebrow">ROOM 404 / 本场求生报告</p>${isNew?'<span class="new-ending">✦ 解锁新结局</span>':'<span class="new-ending">再次抵达这个结局</span>'}<span class="ending-icon">${end.icon}</span><h1>${end.title}</h1><p class="subtitle">${end.subtitle}</p><p class="ending-copy">${end.desc}</p><div class="ending-stats"><div><small>本场评分</small><strong>${score}<small style="display:inline"> /100</small></strong></div><div><small>撑过回合</small><strong>${state.choicesMade}<small style="display:inline"> 回合</small></strong></div><div><small>整活次数</small><strong>${state.flags.chaos}</strong></div></div><div class="ending-sign"><span>${escape(state.name)} / ${role.name}</span><span>组会求生 · ${String(state.seed).slice(-6)}</span></div></article><section class="post-game"><p class="eyebrow">THE MEETING IS OVER. PROBABLY.</p><h2>散会之后，你留下了什么？</h2><p>第 ${state.meetingNumber} 场组会结束。你${state.flags.rigor>=4?'认真守住了自己的结论':state.flags.chaos>=4?'贡献了大量精神娱乐':state.flags.social>=3?'展示了成熟的人情世故':'试着把每个问题接住'}。<br>本场获得 ${10+state.choicesMade} 点经验。摸鱼币 +${state.coinsEarned||0}。下一场，老师还记得你。</p><div class="highlights"><div class="highlight"><small>全场名场面</small><p>${escape(comic?.answer||last?.answer||'你勇敢地走进了会议室。')}</p></div><div class="highlight"><small>散会时的你</small><p>心态 ${state.stats.mood} · 底气 ${state.stats.evidence} · 导师耐心 ${state.stats.patience}</p></div><div class="highlight"><small>导师的小本本</small><p>${state.flags.debt?`还记着 ${state.flags.debt} 笔“下周再说”。祝下周的你好运。`:'今天的坑，今天填。导师暂时没记下新的解释债。'}</p></div></div><div class="end-actions"><button id="continue-career" class="primary">去看看散会后的生活 <span>↗</span></button><button id="replay" class="secondary">换个人设</button><button id="download" class="secondary">保存结局卡</button><button id="copy" class="secondary">复制战绩</button></div><p class="muted">已参加 ${career.meetings} 场 · 生涯经验 ${career.experience} · ${careerRank()}。结局收藏 ${new Set(album.map(a=>a.id)).size}/${C.endings.length}。</p></section></div><div class="end-journal">${journal()}</div>`;
     if(state.weekContext){$('#continue-career').textContent='回到这一周 · 过周末 ↗';}
@@ -1713,7 +1819,7 @@ window.MEETING_WEEK=(() => {
     restoreMeeting:id=>{if(saved?.weekContext?.weekId!==id||saved.ended)return false;state=JSON.parse(JSON.stringify(saved));render();return true;}
   };
   const originalLanding=landing;landing=()=>{originalLanding();window.MEETING_WEEK_UI?.enhanceLanding();};
-  const originalRender=render;render=()=>{originalRender();if(state?.weekContext&&!state.ended)window.MEETING_WEEK_UI?.decorateMeeting(state);};
+  const originalRender=render;render=()=>{originalRender();if(state?.weekContext&&!state.ended){window.MEETING_WEEK_UI?.decorateMeeting(state);window.MEETING_PREPARATION_UI?.decorateMeeting(state);}};
   landing();
 })();
 
@@ -1753,12 +1859,36 @@ window.MEETING_CAMPUS_UI=(() => {
 })();
 
 </script><script>
+window.MEETING_PREPARATION_UI=(() => {
+ const P=window.MEETING_PREPARATION,C=window.MEETING_CONTENT,$=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const status=n=>n>=2?'已核对，可完整回答':n===1?'只有线索，完整回答未解锁':'尚未准备';
+ const origin=a=>a?`第${a.week}周 · ${C.weekDays[a.day]}「${a.action}」`:'还没有相应的行动记录';
+ function ledger(book,route){return `<div class="preparation-ledger">${P.kinds.map(kind=>{const n=P.level(book,route,kind),a=P.source(book,route,kind,n);return `<article class="${n>=2?'ready':n===1?'partial':'missing'}"><strong>${P.icons[kind]} ${P.names[kind]}</strong><span>${esc(P.topic(route,kind))}</span><b>${status(n)}</b><small>${esc(origin(a))}</small></article>`;}).join('')}</div>`;}
+ function lifeHint(w,e,index){if(!P.enabled(w))return '';const p=P.lifePreview(w,e,index);return `<span class="preparation-life-hint">${Object.entries(p.gains).map(([kind,n])=>`${P.icons[kind]} ${P.names[kind]} → ${n===2?'已核对，解锁完整回答':'线索，尚不能完整回答'}`).join(' · ')||'这项行动不增加回答依据'}${!p.available?'<br>🔒 先获得结果与原始材料的线索，才能核对解释边界。':''}</span>`;}
+ function choiceHint(s,c){if(!P.active(s)||!c.prepared)return '';const p=c.prepared;return `<span class="preparation-choice-hint ${p.available?'ready':'missing'}">${p.available?'✓ 可回答，依据来自 '+esc(origin(p.source)):p.reason?`🔒 ${esc(p.reason)}`:`🔒 需要${esc(P.names[p.kind])}：${p.minimum===2?'完成核对':'至少掌握线索'}。目前${p.level?'只有线索':'没有对应准备'}。`}</span>`;}
+ function review(meeting,tasks=[]){const p=meeting?.preparation;if(!p)return '';return `<div class="preparation-review"><h3>这一周的准备，接住了哪些问题？</h3><p>四类准备检查中，完整回答了 ${p.attempts.filter(a=>a.eventId.startsWith('prepared-question-')&&a.status==='answered').length} 类；留下 ${p.gaps.length} 类具体补查任务。</p>${p.attempts.map(a=>`<div><strong>${esc(a.title)}</strong><span>${a.status==='answered'?'✓ 根据准备回答':a.status==='bluff'?'⚡ 冒险硬答':'△ 说明目前的准备范围'} · ${esc(origin(a.source))}${a.gap?(tasks.some(t=>t.prepKind===a.kind&&t.done)?' · ✓ 周末已核对补好':' · → 仍待补查'):''}</span></div>`).join('')}</div>`;}
+ function decorateWeek(w,render,save){if(!P.enabled(w))return;const board=$('.week-board'),panel=document.createElement('section');panel.className='preparation-board';
+  panel.innerHTML=`<div class="section-line"><h3>做过的准备，才是周五的回答依据</h3><span>可追溯笔记 / ${w.preparation.sources.filter(a=>a.week===w.number).length} 条本周记录</span></div><p>精读与核对能解锁完整回答；只看摘要或听同门讲留下线索。手牌、道具和高底气不能替代准备。</p>${ledger(w.preparation,w.config.project)}${w.status==='life'?`<div class="preparation-plans"><h4>这半天可以专门补一项</h4><p>占用一个生活片段，与校园地点二选一；也可以直接处理原定日常。</p><div>${P.kinds.map(kind=>`<button data-preparation="${kind}" ${w.pending||w.campus.plan?'disabled':''}><strong>${P.icons[kind]} ${{literature:'精读文献',method:'核对方法',record:'检查原始材料',boundary:'梳理边界',rehearsal:'预演汇报'}[kind]}</strong><small>${esc(P.topic(w.config.project,kind))}</small></button>`).join('')}</div></div>`:''}`;
+  const map=$('.campus-map');if(map)map.parentElement.before(panel);else board.before(panel);
+  panel.querySelectorAll('[data-preparation]').forEach(b=>b.onclick=()=>{if(P.dispatch(w,b.dataset.preparation)){save();render();$('.life-scene')?.scrollIntoView({block:'start',behavior:'smooth'});}});
+  if(w.status==='life'&&!w.pending){const e=window.MEETING_WEEK.current(w);document.querySelectorAll('[data-life]').forEach((b,i)=>{const hint=document.createElement('div');hint.innerHTML=lifeHint(w,e,i);b.append(hint);if(!P.lifePreview(w,e,i).available)b.disabled=true;});}
+  if(w.pending?.preparation){const p=w.pending.preparation,n=document.createElement('div');n.className='preparation-feedback';n.innerHTML=p.sources.map(a=>`<p>${P.icons[a.kind]} ${P.names[a.kind]}：${a.level===2?'完成核对，完整回答已解锁':'记下线索，仍需核对'}。</p>`).join('')+(p.repaired.length?`<p>✓ 已补好对应问题：${p.repaired.map(esc).join('；')}</p>`:'');$('.life-effects')?.after(n);}
+  if(w.meeting?.preparation&&(w.day===5||w.status==='report')){const n=document.createElement('section');n.innerHTML=review(w.meeting,w.tasks);board.after(n);}
+ }
+ function decorateMeeting(s){if(!P.active(s)||$('.preparation-meeting'))return;const panel=document.createElement('details');panel.className='preparation-meeting';panel.innerHTML='<summary>查看回答依据 · 这周实际准备过什么</summary>'+ledger(s.weekContext.preparation,s.project);$('.meeting-week-link').after(panel);
+  if(s.pending?.preparation){const p=s.pending.preparation,n=document.createElement('p');n.className='preparation-answer-source';n.innerHTML=p.status==='answered'?`✓ 回答依据：${esc(origin(p.source))}`:p.gap?`△ ${P.names[p.kind]}仍有缺口，散会后会成为一项具体补查任务。`:'这次回应说明了目前的准备范围。';$('.feedback h3')?.after(n);}
+ }
+ return {lifeHint,choiceHint,decorateWeek,decorateMeeting};
+})();
+
+</script>
+<script>
 (() => {
   'use strict';
   const C=window.MEETING_CONTENT,W=window.MEETING_WEEK,A=window.MEETING_APP,$=s=>document.querySelector(s),app=$('#app'),KEY='meeting-survival-v3-week';
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const labels={energy:'精力',notes:'资料',slides:'幻灯片',stress:'压力'},kinds={failure:'翻车结局',funny:'滑稽结局',open:'开放结局'};
-  let week=null,family='all';try{const old=JSON.parse(localStorage.getItem(KEY));if(W.isValid(old))week=old;}catch{}
+  let week=null,family='all';try{const old=JSON.parse(localStorage.getItem(KEY));if(W.isValid(old))week=window.MEETING_PREPARATION?.upgrade(old)||old;}catch{}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(week));}catch{A.toast('浏览器没有保存这次进度，请暂时不要关闭页面。');}}
   function seed(){const x=new Uint32Array(1);crypto.getRandomValues(x);return x[0];}
   function calendar(){return `<div class="week-calendar" aria-label="本周时间线">${C.weekDays.map((d,i)=>`<div class="${i===week.day?'today':i<week.day?'past':''}"><small>${d}</small><strong>${i===4?'组会':i<4?'准备 · 生活':'反馈 · 休息'}</strong><span>${i===week.day?'● 当前':i<week.day?'✓ 已过':'· 待续'}</span></div>`).join('')}</div>`;}
@@ -1778,19 +1908,19 @@ window.MEETING_CAMPUS_UI=(() => {
     }
     app.innerHTML=`<div class="run-head"><div><p class="eyebrow">WEEK ${week.number} / ${p.icon} ${p.name}</p><h2>${esc(week.config.name)}的一周</h2></div><button class="plain" id="week-door">回到门口 · 自动保存</button></div>${calendar()}${resources()}<div class="week-board">${body}</div>${tasks()}<div class="week-bottom"><button class="secondary" id="life-shop">逛逛补给站</button><small>游戏中的一周不跟随现实时间。随时停下，下次接着过。</small></div>`;
     if(!window.MEETING_CAMPUS?.enabled(week)){const notice=document.createElement('p');notice.className='week-hint';notice.textContent='当前旧周历会保留进度；从下一周开始，开放校园探索、课题养成与手牌。';app.querySelector('.week-board').before(notice);}
-    window.MEETING_CAMPUS_UI?.decorate(week,render,save);
+    window.MEETING_CAMPUS_UI?.decorate(week,render,save);window.MEETING_PREPARATION_UI?.decorateWeek(week,render,save);
     app.querySelectorAll('[data-life]').forEach(b=>b.onclick=()=>{const r=W.choose(week,Number(b.dataset.life));if(!r)return;careerEffects(r);save();render();});
-    if($('#life-next'))$('#life-next').onclick=()=>{if(W.advance(week)){save();render();if(week.campus){const target=week.status==='life'?$('.campus-map'):week.status==='meeting'?$('.deck-board'):$('.campus-report');target?.scrollIntoView({block:'start',behavior:'smooth'});}}};
+    if($('#life-next'))$('#life-next').onclick=()=>{if(W.advance(week)){save();render();if(week.campus){const target=week.status==='life'?($('.preparation-board')||$('.campus-map')):week.status==='meeting'?$('.deck-board'):$('.campus-report');target?.scrollIntoView({block:'start',behavior:'smooth'});}}};
     if($('#enter-friday'))$('#enter-friday').onclick=()=>{if(!A.restoreMeeting(week.id)){if(week.campus)week.campus.deckLocked=true;save();A.startWith(week.config,W.meetingContext(week));}};
-    if($('#next-week'))$('#next-week').onclick=()=>{if(!week.reportApplied){const career=A.getCareer();career.weeks=Math.max(career.weeks||0,week.number);week.reportApplied=true;A.persistCareer();save();}week=W.create({...week.config,campus:true,relations:{...A.getCareer().relations}},seed(),week,week.number+1);save();render();window.scrollTo(0,0);};
+    if($('#next-week'))$('#next-week').onclick=()=>{if(!week.reportApplied){const career=A.getCareer();career.weeks=Math.max(career.weeks||0,week.number);week.reportApplied=true;A.persistCareer();save();}week=W.create({...week.config,campus:true,preparation:true,relations:{...A.getCareer().relations}},seed(),week,week.number+1);save();render();window.scrollTo(0,0);};
     if($('#week-config'))$('#week-config').onclick=A.landing;$('#week-door').onclick=A.landing;$('#life-shop').onclick=A.showShop;
   }
   function resume(id){if(!week||(id&&id!==week.id))return false;if(week.status==='meeting'&&A.restoreMeeting(week.id))return true;render();window.scrollTo(0,0);return true;}
   function enhanceLanding(){const start=$('#start');if(!start)return;
-    const copy=$('.hero-copy');copy.innerHTML='校园里怎么过，由你决定。<br>推进课题、结交同门、搭配手牌，再去活着散会。';
+    const copy=$('.hero-copy');copy.innerHTML='这周怎么准备，周五就怎么回答。<br>精读材料、核对记录、结交同门，带着真实的准备活着散会。';
     const head=$('.discipline-head');const filters=document.createElement('div');filters.className='family-filter';filters.setAttribute('aria-label','按学科门类筛选');filters.innerHTML=[{id:'all',name:'全部 · 36条路线'},...C.families].map(f=>`<button data-family="${f.id}" class="${family===f.id?'active':''}">${f.name}</button>`).join('');head.after(filters);
     const filter=()=>{app.querySelectorAll('[data-project]').forEach(b=>b.hidden=family!=='all'&&C.projects.find(p=>p.id===b.dataset.project).family!==family);filters.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.family===family));};filters.querySelectorAll('button').forEach(b=>b.onclick=()=>{family=b.dataset.family;filter();});filter();
-    start.textContent='开始新的一周 ↗';start.onclick=()=>{if(week&&week.status!=='report'){A.toast('这一周还没过完，先继续当前一周；结束后可以换配置。');resume();return;}const number=Math.max(A.getCareer().weeks||0,week?.number||0)+1;week=W.create({...A.getMenuConfig(),campus:true,relations:{...A.getCareer().relations}},seed(),week,number);save();render();window.scrollTo(0,0);};
+    start.textContent='开始新的一周 ↗';start.onclick=()=>{if(week&&week.status!=='report'){A.toast('这一周还没过完，先继续当前一周；结束后可以换配置。');resume();return;}const number=Math.max(A.getCareer().weeks||0,week?.number||0)+1;week=W.create({...A.getMenuConfig(),campus:true,preparation:true,relations:{...A.getCareer().relations}},seed(),week,number);save();render();window.scrollTo(0,0);};
     const quick=document.createElement('button');quick.className='secondary';quick.id='quick-meeting';quick.textContent='只玩一场组会';quick.onclick=()=>{if(week&&week.status!=='report'){A.toast('请先完成当前一周，避免覆盖周五的组会记录。');return;}A.startWith(A.getMenuConfig());};start.before(quick);
     if(week){const btn=document.createElement('button');btn.className='primary';btn.id='resume-week';btn.textContent=`继续第${week.number}周 · ${C.weekDays[week.day]}`;btn.onclick=()=>resume();start.before(btn);}
     if($('#resume')&&week&&week.status!=='report')$('#resume').onclick=()=>resume();

@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),scope={window:{}};vm.createContext(scope);
-for(const file of ['content.js','content-expand.js','content-disciplines.js','content-v03.js','content-week.js','campus-content.js','campus-engine.js','engine.js','week-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),scope,{filename:file});
+for(const file of ['content.js','content-expand.js','content-disciplines.js','content-v03.js','content-week.js','campus-content.js','campus-engine.js','preparation.js','engine.js','week-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),scope,{filename:file});
 const {MEETING_CONTENT:C,MEETING_ENGINE:E,MEETING_WEEK:W,MEETING_CAMPUS:G}=scope.window,copy=x=>JSON.parse(JSON.stringify(x));
 assert.equal(C.campusEvents.length,33);assert.equal(C.workCards.length,12);assert.equal(C.talents.length,12);assert.equal(C.weekTwists.length,8);assert.equal(C.challenges.length,8);assert.equal(new Set(C.campusEvents.map(e=>e.id)).size,33);
 const coverage=new Set(),cards=new Set(),twists=new Set(),badges=new Set(),chapters=new Set();let weeks=0,completed=0,synergies=0;

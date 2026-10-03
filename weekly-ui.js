@@ -3,7 +3,7 @@
   const C=window.MEETING_CONTENT,W=window.MEETING_WEEK,A=window.MEETING_APP,$=s=>document.querySelector(s),app=$('#app'),KEY='meeting-survival-v3-week';
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const labels={energy:'精力',notes:'资料',slides:'幻灯片',stress:'压力'},kinds={failure:'翻车结局',funny:'滑稽结局',open:'开放结局'};
-  let week=null,family='all';try{const old=JSON.parse(localStorage.getItem(KEY));if(W.isValid(old))week=old;}catch{}
+  let week=null,family='all';try{const old=JSON.parse(localStorage.getItem(KEY));if(W.isValid(old))week=window.MEETING_PREPARATION?.upgrade(old)||old;}catch{}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(week));}catch{A.toast('浏览器没有保存这次进度，请暂时不要关闭页面。');}}
   function seed(){const x=new Uint32Array(1);crypto.getRandomValues(x);return x[0];}
   function calendar(){return `<div class="week-calendar" aria-label="本周时间线">${C.weekDays.map((d,i)=>`<div class="${i===week.day?'today':i<week.day?'past':''}"><small>${d}</small><strong>${i===4?'组会':i<4?'准备 · 生活':'反馈 · 休息'}</strong><span>${i===week.day?'● 当前':i<week.day?'✓ 已过':'· 待续'}</span></div>`).join('')}</div>`;}
@@ -23,19 +23,19 @@
     }
     app.innerHTML=`<div class="run-head"><div><p class="eyebrow">WEEK ${week.number} / ${p.icon} ${p.name}</p><h2>${esc(week.config.name)}的一周</h2></div><button class="plain" id="week-door">回到门口 · 自动保存</button></div>${calendar()}${resources()}<div class="week-board">${body}</div>${tasks()}<div class="week-bottom"><button class="secondary" id="life-shop">逛逛补给站</button><small>游戏中的一周不跟随现实时间。随时停下，下次接着过。</small></div>`;
     if(!window.MEETING_CAMPUS?.enabled(week)){const notice=document.createElement('p');notice.className='week-hint';notice.textContent='当前旧周历会保留进度；从下一周开始，开放校园探索、课题养成与手牌。';app.querySelector('.week-board').before(notice);}
-    window.MEETING_CAMPUS_UI?.decorate(week,render,save);
+    window.MEETING_CAMPUS_UI?.decorate(week,render,save);window.MEETING_PREPARATION_UI?.decorateWeek(week,render,save);
     app.querySelectorAll('[data-life]').forEach(b=>b.onclick=()=>{const r=W.choose(week,Number(b.dataset.life));if(!r)return;careerEffects(r);save();render();});
-    if($('#life-next'))$('#life-next').onclick=()=>{if(W.advance(week)){save();render();if(week.campus){const target=week.status==='life'?$('.campus-map'):week.status==='meeting'?$('.deck-board'):$('.campus-report');target?.scrollIntoView({block:'start',behavior:'smooth'});}}};
+    if($('#life-next'))$('#life-next').onclick=()=>{if(W.advance(week)){save();render();if(week.campus){const target=week.status==='life'?($('.preparation-board')||$('.campus-map')):week.status==='meeting'?$('.deck-board'):$('.campus-report');target?.scrollIntoView({block:'start',behavior:'smooth'});}}};
     if($('#enter-friday'))$('#enter-friday').onclick=()=>{if(!A.restoreMeeting(week.id)){if(week.campus)week.campus.deckLocked=true;save();A.startWith(week.config,W.meetingContext(week));}};
-    if($('#next-week'))$('#next-week').onclick=()=>{if(!week.reportApplied){const career=A.getCareer();career.weeks=Math.max(career.weeks||0,week.number);week.reportApplied=true;A.persistCareer();save();}week=W.create({...week.config,campus:true,relations:{...A.getCareer().relations}},seed(),week,week.number+1);save();render();window.scrollTo(0,0);};
+    if($('#next-week'))$('#next-week').onclick=()=>{if(!week.reportApplied){const career=A.getCareer();career.weeks=Math.max(career.weeks||0,week.number);week.reportApplied=true;A.persistCareer();save();}week=W.create({...week.config,campus:true,preparation:true,relations:{...A.getCareer().relations}},seed(),week,week.number+1);save();render();window.scrollTo(0,0);};
     if($('#week-config'))$('#week-config').onclick=A.landing;$('#week-door').onclick=A.landing;$('#life-shop').onclick=A.showShop;
   }
   function resume(id){if(!week||(id&&id!==week.id))return false;if(week.status==='meeting'&&A.restoreMeeting(week.id))return true;render();window.scrollTo(0,0);return true;}
   function enhanceLanding(){const start=$('#start');if(!start)return;
-    const copy=$('.hero-copy');copy.innerHTML='校园里怎么过，由你决定。<br>推进课题、结交同门、搭配手牌，再去活着散会。';
+    const copy=$('.hero-copy');copy.innerHTML='这周怎么准备，周五就怎么回答。<br>精读材料、核对记录、结交同门，带着真实的准备活着散会。';
     const head=$('.discipline-head');const filters=document.createElement('div');filters.className='family-filter';filters.setAttribute('aria-label','按学科门类筛选');filters.innerHTML=[{id:'all',name:'全部 · 36条路线'},...C.families].map(f=>`<button data-family="${f.id}" class="${family===f.id?'active':''}">${f.name}</button>`).join('');head.after(filters);
     const filter=()=>{app.querySelectorAll('[data-project]').forEach(b=>b.hidden=family!=='all'&&C.projects.find(p=>p.id===b.dataset.project).family!==family);filters.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.family===family));};filters.querySelectorAll('button').forEach(b=>b.onclick=()=>{family=b.dataset.family;filter();});filter();
-    start.textContent='开始新的一周 ↗';start.onclick=()=>{if(week&&week.status!=='report'){A.toast('这一周还没过完，先继续当前一周；结束后可以换配置。');resume();return;}const number=Math.max(A.getCareer().weeks||0,week?.number||0)+1;week=W.create({...A.getMenuConfig(),campus:true,relations:{...A.getCareer().relations}},seed(),week,number);save();render();window.scrollTo(0,0);};
+    start.textContent='开始新的一周 ↗';start.onclick=()=>{if(week&&week.status!=='report'){A.toast('这一周还没过完，先继续当前一周；结束后可以换配置。');resume();return;}const number=Math.max(A.getCareer().weeks||0,week?.number||0)+1;week=W.create({...A.getMenuConfig(),campus:true,preparation:true,relations:{...A.getCareer().relations}},seed(),week,number);save();render();window.scrollTo(0,0);};
     const quick=document.createElement('button');quick.className='secondary';quick.id='quick-meeting';quick.textContent='只玩一场组会';quick.onclick=()=>{if(week&&week.status!=='report'){A.toast('请先完成当前一周，避免覆盖周五的组会记录。');return;}A.startWith(A.getMenuConfig());};start.before(quick);
     if(week){const btn=document.createElement('button');btn.className='primary';btn.id='resume-week';btn.textContent=`继续第${week.number}周 · ${C.weekDays[week.day]}`;btn.onclick=()=>resume();start.before(btn);}
     if($('#resume')&&week&&week.status!=='report')$('#resume').onclick=()=>resume();

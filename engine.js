@@ -12,6 +12,7 @@ window.MEETING_ENGINE = (() => {
   function weighted(s,pool){let total=0;const weights=pool.map(e=>{const w=e.requires?3:e.project?3:1;total+=w;return w;});let r=random(s)*total;for(let i=0;i<pool.length;i++){r-=weights[i];if(r<0)return pool[i];}return pool.at(-1);}
   function selectEvent(s){
     if(s.wrapUp===2){s.phase=9;s.eventId=s.flags.debt>=2?'final-debt':s.stats.evidence>=82?'final-reverse':'final-normal';return;}
+    const prepared=window.MEETING_PREPARATION?.scheduledQuestion(s);if(prepared){s.phase=prepared.phase;s.eventId=prepared.id;s.seen.push(prepared.id);return;}
     const persona=C.personas.find(p=>p.id===s.persona);
     if(s.wrapUp===1||s.progress>=100){s.phase=8;s.wrapUp=1;}
     else if(s.choicesMade===0)s.phase=0;
@@ -36,9 +37,9 @@ window.MEETING_ENGINE = (() => {
     apply(s,{evidence:career.evidenceBoost||0});apply(s,p.effects);apply(s,C.personas.find(p=>p.id===s.persona).initial);
     s.weekContext=weekContext?JSON.parse(JSON.stringify(weekContext)):null;
     if(s.weekContext){apply(s,s.weekContext.deltas);s.flags.debt=Math.min(6,s.flags.debt+s.weekContext.debt);}
-    if(s.difficulty==='surprise')apply(s,{patience:-8});selectEvent(s);return s;
+    window.MEETING_PREPARATION?.meetingInit(s);if(s.difficulty==='surprise')apply(s,{patience:-8});selectEvent(s);return s;
   }
-  function current(s){return C.events.find(e=>e.id===s.eventId);}
+  function current(s){const raw=C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId);return window.MEETING_PREPARATION?.event(s,raw)||raw;}
   function previewChoice(s,choice){const c=typeof choice==='number'?current(s)?.choices[choice]:choice;if(!c)return null;
     const effects={...c.effects},tax=difficulties[s.difficulty].tax;
     if(tax){effects.patience=(effects.patience||0)-tax;effects.mood=(effects.mood||0)-tax;}
@@ -49,7 +50,7 @@ window.MEETING_ENGINE = (() => {
     if(s.persona==='strict'){if(c.flags.honest)plus('patience',2);if(c.flags.chaos)plus('patience',-3);}
     if(s.relations.boss>=70&&c.flags.social)plus('patience',1);
     if(s.relations.stats>=70&&c.flags.rigor)plus('evidence',2);
-    return {effects,chance:c.risk?clamp(c.risk.chance+(s.persona==='strict'?.08:0),1):0};
+    return {effects,chance:c.risk?clamp(c.risk.chance+(s.persona==='strict'?.08:0),1):0,available:c.prepared?.available!==false,preparation:c.prepared||null};
   }
   function rapport(s,c){const change={boss:0,stats:0,senior:0};
     if(c.flags.rigor){change.boss++;change.stats+=3;}
@@ -99,13 +100,13 @@ window.MEETING_ENGINE = (() => {
     if(st.evidence>=85&&st.patience>=65&&st.mood>=35)return 'legend';if(f.social>=4&&st.patience>=75)return 'diplomat';if(f.honest>=4)return 'honest';return 'survivor';
   }
   function terminal(s){return window.MEETING_CAMPUS?.decideEnding(s)||weeklyEnding(s)|| (s.stats.mood<=0?'mood':s.stats.patience<=0?'patience':s.stats.time<=0?decideEnding(s):null);}
-  function choose(s,index){if(s.ended||s.pending)return null;const e=current(s),c=e?.choices[index];if(!c)return null;
+  function choose(s,index){if(s.ended||s.pending)return null;const e=current(s),c=e?.choices[index];if(!c||c.prepared?.available===false)return null;
     const preview=previewChoice(s,c),effects={...preview.effects},unlucky=c.risk?random(s)<preview.chance:false;
     if(unlucky)for(const [k,v] of Object.entries(c.risk.effects))effects[k]=(effects[k]||0)+v;
     const deltas=apply(s,effects),relations=rapport(s,c);addFlags(s,c.flags);
     if(e.phase===8)s.wrapUp=2;
     if(e.phase!==8&&e.phase!==9)s.progress=clamp(s.progress+(c.flags.chaos?4:c.flags.social?7:9)+Math.floor(random(s)*5));
-    s.choicesMade++;const record={phase:s.phase,eventId:e.id,title:e.title,answer:c.text,result:c.result,flavor:unlucky?c.risk.flavor:c.flavor,deltas,relations,unlucky,type:'choice'};s.log.push(record);s.pending=record;s.ending=terminal(s)||(e.phase===9?decideEnding(s):null);return record;
+    s.choicesMade++;const record={phase:s.phase,eventId:e.id,title:e.title,answer:c.text,result:c.result,flavor:unlucky?c.risk.flavor:c.flavor,deltas,relations,unlucky,type:'choice'};window.MEETING_PREPARATION?.afterAnswer(s,e,c,index,record);s.log.push(record);s.pending=record;s.ending=terminal(s)||(e.phase===9?decideEnding(s):null);return record;
   }
   function advance(s){if(s.ended||!s.pending)return false;if(s.ending){s.ended=true;s.pending=null;return true;}s.pending=null;selectEvent(s);return true;}
   function useItem(s,id){if(s.ended||s.pending)return null;

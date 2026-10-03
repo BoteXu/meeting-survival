@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),sandbox={window:{}};vm.createContext(sandbox);
-for(const file of ['content.js','content-expand.js','content-disciplines.js','content-v03.js','content-week.js','campus-content.js','campus-engine.js','engine.js','week-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),sandbox,{filename:file});
+for(const file of ['content.js','content-expand.js','content-disciplines.js','content-v03.js','content-week.js','campus-content.js','campus-engine.js','preparation.js','engine.js','week-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),sandbox,{filename:file});
 const E=sandbox.window.MEETING_ENGINE,C=sandbox.window.MEETING_CONTENT;
 const clone=x=>JSON.parse(JSON.stringify(x));
 assert.equal(C.events.length,314);assert.equal(C.breaks.length,8);assert.equal(C.projects.length,36);assert.equal(C.endings.length,88);

@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),scope={window:{}};vm.createContext(scope);
-for(const file of ['content.js','content-expand.js','content-disciplines.js','content-v03.js','content-week.js','campus-content.js','campus-engine.js','engine.js','week-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),scope,{filename:file});
+for(const file of ['content.js','content-expand.js','content-disciplines.js','content-v03.js','content-week.js','campus-content.js','campus-engine.js','preparation.js','engine.js','week-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),scope,{filename:file});
 const {MEETING_CONTENT:C,MEETING_ENGINE:E,MEETING_WEEK:W}=scope.window,clone=x=>JSON.parse(JSON.stringify(x));
 assert.equal(C.families.length,14);assert.equal(C.lifeEvents.length,165);assert.equal(new Set(C.lifeEvents.map(e=>e.id)).size,165);
 for(const f of C.families)assert(C.projects.some(p=>p.family===f.id));
