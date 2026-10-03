@@ -85,6 +85,7 @@ window.MEETING_ENGINE = (() => {
     return null;
   }
   function decideEnding(s){const st=s.stats,f=s.flags;
+    const campus=window.MEETING_CAMPUS?.decideEnding(s,s.wrapUp===2);if(campus)return campus;
     const weekly=weeklyEnding(s,s.wrapUp===2);if(weekly)return weekly;
     if(st.mood<=0)return 'mood';if(st.patience<=0)return 'patience';if(st.time<=0)return st.evidence>=55&&st.patience>=30?'escape':'overtime';if(s.wrapUp!==2)return null;
     if(s.meetingNumber>=8&&s.experienceAtStart>=150&&f.rigor>=4&&st.evidence>=85&&st.patience>=55&&f.debt<=1)return 'graduation';
@@ -97,7 +98,7 @@ window.MEETING_ENGINE = (() => {
     if(f.chaos>=5)return 'comedian';if(f.debt>=3)return 'debt';
     if(st.evidence>=85&&st.patience>=65&&st.mood>=35)return 'legend';if(f.social>=4&&st.patience>=75)return 'diplomat';if(f.honest>=4)return 'honest';return 'survivor';
   }
-  function terminal(s){return weeklyEnding(s)|| (s.stats.mood<=0?'mood':s.stats.patience<=0?'patience':s.stats.time<=0?decideEnding(s):null);}
+  function terminal(s){return window.MEETING_CAMPUS?.decideEnding(s)||weeklyEnding(s)|| (s.stats.mood<=0?'mood':s.stats.patience<=0?'patience':s.stats.time<=0?decideEnding(s):null);}
   function choose(s,index){if(s.ended||s.pending)return null;const e=current(s),c=e?.choices[index];if(!c)return null;
     const preview=previewChoice(s,c),effects={...preview.effects},unlucky=c.risk?random(s)<preview.chance:false;
     if(unlucky)for(const [k,v] of Object.entries(c.risk.effects))effects[k]=(effects[k]||0)+v;

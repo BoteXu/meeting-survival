@@ -23,11 +23,18 @@
 .album-card[hidden]{display:none!important}
 
 </style>
+  <style>
+.campus-weather{display:flex;align-items:center;gap:20px;padding:14px 18px;background:#e9ddb6;border-radius:12px;margin-bottom:15px}.campus-weather>span{font-weight:700;flex-shrink:0}.campus-weather p{font-size:13px;margin:0;line-height:1.8}.research-dashboard{border:1px solid #c5d0b7;background:#fffdf4;border-radius:14px;padding:22px;display:grid;grid-template-columns:1.5fr 1fr;gap:30px}.research-dashboard h3{margin:8px 0;font-size:20px}.research-dashboard p:not(.eyebrow){font-size:12px;line-height:1.9;color:#7c876f}.research-bars{display:flex;flex-direction:column;justify-content:center;gap:16px}.research-bars label{font-size:13px}.research-bars strong{float:right}.research-bars i{display:block;height:7px;border-radius:4px;overflow:hidden;background:#e4e9d9;margin-top:9px}.research-bars b{display:block;height:100%;background:#749470}.research-bars label:last-child b{background:#c3a354}.campus-details{padding:17px 3px;margin-bottom:15px;line-height:1.8;font-size:13px}.campus-details summary{cursor:pointer;color:#537047}.campus-people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}.campus-people article{padding:16px;background:#e3e9d9;border-radius:12px}.campus-people h4{margin:0}.campus-people small{font-size:11px;color:#687c5f}.badge-list{display:flex;flex-wrap:wrap;gap:8px}.badge-list span{border:1px dashed #c7d0ba;padding:5px 10px;border-radius:20px;color:#9aa48e;font-size:11px}.badge-list .earned{background:#f0dc9d;color:#4c6440;border-style:solid}.challenge-picks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}.challenge-picks button,.talent-grid button{display:flex;flex-direction:column;gap:8px;border:1px solid #c8d3b9;background:#fffdf4;border-radius:12px;padding:14px;font:inherit;text-align:left;cursor:pointer}.challenge-picks small,.talent-grid small{font-size:12px;color:#758369;line-height:1.7}.research-style{display:flex;gap:15px;align-items:center;flex-wrap:wrap}.research-style select{max-width:100%;font:inherit;padding:8px;border:1px solid #cbd4ba;border-radius:8px;background:#faf8ef}.campus-map{margin:16px 0 28px}.campus-map .section-line{margin:0 0 15px}.campus-map h3{font-size:19px}.campus-locations{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.campus-locations button{display:flex;flex-direction:column;gap:8px;align-items:flex-start;padding:17px 12px;text-align:left;font:inherit;background:#edf0e3;border:1px solid #c9d3b9;border-radius:12px;cursor:pointer}.campus-locations button:hover:enabled{background:#dce6ce;transform:translateY(-2px)}.campus-locations button>span{font-size:27px}.campus-locations strong{font-size:13px}.campus-locations small{font-size:10px;color:#7d896f;line-height:1.6}.campus-locations button:disabled{opacity:.48;cursor:default}.campus-locations button.selected{opacity:1;background:#d9e4cb;box-shadow:inset 0 0 0 1px #6f925b}.campus-feedback{border-top:1px dashed #c9d3b9;padding:8px 0;font-size:13px}.campus-feedback p{margin:8px 0}.work-preview{font-size:11px;line-height:1.8;color:#9a8451;font-style:normal}.research-review{background:#d5dfc7;border-radius:8px;padding:12px;color:#4f6844;font-size:12px;line-height:1.8}.deck-board{background:#ebe8d8;padding:25px;border-radius:16px;margin:20px 0}.deck-board>p{font-size:13px;color:#798068;line-height:1.8}.deck-board .section-line{margin-top:0}.work-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.work-cards button{display:flex;flex-direction:column;gap:10px;border:1px solid #c6caaa;background:#fffdf3;border-radius:12px;padding:18px;text-align:left;font:inherit;cursor:pointer;min-height:145px}.work-cards button.selected,.challenge-picks .selected,.talent-grid .selected{border-color:#63844f;background:#e1ead4;box-shadow:inset 0 0 0 1px #7e986e}.work-cards small,.work-cards span{font-size:11px;color:#788260;line-height:1.6}.work-cards strong{font-size:16px}.work-cards em{font-size:11px;color:#9b9f86;font-style:normal;line-height:1.6}.work-cards button:disabled:not(.selected){opacity:.45;cursor:default}.deck-combos{font-size:13px;color:#667854;margin-top:18px;line-height:1.9}.deck-combos>span{display:inline-block;margin-right:20px;color:#8c7337}.campus-report{margin:25px 0;background:#ebeedf;padding:25px;border-radius:16px}.campus-report>p{font-size:13px;line-height:1.8}.campus-report>button{margin:5px 10px 15px 0}.talent-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.talent-grid em{font-size:11px;font-style:normal;color:#aa9459}.talent-grid button:disabled:not(.selected){opacity:.65;cursor:default}.campus-meeting-cards{display:flex;flex-wrap:wrap;gap:8px;font-size:12px;margin:8px 0}.campus-meeting-cards>span{background:#f5edcf;padding:5px 9px;border-radius:6px}
+@media(max-width:900px){.campus-locations{grid-template-columns:repeat(3,minmax(0,1fr))}.work-cards,.talent-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.campus-weather{display:block}.campus-weather p{margin-top:8px}.research-dashboard{grid-template-columns:1fr;gap:12px;padding:18px}.research-dashboard h3{font-size:17px}.campus-locations{gap:7px}.campus-locations button{padding:12px 9px}.campus-locations strong{font-size:12px}.campus-locations small{font-size:9px}.campus-map .section-line{display:block}.campus-map .section-line>span{display:block;margin-top:6px;font-size:11px}.challenge-picks,.campus-people{grid-template-columns:1fr}.deck-board,.campus-report{padding:16px}.work-cards,.talent-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.work-cards button{padding:13px;min-height:150px}.work-cards strong{font-size:14px}.talent-grid button{padding:12px}.talent-grid strong{font-size:13px}.research-style select{font-size:11px}.campus-map .section-line h3{font-size:17px}}
+.work-cards button:disabled:not(.selected){opacity:.75}.campus-locations button:disabled:not(.selected){opacity:.7}
+
+</style>
 </head>
 <body>
-<header class="topbar"><a href="#" id="brand" class="brand"><span class="brand-icon">组</span><span>组会求生<small>LAB MEETING SURVIVOR</small></span></a><nav><span class="offline"><i></i> 单机 · 随时开玩</span><button id="calendar" class="plain">我的一周</button><button id="shop" class="plain">补给站 <span id="coin-count">0</span></button><button id="sound" class="plain" aria-pressed="false">音效 关</button><button id="collection" class="plain">结局图鉴 <span id="collection-count">0/68</span></button></nav></header>
+<header class="topbar"><a href="#" id="brand" class="brand"><span class="brand-icon">组</span><span>组会求生<small>LAB MEETING SURVIVOR</small></span></a><nav><span class="offline"><i></i> 单机 · 随时开玩</span><button id="calendar" class="plain">我的一周</button><button id="shop" class="plain">补给站 <span id="coin-count">0</span></button><button id="sound" class="plain" aria-pressed="false">音效 关</button><button id="collection" class="plain">结局图鉴 <span id="collection-count">0/88</span></button></nav></header>
 <main id="app"></main>
-<footer><span>虚构实验室 · 真实求生欲</span><span>原创娱乐小游戏 / v0.3</span></footer>
+<footer><span>虚构实验室 · 真实求生欲</span><span>原创娱乐小游戏 / v0.4</span></footer>
 <dialog id="album"><div class="dialog-head"><div><p class="eyebrow">THE MANY WAYS TO LEAVE A MEETING</p><h2>下班的方式不止一种。</h2></div><button id="close-album" class="close" aria-label="关闭图鉴">×</button></div><div id="album-grid"></div><p class="muted">结局收藏存在当前浏览器里。再来一局，解锁另一种人生。</p></dialog>
 <dialog id="card-modal"><div class="dialog-head"><div><p class="eyebrow">YOUR MEETING REPORT</p><h2>把这场组会带走。</h2></div><button id="close-card" class="close" aria-label="关闭结局卡">×</button></div><img id="card-image" alt="本场组会结局卡"><div class="card-actions"><button id="save-card-image" class="primary">下载图片 ↓</button><p class="muted">也可以长按或右键图片保存。</p></div></dialog>
 <dialog id="shop-modal"><div class="dialog-head"><div><p class="eyebrow">AFTER-MEETING SUPPLY STORE</p><h2>给下一场，留一点底牌。</h2></div><button id="close-shop" class="close" aria-label="关闭补给站">×</button></div><div id="shop-grid"></div><p class="muted" id="shop-note"></p></dialog>
@@ -1097,6 +1104,312 @@ window.MEETING_CONTENT = (() => {
 })();
 
 </script><script>
+(() => {
+  const C=window.MEETING_CONTENT;
+  C.locations=[
+    {id:'library',icon:'📚',name:'图书馆',desc:'攒资料、找反例、认识统计老师'},
+    {id:'lab',icon:'🔬',name:'研究工位',desc:'推进课题，取舍速度与质量'},
+    {id:'cafe',icon:'🍜',name:'食堂与茶水间',desc:'恢复状态、结交同门、交换消息'},
+    {id:'mentor',icon:'🎤',name:'空会议室',desc:'预演、整理备份、和导师聊一聊'},
+    {id:'home',icon:'🛋️',name:'宿舍与操场',desc:'认真休息，也可以临时赶工'},
+    {id:'wander',icon:'🐈',name:'校园闲逛',desc:'偶遇、奇思妙想与师门名场面'}
+  ];
+  C.workCards=[
+    ['index','📑','文献索引','rigor',{evidence:5},'资料不多，但出处齐全。'],
+    ['counter','🔍','一个反例','honest',{evidence:3,patience:4},'它拆掉一部分故事，也保住真实的问题。'],
+    ['raw','🗒️','原始记录','rigor',{evidence:6},'你确实记得这条线从哪里来。'],
+    ['negative','📉','诚实的平线','honest',{patience:6},'没有变化，也可以认真讲。'],
+    ['result','📊','能解释的图','rigor',{evidence:4,patience:2},'这次你知道每根线是什么意思。'],
+    ['note','🤝','师兄的便签','social',{mood:5,patience:3},'背面写着：实在不行先吃饭。'],
+    ['team','🧩','合作分工表','social',{evidence:3,patience:4},'终于不是每一个问题都由你负责。'],
+    ['backup','💾','真的能打开的备份','rigor',{evidence:4,time:1},'文件名只有一个“最终”。'],
+    ['summary','🎯','三句话摘要','honest',{patience:4,time:1},'背景讲完之后，还记得研究问题。'],
+    ['sleep','🌙','睡眠凭证','rest',{mood:9},'现场验真：你没有打哈欠。'],
+    ['cat','🐾','猫爪签名','comedy',{mood:6,patience:2},'猫暂时同意你使用它的名义。'],
+    ['meme','🫠','精准的梗图','comedy',{mood:7,evidence:-2},'图很准确，准确地描述了你的心情。']
+  ].map(([id,icon,name,tag,effects,desc])=>({id,icon,name,tag,effects,desc}));
+  C.researchStyles=[{id:'steady',name:'扎实推进',desc:'工位行动质量额外+4，进度少2。'}, {id:'sprint',name:'先做出一版',desc:'工位行动进度额外+4，质量少3。'}, {id:'team',name:'合作课题',desc:'食堂交流额外推进3，合作牌两张时底气+3。'}];
+  C.weekTwists=[
+    {id:'quiet',icon:'🍃',name:'难得安静的一周',desc:'没有额外干扰。正好试试新的安排。'},
+    {id:'deadline',icon:'⏳',name:'截止日期提前了',desc:'工位推进额外+2；周五时间少3分钟。',meeting:{time:-3},work:2},
+    {id:'rain',icon:'☔',name:'连下三天的雨',desc:'宿舍行动精力额外+4；校园闲逛精力少4。',byLocation:{home:{energy:4},wander:{energy:-4}}},
+    {id:'festival',icon:'🥟',name:'食堂美食节',desc:'食堂行动精力额外+5；周五入场心态+3。',byLocation:{cafe:{energy:5}},meeting:{mood:3}},
+    {id:'conference',icon:'🧳',name:'导师刚从会议回来',desc:'导师问题特别多：入场耐心少5；图书馆行动资料额外+4。',meeting:{patience:-5},byLocation:{library:{notes:4}}},
+    {id:'network',icon:'📶',name:'校园网正在维护',desc:'工位和图书馆行动资料少3；空会议室行动幻灯片额外+4。',byLocation:{lab:{notes:-3},library:{notes:-3},mentor:{slides:4}}},
+    {id:'open',icon:'🏛️',name:'校园开放日',desc:'食堂、闲逛行动压力额外-3；入场多1分钟。',byLocation:{cafe:{stress:-3},wander:{stress:-3}},meeting:{time:1}},
+    {id:'printer',icon:'🖨️',name:'打印机集体罢工',desc:'空会议室行动幻灯片少3；带备份牌入场额外底气+4。',byLocation:{mentor:{slides:-3}},backupBonus:4}
+  ];
+  C.challenges=[
+    {id:'steady',icon:'🌿',name:'稳稳下班',desc:'这周不熬夜，组会不翻车，周日精力至少50。'},
+    {id:'rigor',icon:'🔎',name:'问题侦探',desc:'组会认真回应至少4次，散会底气至少75。'},
+    {id:'honest',icon:'🪑',name:'给未知留一把椅子',desc:'组会诚实回应至少4次，导师耐心至少40。'},
+    {id:'comedy',icon:'🎭',name:'欢乐也要散得了会',desc:'组会整活至少4次，同时避免翻车结局。'},
+    {id:'team',icon:'🤝',name:'今天有人和我一起',desc:'本周去食堂交流至少2次，组会求助至少2次。'},
+    {id:'repair',icon:'🧹',name:'不把坑全留到下周',desc:'处理至少1件遗留任务，散会解释债不超过1。'},
+    {id:'research',icon:'📈',name:'课题向前一步',desc:'本周课题进度增加至少20，周日质量至少35。'},
+    {id:'recover',icon:'🌅',name:'从上周的翻车站起来',desc:'上周组会失败，这周避免翻车，周日压力低于50。'}
+  ];
+  C.talents=[
+    ['annotation','📖','边读边记','图书馆行动资料额外+3。'],['focus','🔬','小步实验','工位行动课题进度额外+2。'],
+    ['careful','📏','先检查再下结论','工位行动课题质量额外+3。'],['network','🤝','饭桌上的同盟','食堂行动压力额外-4。'],
+    ['rehearsal','🎤','空椅子也能听懂','空会议室行动幻灯片额外+4。'],['sleep','🌙','按时关机','宿舍行动精力额外+5。'],
+    ['backup','💾','备份强迫症','带备份牌入场额外底气+4。'],['boundary','🛑','有限的承诺','每场额外解释债少1笔。'],
+    ['patient','🍵','先把话说慢','周五入场导师耐心+3。'],['wander','💡','认真走神','闲逛行动资料额外+4。'],
+    ['connector','🧩','让大家坐在同一边','合作牌两张的组合额外耐心+3。'],['comedian','🎭','笑点之后还有内容','喜剧牌两张的组合额外底气+3。']
+  ].map(([id,icon,name,desc])=>({id,icon,name,desc}));
+  const pick=(text,flavor,effects,traits={},work={},card=null,career={},risk=null)=>({text,flavor,effects,traits,work,card,career,risk});
+  const rows=[
+    ['library','书架上的反对意见','你找到一篇不同意你目前解释的文章。它没有礼貌，但很有用。',[
+      pick('把反对理由读完，记下边界','这条反例没有替你结束课题，帮你缩小了问题。',{notes:14,energy:-8},{study:1,negative:1},{quality:5},'counter'),
+      pick('只读和我问题有关的部分','你保留了一个能找到原文的索引。',{notes:9,energy:-4},{study:1},{progress:3},'index'),
+      pick('先截图“这个问题尚未解决”','你终于找到一句能解释自己进度的原话。',{notes:3,stress:-3},{chaos:1},{},'meme')]],
+    ['library','笔记本里还有别人的字','统计老师在你遗落的笔记本上写了一个问号。',[
+      pick('主动请教那个问号','老师说问题比公式更需要先讲清楚。',{notes:12,energy:-6},{study:1,collaboration:1},{quality:6},'index',{stats:3}),
+      pick('先用自己的话回答它','你把能回答的和不能回答的分成了两列。',{notes:8,stress:-4},{negative:1},{quality:4},'counter'),
+      pick('给问号也画一个问号','这是一次双方都很有参与感的学术交流。',{energy:3,notes:2},{chaos:1},{},'meme')]],
+    ['library','引用管理器发起内战','同一篇文章有四个名字。今天它准备四次进入你的参考文献。',[
+      pick('统一记录，检查原文','版本少了，能用的资料多了。',{notes:12,energy:-7},{folder:1,backup:1},{quality:4},'index'),
+      pick('先整理本周会用到的部分','你的范围管理比文献管理器成熟一点。',{notes:8,slides:5},{study:1},{progress:3},'summary'),
+      pick('让四个版本进行民主投票','投票结果是四个版本都想当最新版。',{stress:-5,notes:-2},{chaos:1,folder:1},{},'meme')]],
+    ['library','阅读桌只剩最后一个插座','对面同学也只剩最后百分之八的电。',[
+      pick('轮流充电，交换资料','两个人的电脑都没关机，问题也开始互通。',{notes:10,energy:-5},{collaboration:1},{quality:3},'team',{senior:2}),
+      pick('关电脑，手写问题框','你发现问题其实不需要充电。',{notes:9,stress:-3},{study:1},{progress:4},'summary'),
+      pick('赌电脑撑得到我读完','阅读很专注，自动关机也很专注。',{notes:12,energy:-4},{night:1},{quality:2},'index',{}, {chance:.3,effects:{notes:-10},flavor:'电脑提前熄火，没保存的那段笔记得重新找。'})]],
+    ['lab','课题卡在一个小地方','你知道哪里不对，还不知道它为什么不对。',[
+      pick('做一次最小范围的检查','一小步留下了可追踪的原始记录。',{notes:6,energy:-12,stress:3},{study:1},{progress:11,quality:6},'raw'),
+      pick('先做出粗糙的一版','你终于有东西可以讨论，也有细节要回来核对。',{slides:10,energy:-9,stress:4},{deadline:1},{progress:16,quality:-5},'result'),
+      pick('把问题拆开，请同门一起看','进度没那么快，但这个坑不再只有你认识。',{notes:7,energy:-5,stress:-5},{collaboration:1},{progress:7,quality:5},'team',{senior:2})]],
+    ['lab','那张图还是一条平线','平线本人认为它已经非常努力了。',[
+      pick('核对记录，保留这次没有变化','你得到了一个可靠的“暂时没有”。',{notes:8,energy:-10},{negative:1,study:1},{progress:9,quality:8},'negative'),
+      pick('换一个更小的问题继续做','假设小了一圈，研究重新动了起来。',{notes:7,energy:-8},{pivot:1},{progress:12,quality:3},'raw'),
+      pick('把平线命名为极简主义成果','名字有了风格，结果仍然需要解释。',{slides:7,stress:-6},{chaos:1},{progress:3,quality:-3},'meme')]],
+    ['lab','临时设备空出两个小时','预约表突然让出了一块空白，你的计划却没有带着它一起出现。',[
+      pick('按已有计划做一小段','机会被你用在了一个有范围的问题上。',{notes:8,energy:-12},{study:1},{progress:13,quality:5},'raw'),
+      pick('一口气把能做的全塞进去','你跑得很快，记录差点没跟上。',{slides:8,energy:-16,stress:7},{deadline:1},{progress:20,quality:-7},'result',{}, {chance:.25,effects:{energy:-8,notes:-7},flavor:'临时安排出了差错，最后半小时用来补记录。'}),
+      pick('把机会让给更着急的同门','对方记住了这次帮忙，答应下次给你搭把手。',{energy:5,stress:-5},{collaboration:1},{progress:5,quality:2},'note',{senior:5})]],
+    ['lab','桌上出现一份旧计划','这是两周前的你，给现在的你留下的豪言壮语。',[
+      pick('按现有证据缩小计划','你删掉两项任务，真正的进度多了一点。',{notes:6,stress:-6,energy:-7},{pivot:1},{progress:10,quality:6},'summary',{taskDone:1,debt:-1}),
+      pick('先完成最容易的一项','一件事落地，和十件事“即将完成”不同。',{slides:9,energy:-8},{study:1},{progress:14,quality:2},'result',{taskDone:1}),
+      pick('在旧计划上补写“未来可期”','过去的你和未来的你，暂时没有达成和解。',{energy:4,stress:6},{promise:1},{progress:2},'meme')]],
+    ['cafe','饭桌上的交换条件','师兄想请你看一段文字，也愿意帮你看一张图。',[
+      pick('约好各看一小段，不互相加码','合作有了边界，也有了第二个视角。',{notes:8,energy:6,stress:-7},{collaboration:1,meal:1},{progress:5,quality:4},'team',{senior:4}),
+      pick('今天先正常吃饭','没有产出的人也配吃一顿完整的饭。',{energy:15,stress:-9},{rest:1,meal:1},{},'sleep'),
+      pick('承包整桌人的问题','你成为了群聊里最快回复“我来”的人。',{notes:4,stress:8},{promise:2,collaboration:1},{progress:8,quality:-3},'note',{senior:3})]],
+    ['cafe','师门群在投票吃什么','投票从点菜开始，已经发展到了哲学层面。',[
+      pick('把选项缩成两家，组织饭局','你展示了一种组会里也能用的协调能力。',{energy:10,stress:-5},{meal:1,collaboration:1},{progress:3},'note',{senior:3}),
+      pick('和同门边吃边讲今天的卡点','一碗面之后，问题能用两句话表达了。',{notes:9,energy:8,stress:-5},{meal:1,study:1},{quality:4},'summary'),
+      pick('宣布由食堂的猫担任终审','猫选了鱼，你们也暂时选了鱼。',{energy:8,stress:-7},{meal:1,chaos:1},{},'cat')]],
+    ['cafe','陌生同学也在等散会','你们不是同一学科，叹气的时间却完全同步。',[
+      pick('互相解释研究问题','外行的一句追问，帮你找到了表达里的空白。',{notes:8,energy:6},{collaboration:1},{progress:5,quality:4},'team',{senior:2}),
+      pick('交换一个真正能做到的小建议','你们约好下次再聊，今天不用解决全部问题。',{energy:10,stress:-7},{rest:1},{quality:2},'note'),
+      pick('成立临时散会互助协会','协会没有会费，有一张共同的梗图。',{energy:9,stress:-5},{meme:1,chaos:1},{},'meme')]],
+    ['cafe','师兄说下周要交接工位','他的桌面看起来像十个课题共同搬家。',[
+      pick('帮忙整理，也请教文件怎么留','你们把几份真正有用的经验写成了清单。',{notes:10,energy:-3,stress:-4},{collaboration:1,backup:1},{quality:4},'backup',{senior:4}),
+      pick('先约一个散会后的饭点','你把一句“以后常联系”变成了具体的日历。',{energy:12,stress:-6},{meal:1,rest:1},{},'note',{senior:2}),
+      pick('申请继承他的散会名言','你接过的不是全部工作，是一点对生活的解释权。',{energy:8,stress:-5},{chaos:1,meme:1},{},'meme')]],
+    ['mentor','面对十把空椅子的预演','空椅子不提问，但你已经能听见老师的声音。',[
+      pick('计时讲一遍，再删掉绕远的页','空椅子一致同意你终于讲清了开头。',{slides:14,notes:4,energy:-7},{study:1},{quality:4},'summary'),
+      pick('把最怕被问的部分做成备份','准备不是保证全会，是知道卡住时先拿出什么。',{slides:11,notes:7,energy:-6},{backup:1},{quality:3},'backup'),
+      pick('给椅子安排三个冷笑话','椅子没反应，说明预演环境非常接近真实组会。',{slides:5,stress:-8},{meme:1,chaos:1},{},'meme')]],
+    ['mentor','老师提前问了一个问题','“这周你最想让大家帮你看什么？”',[
+      pick('说出一个具体的问题','导师给出的任务单，第一次只有一项。',{notes:9,slides:7,stress:-4},{study:1},{quality:5},'summary',{boss:4}),
+      pick('讲清楚已经知道和不知道的','未知被允许留下，不必装成结果。',{slides:8,stress:-6},{negative:1},{quality:4},'counter',{boss:3}),
+      pick('先说这周一定会有大进展','老师记下了这句话，日历也记下了。',{slides:3,stress:8},{promise:2},{progress:5,quality:-2},'meme',{boss:1})]],
+    ['mentor','投影仪认不出你的电脑','它今天只愿意显示一个写着“无信号”的成果。',[
+      pick('检查转接和离线备份','文件没有再成为一次新的研究对象。',{slides:12,energy:-7},{backup:2},{quality:2},'backup'),
+      pick('练习不用屏幕讲清问题','少了图，你发现自己的重点藏在哪里。',{notes:8,slides:6},{study:1},{quality:4},'summary'),
+      pick('即兴讲解“无信号”的深层含义','你的临场表演获得了投影仪的持续支持。',{energy:4,stress:-7},{chaos:1},{},'meme')]],
+    ['mentor','最后一页还叫谢谢','师兄说，也许可以把它改成今天真正想讨论的事。',[
+      pick('列出一个判断、一个局限、一个请求','最后一页终于承担了结束之外的工作。',{slides:13,notes:6,energy:-6},{study:1,negative:1},{quality:5},'summary'),
+      pick('先把本周欠的说明补齐','下周的你少收到了一份不明附件。',{slides:10,stress:-5},{backup:1},{progress:4},'backup',{taskDone:1,debt:-1}),
+      pick('改成“谢谢，食堂还开着”','你向最后一页赋予了生活方向。',{slides:4,energy:4},{meal:1,chaos:1},{},'meme')]],
+    ['home','今晚的电脑可以提前关机','课题不会因为今晚少一小时就忘记你的名字。',[
+      pick('按时休息，留给明天一个人','你给后面的讨论留下了清醒的身体。',{energy:22,stress:-13},{rest:2},{},'sleep'),
+      pick('只整理半小时，然后收工','一点记录和一点休息都保住了。',{energy:12,notes:6,stress:-7},{rest:1,backup:1},{quality:2},'backup'),
+      pick('通宵再做一版','你打开了新版本，也透支了一段新睡眠。',{energy:-22,slides:16,stress:12},{night:2,deadline:1},{progress:12,quality:-4},'result')]],
+    ['home','操场上的一圈没有截止日期','你可以跑，也可以走。这里没有人要求你交一张图。',[
+      pick('慢慢走一圈，吃顿正常的饭','这不是拖延，是恢复一点选择的能力。',{energy:18,stress:-15},{rest:2,meal:1},{},'sleep'),
+      pick('和同门边走边聊一个问题','问题小了一点，步数多了一点。',{energy:12,notes:5,stress:-8},{rest:1,collaboration:1},{progress:3},'note',{senior:2}),
+      pick('把跑步轨迹也写成研究路线','它至少证明了你今天没有原地不动。',{energy:5,slides:5,stress:-6},{chaos:1},{progress:2},'meme')]],
+    ['home','同门邀你看一部电影','电影片长两小时，导师口中的最后一个问题则很难估计。',[
+      pick('看完电影，今晚不补工作','你记住了剧情，也暂时忘记了一个版本号。',{energy:19,stress:-13},{rest:2},{},'sleep'),
+      pick('看完再写三句话备忘','明天的你可以找回今天停下的位置。',{energy:12,notes:6,stress:-7},{rest:1},{quality:2},'summary'),
+      pick('讨论电影里那个很不严谨的图','大家建议下次带你看没有图的电影。',{energy:9,notes:4},{chaos:1,study:1},{quality:1},'counter')]],
+    ['home','宿舍桌上的洗杯子任务','你终于发现杯子也有一种跨周研究计划。',[
+      pick('收拾环境，顺手划掉一件待办','桌面和计划都空出了一小块地方。',{energy:12,stress:-10},{rest:1},{progress:3},'sleep',{taskDone:1,debt:-1}),
+      pick('整理文件，再给自己泡一杯茶','备份存好了，今晚不需要继续惊心动魄。',{energy:10,slides:5,stress:-8},{backup:1,rest:1},{quality:3},'backup'),
+      pick('宣布杯子正在进行长期培养','你为生活添加了一个非常不必要的项目名称。',{energy:7,stress:-5},{chaos:1},{},'meme')]],
+    ['wander','实验室的猫巡查校园','它没有考勤卡，却比你更熟悉所有下班路线。',[
+      pick('跟着走一小段，把脑子放松','它没有给研究意见，给了你一段安静时间。',{energy:12,stress:-9},{rest:1},{},'cat'),
+      pick('把刚想到的问题记在手机里','走神没有直接产出答案，留下了一个可检查的想法。',{notes:8,energy:7},{pivot:1},{progress:4,quality:3},'counter'),
+      pick('申请猫担任下一次联合主持','猫没有拒绝，也没有答应准时出席。',{energy:8,stress:-6},{chaos:1,meme:1},{},'cat')]],
+    ['wander','校园海报邀请你跨界听讲','你认识标题里的每个字，合在一起却不太认识。',[
+      pick('带着一个具体疑问去听','你带回一个新角度，没有把课题堆成十个方向。',{notes:10,energy:-4},{pivot:1,study:1},{progress:5,quality:4},'index'),
+      pick('认识一位别的学科的同学','以后解释研究时，终于多了一个诚实的外行听众。',{notes:6,energy:6},{collaboration:1},{progress:4},'team',{senior:2}),
+      pick('先认真研究茶歇时间','这也是一种对议程结构的细致阅读。',{energy:13,stress:-5},{meal:1,chaos:1},{},'meme')]],
+    ['wander','校园广播念出了你的课题关键词','接下来的词是失物招领，气氛一下具体了。',[
+      pick('顺便找回丢掉的笔记本','一份原始记录从生活里回到了研究里。',{notes:12,energy:-3},{backup:1},{quality:4},'raw'),
+      pick('把这种巧合写进自己的周记','叙述没有改变结果，改变了你看待这一天的方式。',{energy:10,stress:-8},{rest:1},{progress:2},'summary'),
+      pick('把广播当成课题宣传首发','课题的知名度暂时只覆盖了你和广播员。',{energy:7,stress:-4},{chaos:1,meme:1},{},'meme')]],
+    ['wander','路边长椅已经坐了一位老师','你们共同面对一个非常普通的下午。',[
+      pick('用两句话解释今天的进展','老师没有追问全部细节，问了一个好问题。',{notes:9,energy:3},{study:1},{progress:5,quality:3},'summary',{boss:2}),
+      pick('聊聊组会以外的生活','你第一次发现老师也需要从会议里出来。',{energy:13,stress:-8},{rest:1,collaboration:1},{},'note',{boss:3}),
+      pick('请教怎么优雅地宣布散会','老师建议你先学会不把每个回答都展开。',{slides:4,stress:-6},{chaos:1},{},'meme')]]
+  ];
+  C.campusEvents=rows.map(([location,title,scene,choices],i)=>({id:'campus-'+i,location,title,scene,choices}));
+  const stories={
+    boss:[['导师也有一张待办清单','周老师把两页计划递给你：“你先选一件真正能做到的。”'],['老师开始问你怎么判断','你以为他要检查进度，今天他问的是你为什么认为这条路值得走。'],['一项有范围的托付','周老师想让你帮忙带一次讨论。他说，先把时间和边界约清楚。']],
+    stats:[['林老师的问号','“先别把方法名写这么大。你真正想区分什么？”'],['一条平线也值得留下','林老师看完记录，没有替你添加一个漂亮的差异。'],['把方法教给另一个同学','老师邀请你带着原始记录讲一次小讨论，先从它做不到什么讲起。']],
+    senior:[['师兄把自己的旧便签给了你','便签上有三行提醒，最后一行是“别忘了吃饭”。'],['这次轮到你救他一下','师兄在组会前发现一个文件打不开。以前总是他替你补上一句。'],['离开工位，留下联系方式','师兄要搬到另一个地方了。他说，帮助不会因为工位空出来就自动结束。']]
+  };
+  for(const [person,chapters] of Object.entries(stories))chapters.forEach(([title,scene],chapter)=>{
+    const location={boss:'mentor',stats:'library',senior:'cafe'}[person];
+    C.campusEvents.push({id:`story-${person}-${chapter}`,location,story:{person,chapter,trust:[45,60,75][chapter]},title,scene,choices:[
+      {...pick('把问题拆小，约清楚能做的部分','你们谈定了一个有范围的下一步。关系是在这类具体的事情里变近的。',{notes:10,stress:-6},{study:1,collaboration:1},{progress:5,quality:5},person==='stats'?'counter':person==='senior'?'note':'summary',{[person]:5}),decision:'boundary'},
+      {...pick('认真合作，也坦白自己卡住的地方','对方没有要求你立刻变成无所不能的人。你也没有把帮助当成理所当然。',{notes:7,energy:5,stress:-7},{collaboration:1},{progress:7,quality:3},'team',{[person]:6}),decision:'together'},
+      {...pick('先贡献一句师门新名言','你们笑完后仍然列下了一件具体的事。相处中可以有一点幽默。',{energy:8,stress:-5},{chaos:1,meme:1},{progress:3},'meme',{[person]:3}),decision:'humor'}]});
+  });
+  const endings=[
+    ['fragile','failure','🏚️','进度条先毕业了，课题还没','“完成”两个字跑得比证据快。','你带来一份很快做出的版本，也带来了还没检查清楚的基础。导师把下一步改成核对，而不是再加一张图。周末可以慢一点，把已经跑出去的进度接回来。','课题推进很快，质量却很低。'],
+    ['backlog','failure','📥','待办清单代替你完成了汇报','每一项都叫“下周”，没有一项认识下周。','老师把几周留下的任务排在一起。它们终于在屏幕上团聚，完成它们的人却还没团聚出足够的时间。你先划出最小的一项，决定不再把整周都抵押给未来。','积累至少三件未完成事项，又带着大量解释债散会。'],
+    ['appendix-time','failure','📎','附录打开了第二场组会','主会场散了，备用页还想继续。','你准备了很多可靠的材料，但没有给它们安排优先顺序。最后一页赶上了截止时间，真正的结论还挤在后面。周末先练习只讲最必要的部分。','带多张证据牌，最后耗尽了组会时间。'],
+    ['burnout','failure','🪫','课题在线，研究者离线','文件都在，持有文件的人正在重启。','这周被你塞进了很多工作，没有塞进足够的恢复。一次追问让剩余心态见了底。师兄没有继续递咖啡，建议先把晚上的计划减掉一半。','精力很低、压力很高，并在组会耗尽心态。'],
+    ['library','funny','🪑','图书馆把你写进了座位表','你和那个插座拥有共同的通讯地址。','一周里你反复去找资料，今天的回应也很有根据。导师建议继续保持，但别真的把图书馆登记成住所。你决定带走笔记，暂时把座位留给其他人。','多次去图书馆，组会认真接住很多问题。'],
+    ['cafe','funny','🍜','你成为了学术饭局召集人','你的合作网络，有明显的饭点结构。','大家终于在一场安排得很顺的讨论后吃上饭。你不仅记得谁研究什么，还记得谁不吃香菜。导师给你的下一项工作是主持，师兄给你的下一项工作是选餐厅。','多次去食堂交流，又在组会上展示社交能力。'],
+    ['cat','funny','🐾','猫爪通过了同行评议','共同作者拒绝回复修改意见。','你把猫爪签名带到了讲台上，现场笑过之后终于同意散会。猫对这场汇报的评价是继续睡觉。你保留了名场面，也记住图表仍然需要人类解释。','带猫爪签名，并在组会上贡献几次整活。'],
+    ['meme','funny','🏆','年度师门喜剧提名','奖品是一张下周汇报排班表。','你把日常积攒的笑料和两张喜剧牌一起带上台。大家笑得很认真，导师提醒下周的你也要认真。你拿到一项荣誉，和一份照常存在的任务。','两张喜剧牌形成组合，组会上也持续整活。'],
+    ['appendix','funny','📚','附录获得了独立答辩席位','它想介绍自己的研究背景。','材料互相支撑得很好，唯一的问题是它们都很想发言。老师允许你保留它们作为后盾，建议下周让正片先讲完。师兄说附录可以坐旁听席，不必每次上台。','三张证据牌入场，认真回应并保住导师耐心。'],
+    ['quality','funny','📏','你用很多种方式证明了“再确认一下”','检查已经非常成熟，课题还在起跑线上。','你熟悉每一个可能出错的地方，终于决定选一个很小的地方先往前做。导师认可你的谨慎，也提醒你给探索留一个有限的空间。周末的计划缩成一件能执行的事。','课题质量很高、进度较低，组会上愿意承认局限。'],
+    ['sleep','funny','😴','你成了全组睡眠代言人','这是一次眼神清醒的学术发言。','你没有把睡眠全抵押给周五，现场也没有把自己全耗完。师兄询问你的作息秘诀，你说其实没什么秘诀，只是按时关过几次电脑。大家决定先从今晚试一次。','多次主动去休息，散会时心态仍然很稳。'],
+    ['mentor','open','🍵','老师允许你把生活留在任务外','你们谈定了进度，也谈定了范围。','你和导师一路谈过计划、判断与托付。今天你终于能把未知说清，把承诺说小。下一周仍然有工作，但它不必占据日历上的全部空白。','完成导师支线，组会上诚实解释或清楚协调。'],
+    ['stats','open','🔍','问号终于成了你的合作者','它没有消失，开始替你指路。','你从被方法名吓住，走到了能解释它的用途与边界。林老师没有帮你消除所有疑问。你们保留了几个真正值得继续检查的问题，足够下周往前走一步。','完成统计老师支线，认真回应并保住底气。'],
+    ['senior','open','🔘','师兄把散会按钮交给了你','这次你也能为别人接住一句话。','从收到旧便签到替对方救场，再到工位外继续联系，你们的合作多了一个方向。师兄说下周轮到你帮新同学一点忙。你接过按钮，先试着为今天按下暂停。','完成师兄支线，在组会上多次求助与合作。'],
+    ['work','open','📝','第一份小作品走出了会议室','它没有回答全部问题，已经有了自己的位置。','几周里你把问题讲清，把记录做稳，再把结果变成可讨论的作品。今天的阶段评审通过了。你给自己留下一份成果，也留下一件以后可以继续研究的事。','在第三阶段带着完整进度、可靠质量与足够底气完成组会。'],
+    ['team','open','🧩','合作里终于写清了分工','有人一起做，也有人知道什么时候停。','饭桌上的交换变成了有范围的协作，分工表也真的走上了讲台。你没有把合作当成让别人承担全部问题。下一周，你们知道各自先做哪一件。','合作课题带两张合作牌，组会上愿意求助并讲得清楚。'],
+    ['pivot','open','🛤️','小问题找到了自己的入口','计划少了几行，方向多了一点确定。','你没有强行让一个大故事立刻完成，而是把已经能检查的部分留下。导师接受先走小路的计划。结果仍然开放着，你终于知道该从哪里再试一次。','课题还在起步，质量已经提升，组会上诚实谈局限。'],
+    ['recover','open','🌅','从上周的翻车里借到一条路','失败没有替下一周写完结局。','上周你没能顺利散会。这周你换了安排，把请求和承诺拆得更小。今天你带着足够清楚的东西讲完，不需要假装上周没发生过。周末可以继续，也可以先休息。','上周失败，这周诚实汇报并恢复足够底气。'],
+    ['balanced','funny','🎒','你的手牌刚刚凑成一个人','会查资料，会开口，也记得休息。','三种不同的准备在现场接住了不同的问题。你没把自己练成全能模板，只是留下了几条备用的路。师兄觉得这套配置不错，建议下周继续带上一个正常吃饭的人。','三种不同类型的手牌入场，诚实回应并保住心态。'],
+    ['collection','failure','🃏','底牌集齐了，主问题没带来','收藏图鉴很满，结论页有点空。','你拥有很多能帮忙的材料，却暂时没把它们收束成今天要讨论的判断。老师建议下周从问题开始选牌。那些收藏没有白攒，只需要重新安排它们上场的顺序。','集齐全部手牌，仍在组会上失去足够的底气。']
+  ];
+  C.campusEndingIds=endings.map(r=>'campus-'+r[0]);
+  for(const [id,kind,icon,title,subtitle,desc,hint] of endings)C.endings.push({id:'campus-'+id,kind,icon,title,subtitle,desc,hint});
+})();
+
+</script><script>
+window.MEETING_CAMPUS=(() => {
+  'use strict';
+  const C=window.MEETING_CONTENT,clamp=x=>Math.max(0,Math.min(100,x)),copy=x=>JSON.parse(JSON.stringify(x));
+  const enabled=w=>!!w?.campus&&w.config.campus===true;
+  const badge=(g,id)=>{if(!g.badges.includes(id))g.badges.push(id);};
+  const freshResearch=(w,n=1)=>({route:w.config.project,title:C.projects.find(p=>p.id===w.config.project).topics[0]+' · 小课题 '+n,style:'steady',progress:0,quality:20,stage:0});
+  function init(w,previous){if(!w.config.campus)return;
+    const old=previous?.campus;
+    const g=w.campus=old?copy(old):{version:1,research:freshResearch(w),completed:[],cards:['summary','sleep'],talents:[],points:0,bonds:{boss:50,stats:50,senior:50,...w.config.relations},stories:{boss:{chapter:0,lastWeek:0,decisions:[]},stats:{chapter:0,lastWeek:0,decisions:[]},senior:{chapter:0,lastWeek:0,decisions:[]}},visits:{},badges:[],wins:0};
+    if(g.research.route!==w.config.project){g.research=freshResearch(w,g.completed.length+1);}
+    const twistIndex=w.seed%C.weekTwists.length;g.twist=C.weekTwists[twistIndex].id===old?.twist?C.weekTwists[(twistIndex+1)%C.weekTwists.length].id:C.weekTwists[twistIndex].id;
+    const possible=C.challenges.filter(c=>c.id!=='recover'||previous?.meeting?.kind==='failure');
+    const offset=w.seed%possible.length;g.challengeOptions=[0,2,4].map(i=>possible[(offset+i)%possible.length].id);g.challenge=g.challengeOptions[0];
+    g.previousFailure=previous?.meeting?.kind==='failure';g.weekVisits={};g.plan=null;g.deck=[];g.deckLocked=false;g.report=null;g.weekStartProgress=g.research.progress;g.weekTaskDone=0;g.latest=null;
+  }
+  function setChallenge(w,id){if(!enabled(w)||w.log.length||w.pending||!w.campus.challengeOptions.includes(id))return false;w.campus.challenge=id;return true;}
+  function setStyle(w,id){if(!enabled(w)||w.log.length||w.pending||!C.researchStyles.some(s=>s.id===id))return false;w.campus.research.style=id;return true;}
+  function dispatch(w,location,rand){if(!enabled(w)||w.status!=='life'||w.pending||w.campus.plan||!C.locations.some(l=>l.id===location))return null;
+    const g=w.campus,stories=C.campusEvents.filter(e=>e.location===location&&e.story&&g.stories[e.story.person].chapter===e.story.chapter&&g.bonds[e.story.person]>=e.story.trust&&g.stories[e.story.person].lastWeek!==w.number);
+    const normal=C.campusEvents.filter(e=>e.location===location&&!e.story),fresh=normal.filter(e=>!w.seen.includes(e.id));
+    const pool=stories.length?stories:fresh.length?fresh:normal;
+    const e=pool[Math.floor(rand(w)*pool.length)];g.plan={day:w.day,slot:w.slot,location,original:w.eventId};w.eventId=e.id;w.seen.push(e.id);return e;
+  }
+  function preview(w,c){const effects={...c.effects};if(!enabled(w))return effects;
+    const g=w.campus,location=g.plan?.location,twist=C.weekTwists.find(t=>t.id===g.twist),add=o=>{for(const [k,v] of Object.entries(o||{}))effects[k]=(effects[k]||0)+v;};
+    add(twist.byLocation?.[location]);
+    if(g.talents.includes('annotation')&&location==='library')add({notes:3});
+    if(g.talents.includes('network')&&location==='cafe')add({stress:-4});
+    if(g.talents.includes('rehearsal')&&location==='mentor')add({slides:4});
+    if(g.talents.includes('sleep')&&location==='home')add({energy:5});
+    if(g.talents.includes('wander')&&location==='wander')add({notes:4});
+    return effects;
+  }
+  function previewWork(w,c){if(!enabled(w))return null;const g=w.campus,r=g.research,location=g.plan?.location,twist=C.weekTwists.find(t=>t.id===g.twist);
+    const changes={progress:c.work?.progress??(c.traits?.study?2:0),quality:c.work?.quality??(c.traits?.negative?1:0)};
+    if(location==='lab'){if(r.style==='steady'){changes.progress-=2;changes.quality+=4;}if(r.style==='sprint'){changes.progress+=4;changes.quality-=3;}changes.progress+=twist.work||0;if(g.talents.includes('focus'))changes.progress+=2;if(g.talents.includes('careful'))changes.quality+=3;}
+    if(location==='cafe'&&r.style==='team')changes.progress+=3;
+    return changes;
+  }
+  function afterChoice(w,e,c,record){if(!enabled(w))return;const g=w.campus,r=g.research,location=g.plan?.location,changes=previewWork(w,c);
+    const actual={};for(const [k,v] of Object.entries(changes)){const before=r[k];r[k]=clamp(before+v);actual[k]=r[k]-before;}
+    if(location){g.visits[location]=(g.visits[location]||0)+1;g.weekVisits[location]=(g.weekVisits[location]||0)+1;}
+    for(const k of ['boss','stats','senior'])g.bonds[k]=clamp(g.bonds[k]+(c.career?.[k]||0));
+    if(record.taskDone)g.weekTaskDone++;
+    const card=c.card&&!record.unlucky?C.workCards.find(a=>a.id===c.card):null;let newCard=false;
+    if(card&&!g.cards.includes(card.id)){g.cards.push(card.id);newCard=true;}
+    let story=null;if(e.story){const s=g.stories[e.story.person];s.chapter++;s.lastWeek=w.number;s.decisions.push(c.decision);story={person:e.story.person,chapter:s.chapter};if(s.chapter===3)badge(g,'story-'+e.story.person);}
+    if(C.locations.every(l=>g.visits[l.id]>0))badge(g,'explorer');
+    record.campus={location,work:actual,card:card?.id||null,newCard,story};g.latest=record.campus;
+  }
+  function nextFragment(w){if(enabled(w))w.campus.plan=null;}
+  function toggleCard(w,id){if(!enabled(w)||w.status!=='meeting'||w.campus.deckLocked||!w.campus.cards.includes(id))return false;const g=w.campus;if(g.deck.includes(id)){g.deck=g.deck.filter(x=>x!==id);return true;}if(g.deck.length>=3)return false;g.deck.push(id);return true;}
+  function deckBonus(w){const effects={},g=w.campus,combos=[];if(!enabled(w))return {effects,combos};const add=o=>{for(const [k,v] of Object.entries(o))effects[k]=(effects[k]||0)+v;};
+    const tags={};for(const id of g.deck){const c=C.workCards.find(c=>c.id===id);add(c.effects);tags[c.tag]=(tags[c.tag]||0)+1;}
+    if(tags.rigor>=2){add({evidence:4});combos.push('证据成链 · 底气 +4');}
+    if(tags.honest>=2){add({patience:4});combos.push('诚实有边界 · 耐心 +4');}
+    if(tags.social>=2){add({mood:4,patience:3});if(g.research.style==='team')add({evidence:3});if(g.talents.includes('connector'))add({patience:3});combos.push('有人一起扛 · 心态 +4 / 耐心 +3');}
+    if(tags.comedy>=2){add({mood:5});if(g.talents.includes('comedian'))add({evidence:3});combos.push('名场面预备役 · 心态 +5');}
+    if(new Set(g.deck.map(id=>C.workCards.find(c=>c.id===id).tag)).size===3){add({patience:2,mood:3});combos.push('准备各有一手 · 耐心 +2 / 心态 +3');}
+    if(g.deck.includes('backup')){const bonus=(g.talents.includes('backup')?4:0)+(C.weekTwists.find(t=>t.id===g.twist).backupBonus||0);if(bonus)add({evidence:bonus});}
+    return {effects,combos};
+  }
+  function context(w,ctx){if(!enabled(w))return ctx;const g=w.campus,b=deckBonus(w),twist=C.weekTwists.find(t=>t.id===g.twist),base={...ctx.deltas};
+    const add=o=>{for(const [k,v] of Object.entries(o||{}))ctx.deltas[k]=(ctx.deltas[k]||0)+v;};add(b.effects);add(twist.meeting);
+    if(g.talents.includes('patient'))add({patience:3});
+    if(g.stories.boss.chapter===3)add({patience:3});if(g.stories.stats.chapter===3)add({evidence:3});if(g.stories.senior.chapter===3)add({mood:4});
+    if(g.talents.includes('boundary'))ctx.debt=Math.max(0,ctx.debt-1);
+    ctx.campus={baseDeltas:base,deck:[...g.deck],combos:b.combos,twist:twist.id,research:copy(g.research),stories:Object.fromEntries(Object.entries(g.stories).map(([k,s])=>[k,s.chapter])),weekVisits:{...g.weekVisits},ownedCount:g.cards.length,previousFailure:g.previousFailure};return ctx;
+  }
+  function afterMeeting(w,s){if(!enabled(w))return;const g=w.campus,r=g.research;g.bonds={...s.relations};w.meeting.flags={...s.flags};w.meeting.researchReview=null;
+    if(deckBonus(w).combos.length)badge(g,'combo');if(g.previousFailure&&w.meeting.kind!=='failure')badge(g,'comeback');
+    const target=[30,65,100][r.stage],quality=[20,35,50][r.stage],evidence=[45,60,70][r.stage];
+    if(r.stage<3&&r.progress>=target&&r.quality>=quality&&s.stats.evidence>=evidence&&w.meeting.kind!=='failure'){
+      r.stage++;w.meeting.researchReview={passed:true,stage:r.stage};badge(g,r.stage===1?'first-stage':r.stage===2?'sustained':'work-complete');
+      if(r.stage===3&&!g.completed.some(p=>p.key===w.id)){g.completed.push({key:w.id,title:r.title,route:r.route,quality:r.quality,week:w.number});}
+    }else if(r.stage<3)w.meeting.researchReview={passed:false,progress:target,quality,evidence};
+  }
+  function checkChallenge(w){const g=w.campus,m=w.meeting,f=m?.flags||{},r=w.resources;if(!m)return false;
+    return ({steady:!w.traits.night&&m.kind!=='failure'&&r.energy>=50,rigor:f.rigor>=4&&m.stats.evidence>=75,honest:f.honest>=4&&m.stats.patience>=40,comedy:f.chaos>=4&&m.kind!=='failure',team:(g.weekVisits.cafe||0)>=2&&f.help>=2,repair:g.weekTaskDone>=1&&f.debt<=1,research:g.research.progress-g.weekStartProgress>=20&&g.research.quality>=35,recover:g.previousFailure&&m.kind!=='failure'&&r.stress<50})[g.challenge]===true;
+  }
+  function settleReport(w){if(!enabled(w)||w.campus.report)return;const g=w.campus,success=checkChallenge(w);g.points++;if(success){g.wins++;badge(g,'challenge');}g.report={success,coins:success?2:0,claimed:false,point:1};}
+  function claimReport(w){if(!enabled(w)||w.status!=='report'||!w.campus.report||w.campus.report.claimed)return 0;const r=w.campus.report;r.claimed=true;return r.coins;}
+  function buyTalent(w,id){if(!enabled(w)||w.status!=='report'||w.campus.points<1||w.campus.talents.includes(id)||!C.talents.some(t=>t.id===id))return false;w.campus.points--;w.campus.talents.push(id);return true;}
+  function restartResearch(w){if(!enabled(w)||w.status!=='report'||w.campus.research.stage!==3)return false;w.campus.research=freshResearch(w,w.campus.completed.length+1);return true;}
+  function decideEnding(s,final=false){const w=s.weekContext,c=w?.campus;if(!c)return null;const r=c.research,v=c.weekVisits,f=s.flags,st=s.stats,tags={};for(const id of c.deck){const card=C.workCards.find(a=>a.id===id);tags[card.tag]=(tags[card.tag]||0)+1;}const terminal=st.mood<=0||st.patience<=0||st.time<=0;
+    if(st.mood<=0&&w.resources.energy<=25&&w.resources.stress>=70)return 'campus-burnout';
+    if(terminal&&c.ownedCount===12&&st.evidence<30)return 'campus-collection';
+    if(st.time<=0&&tags.rigor>=2)return 'campus-appendix-time';
+    if(!final)return null;
+    if(r.progress>=65&&r.quality<=25)return 'campus-fragile';
+    if(w.carryTasks.length>=3&&f.debt>=3)return 'campus-backlog';
+    if(c.ownedCount===12&&st.evidence<30)return 'campus-collection';
+    if(r.stage===2&&r.progress>=100&&r.quality>=50&&st.evidence>=70)return 'campus-work';
+    if(c.stories.senior===3&&f.help>=3)return 'campus-senior';
+    if(c.stories.stats===3&&f.rigor>=4&&st.evidence>=80)return 'campus-stats';
+    if(c.stories.boss===3&&(f.honest>=4||f.social>=3))return 'campus-mentor';
+    if(c.previousFailure&&f.honest>=3&&st.evidence>=60&&st.mood>=35)return 'campus-recover';
+    if(r.style==='team'&&tags.social>=2&&f.help>=2&&st.evidence>=65)return 'campus-team';
+    if(tags.comedy>=2&&f.chaos>=4)return 'campus-meme';
+    if(c.deck.includes('cat')&&f.chaos>=2)return 'campus-cat';
+    if(tags.rigor===3&&f.rigor>=3&&st.patience>=60)return 'campus-appendix';
+    if(r.quality>=85&&r.progress<=50&&f.honest>=3)return 'campus-quality';
+    if((v.library||0)>=4&&f.rigor>=4)return 'campus-library';
+    if((v.cafe||0)>=3&&f.social>=3)return 'campus-cafe';
+    if((v.home||0)>=4&&st.mood>=75&&w.resources.energy>=70)return 'campus-sleep';
+    if(r.progress<30&&r.quality>=45&&f.honest>=4)return 'campus-pivot';
+    if(Object.keys(tags).length===3&&f.honest>=2&&st.mood>=50&&st.patience>=40)return 'campus-balanced';
+    return null;
+  }
+  function isValid(g){return !!g&&g.version===1&&g.research&&C.projects.some(p=>p.id===g.research.route)&&C.researchStyles.some(s=>s.id===g.research.style)&&['progress','quality'].every(k=>Number.isFinite(g.research[k])&&g.research[k]>=0&&g.research[k]<=100)&&[0,1,2,3].includes(g.research.stage)&&Array.isArray(g.completed)&&Array.isArray(g.cards)&&new Set(g.cards).size===g.cards.length&&g.cards.every(id=>C.workCards.some(c=>c.id===id))&&Array.isArray(g.deck)&&g.deck.length<=3&&new Set(g.deck).size===g.deck.length&&g.deck.every(id=>g.cards.includes(id))&&Array.isArray(g.talents)&&new Set(g.talents).size===g.talents.length&&g.talents.every(id=>C.talents.some(t=>t.id===id))&&Number.isInteger(g.points)&&g.points>=0&&C.weekTwists.some(t=>t.id===g.twist)&&C.challenges.some(c=>c.id===g.challenge)&&g.stories&&['boss','stats','senior'].every(k=>Number.isFinite(g.bonds?.[k])&&g.bonds[k]>=0&&g.bonds[k]<=100&&[0,1,2,3].includes(g.stories[k]?.chapter)&&Array.isArray(g.stories[k]?.decisions))&&Array.isArray(g.badges)&&g.visits&&g.weekVisits;}
+  return {enabled,init,setChallenge,setStyle,dispatch,preview,previewWork,afterChoice,nextFragment,toggleCard,deckBonus,context,afterMeeting,settleReport,claimReport,buyTalent,restartResearch,decideEnding,isValid};
+})();
+
+</script><script>
 window.MEETING_ENGINE = (() => {
   'use strict';
   const C=window.MEETING_CONTENT;
@@ -1184,6 +1497,7 @@ window.MEETING_ENGINE = (() => {
     return null;
   }
   function decideEnding(s){const st=s.stats,f=s.flags;
+    const campus=window.MEETING_CAMPUS?.decideEnding(s,s.wrapUp===2);if(campus)return campus;
     const weekly=weeklyEnding(s,s.wrapUp===2);if(weekly)return weekly;
     if(st.mood<=0)return 'mood';if(st.patience<=0)return 'patience';if(st.time<=0)return st.evidence>=55&&st.patience>=30?'escape':'overtime';if(s.wrapUp!==2)return null;
     if(s.meetingNumber>=8&&s.experienceAtStart>=150&&f.rigor>=4&&st.evidence>=85&&st.patience>=55&&f.debt<=1)return 'graduation';
@@ -1196,7 +1510,7 @@ window.MEETING_ENGINE = (() => {
     if(f.chaos>=5)return 'comedian';if(f.debt>=3)return 'debt';
     if(st.evidence>=85&&st.patience>=65&&st.mood>=35)return 'legend';if(f.social>=4&&st.patience>=75)return 'diplomat';if(f.honest>=4)return 'honest';return 'survivor';
   }
-  function terminal(s){return weeklyEnding(s)|| (s.stats.mood<=0?'mood':s.stats.patience<=0?'patience':s.stats.time<=0?decideEnding(s):null);}
+  function terminal(s){return window.MEETING_CAMPUS?.decideEnding(s)||weeklyEnding(s)|| (s.stats.mood<=0?'mood':s.stats.patience<=0?'patience':s.stats.time<=0?decideEnding(s):null);}
   function choose(s,index){if(s.ended||s.pending)return null;const e=current(s),c=e?.choices[index];if(!c)return null;
     const preview=previewChoice(s,c),effects={...preview.effects},unlucky=c.risk?random(s)<preview.chance:false;
     if(unlucky)for(const [k,v] of Object.entries(c.risk.effects))effects[k]=(effects[k]||0)+v;
@@ -1241,31 +1555,34 @@ window.MEETING_WEEK=(() => {
   function create(config,seed=1,previous=null,number=1){
     const tasks=(previous?.tasks||[]).filter(t=>!t.done).map(t=>({...t}));
     const resources=previous?{energy:clamp(Math.round(previous.resources.energy*.45+40)),notes:clamp(Math.round(previous.resources.notes*.35+25)),slides:25,stress:clamp(Math.round(previous.resources.stress*.4+tasks.length*4))}:{energy:75,notes:30,slides:25,stress:20};
-    const w={version:1,id:`week-${number}-${seed>>>0}`,number,seed:seed>>>0,rng:seed>>>0,config:{...config},day:0,slot:0,status:'life',resources,traits:{unfinished:tasks.length},tasks,seen:[],log:[],pending:null,eventId:'',meeting:null,reportApplied:false};select(w);return w;
+    const w={version:1,id:`week-${number}-${seed>>>0}`,number,seed:seed>>>0,rng:seed>>>0,config:{...config},day:0,slot:0,status:'life',resources,traits:{unfinished:tasks.length},tasks,seen:[],log:[],pending:null,eventId:'',meeting:null,reportApplied:false};window.MEETING_CAMPUS?.init(w,previous);select(w);return w;
   }
-  function current(w){return C.lifeEvents.find(e=>e.id===w.eventId);}
+  function current(w){return C.lifeEvents.find(e=>e.id===w.eventId)||C.campusEvents?.find(e=>e.id===w.eventId);}
   function choose(w,index){if(w.status!=='life'||w.pending)return null;const e=current(w),c=e?.choices[index];if(!c)return null;
-    const deltas={};for(const [k,v] of Object.entries(c.effects)){const old=w.resources[k];w.resources[k]=clamp(old+v);deltas[k]=w.resources[k]-old;}
+    const effects=window.MEETING_CAMPUS?.preview(w,c)||c.effects,unlucky=c.risk?random(w)<c.risk.chance:false;
+    if(unlucky)for(const [k,v] of Object.entries(c.risk.effects))effects[k]=(effects[k]||0)+v;
+    const deltas={};for(const [k,v] of Object.entries(effects)){const old=w.resources[k];w.resources[k]=clamp(old+v);deltas[k]=w.resources[k]-old;}
     for(const [k,v] of Object.entries(c.traits))w.traits[k]=(w.traits[k]||0)+v;
     const task=c.career.taskDone?w.tasks.find(t=>!t.done):null;if(task)task.done=true;
-    const record={day:w.day,slot:w.slot,eventId:e.id,title:e.title,answer:c.text,flavor:c.flavor,deltas,traits:{...c.traits},career:{...c.career},taskDone:task?.title||null};w.log.push(record);w.pending=record;return record;
+    const record={day:w.day,slot:w.slot,eventId:e.id,title:e.title,answer:c.text,flavor:unlucky?c.risk.flavor:c.flavor,deltas,traits:{...c.traits},career:{...c.career},taskDone:task?.title||null,unlucky};window.MEETING_CAMPUS?.afterChoice(w,e,c,record);w.log.push(record);w.pending=record;return record;
   }
-  function advance(w){if(!w.pending||w.status!=='life')return false;w.pending=null;
+  function advance(w){if(!w.pending||w.status!=='life')return false;w.pending=null;window.MEETING_CAMPUS?.nextFragment(w);
     if(w.day===4){w.status='meeting';return true;}
     if(w.slot===0){w.slot=1;}else{w.slot=0;w.day++;}
-    if(w.day===7){w.day=6;w.status='report';return true;}select(w);return true;
+    if(w.day===7){w.day=6;w.status='report';window.MEETING_CAMPUS?.settleReport(w);return true;}select(w);return true;
   }
   function meetingContext(w){const r=w.resources,t=w.traits;
-    return {weekId:w.id,number:w.number,resources:{...r},traits:{...t},sourceActions:w.log.map(r=>({day:r.day,answer:r.answer,traits:{...r.traits}})),carryTasks:w.tasks.filter(t=>!t.done).map(t=>t.title),deltas:{mood:Math.round((r.energy-65)*.3-(r.stress-25)*.25),evidence:Math.round((r.notes+r.slides-100)*.18),time:-Math.min(8,(t.late||0)*2)},debt:Math.min(3,Math.floor((t.promise||0)/2)+w.tasks.filter(t=>!t.done).length)};
+    const ctx={weekId:w.id,number:w.number,resources:{...r},traits:{...t},sourceActions:w.log.map(r=>({day:r.day,answer:r.answer,traits:{...r.traits}})),carryTasks:w.tasks.filter(t=>!t.done).map(t=>t.title),deltas:{mood:Math.round((r.energy-65)*.3-(r.stress-25)*.25),evidence:Math.round((r.notes+r.slides-100)*.18),time:-Math.min(8,(t.late||0)*2)},debt:Math.min(3,Math.floor((t.promise||0)/2)+w.tasks.filter(t=>!t.done).length)};return window.MEETING_CAMPUS?.context(w,ctx)||ctx;
   }
   function completeMeeting(w,s){if(s.weekContext?.weekId!==w.id||!s.ended||w.meeting)return false;
     const ending=C.endings.find(e=>e.id===s.ending);w.meeting={seed:s.seed,ending:s.ending,title:ending.title,kind:ending.kind,stats:{...s.stats},rounds:s.choicesMade,score:window.MEETING_ENGINE.score(s)};
     const titles=[];if(s.flags.debt>0)titles.push('兑现组会上答应补充的内容');if(s.stats.evidence<55)titles.push(`重新梳理${C.projects.find(p=>p.id===s.project).topics[2]}`);if(ending.kind==='failure')titles.push('复盘一个卡住的问题，把下周目标缩小');if(!titles.length)titles.push('整理这次反馈，保留下一步最想研究的问题');
     for(const title of titles)if(!w.tasks.some(t=>!t.done&&t.title===title))w.tasks.push({title,done:false,from:w.number});
-    w.resources.energy=clamp(w.resources.energy-15);w.resources.stress=clamp(w.resources.stress+(ending.kind==='failure'?15:5));w.day=5;w.slot=0;w.status='life';w.pending=null;select(w);return true;
+    window.MEETING_CAMPUS?.afterMeeting(w,s);w.resources.energy=clamp(w.resources.energy-15);w.resources.stress=clamp(w.resources.stress+(ending.kind==='failure'?15:5));w.day=5;w.slot=0;w.status='life';w.pending=null;select(w);return true;
   }
-  function isValid(w){return !!w&&w.version===1&&typeof w.id==='string'&&Number.isInteger(w.number)&&w.number>0&&Number.isInteger(w.rng)&&C.projects.some(p=>p.id===w.config?.project)&&Number.isInteger(w.day)&&w.day>=0&&w.day<7&&[0,1].includes(w.slot)&&['life','meeting','report'].includes(w.status)&&['energy','notes','slides','stress'].every(k=>Number.isFinite(w.resources?.[k])&&w.resources[k]>=0&&w.resources[k]<=100)&&w.traits&&Object.values(w.traits).every(v=>Number.isInteger(v)&&v>=0)&&Array.isArray(w.tasks)&&Array.isArray(w.log)&&w.log.length<=13&&Array.isArray(w.seen)&&(!w.pending||w.log.at(-1)?.eventId===w.pending.eventId)&&(w.status!=='life'||current(w)?.day===w.day);}
-  return {create,current,choose,advance,meetingContext,completeMeeting,isValid};
+  function isValid(w){return !!w&&w.version===1&&typeof w.id==='string'&&Number.isInteger(w.number)&&w.number>0&&Number.isInteger(w.rng)&&C.projects.some(p=>p.id===w.config?.project)&&Number.isInteger(w.day)&&w.day>=0&&w.day<7&&[0,1].includes(w.slot)&&['life','meeting','report'].includes(w.status)&&['energy','notes','slides','stress'].every(k=>Number.isFinite(w.resources?.[k])&&w.resources[k]>=0&&w.resources[k]<=100)&&w.traits&&Object.values(w.traits).every(v=>Number.isInteger(v)&&v>=0)&&Array.isArray(w.tasks)&&Array.isArray(w.log)&&w.log.length<=13&&Array.isArray(w.seen)&&(!w.pending||w.log.at(-1)?.eventId===w.pending.eventId)&&(!w.config.campus||window.MEETING_CAMPUS?.isValid(w.campus))&&(w.status!=='life'||current(w)?.day===w.day||(current(w)?.location===w.campus?.plan?.location&&w.campus.plan.day===w.day&&w.campus.plan.slot===w.slot));}
+  const dispatch=(w,location)=>window.MEETING_CAMPUS?.dispatch(w,location,random)||null;
+  return {create,current,choose,advance,useLocation:dispatch,meetingContext,completeMeeting,isValid};
 })();
 
 </script><script>
@@ -1401,6 +1718,41 @@ window.MEETING_WEEK=(() => {
 })();
 
 </script><script>
+window.MEETING_CAMPUS_UI=(() => {
+  const C=window.MEETING_CONTENT,G=window.MEETING_CAMPUS,A=window.MEETING_APP,$=s=>document.querySelector(s);
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const names={energy:'精力',notes:'资料',slides:'幻灯片',stress:'压力',mood:'心态',evidence:'底气',patience:'耐心',time:'时间',progress:'课题进度',quality:'课题质量'};
+  const effect=e=>Object.entries(e||{}).filter(([,v])=>v).map(([k,v])=>`${names[k]} ${v>=0?'+':''}${v}`).join(' · ');
+  const tagNames={rigor:'证据',honest:'诚实',social:'合作',rest:'休息',comedy:'喜剧'};
+  const stages=['明确问题','形成结果','提交作品','阶段作品完成'];
+  const badgeData={'first-stage':['🌱','问题站住了'],'sustained':['🌿','结果成形'],'work-complete':['🏅','阶段作品提交'],'story-boss':['🍵','和导师谈定边界'],'story-stats':['🔍','一起面对未知'],'story-senior':['🤝','工位外的同盟'],explorer:['🗺️','校园全地图'],combo:['🃏','第一套组会组合'],challenge:['🎯','本周挑战完成'],comeback:['🌅','翻车后再出发']};
+  function insert(html,anchor,before=true){const node=document.createElement('section');node.innerHTML=html;before?anchor.before(node):anchor.after(node);return node;}
+  function decorate(w,render,save){if(!G.enabled(w))return;const g=w.campus,r=g.research,twist=C.weekTwists.find(t=>t.id===g.twist),quest=C.challenges.find(c=>c.id===g.challenge),update=()=>{save();render();};
+    const top=insert(`<div class="campus-weather"><span>${twist.icon} ${twist.name}</span><p>${twist.desc}</p></div><div class="research-dashboard"><div><p class="eyebrow">跨周课题 / ${C.researchStyles.find(s=>s.id===r.style).name}</p><h3>${esc(r.title)}</h3><p>${stages[r.stage]}${r.stage<3?` · 下一次组会评审要求：进度 ${[30,65,100][r.stage]} / 质量 ${[20,35,50][r.stage]} / 底气 ${[45,60,70][r.stage]}，并避免翻车`:' · 可以在周日报告开启下一个小课题'}</p></div><div class="research-bars"><label>进度 <strong>${r.progress}</strong><i><b style="width:${r.progress}%"></b></i></label><label>质量 <strong>${r.quality}</strong><i><b style="width:${r.quality}%"></b></i></label></div></div><details class="campus-details"><summary>本周挑战：${quest.icon} ${quest.name} · 查看人物支线与收藏</summary><p>${quest.desc} 成功奖励2枚摸鱼币；每完成一周都获得1点成长。</p>${!w.log.length?`<div class="challenge-picks">${g.challengeOptions.map(id=>{const c=C.challenges.find(c=>c.id===id);return `<button data-challenge="${id}" class="${id===g.challenge?'selected':''}"><strong>${c.icon} ${c.name}</strong><small>${c.desc}</small></button>`;}).join('')}</div><label class="research-style">本周课题打法 <select id="research-style">${C.researchStyles.map(s=>`<option value="${s.id}" ${r.style===s.id?'selected':''}>${s.name} · ${s.desc}</option>`).join('')}</select></label>`:''}<div class="campus-people">${['boss','stats','senior'].map(id=>`<article><h4>${C.people[id].icon} ${C.people[id].name}</h4><p>信任 ${g.bonds[id]} · 支线 ${g.stories[id].chapter}/3章</p><small>${g.stories[id].chapter===3?'支线已完成，周五获得常驻帮助':`去${C.locations.find(l=>l.id===({boss:'mentor',stats:'library',senior:'cafe'}[id])).name}与对方相遇。下一章需要信任 ${[45,60,75][g.stories[id].chapter]}，每周最多推进一章。`}</small></article>`).join('')}</div><p>手牌收藏 ${g.cards.length}/12 · 已完成课题 ${g.completed.length} · 成长 ${g.talents.length}/12 · 徽章 ${g.badges.length}/10</p><div class="badge-list">${Object.entries(badgeData).map(([id,[icon,name]])=>`<span class="${g.badges.includes(id)?'earned':''}">${g.badges.includes(id)?icon:'○'} ${name}</span>`).join('')}</div></details>`,$('.week-board'));
+    top.querySelectorAll('[data-challenge]').forEach(b=>b.onclick=()=>{if(G.setChallenge(w,b.dataset.challenge))update();});if($('#research-style'))$('#research-style').onchange=e=>{if(G.setStyle(w,e.target.value))update();};
+    if(w.status==='life'){
+      const map=insert(`<div class="campus-map"><div class="section-line"><h3>${g.plan?'这半天已经有了去处':'这半天，由你来安排'}</h3><span>${g.plan?'选择后不能重抽场景':'选一个去处，或直接处理下面的原定日常'}</span></div><div class="campus-locations">${C.locations.map(l=>`<button data-location="${l.id}" ${w.pending||g.plan?'disabled':''} class="${g.plan?.location===l.id?'selected':''}"><span>${l.icon}</span><strong>${l.name}</strong><small>${l.desc}</small></button>`).join('')}</div></div>`,$('.week-board'));
+      map.querySelectorAll('[data-location]').forEach(b=>b.onclick=()=>{if(W().useLocation(w,b.dataset.location)){update();$('.life-scene')?.scrollIntoView({block:'start',behavior:'smooth'});}});
+      const event=W().current(w);
+      if(w.pending?.campus){const f=w.pending.campus;const c=C.workCards.find(c=>c.id===f.card);insert(`<div class="campus-feedback"><p>${effect(f.work)||'课题先留在这里，生活也要继续。'}</p>${c?`<p>${c.icon} ${f.newCard?'收集到新手牌':'手牌已在收藏中'}：<strong>${c.name}</strong></p>`:''}${f.story?`<p>📖 ${C.people[f.story.person].name}支线推进到第 ${f.story.chapter} 章${f.story.chapter===3?'，常驻帮助已解锁':''}。</p>`:''}</div>`,$('.life-effects'),false);}
+      else document.querySelectorAll('[data-life]').forEach((b,i)=>{const c=event.choices[i],extra=document.createElement('em');extra.className='work-preview';extra.textContent=[effect(G.previewWork(w,c)),c.card?'可收集：'+C.workCards.find(a=>a.id===c.card).name:'',c.risk?`${Math.round(c.risk.chance*100)}% 概率出现额外状况`:''].filter(Boolean).join(' · ');b.append(extra);});
+      if(w.meeting?.researchReview&&w.day===5){const check=w.meeting.researchReview;insert(`<p class="research-review">${check.passed?'✓ 这次组会通过了课题阶段评审：'+stages[check.stage]:`课题暂未通过下一阶段：需要进度${check.progress}、质量${check.quality}、散会底气${check.evidence}并避免翻车。周末还能继续推进。`}</p>`,$('.week-context'),false);}
+    }
+    if(w.status==='meeting'){
+      const bonus=G.deckBonus(w);const deck=insert(`<div class="deck-board"><div class="section-line"><h3>给这场组会，搭一手底牌</h3><span>已选 ${g.deck.length}/3 · 入场后锁定</span></div><p>最多带3张。相同类型两张会形成组合；三种不同类型也有组合。卡牌是常驻收藏，每场可以重新搭配。</p><div class="work-cards">${g.cards.map(id=>{const c=C.workCards.find(c=>c.id===id),selected=g.deck.includes(id);return `<button data-card="${id}" class="${selected?'selected':''}" ${g.deckLocked||(!selected&&g.deck.length>=3)?'disabled':''}><small>${c.icon} ${tagNames[c.tag]} ${selected?'✓ 已选':''}</small><strong>${c.name}</strong><span>${effect(c.effects)}</span><em>${c.desc}</em></button>`;}).join('')}</div><div class="deck-combos">${bonus.combos.length?bonus.combos.map(x=>`<span>✦ ${x}</span>`).join(''):'选两张同类型，或三张不同类型，试试组合。'}<p>手牌合计：${effect(bonus.effects)||'暂未选牌'}</p></div></div>`,$('.week-board'));
+      deck.querySelectorAll('[data-card]').forEach(b=>b.onclick=()=>{if(G.toggleCard(w,b.dataset.card))update();});
+    }
+    if(w.status==='report'){
+      const report=g.report;const upgrades=insert(`<div class="campus-report"><h3>${report?.success?'🎯 本周挑战完成':'📒 挑战留待下一次'} · ${quest.name}</h3><p>${quest.desc}</p><p>本周获得1点成长。可用成长点：<strong>${g.points}</strong>。解锁的能力会继续带到以后每周。</p>${report?.success&&!report.claimed?'<button id="claim-challenge" class="secondary">领取挑战奖励 · +2摸鱼币</button>':''}${r.stage===3?'<button id="new-research" class="primary">这份作品完成了 · 开启下一个小课题</button>':''}<div class="talent-grid">${C.talents.map(t=>`<button data-talent="${t.id}" ${g.points<1||g.talents.includes(t.id)?'disabled':''} class="${g.talents.includes(t.id)?'selected':''}"><strong>${t.icon} ${t.name} ${g.talents.includes(t.id)?'✓':''}</strong><small>${t.desc}</small><em>${g.talents.includes(t.id)?'已解锁':'1点成长'}</em></button>`).join('')}</div></div>`,$('.week-board'));
+      if($('#claim-challenge'))$('#claim-challenge').onclick=()=>{const earned=G.claimReport(w);save();A.getCareer().coins+=earned;A.persistCareer();render();};
+      if($('#new-research'))$('#new-research').onclick=()=>{if(G.restartResearch(w))update();};upgrades.querySelectorAll('[data-talent]').forEach(b=>b.onclick=()=>{if(G.buyTalent(w,b.dataset.talent))update();});
+    }
+  }
+  const W=()=>window.MEETING_WEEK;
+  return {decorate,effect};
+})();
+
+</script><script>
 (() => {
   'use strict';
   const C=window.MEETING_CONTENT,W=window.MEETING_WEEK,A=window.MEETING_APP,$=s=>document.querySelector(s),app=$('#app'),KEY='meeting-survival-v3-week';
@@ -1418,30 +1770,32 @@ window.MEETING_WEEK=(() => {
     let body='';
     if(week.status==='life'){
       const e=W.current(week),q=week.pending;
-      body=`<section class="life-scene"><p class="eyebrow">${week.day<4?'BEFORE FRIDAY':'LIFE AFTER THE MEETING'} / ${C.weekDays[week.day]} · ${week.slot?'下半天':'上半天'}</p><span class="life-icon">${week.day<4?'☕':week.day===4?'🎒':'🌿'}</span><h1>${esc(e.title)}</h1><p>${esc(e.scene)}</p>${week.day===5&&week.meeting?`<div class="week-context">昨天的组会：「${esc(week.meeting.title)}」<br>底气 ${week.meeting.stats.evidence} · 撑过 ${week.meeting.rounds} 回合。反馈已经进入待办。</div>`:''}</section><section class="life-options">${q?`<div class="feedback"><p class="eyebrow">这件事留下了后果</p><h3>${esc(q.answer)}</h3><p>${esc(q.flavor)}</p><p class="life-effects">${effects(q.deltas)}</p>${q.taskDone?`<p>✓ 已处理：${esc(q.taskDone)}</p>`:''}<button class="primary" id="life-next">${week.day===4?'准备进入组会':week.day===6&&week.slot===1?'看看这一周':'时间往前走'} →</button></div>`:e.choices.map((c,i)=>`<button class="life-choice" data-life="${i}"><small>0${i+1}</small><strong>${esc(c.text)}</strong><span>${effects(c.effects)}</span></button>`).join('')}<p class="week-hint">精力与压力影响心态；资料与幻灯片影响底气。迟到缩短组会时间，承诺和未完成事项变成解释债。</p></section>`;
+      body=`<section class="life-scene"><p class="eyebrow">${week.day<4?'BEFORE FRIDAY':'LIFE AFTER THE MEETING'} / ${C.weekDays[week.day]} · ${week.slot?'下半天':'上半天'}</p><span class="life-icon">${week.day<4?'☕':week.day===4?'🎒':'🌿'}</span><h1>${esc(e.title)}</h1><p>${esc(e.scene)}</p>${week.day===5&&week.meeting?`<div class="week-context">昨天的组会：「${esc(week.meeting.title)}」<br>底气 ${week.meeting.stats.evidence} · 撑过 ${week.meeting.rounds} 回合。反馈已经进入待办。</div>`:''}</section><section class="life-options">${q?`<div class="feedback"><p class="eyebrow">这件事留下了后果</p><h3>${esc(q.answer)}</h3><p>${esc(q.flavor)}</p><p class="life-effects">${effects(q.deltas)}</p>${q.taskDone?`<p>✓ 已处理：${esc(q.taskDone)}</p>`:''}<button class="primary" id="life-next">${week.day===4?'准备进入组会':week.day===6&&week.slot===1?'看看这一周':'时间往前走'} →</button></div>`:e.choices.map((c,i)=>`<button class="life-choice" data-life="${i}"><small>0${i+1}</small><strong>${esc(c.text)}</strong><span>${effects(window.MEETING_CAMPUS?.preview(week,c)||c.effects)}</span></button>`).join('')}<p class="week-hint">精力与压力影响心态；资料与幻灯片影响底气。迟到缩短组会时间，承诺和未完成事项变成解释债。</p></section>`;
     }else if(week.status==='meeting'){
-      const ctx=W.meetingContext(week);body=`<section class="life-scene"><p class="eyebrow">FRIDAY / 准备进入会议室</p><span class="life-icon">🎤</span><h1>这一周，现在轮到你讲了。</h1><p>你的准备、熬夜、合作和承诺，会一起走上讲台。</p><div class="week-context">本周入场修正：心态 ${ctx.deltas.mood>=0?'+':''}${ctx.deltas.mood} · 底气 ${ctx.deltas.evidence>=0?'+':''}${ctx.deltas.evidence} · 时间 ${ctx.deltas.time} min<br>额外解释债 ${ctx.debt} 笔。角色、难度、导师风格也会影响初始状态。</div></section><section class="life-options"><button class="primary" id="enter-friday">进入周五组会 ↗</button><p class="week-hint">组会仍然不限十回合。失败后也继续过周末，下一周还能再来。</p><details class="week-history"><summary>回看本周入场前的选择</summary>${week.log.map(r=>`<p>${C.weekDays[r.day]} · ${esc(r.answer)}</p>`).join('')}</details></section>`;
+      const ctx=W.meetingContext(week);body=`<section class="life-scene"><p class="eyebrow">FRIDAY / 准备进入会议室</p><span class="life-icon">🎤</span><h1>这一周，现在轮到你讲了。</h1><p>你的准备、熬夜、合作和承诺，会一起走上讲台。</p><div class="week-context">本周最终入场修正：心态 ${ctx.deltas.mood>=0?'+':''}${ctx.deltas.mood} · 底气 ${ctx.deltas.evidence>=0?'+':''}${ctx.deltas.evidence} · 时间 ${ctx.deltas.time} min<br>额外解释债 ${ctx.debt} 笔。${ctx.deltas.patience?`耐心修正 ${ctx.deltas.patience>0?'+':''}${ctx.deltas.patience}。`:''}角色、难度、导师风格也会影响初始状态。</div></section><section class="life-options"><button class="primary" id="enter-friday">进入周五组会 ↗</button><p class="week-hint">组会仍然不限十回合。失败后也继续过周末，下一周还能再来。</p><details class="week-history"><summary>回看本周入场前的选择</summary>${week.log.map(r=>`<p>${C.weekDays[r.day]} · ${esc(r.answer)}</p>`).join('')}</details></section>`;
     }else{
-      body=`<section class="life-scene"><p class="eyebrow">SUNDAY / 本周生活报告</p><span class="life-icon">📒</span><h1>一周结束，故事还开着。</h1><p>${esc(week.config.name)}，这周你做了 ${week.log.length} 次日常选择。${week.meeting?`周五解锁「${esc(week.meeting.title)}」。`:'组会记录暂未生成。'}</p><div class="week-context">${week.meeting?kinds[week.meeting.kind]+' · 本场评分 '+week.meeting.score+'/100':''}<br>未完成 ${week.tasks.filter(t=>!t.done).length} 件事，会进入下一周；处理过的任务保持完成。</div></section><section class="life-options"><button class="primary" id="next-week">继续第 ${week.number+1} 周 ↗</button><button class="secondary" id="week-config">回门口换个学科 / 人设</button><details class="week-history" open><summary>这一周的生活轨迹</summary>${week.log.map(r=>`<p><small>${C.weekDays[r.day]}</small> ${esc(r.answer)}${r.taskDone?' ✓ 已处理一项遗留':''}</p>`).join('')}</details></section>`;
+      body=`<section class="life-scene"><p class="eyebrow">SUNDAY / 本周生活报告</p><span class="life-icon">📒</span><h1>一周结束，故事还开着。</h1><p>${esc(week.config.name)}，这周你做了 ${week.log.length} 次日常选择。${week.meeting?`周五解锁「${esc(week.meeting.title)}」。`:'组会记录暂未生成。'}</p><div class="week-context">${week.meeting?kinds[week.meeting.kind]+' · 本场评分 '+week.meeting.score+'/100':''}<br>未完成 ${week.tasks.filter(t=>!t.done).length} 件事，会进入下一周；处理过的任务保持完成。</div></section><section class="life-options"><button class="primary" id="next-week">继续第 ${week.number+1} 周 ↗</button><button class="secondary" id="week-config">回门口换个学科 / 人设</button><details class="week-history"><summary>这一周的生活轨迹</summary>${week.log.map(r=>`<p><small>${C.weekDays[r.day]}</small> ${esc(r.answer)}${r.taskDone?' ✓ 已处理一项遗留':''}</p>`).join('')}</details></section>`;
     }
     app.innerHTML=`<div class="run-head"><div><p class="eyebrow">WEEK ${week.number} / ${p.icon} ${p.name}</p><h2>${esc(week.config.name)}的一周</h2></div><button class="plain" id="week-door">回到门口 · 自动保存</button></div>${calendar()}${resources()}<div class="week-board">${body}</div>${tasks()}<div class="week-bottom"><button class="secondary" id="life-shop">逛逛补给站</button><small>游戏中的一周不跟随现实时间。随时停下，下次接着过。</small></div>`;
+    if(!window.MEETING_CAMPUS?.enabled(week)){const notice=document.createElement('p');notice.className='week-hint';notice.textContent='当前旧周历会保留进度；从下一周开始，开放校园探索、课题养成与手牌。';app.querySelector('.week-board').before(notice);}
+    window.MEETING_CAMPUS_UI?.decorate(week,render,save);
     app.querySelectorAll('[data-life]').forEach(b=>b.onclick=()=>{const r=W.choose(week,Number(b.dataset.life));if(!r)return;careerEffects(r);save();render();});
-    if($('#life-next'))$('#life-next').onclick=()=>{if(W.advance(week)){save();render();}};
-    if($('#enter-friday'))$('#enter-friday').onclick=()=>{if(!A.restoreMeeting(week.id))A.startWith(week.config,W.meetingContext(week));};
-    if($('#next-week'))$('#next-week').onclick=()=>{if(!week.reportApplied){const career=A.getCareer();career.weeks=Math.max(career.weeks||0,week.number);week.reportApplied=true;A.persistCareer();save();}week=W.create(week.config,seed(),week,week.number+1);save();render();window.scrollTo(0,0);};
+    if($('#life-next'))$('#life-next').onclick=()=>{if(W.advance(week)){save();render();if(week.campus){const target=week.status==='life'?$('.campus-map'):week.status==='meeting'?$('.deck-board'):$('.campus-report');target?.scrollIntoView({block:'start',behavior:'smooth'});}}};
+    if($('#enter-friday'))$('#enter-friday').onclick=()=>{if(!A.restoreMeeting(week.id)){if(week.campus)week.campus.deckLocked=true;save();A.startWith(week.config,W.meetingContext(week));}};
+    if($('#next-week'))$('#next-week').onclick=()=>{if(!week.reportApplied){const career=A.getCareer();career.weeks=Math.max(career.weeks||0,week.number);week.reportApplied=true;A.persistCareer();save();}week=W.create({...week.config,campus:true,relations:{...A.getCareer().relations}},seed(),week,week.number+1);save();render();window.scrollTo(0,0);};
     if($('#week-config'))$('#week-config').onclick=A.landing;$('#week-door').onclick=A.landing;$('#life-shop').onclick=A.showShop;
   }
   function resume(id){if(!week||(id&&id!==week.id))return false;if(week.status==='meeting'&&A.restoreMeeting(week.id))return true;render();window.scrollTo(0,0);return true;}
   function enhanceLanding(){const start=$('#start');if(!start)return;
-    const copy=$('.hero-copy');copy.innerHTML='先过完一周，再去活着散会。<br>周一到周日都有故事，周五会记得你前几天的选择。';
+    const copy=$('.hero-copy');copy.innerHTML='校园里怎么过，由你决定。<br>推进课题、结交同门、搭配手牌，再去活着散会。';
     const head=$('.discipline-head');const filters=document.createElement('div');filters.className='family-filter';filters.setAttribute('aria-label','按学科门类筛选');filters.innerHTML=[{id:'all',name:'全部 · 36条路线'},...C.families].map(f=>`<button data-family="${f.id}" class="${family===f.id?'active':''}">${f.name}</button>`).join('');head.after(filters);
     const filter=()=>{app.querySelectorAll('[data-project]').forEach(b=>b.hidden=family!=='all'&&C.projects.find(p=>p.id===b.dataset.project).family!==family);filters.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.family===family));};filters.querySelectorAll('button').forEach(b=>b.onclick=()=>{family=b.dataset.family;filter();});filter();
-    start.textContent='开始新的一周 ↗';start.onclick=()=>{if(week&&week.status!=='report'){A.toast('这一周还没过完，先继续当前一周；结束后可以换配置。');resume();return;}const number=Math.max(A.getCareer().weeks||0,week?.number||0)+1;week=W.create(A.getMenuConfig(),seed(),week,number);save();render();window.scrollTo(0,0);};
+    start.textContent='开始新的一周 ↗';start.onclick=()=>{if(week&&week.status!=='report'){A.toast('这一周还没过完，先继续当前一周；结束后可以换配置。');resume();return;}const number=Math.max(A.getCareer().weeks||0,week?.number||0)+1;week=W.create({...A.getMenuConfig(),campus:true,relations:{...A.getCareer().relations}},seed(),week,number);save();render();window.scrollTo(0,0);};
     const quick=document.createElement('button');quick.className='secondary';quick.id='quick-meeting';quick.textContent='只玩一场组会';quick.onclick=()=>{if(week&&week.status!=='report'){A.toast('请先完成当前一周，避免覆盖周五的组会记录。');return;}A.startWith(A.getMenuConfig());};start.before(quick);
     if(week){const btn=document.createElement('button');btn.className='primary';btn.id='resume-week';btn.textContent=`继续第${week.number}周 · ${C.weekDays[week.day]}`;btn.onclick=()=>resume();start.before(btn);}
     if($('#resume')&&week&&week.status!=='report')$('#resume').onclick=()=>resume();
   }
-  function decorateMeeting(s){const ctx=s.weekContext;if(!ctx||$('.meeting-week-link'))return;const strip=document.createElement('div');strip.className='meeting-week-link';strip.innerHTML=`📅 第${ctx.number}周 · 周五组会 <span>前四天带来的心态 ${ctx.deltas.mood>=0?'+':''}${ctx.deltas.mood} / 底气 ${ctx.deltas.evidence>=0?'+':''}${ctx.deltas.evidence} / 时间 ${ctx.deltas.time} min</span><details><summary>这些修正来自我的哪些选择？</summary>${ctx.sourceActions.map(r=>`<p>${C.weekDays[r.day]} · ${esc(r.answer)}</p>`).join('')}</details>`;$('.run-head').after(strip);}
+  function decorateMeeting(s){const ctx=s.weekContext;if(!ctx||$('.meeting-week-link'))return;const strip=document.createElement('div');strip.className='meeting-week-link';strip.innerHTML=`📅 第${ctx.number}周 · 周五组会 <span>生活与准备带来的心态 ${ctx.deltas.mood>=0?'+':''}${ctx.deltas.mood} / 底气 ${ctx.deltas.evidence>=0?'+':''}${ctx.deltas.evidence} / 时间 ${ctx.deltas.time} min</span><details><summary>这些修正来自我的哪些选择？</summary>${ctx.sourceActions.map(r=>`<p>${C.weekDays[r.day]} · ${esc(r.answer)}</p>`).join('')}</details>`;if(ctx.campus){const info=document.createElement('div');info.className='campus-meeting-cards';info.innerHTML=ctx.campus.deck.map(id=>{const c=C.workCards.find(c=>c.id===id);return `<span>${c.icon} ${c.name}</span>`;}).join('')+ctx.campus.combos.map(x=>`<span>✦ ${x}</span>`).join('');strip.append(info);}$('.run-head').after(strip);}
   window.MEETING_WEEK_UI={resume,enhanceLanding,decorateMeeting,onMeetingEnded:s=>{if(week&&W.completeMeeting(week,s))save();}};
   const showAlbum=$('#collection').onclick;$('#collection').onclick=()=>{showAlbum();let bar=$('#ending-filters');if(bar)bar.remove();bar=document.createElement('div');bar.id='ending-filters';bar.className='family-filter';bar.innerHTML=[['all','全部'],...Object.entries(kinds)].map(([id,name])=>`<button data-kind="${id}">${name} · ${C.endings.filter(e=>id==='all'||e.kind===id).length}</button>`).join('');$('#album-grid').before(bar);bar.querySelectorAll('button').forEach(b=>b.onclick=()=>{$('#album-grid').querySelectorAll('.album-card').forEach((card,i)=>card.hidden=b.dataset.kind!=='all'&&C.endings[i].kind!==b.dataset.kind);bar.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));});bar.querySelector('button').classList.add('active');};
   $('#calendar').onclick=()=>{if(!resume())A.toast('在门口选好学科，开始新的一周。');};

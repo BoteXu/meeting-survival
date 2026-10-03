@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),scope={window:{}};vm.createContext(scope);
-for(const file of ['content.js','content-expand.js','content-disciplines.js','content-v03.js','content-week.js','engine.js','week-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),scope,{filename:file});
+for(const file of ['content.js','content-expand.js','content-disciplines.js','content-v03.js','content-week.js','campus-content.js','campus-engine.js','engine.js','week-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),scope,{filename:file});
 const {MEETING_CONTENT:C,MEETING_ENGINE:E,MEETING_WEEK:W}=scope.window,clone=x=>JSON.parse(JSON.stringify(x));
 assert.equal(C.families.length,14);assert.equal(C.lifeEvents.length,165);assert.equal(new Set(C.lifeEvents.map(e=>e.id)).size,165);
 for(const f of C.families)assert(C.projects.some(p=>p.family===f.id));
@@ -30,5 +30,5 @@ for(const [expected,c] of Object.entries(cases)){
   for(let n=0;!s.ended&&n<180;n++){if(s.pending){E.advance(s);continue;}if(c.items){if(s.stats.mood<32)E.useItem(s,'coffee');if(s.stats.patience<35)E.useItem(s,'charm');if(n===8)E.useItem(s,'skill');}if(s.pending)continue;assert(index<c.choices.length);E.choose(s,c.choices[index++]);}
   assert(s.ended);assert.equal(s.ending,expected,'周一到组会的原始选择路径确实抵达目标结局');assert(W.completeMeeting(w,s));assert.equal(w.day,5,'失败或滑稽结局后仍能继续生活');found[s.ending]=(found[s.ending]||0)+1;
 }
-const result={passed:true,simulations,lifeEvents:C.lifeEvents.length,lifeCoverage:lifeCoverage.size,echoCoverage:echoCoverage.size,verifiedWeeklyEndings:Object.keys(cases).length,missing:C.endings.slice(-20).filter(e=>!found[e.id]).map(e=>e.id),found,witnesses};
+const result={passed:true,simulations,lifeEvents:C.lifeEvents.length,lifeCoverage:lifeCoverage.size,echoCoverage:echoCoverage.size,verifiedWeeklyEndings:Object.keys(cases).length,missing:C.endings.filter(e=>!C.campusEndingIds.includes(e.id)).slice(-20).filter(e=>!found[e.id]).map(e=>e.id),found,witnesses};
 fs.mkdirSync(path.join(root,'.qa'),{recursive:true});fs.writeFileSync(path.join(root,'.qa','week-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify({...result,witnesses:undefined}));

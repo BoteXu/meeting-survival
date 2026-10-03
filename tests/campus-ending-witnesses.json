@@ -1,0 +1,7797 @@
+{
+  "campus-work": {
+    "config": {
+      "project": "psychology",
+      "role": "social",
+      "persona": "strict",
+      "difficulty": "friday",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 1212400796,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "counter"
+        ],
+        "meetingSeed": 719045236,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "annotation",
+        "restart": false
+      },
+      {
+        "seed": 3673342,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 895371661,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "focus",
+        "restart": false
+      },
+      {
+        "seed": 1906139386,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 1842055515,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-stats": {
+    "config": {
+      "project": "psychology",
+      "role": "social",
+      "persona": "strict",
+      "difficulty": "friday",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 1212400796,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "counter"
+        ],
+        "meetingSeed": 719045236,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "annotation",
+        "restart": false
+      },
+      {
+        "seed": 3673342,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 895371661,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "focus",
+        "restart": false
+      },
+      {
+        "seed": 1906139386,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 1842055515,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "careful",
+        "restart": true
+      },
+      {
+        "seed": 2163999307,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 370745393,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-library": {
+    "config": {
+      "project": "agriculture",
+      "role": "newbie",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 1197774889,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "counter"
+        ],
+        "meetingSeed": 1482395961,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-sleep": {
+    "config": {
+      "project": "humanities",
+      "role": "newbie",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 1705994695,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "wander",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "counter"
+        ],
+        "meetingSeed": 2590931980,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-senior": {
+    "config": {
+      "project": "management",
+      "role": "social",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 2136154763,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 2068557386,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "annotation",
+        "restart": false
+      },
+      {
+        "seed": 3739207787,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 3716533186,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "focus",
+        "restart": false
+      },
+      {
+        "seed": 4215967292,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 4213584954,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "careful",
+        "restart": true
+      },
+      {
+        "seed": 2307667882,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 3763827414,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-mentor": {
+    "config": {
+      "project": "management",
+      "role": "chill",
+      "persona": "warm",
+      "difficulty": "friday",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 2605699500,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 1312178993,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          }
+        ],
+        "talent": "annotation",
+        "restart": false
+      },
+      {
+        "seed": 1280582457,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 3462365984,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          }
+        ],
+        "talent": "focus",
+        "restart": false
+      },
+      {
+        "seed": 4182252445,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 3175290496,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          }
+        ],
+        "talent": "careful",
+        "restart": false
+      },
+      {
+        "seed": 771510377,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 1507152305,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          }
+        ],
+        "talent": "network",
+        "restart": false
+      },
+      {
+        "seed": 2407661632,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 1053202213,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          }
+        ],
+        "talent": "rehearsal",
+        "restart": false
+      },
+      {
+        "seed": 1751803828,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "backup"
+        ],
+        "meetingSeed": 3070380730,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-cafe": {
+    "config": {
+      "project": "earth",
+      "role": "social",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 2428568073,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "sleep",
+          "summary"
+        ],
+        "meetingSeed": 2693739369,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-balanced": {
+    "config": {
+      "project": "clinical",
+      "role": "newbie",
+      "persona": "strict",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 2457674732,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "sleep",
+          "backup",
+          "counter"
+        ],
+        "meetingSeed": 4128744812,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-backlog": {
+    "config": {
+      "project": "economics",
+      "role": "social",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 4179625192,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "cafe",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "sleep",
+          "counter",
+          "summary"
+        ],
+        "meetingSeed": 3457318646,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          }
+        ],
+        "talent": "annotation",
+        "restart": false
+      },
+      {
+        "seed": 3092462608,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "cafe",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "sleep",
+          "counter",
+          "summary"
+        ],
+        "meetingSeed": 637218040,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-fragile": {
+    "config": {
+      "project": "education",
+      "role": "newbie",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 2443313268,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "cafe",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "summary"
+        ],
+        "meetingSeed": 3828481250,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          }
+        ],
+        "talent": "annotation",
+        "restart": false
+      },
+      {
+        "seed": 2920806324,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "cafe",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "counter"
+        ],
+        "meetingSeed": 1288349508,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "charm"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          }
+        ],
+        "talent": "focus",
+        "restart": false
+      },
+      {
+        "seed": 476529141,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "cafe",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "counter"
+        ],
+        "meetingSeed": 2137710841,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "charm"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          }
+        ],
+        "talent": "careful",
+        "restart": false
+      },
+      {
+        "seed": 1305475363,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "cafe",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "counter"
+        ],
+        "meetingSeed": 4019440278,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "charm"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-pivot": {
+    "config": {
+      "project": "clinical",
+      "role": "newbie",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 3377254966,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "index",
+          "sleep",
+          "counter"
+        ],
+        "meetingSeed": 843926995,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-appendix-time": {
+    "config": {
+      "project": "politics",
+      "role": "newbie",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 2386480449,
+        "style": "sprint",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "summary"
+        ],
+        "meetingSeed": 2773358538,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "annotation",
+        "restart": false
+      },
+      {
+        "seed": 2438719025,
+        "style": "sprint",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "summary"
+        ],
+        "meetingSeed": 1579921183,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "focus",
+        "restart": false
+      },
+      {
+        "seed": 1388512667,
+        "style": "sprint",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "counter"
+        ],
+        "meetingSeed": 2088757443,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "careful",
+        "restart": false
+      },
+      {
+        "seed": 2912863856,
+        "style": "sprint",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "index",
+          "raw",
+          "sleep"
+        ],
+        "meetingSeed": 3746523096,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          }
+        ],
+        "talent": "network",
+        "restart": false
+      },
+      {
+        "seed": 1161543234,
+        "style": "sprint",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "index",
+          "raw",
+          "sleep"
+        ],
+        "meetingSeed": 1821311067,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-recover": {
+    "config": {
+      "project": "languages",
+      "role": "newbie",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 3380042015,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "summary"
+        ],
+        "meetingSeed": 1757523605,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          }
+        ],
+        "talent": "annotation",
+        "restart": false
+      },
+      {
+        "seed": 1835597363,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "summary"
+        ],
+        "meetingSeed": 662326244,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          }
+        ],
+        "talent": "focus",
+        "restart": false
+      },
+      {
+        "seed": 132379567,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "summary"
+        ],
+        "meetingSeed": 1263780836,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          }
+        ],
+        "talent": "careful",
+        "restart": true
+      },
+      {
+        "seed": 4207467202,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "summary"
+        ],
+        "meetingSeed": 3549277002,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 2
+          }
+        ],
+        "talent": "network",
+        "restart": false
+      },
+      {
+        "seed": 369808777,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "summary"
+        ],
+        "meetingSeed": 3686902100,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          }
+        ],
+        "talent": "rehearsal",
+        "restart": false
+      },
+      {
+        "seed": 2564093305,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          }
+        ],
+        "deck": [
+          "raw",
+          "sleep",
+          "summary"
+        ],
+        "meetingSeed": 3372293828,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-appendix": {
+    "config": {
+      "project": "management",
+      "role": "social",
+      "persona": "strict",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 2071764813,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw",
+          "backup"
+        ],
+        "meetingSeed": 4198247399,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          }
+        ],
+        "talent": "annotation",
+        "restart": false
+      },
+      {
+        "seed": 2539551911,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "index",
+          "raw",
+          "backup"
+        ],
+        "meetingSeed": 1100785794,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-cat": {
+    "config": {
+      "project": "journalism",
+      "role": "newbie",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 396406047,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "cafe",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "wander",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "cat",
+          "sleep"
+        ],
+        "meetingSeed": 1114296286,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "charm"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-meme": {
+    "config": {
+      "project": "law",
+      "role": "social",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 1414872195,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "wander",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "wander",
+            "index": 2
+          },
+          {
+            "location": "cafe",
+            "index": 2
+          },
+          {
+            "location": "wander",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          },
+          {
+            "location": "wander",
+            "index": 2
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "wander",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "meme",
+          "cat",
+          "sleep"
+        ],
+        "meetingSeed": 2338425153,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-team": {
+    "config": {
+      "project": "music",
+      "role": "newbie",
+      "persona": "strict",
+      "difficulty": "friday",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 1977838242,
+        "style": "team",
+        "pre": [
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 1
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "team",
+          "note",
+          "sleep"
+        ],
+        "meetingSeed": 240384473,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "request"
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-quality": {
+    "config": {
+      "project": "law",
+      "role": "grinder",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "结局路径试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 2989650283,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          }
+        ],
+        "deck": [
+          "raw"
+        ],
+        "meetingSeed": 2146599908,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "item",
+            "id": "skill"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-burnout": {
+    "config": {
+      "project": "classic",
+      "role": "grinder",
+      "persona": "strict",
+      "difficulty": "normal",
+      "name": "收集与翻车试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 3578562044,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          }
+        ],
+        "deck": [],
+        "meetingSeed": 4221028261,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "talent": null,
+        "restart": false
+      },
+      {
+        "seed": 1863296148,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          }
+        ],
+        "deck": [],
+        "meetingSeed": 3895476762,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "talent": null,
+        "restart": false
+      },
+      {
+        "seed": 3994891843,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 0
+          }
+        ],
+        "deck": [],
+        "meetingSeed": 1383806729,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 1
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          },
+          {
+            "location": "home",
+            "index": 2
+          }
+        ],
+        "talent": null,
+        "restart": false
+      },
+      {
+        "seed": 2816189892,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": null,
+            "index": 2
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "lab",
+            "index": 1
+          }
+        ],
+        "deck": [],
+        "meetingSeed": 3205153493,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  },
+  "campus-collection": {
+    "config": {
+      "project": "classic",
+      "role": "chill",
+      "persona": "warm",
+      "difficulty": "normal",
+      "name": "收集与翻车试玩",
+      "campus": true
+    },
+    "journey": [
+      {
+        "seed": 223493853,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 1
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "lab",
+            "index": 0
+          },
+          {
+            "location": "wander",
+            "index": 2
+          }
+        ],
+        "deck": [
+          "index",
+          "raw",
+          "sleep"
+        ],
+        "meetingSeed": 465488057,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 0
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [
+          {
+            "location": "wander",
+            "index": 0
+          },
+          {
+            "location": "wander",
+            "index": 0
+          },
+          {
+            "location": "library",
+            "index": 2
+          },
+          {
+            "location": "mentor",
+            "index": 2
+          }
+        ],
+        "talent": null,
+        "restart": false
+      },
+      {
+        "seed": 2326441821,
+        "style": "steady",
+        "pre": [
+          {
+            "location": "home",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "home",
+            "index": 0
+          },
+          {
+            "location": "wander",
+            "index": 0
+          },
+          {
+            "location": "wander",
+            "index": 1
+          },
+          {
+            "location": "library",
+            "index": 0
+          },
+          {
+            "location": "cafe",
+            "index": 0
+          },
+          {
+            "location": "mentor",
+            "index": 0
+          },
+          {
+            "location": "wander",
+            "index": 0
+          }
+        ],
+        "deck": [],
+        "meetingSeed": 929922909,
+        "moves": [
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          },
+          {
+            "type": "choose",
+            "index": 2
+          },
+          {
+            "type": "advance"
+          }
+        ],
+        "post": [],
+        "talent": null,
+        "restart": false
+      }
+    ]
+  }
+}
