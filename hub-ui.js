@@ -8,7 +8,7 @@ window.MEETING_HUB_UI=(()=>{
    const roles=app.querySelector('.roles'),heading=roles?.previousElementSibling,anchor=app.querySelector('.setup-bottom');drawer([heading,roles],'🎭 人设与能力 · 点开设置',anchor);drawer([app.querySelector('.academy-setup')],'🎓 生涯阶段与开局剧本 · 点开设置',anchor);drawer([app.querySelector('.world-setup')],'🎲 校园节奏与同局挑战 · 点开设置',anchor);
    const mentorInfo=app.querySelector('.mentor-setup');if(mentorInfo)mentorInfo.hidden=true;
    let help=document.createElement('button');help.className='plain';help.id='guide-replay';help.textContent='📘 新手引导 · 重看';help.onclick=guide;app.querySelector('.taxonomy-path')?.after(help);
-   const search=app.querySelector('#discipline-search'),med=window.MEETING_MEDICAL_TAXONOMY;if(t.family==='medicine'&&(!med.branch()||med.routes().length===1)){if(search)search.hidden=true;}
+   const search=app.querySelector('#discipline-search'),med=t.family==='medicine'?window.MEETING_MEDICAL_TAXONOMY:window.MEETING_DISCIPLINE_TREE;if(!med.branch()||med.routes().length===1){if(search)search.hidden=true;}
  }
  function life(w){const app=document.querySelector('#app');if(!['life','meeting','report'].includes(w.status))return;const tick=w.id+':'+w.day+':'+w.slot+':'+w.status;if(lastWeek!==tick){view='home';lastWeek=tick;}if(w.status==='life'&&(w.pending||w.presentation||w.taskFocus||w.campus?.plan||w.world?.plan||w.routeStories?.plan||w.publication?.plan||w.academy?.plan||w.sideStories?.plan))view='home';
    const nav=app.querySelector('.life-section-nav');if(!nav)return;nav.innerHTML=Object.entries(labels).map(([id,name])=>`<button data-life-hub="${id}" aria-pressed="${id===view}">${name}</button>`).join('');

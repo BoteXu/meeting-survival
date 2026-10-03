@@ -1,0 +1,204 @@
+/* 按2022研究生目录浏览一级/专业类别；二级领域为院校常见方向与游戏主题，不声称全国统一三级表。 */
+window.MEETING_DISCIPLINE_TREE=(()=>{
+ const T=window.MEETING_TAXONOMY,D=window.MEETING_DIRECTIONS,C=window.MEETING_CONTENT;
+ const rows=`
+0101;philosophy;哲学;中国哲学@chinese-philosophy|外国哲学与美学@western-philosophy|逻辑学@logic-studies|伦理学@ethics-studies|宗教学@religion-studies|形而上学@metaphysics|认识论与科学哲学@epistemology|哲学综合@philosophy
+0151;philosophy;应用伦理;应用伦理研究@ethics-studies:3,4,5,6,7,8,11,12
+0201;economics;理论经济学;经济理论@economic-theory|经济思想与方法综合@economics:1,2,8
+0202;economics;应用经济学;发展与劳动经济@development-econ|金融学@finance-studies|产业与国际经济@trade-econ|公共与资源经济@resource-econ|数字经济@digital-economy|应用经济综合@economics:3,4,5,6,7,9
+0251;economics;金融;金融市场与机构@finance-studies
+0252;economics;应用统计;经济资料与统计评价@economics:8|金融计量@finance-studies:7|数字经济测度@digital-economy:10
+0253;economics;税务;税务实务与政策评价@tax-studies
+0254;economics;国际商务;国际贸易与商务@trade-econ:1,2,4,6,7,12
+0255;economics;保险;保险与精算@insurance-studies
+0256;economics;资产评估;价值评价@asset-valuation
+0258;economics;数字经济;平台与数字资源@digital-economy
+0301;law;法学;民商法学@civil-law|刑事法学@criminal-law|宪法与行政法@constitutional-law|国际与比较法@international-law|法学方法与法社会学@law-society|知识产权@intellectual-property|法学综合@law
+0302;law;政治学;政治理论与制度@politics:1,4,5,6,9|国际政治与关系@politics:2,7,8|公共政策@politics:3
+0303;law;社会学;社会学研究@sociology|人类学@anthropology|社会调查与民族志@field
+0304;law;民族学;民族理论与文化@ethnology-studies
+0305;law;马克思主义理论;理论文本与教育@marxism-studies
+0306;law;公安学;公安组织与公共服务@police-studies
+0307;law;中共党史党建学;党史与组织制度@party-history-studies
+0308;law;纪检监察学;制度与监督评价@discipline-supervision
+0351;law;法律;民商法律实务@civil-law|刑事法律实务@criminal-law|行政法律实务@constitutional-law|涉外法律实务@international-law
+0352;law;社会工作;个案小组与社区服务@social-work-studies
+0353;law;警务;警务服务与教育@police-studies
+0354;law;知识产权;权利与创新研究@intellectual-property
+0355;law;国际事务;国际关系@politics:2,7,8|涉外制度@international-law
+0401;education;教育学;教育学原理与教育史@education-theory|课程与教学论@curriculum-studies|学前与特殊教育@early-education|高等与职业教育@higher-education|教育技术@education-technology|教育综合@education
+0402;education;心理学;基础心理学@psychology-studies:1,2,5,6,12|发展与教育心理学@psychology-studies:3,4|应用心理学@psychology-studies:7,8,9,10,11|心理学综合@psychology
+0403;education;体育学;体育人文社会学@sport-studies:1,8,10,12|运动人体科学@sport-studies:2,5,6,11|体育教育训练学@sport-studies:3,7,9|民族传统体育学@sport-studies:4|运动研究综合@sports
+0451;education;教育;学科教学与课程@curriculum-studies|教育技术应用@education-technology|高等与职业教育实务@higher-education|学前与特殊教育实务@early-education
+0452;education;体育;体育教育与活动评价@sport-studies
+0453;education;国际中文教育;中文学习与跨文化教学@chinese-education
+0454;education;应用心理;测量与心理服务研究@psychology-studies:5,6,7,8,9,10,11
+0501;literature;中国语言文学;语言与古典文献@chinese-language:5,6,7,8|文学史与理论@chinese-language:1,2,3,4,9,10,11,12|中国文学综合@humanities
+0502;literature;外国语言文学;外国文学与比较文学@foreign-literatures|语言学与应用语言学@linguistics-studies|语言与翻译综合@languages
+0503;literature;新闻传播学;新闻与传播理论@media-studies|新闻传播综合@journalism
+0551;literature;翻译;翻译理论与专业实践@translation-studies
+0552;literature;新闻与传播;新闻生产与传播评价@media-studies|传播实务综合@journalism
+0553;literature;出版;编辑与出版实务@publishing-studies
+0601;history;考古学;考古与遗产@heritage-studies|考古学综合@archaeology
+0602;history;中国史;中国历史研究@chinese-history|历史文献学@historical-documents|公众史学@public-history|历史研究综合@history
+0603;history;世界史;世界与区域历史@world-history
+0651;history;博物馆;收藏与展览研究@museum-studies|遗产公众参与@heritage-studies:8,9,10,11,12
+0701;science;数学;基础数学@theory:1,4,5|概率论与数理统计@theory:2|计算数学@theory:6|应用数学@theory:8|运筹学与控制论@theory:3,7,9
+0702;science;物理学;理论与统计物理@physics:2,5,9|凝聚态物理@physics:1|原子分子与量子信息@physics:6,7|粒子核与等离子体资料@physics:4,8|光学@photonics|光学与测量综合@physics:3
+0703;science;化学;无机化学@chemistry:5|有机化学@chemistry:4|分析化学@chemistry:1|物理与理论化学@chemistry:2,6,7|高分子与交叉化学资料@chemistry:3,8,9
+0704;science;天文学;天体物理与观测@astronomy
+0705;science;地理学;人文地理与空间分析@geography|自然地理与地球观察@earth:1,4,6,8,9
+0706;science;大气科学;气象与气候@atmospheric-science|气象地球资料综合@earth:3
+0707;science;海洋科学;海洋观察与模型@ocean-science|海洋地球资料综合@earth:5
+0708;science;地球物理学;地球物理观察与反演@geophysics-studies
+0709;science;地质学;地质材料与形成过程@geology-studies|地球资料综合@earth:2,7
+0710;science;生物学;生命资料与系统@systems-biology|基础生命研究综合@classic
+0711;science;系统科学;系统理论与模型@system-science
+0712;science;科学技术史;科技史与制度史@science-history
+0713;science;生态学;生态观察与模型@ecology-studies|环境与生态综合@environment
+0714;science;统计学;统计理论与资料分析@statistics
+0751;science;气象;气象观察与服务评价@atmospheric-science
+0801;engineering;力学;理论与计算力学@mechanics-science:1,4,6,7|固体与结构力学@mechanics-science:2,8,9|流体力学@mechanics-science:3|实验与交叉力学@mechanics-science:5,10,11,12
+0802;engineering;机械工程;机械设计及理论@mechanical:1,4,5,6,9|机械制造及其自动化@mechanical:2,8|机械电子工程@mechanical:3,7|车辆工程@vehicle-engineering
+0803;engineering;光学工程;光电与成像工程@electrical:1,8
+0804;engineering;仪器科学与技术;仪器与测试计量@instruments-engineering
+0805;engineering;材料科学与工程;材料物理与化学@materials:1,2,3,7,8|材料学与性能评价@materials:4,5,6,9
+0806;engineering;冶金工程;冶金过程与资源评价@metallurgy-engineering
+0807;engineering;动力工程及工程热物理;热能与动力系统@energy:1,3,4,5,6,7,8,9
+0808;engineering;电气工程;电气系统与设备@electrical-engineering
+0809;engineering;电子科学与技术;电路与器件@electrical:1,4,5,6|电磁与光电@electrical:7,8|电子可靠性@electrical:9
+0810;engineering;信息与通信工程;通信系统与信息处理@communications|信号与网络综合@electrical:2,3
+0811;engineering;控制科学与工程;控制理论与系统@automation
+0812;engineering;计算机科学与技术;计算机软件与系统@data:2,6,7,8|人工智能与交互@data:1,3,4,5,9
+0813;engineering;建筑学;建筑设计与理论@architecture:1,4,6,8|建筑技术与评价@architecture:3,7,9
+0814;engineering;土木工程;结构与岩土工程@civil:1,4,9|市政与工程管理@civil:3,6,7
+0815;engineering;水利工程;水文与水资源@hydro-marine:1,2,8,9,10,11,12|水工与河流工程@hydro-marine:3,4|水利综合@civil:5
+0816;engineering;测绘科学与技术;测量遥感与地理信息@geomatics-engineering
+0817;engineering;化学工程与技术;化工过程与工况评价@process-engineering
+0818;engineering;地质资源与地质工程;地质调查与工程评价@geological-engineering
+0819;engineering;矿业工程;矿业公开资料与系统评价@mining-engineering
+0820;engineering;石油与天然气工程;油气资料与系统评价@petroleum-engineering
+0821;engineering;纺织科学与工程;纺织材料与工程评价@textile-engineering
+0822;engineering;轻工技术与工程;轻工材料与过程评价@light-industry
+0823;engineering;交通运输工程;交通系统与使用评价@transportation-engineering|交通工程综合@civil:2,8
+0824;engineering;船舶与海洋工程;船海系统与结构@ship-engineering|海岸港口工程@hydro-marine:5,6,7
+0825;engineering;航空宇航科学与技术;航空与空间研究@aerospace
+0826;engineering;兵器科学与技术;公开技术史与文献研究@armament-history
+0827;engineering;核科学与技术;公开资料与系统评价@nuclear-engineering
+0828;engineering;农业工程;农业设备与工况评价@agricultural-engineering
+0829;engineering;林业工程;木材与林业工程评价@forest-engineering
+0830;engineering;环境科学与工程;工程资源与环境评价@process-engineering:8,11|能源环境评价@energy:3,9
+0831;engineering;生物医学工程;生物医学信号与原型评价@biomedical-engineering
+0832;engineering;食品科学与工程;食品资料与过程评价@food
+0833;engineering;城乡规划学;城乡空间与规划实施@urban-planning|规划与公共空间综合@architecture:2,5
+0835;engineering;软件工程;软件需求与质量@software-engineering
+0836;engineering;生物工程;生物过程资料与评价@bio-engineering
+0837;engineering;安全科学与工程;安全组织与风险评价@safety-engineering
+0838;engineering;公安技术;公开技术资料评价@police-technology
+0839;engineering;网络空间安全;安全治理与授权评价@cybersecurity-studies
+0851;engineering;建筑;建筑设计实务@architecture
+0853;engineering;城乡规划;规划设计与实施@urban-planning
+0854;engineering;电子信息;计算机与软件@data,software-engineering|电子通信与控制@electrical,communications,automation|仪器与安全@instruments-engineering,cybersecurity-studies
+0855;engineering;机械;机械与车辆@mechanical,vehicle-engineering|航空与船海@aerospace,ship-engineering
+0856;engineering;材料与化工;材料与冶金@materials,metallurgy-engineering|化工与轻纺@process-engineering,textile-engineering,light-industry
+0857;engineering;资源与环境;地质矿业与油气@geological-engineering,mining-engineering,petroleum-engineering|测绘与安全@geomatics-engineering,safety-engineering
+0858;engineering;能源动力;能源系统@energy|电气工程@electrical-engineering|核能公开评价@nuclear-engineering
+0859;engineering;土木水利;土木与水利@civil,hydro-marine|船舶海洋@ship-engineering
+0860;engineering;生物与医药;生物过程与资料@bio-engineering|医学工程与原型@biomedical-engineering|食品过程@food
+0861;engineering;交通运输;交通系统实务@transportation-engineering
+0862;engineering;风景园林;景观规划与设计@landscape-studies
+0901;agriculture;作物学;栽培与育种评价@crop-science|作物综合@agriculture:1,4
+0902;agriculture;园艺学;园艺资源与生产@horticulture-studies|园艺综合@agriculture:6
+0903;agriculture;农业资源与环境;土壤与资源@soil-resources|农业资源综合@agriculture:2
+0904;agriculture;植物保护;农田健康与观察@plant-protection|植保综合@agriculture:5
+0905;agriculture;畜牧学;动物生产与福利@animal-science
+0906;agriculture;兽医学;动物健康与照护@veterinary
+0907;agriculture;林学;森林生态与经营@forest-science|林业综合@agriculture:3,9
+0908;agriculture;水产;渔业资源与养殖环境@aquatic-science
+0909;agriculture;草学;草地与资源利用@grass-science
+0910;agriculture;水土保持与荒漠化防治学;流域与荒漠资料@soil-water-conservation
+0951;agriculture;农业;农艺与种业@crop-science|资源利用与植物保护@soil-resources,plant-protection|畜牧与渔业@animal-science,aquatic-science|农业发展与综合@agriculture:7,8
+0952;agriculture;兽医;动物健康实务@veterinary
+0954;agriculture;林业;森林经营实务@forest-science
+0955;agriculture;食品与营养;食品与营养资料评价@food-nutrition
+1101;military;军事思想与军事历史;军事历史@military-history|公开军事思想@military:2,5
+1102;military;战略学;战略思想与安全@strategic-studies|和平与冲突@peace-conflict|公开战略综合@military:1,4,8,9
+1103;military;联合作战学;公开联合制度史@military-organization:1,10,11
+1104;military;军兵种作战学;公开组织史@military-organization:2,10,11
+1105;military;军队指挥学;公开指挥史与组织@military-organization:3,10,11|组织决策综合@military:6
+1106;military;军队政治工作学;公开政治工作史与教育@military-organization:4,12
+1107;military;军事后勤学;公开后勤史与资源@military-organization:5|保障资料综合@military:3,7
+1108;military;军事装备学;公开装备史与制度@military-organization:6|军事科技史@military-technology-history
+1109;military;军事管理学;公开国防管理@defense-management|公开管理制度@military-organization:7
+1110;military;军事训练学;公开训练教育史@military-organization:8,12
+1111;military;军事智能;公开智能文献评价@military-organization:9,11
+1152;military;联合作战指挥;公开联合协作制度研究@military-organization:1,3,10,11
+1153;military;军兵种作战指挥;公开组织与指挥史研究@military-organization:2,3,10,11
+1154;military;作战指挥保障;公开组织与保障史研究@military-organization:3,5,10,11
+1155;military;战时政治工作;公开制度与教育史研究@military-organization:4,12
+1156;military;后勤与装备保障;公开后勤与装备史研究@military-organization:5,6,11
+1157;military;军事训练与管理;公开教育与管理研究@military-organization:7,8,12
+1201;management;管理科学与工程;运营与管理科学@operations-management|管理综合@management:3,7,8
+1202;management;工商管理学;组织与工商管理@business-management|会计研究@accounting-studies|管理综合@management:1,2,4,5,6,9
+1203;management;农林经济管理;农业与林业经济@agri-economics
+1204;management;公共管理学;公共治理与社会保障@public-governance|公共管理综合@publicadmin
+1205;management;信息资源管理;图书情报与档案@information-management
+1251;management;工商管理;企业与组织实务@business-management
+1252;management;公共管理;公共服务实务@public-governance
+1253;management;会计;会计报告与评价@accounting-studies
+1254;management;旅游管理;旅游资源与服务@tourism-management
+1255;management;图书情报;信息组织与服务@information-management
+1256;management;工程管理;工程组织与运营@operations-management
+1257;management;审计;审计证据与评价@audit-studies
+1301;arts;艺术学;艺术理论与设计史@art-design-theory|美术史与视觉研究@fine-art-studies|音乐学@musicology-studies|戏剧与影视研究@theatre-studies,film-studies|舞蹈与戏曲研究@dance-studies,opera-studies|艺术综合@art,music
+1352;arts;音乐;音乐表演与创作@musicology-studies|声音与媒介综合@music:1,3,4,5,6,9
+1353;arts;舞蹈;舞蹈编创与表演@dance-studies
+1354;arts;戏剧与影视;戏剧表演@theatre-studies|影像实践@film-studies|戏剧影视综合@music:2,7,8
+1355;arts;戏曲与曲艺;戏曲曲艺实践@opera-studies
+1356;arts;美术与书法;美术与书法实践@fine-art-studies|视觉实践综合@art
+1357;arts;设计;产品交互与服务@design
+1401;interdisciplinary;集成电路科学与工程;芯片与器件评价@integrated-circuits
+1402;interdisciplinary;国家安全学;公开安全理论与治理@national-security-studies
+1403;interdisciplinary;设计学;工程艺术与使用者@interdisciplinary-design
+1404;interdisciplinary;遥感科学与技术;遥感资料与空间评价@remote-sensing
+1405;interdisciplinary;智能科学与技术;智能任务与评价@intelligent-science
+1406;interdisciplinary;纳米科学与工程;纳米资料与尺度评价@nano-science
+1407;interdisciplinary;区域国别学;区域文化与制度@area-studies
+1451;interdisciplinary;文物;文物来源与保护评价@heritage-conservation
+1452;interdisciplinary;密码;密码数学与形式评价@cryptography-studies
+custom;interdisciplinary;自由交叉组合;自己选两个学科@interdisciplinary
+`;
+ const primaries=rows.trim().split('\n').map(row=>{const [code,family,name,spec]=row.split(';');return {id:'catalog-'+code,code:code==='custom'?'':code,family,name,type:code==='custom'?'游戏交叉入口':Number(code[2])>=5?'专业学位类别':'一级学科',icon:T.icons[family],children:spec.split('|').map((part,i)=>{const [name,raw]=part.split('@'),[r,ns]=raw.split(':'),routes=r.split(','),directionIds=ns?ns.split(',').map(n=>routes[0]+'-'+n):D.all.filter(d=>routes.includes(d.route)).map(d=>d.id);return {id:code+'-field-'+i,name,routes,directionIds,type:'二级 / 院校专业领域'};})};});
+ // Further research fields partition actual directions. They are browse labels, not invented degree codes.
+ const fieldNames={
+ 'instruments-engineering':['精密仪器与标定','测量系统与可靠性','信号软件与仪器史'],
+ 'metallurgy-engineering':['冶金理论与过程','资源测量与材料','过程控制与质量评价'],
+ 'geology-studies':['矿物岩石与地球化学','构造地层与古生物','水文工程与年代资料'],
+ 'atmospheric-science':['大气物理化学与气候','观测遥感与资料同化','模式与气象服务'],
+ 'system-science':['理论与复杂系统','演化与系统建模','决策与多尺度评价'],
+ 'ecology-studies':['生物与群落生态','生态系统与景观','保护恢复与观测方法'],
+ 'animal-science':['遗传营养与生产','生态行为与产品','资源统计与动物科学史'],
+ 'grass-science':['草地生态与管理','草地恢复与空间观察','水分统计与社会研究'],
+ 'plant-protection':['病理昆虫与植保生态','观测与资料评价','资源教育与农田管理'],
+ 'biomedical-engineering':['仪器信号与材料评价','康复生物力学与信息','辅助技术与工程伦理'],
+ 'urban-planning':['规划理论与空间设计','社区交通与实施','公众参与与城乡公平'],
+ 'cybersecurity-studies':['安全治理与密码理论','软件协议与可用性','公开资料与安全教育'],
+ 'psychology-studies':['基础认知与发展教育','社会人格与测量统计','组织健康与服务研究'],
+ 'sport-studies':['体育理论与专门学科','运动学习与课程活动','赛事测量与体育史'],
+ 'social-work-studies':['工作方法与社区','家庭老年与服务评价','伦理协作与服务可及性'],
+ 'tourism-management':['旅游行为与服务','文化资源与组织','数字体验与可及性'],
+ 'publishing-studies':['出版史与编辑','版权经营与读者','设计技术与公共服务'],
+ 'dance-studies':['历史理论与编创','教育传承与记录','身体经验与观众'],
+ 'opera-studies':['历史与文本','表演唱腔与程式','剧种教育与演出档案'],
+ 'integrated-circuits':['理论器件与仿真','测量可靠性与架构','工艺能耗与芯片教育'],
+ 'remote-sensing':['遥感物理与信息','标定反演与时序','精度质量与社会应用']
+ };
+ for(const p of primaries)p.children=p.children.flatMap(s=>{if(s.routes.length!==1||s.directionIds.length<7||s.routes[0]==='interdisciplinary')return [s];const route=s.routes[0],existing=T.groups[route],names=fieldNames[route],actual=s.directionIds.map(id=>D.find(id));const pieces=existing?existing.map(g=>({name:g.name,ids:g.directionIds.filter(id=>s.directionIds.includes(id))})):Array.from({length:3},(_,i)=>({name:names?.[i]||actual[i*Math.ceil(actual.length/3)]?.name+'等研究领域',ids:s.directionIds.slice(i*Math.ceil(actual.length/3),(i+1)*Math.ceil(actual.length/3))}));return pieces.filter(g=>g.ids.length).map((g,i)=>({...s,id:s.id+'-sub-'+i,name:s.name+' · '+g.name,directionIds:g.ids,type:'院校专业领域 / 研究主题'}));});
+ let primary=null,secondary=null,mentorScope=null;
+ const current=()=>primaries.find(p=>p.id===primary),branch=()=>current()?.children.find(s=>s.id===secondary),reset=()=>{primary=null;secondary=null;mentorScope=null;};
+ function choosePrimary(id){const p=primaries.find(p=>p.id===id);if(!p||p.family!==T.state().family)return false;primary=id;secondary=null;mentorScope=null;T.backToFamily();return true;}
+ function chooseSecondary(id){const s=current()?.children.find(s=>s.id===id);if(!s)return false;secondary=id;mentorScope=null;T.backToFamily();if(s.routes.length===1)T.chooseRoute(s.routes[0]);return true;}
+ function defer(){const s=branch();if(!s)return false;T.chooseRoute(s.routes[0]);T.defer();mentorScope=[...s.routes];return true;}
+ function menuConfig(){const s=branch(),r=T.state().route,g=T.groups[r]?.find(g=>g.id===T.state().field);return s?{disciplinePrimary:current().id,disciplineField:s.id,mentorAllowedDirections:g?s.directionIds.filter(id=>g.directionIds.includes(id)):s.directionIds,...(mentorScope?{mentorRouteScope:mentorScope}:{})}:{};}
+ return {primaries,reset,current,branch,choosePrimary,chooseSecondary,defer,list:a=>branch()?a.filter(d=>branch().directionIds.includes(d.id)):a,routes:()=>branch()?.routes||[],routeSelected:()=>{mentorScope=null;},menuConfig,state:()=>({primary,secondary,mentorScope}),covered:()=>C.projects.filter(p=>p.family!=='medicine').every(p=>primaries.some(t=>t.family===p.family&&t.children.some(s=>s.routes.includes(p.id))))};
+})();
