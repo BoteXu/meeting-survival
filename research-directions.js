@@ -64,5 +64,5 @@ window.MEETING_DIRECTIONS=(()=>{
   function pivot(w,id){const p=w.world.artifact,from=active(w),d=neighbors(from?.id).find(x=>x.id===id);if(!d)return false;const references=p.checks.map(x=>({...x,fromDirection:from.id,toDirection:d.id,level:1})).slice(-3);p.version++;p.direction=d.id;p.route=d.route;p.checks=[];p.references=references;p.status='pivot';p.scope=2;w.world.pivotTarget=null;return d;}
   function topic(p){const d=find(p.direction);return d?d.name+' · '+d.topic:null;}
   function valid(w){const p=w.world?.artifact;return !p?.direction||(!!find(p.direction)&&find(p.direction).route===p.route&&(!w.world.pivotTarget||neighbors(p.direction).some(d=>d.id===w.world.pivotTarget)));}
-  return {all,tags,edges,find,list,active,neighbors,menuConfig,init,target,pivot,topic,valid,select:(c,id)=>{if(list(c).some(d=>d.id===id))selections[routes(c).join('+')]=id;}};
+  return {connect:(a,b)=>{for(const [x,y] of [[a,b],[b,a]]){if(!adjacency.has(x))adjacency.set(x,new Set());adjacency.get(x).add(y);}edges.push([a,b]);},all,tags,edges,find,list,active,neighbors,menuConfig,init,target,pivot,topic,valid,select:(c,id)=>{if(list(c).some(d=>d.id===id))selections[routes(c).join('+')]=id;}};
 })();

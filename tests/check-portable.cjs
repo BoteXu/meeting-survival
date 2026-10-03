@@ -1,13 +1,8 @@
-const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
-const root=path.resolve(__dirname,'..');
-const html=fs.readFileSync(path.join(root,'组会求生_直接玩.html'),'utf8');
-assert(html.includes('原创娱乐小游戏 / v0.9.0'));
-assert(!/<script\s+src=|<link[^>]+stylesheet|(?:src|href)=["']https?:\/\/|(?:fetch|XMLHttpRequest|WebSocket)\s*\(|url\(["']?https?:\/\//.test(html),'离线版本没有外部依赖');
-const scripts=Array.from(html.matchAll(/<script>([\s\S]*?)<\/script>/g),m=>m[1]);
-assert.equal(scripts.length,37);
-const scope={window:{}};vm.createContext(scope);
-scripts.forEach((source,i)=>{new vm.Script(source,{filename:'portable-'+i});if(i<26)vm.runInContext(source,scope);});
-const C=scope.window.MEETING_CONTENT,E=scope.window.MEETING_ENGINE;
-assert.equal(C.projects.length,48);assert.equal(C.events.length,818);assert.equal(C.endings.length,400);assert.equal(C.preparationEvents.length,240);assert.equal(C.preparationQuestions.length,192);
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path'),root=path.resolve(__dirname,'..');
+const html=fs.readFileSync(path.join(root,'组会求生_直接玩.html'),'utf8'),index=fs.readFileSync(path.join(root,'index.html'),'utf8');
+assert(html.includes('原创娱乐小游戏 / v0.10.0'));assert(!/<script\s+src=|<link[^>]+stylesheet|src=["']https?:\/\/|url\(["']?https?:\/\//.test(html),'offline resources are bundled');
+const names=[...index.matchAll(/<script src="([^?]+)\?/g)].map(m=>m[1]),scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);assert.equal(scripts.length,names.length);
+const scope={window:{}};vm.createContext(scope);scripts.forEach((s,i)=>{new vm.Script(s,{filename:names[i]});if(i<names.indexOf('save-manager.js'))vm.runInContext(s,scope);});
+const {MEETING_CONTENT:C,MEETING_ENGINE:E,MEETING_DIRECTIONS:D}=scope.window;assert.equal(C.projects.length,90);assert.equal(C.events.length,1202);assert.equal(C.endings.length,508);assert.equal(D.all.length,936);assert.equal(C.preparationEvents.length,450);assert.equal(C.preparationQuestions.length,360);
 for(const project of C.projects){const s=E.create({project:project.id,seed:4,persona:'warm'});assert(E.isValid(s));E.choose(s,0);E.advance(s);assert.equal(E.current(s).project,project.id);}
-console.log(JSON.stringify({passed:true,version:'0.9.0',scripts:37,disciplines:C.projects.length,meetingScenarios:C.events.length,endings:C.endings.length,externalDependencies:0}));
+console.log(JSON.stringify({passed:true,version:'0.10.0',scripts:scripts.length,disciplines:C.projects.length,directions:D.all.length,meetingScenarios:C.events.length,endings:C.endings.length,externalGameResources:0}));

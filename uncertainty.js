@@ -24,7 +24,7 @@ window.MEETING_UNCERTAINTY=(()=>{
     if(v.crisisDone&&!v.followupDone)return {id:'live-followup',phase:6};
     if(!v.crisisDone&&s.choicesMade>=v.crisisAt)return {id:'live-flaw-'+v.crisisId,phase:5};return null;
   }
-  function prepareRound(s,rand){if(!active(s))return;const v=s.live,raw=window.MEETING_PUBLICATION?.question(s)||window.MEETING_ROUTE_STORIES?.question(s)||window.MEETING_WORLD?.question(s)||window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),id=['boss','stats','senior'].includes(raw?.who)?raw.who:'boss',p=v.profiles[id];
+  function prepareRound(s,rand){if(!active(s))return;const v=s.live,raw=window.MEETING_DIALOGUE?.question(s)||window.MEETING_PUBLICATION?.question(s)||window.MEETING_ROUTE_STORIES?.question(s)||window.MEETING_WORLD?.question(s)||window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),id=['boss','stats','senior'].includes(raw?.who)?raw.who:'boss',p=v.profiles[id];
     const focus=rand(s)<(id==='boss'?1-(C.personas.find(p=>p.id===s.persona)?.volatility??.36):.64)?p.preference:modes[Math.floor(rand(s)*modes.length)];
     const observed=rand(s)<.76?focus:modes[Math.floor(rand(s)*modes.length)];
     v.round={eventId:s.eventId,examiner:id,focus,observed,pressure:p.severity+(s.choicesMade>=5?1:0),tone:Math.floor(rand(s)*5)-2,order:shuffle([0,1,2],rand,s)};

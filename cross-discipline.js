@@ -27,6 +27,15 @@ window.MEETING_MIX=(()=>{
     [['philosophy','data'],'操作定义与概念含义是否一致','系统能识别一个标签，不代表已经把概念解释清楚。需要把定义、判断标准与反例连接。'],
     [['agriculture','food'],'产出指标与营养目标之间的接口','产量、组成与实际使用目的有不同尺度，不能用一个漂亮数字代替所有目标。']
   ];
+  if(window.MEETING_MEDICAL)authored.push(
+ [['radiology','data'],'影像预测与站点差异','图像模型不能只看随机划分的指标；同一对象、扫描协议和站点需要分别核对，外部评估仍要独立留下记录。'],
+ [['cardiology','nephrology'],'心肾关联与观察时间','两侧指标可能来自不同复查时点；先对齐对象与窗口，再区分共同背景和解释方向。'],
+ [['rehabilitation','automation'],'机器人控制与生活功能','控制性能与使用者实际任务是两套标准。系统稳定不自动表示日常功能改善，两侧都要有实际记录。'],
+ [['medical-genetics','statistics'],'家系关联与独立单位','同一家系成员共享背景，变异注释也受参考版本影响；分析层次与解释范围必须一并确认。'],
+ [['pathology','data'],'切片图像与病例解释','多张切片不能直接当成多个独立病例；扫描批次、病理判读和预测任务要共同对齐。'],
+ [['health-policy','health-economics'],'健康公平与资源折算','总体成本效果指标可能隐藏不同群体的取舍；价格年份、服务边界与公平目标需要分别保留。'],
+ [['oral-medicine','materials'],'材料指标与口腔使用体验','实验室材料性能与使用者的实际体验有不同条件；对象内重复、使用时间与材料版本要连到同一份交接。'],
+ [['traditional-medicine','history'],'传统医药文献与现代研究问题','原典、整理本与后来的研究术语不能直接互换；历史解释与现代结局资料各自需要独立依据。']);
   function bridge(x){const ids=routes(x),found=authored.find(([pair])=>pair.every(id=>ids.includes(id))),names=ids.map(id=>C.projects.find(p=>p.id===id).name);return found?{title:found[1],scene:found[2]}:{title:`${names.join('与')}：同一个词，两套判断标准`,scene:`把${names[0]}中的对象、定义、条件与${names[1]}中的使用场景、评价标准逐项连接。先核对各自来源，再说明哪个对应是成立的、哪个仍只是设想。`};}
   function jointEvent(w){if(!routes(w)||!w.jointPlan)return null;const b=bridge(w),ids=routes(w),kind=w.jointKind;return {id:'mixed-joint-life-'+kind,day:w.day,slot:w.slot,project:'interdisciplinary',joint:true,title:'联合核对 · '+b.title,scene:b.scene+' 这半天只能完整核对一侧；两侧记录齐了，才能在组会给出完整的连接解释。',choices:[...ids.map(id=>({text:`打开${C.projects.find(p=>p.id===id).name}这一侧的来源，核对接口定义、条件与未知。`,preparationRoute:id,preparationGains:{[kind]:2},effects:{energy:-10,notes:8,stress:3},traits:{study:1},career:{},work:{progress:3,quality:3},flavor:'这一侧留下了核对记录。另一侧不会自动变成已读。'})),{text:'先画连接草图，把两侧还没核对的地方标出来。',preparationGains:{},effects:{energy:-3,slides:6,stress:1},traits:{},career:{},work:{progress:2,quality:0},flavor:'接口草图留下了，但两侧回答依据还没有增加。'}]};}
   function dispatchJoint(w){if(!routes(w)||w.status!=='life'||w.pending||w.campus?.plan||window.MEETING_ASSIGNMENTS?.offer(w))return null;w.jointPlan=true;w.campus.plan={day:w.day,slot:w.slot,location:'library',original:w.eventId,joint:true};w.eventId='mixed-joint-life-'+w.jointKind;return jointEvent(w);}

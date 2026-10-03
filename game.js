@@ -5,8 +5,8 @@
   const SAVE='meeting-survival-v2-save',ALBUM='meeting-survival-v1-album',SETTINGS='meeting-survival-v1-settings',CAREER='meeting-survival-v1-career';
   const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function read(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback;}catch{return fallback;}}
-  function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true;}catch{return false;}}
-  function remove(key){try{localStorage.removeItem(key);}catch{}}
+  function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));window.MEETING_SAVES?.schedule();return true;}catch{return false;}}
+  function remove(key){try{localStorage.removeItem(key);window.MEETING_SAVES?.schedule();}catch{}}
   let state=null,selectedRole='newbie',difficulty='normal',playerName='小同学',selectedProject='classic',selectedPersona='random',toastTimer;
   let album=read(ALBUM,[]);if(!Array.isArray(album))album=[];album=album.filter(x=>C.endings.some(e=>e.id===x.id)&&Number.isFinite(x.score));
   let saved=E.upgrade(read(SAVE,null));if(!E.isValid(saved))saved=null;
@@ -121,11 +121,11 @@
   $('#sound').onclick=()=>{soundOn=!soundOn;write(SETTINGS,{sound:soundOn});$('#sound').textContent=`音效 ${soundOn?'开':'关'}`;$('#sound').setAttribute('aria-pressed',String(soundOn));play('item');};
   $('#brand').onclick=e=>{e.preventDefault();if(state)save();landing();scrollTop();};
   document.addEventListener('keydown',e=>{if(e.repeat||e.ctrlKey||e.altKey||e.metaKey||['INPUT','TEXTAREA','BUTTON','SELECT','SUMMARY'].includes(document.activeElement?.tagName)||$('#album').open||$('#card-modal').open||$('#shop-modal').open)return;if(!state||state.ended)return;if(['1','2','3'].includes(e.key)&&!state.pending){app.querySelector(`[data-choice="${Number(e.key)-1}"]`)?.click();}else if(e.key==='Enter'&&state.pending){$('#next')?.click();}});
-  window.MEETING_APP={getCareer:()=>career,clearSavedMeeting:()=>{saved=null;remove(SAVE);},getSaved:()=>saved,getState:()=>state,getMenuConfig:()=>({name:$('#player-name')?.value||playerName,project:selectedProject,role:selectedRole,difficulty,persona:selectedPersona,...(window.MEETING_MIX?.config(selectedProject)||{}),...(window.MEETING_DIRECTIONS?.menuConfig({project:selectedProject,...(window.MEETING_MIX?.config(selectedProject)||{})})||{})}),persistCareer:()=>{write(CAREER,career);updateAlbumCount();},clearView:()=>{state=null;},landing:()=>{landing();window.MEETING_WEEK_UI?.enhanceLanding();},toast,showShop,
+  window.MEETING_APP={getCareer:()=>career,clearSavedMeeting:()=>{saved=null;remove(SAVE);},getSaved:()=>saved,getState:()=>state,getMenuConfig:()=>({name:$('#player-name')?.value||playerName,project:selectedProject,role:selectedRole,difficulty,persona:selectedPersona,...(window.MEETING_ACADEMY_UI?.menuConfig()||{}),...(window.MEETING_MIX?.config(selectedProject)||{}),...(window.MEETING_DIRECTIONS?.menuConfig({project:selectedProject,...(window.MEETING_MIX?.config(selectedProject)||{})})||{})}),persistCareer:()=>{write(CAREER,career);updateAlbumCount();},clearView:()=>{state=null;},landing:()=>{landing();window.MEETING_WEEK_UI?.enhanceLanding();},toast,showShop,
     startWith:(config,weekContext=null)=>{selectedRole=config.role;difficulty=config.difficulty;playerName=config.name;selectedProject=config.project;selectedPersona=config.persona;const seed=new Uint32Array(1);crypto.getRandomValues(seed);const run=weekContext?.world?.challenge?weekContext.world.runCareer:career;state=E.create({...config,seed:weekContext?.world?window.MEETING_WORLD.derive(weekContext.world.root,weekContext.number,1):seed[0],career:run,weekContext});state.personaMode=config.persona;if(!weekContext?.world?.challenge){career.moodBoost=0;career.evidenceBoost=0;write(CAREER,career);}save();render();scrollTop();},
     restoreMeeting:id=>{if(saved?.weekContext?.weekId!==id||saved.ended)return false;state=JSON.parse(JSON.stringify(saved));render();return true;}
   };
   const originalLanding=landing;landing=()=>{originalLanding();window.MEETING_WEEK_UI?.enhanceLanding();};
-  const originalRender=render;render=()=>{originalRender();if(state?.weekContext&&!state.ended){window.MEETING_WEEK_UI?.decorateMeeting(state);window.MEETING_PREPARATION_UI?.decorateMeeting(state);}};
+  const originalRender=render;render=()=>{originalRender();if(state?.weekContext&&!state.ended){window.MEETING_WEEK_UI?.decorateMeeting(state);window.MEETING_PREPARATION_UI?.decorateMeeting(state);window.MEETING_ACADEMY_UI?.meeting(state);}};
   landing();
 })();

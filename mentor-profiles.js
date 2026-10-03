@@ -28,6 +28,17 @@ window.MEETING_MENTORS=(()=>{
     'chen-mu':['statistics-2'],'han-shu':['education-1','psychology-2'],'fang-he':['classic-2','agriculture-1'],'ye-lan':['humanities-1','music-1','journalism-2'],
     'song-qi':['data-1','economics-6','physics-2'],'lu-jian':['law-2','philosophy-2','military-1']
   };
+  if(window.MEETING_MEDICAL){rows.push(
+ ['bai-ning','白宁','教授','心血管与长期结局研究室',['medicine'],'detail',10,'心血管影像、肾心联系与长期结局','主持过虚构的跨科资料质控项目。','有影像与随访合作入口。','跨科窗口要协调，不能只交漂亮图。','按对象与时点核对。'],
+ ['qiu-he','邱禾','副教授','神经与康复研究室',['medicine','engineering'],'collaborative',2,'认知、运动功能与康复反馈','组织过虚构的辅助技术体验展。','有原型与康复协作伙伴。','功能结局和设备表现要分别解释。','先定义任务，再讨论使用。'],
+ ['tan-yu','谭予','教授','病理与测量研究室',['medicine','science'],'reproduce',8,'数字病理、检验一致性与批次','维护过虚构的学院图像资料年鉴。','记录模板与共享设备较丰富。','读片分歧和平台版本都要保存。','喜欢从不一致的那页问起。'],
+ ['xu-zhi','徐知','副教授','影像与计算研究室',['medicine','engineering'],'minimal',4,'成像、外部评估与可复现计算','完成过虚构的校内影像复现挑战。','能提供环境与资料组织经验。','计算队列和站点差异常会拖后腿。','先问评估对象，再看指标。'],
+ ['lan-yue','蓝悦','副教授','妇儿与生命历程研究室',['medicine'],'warm',-1,'儿童发展、围产与生命历程随访','获得过虚构的学院合作教学奖。','愿意一起拆解随访困难。','失访和量表适用范围要保留。','鼓励有限结论，承诺要落实。'],
+ ['ji-shu','纪书','教授','健康政策与经济研究室',['medicine','management','economics'],'deadline',5,'服务质量、健康公平与资源评价','举办过虚构的校园服务评估赛。','合作情境多，问题容易进入讨论。','窗口与交付密，评价边界不能省。','希望每次交付只有一个明确问题。'],
+ ['luo-chen','罗晨','副教授','口腔与听觉研究室',['medicine','engineering'],'vision',1,'数字口腔、声音与辅助界面','组织过虚构的跨专业体验工作坊。','欢迎不同专业一起做小原型。','对象内重复与体验反馈要分开。','想法开放，实际记录仍要到位。'],
+ ['wen-yao','温遥','教授','基础医学资料研究室',['medicine','science'],'explorer',-5,'遗传、生理与分子资料解释','整理过虚构的公开资料教学案例集。','失败材料也可以继续讨论。','资源较紧，模型边界需反复说明。','先把来源与独立对象说清。']);
+ Object.assign(directions,{'bai-ning':['cardiology-1','nephrology-11','cardiac-surgery-7'],'qiu-he':['neurology-4','rehabilitation-1','rehabilitation-8'],'tan-yu':['pathology-3','lab-medicine-5'],'xu-zhi':['radiology-10','nuclear-medicine-9'],'lan-yue':['pediatrics-9','obgyn-2'],'ji-shu':['health-policy-6','health-economics-2','epidemiology-11'],'luo-chen':['oral-medicine-11','ent-7'],'wen-yao':['medical-genetics-7','anatomy-physiology-3','medical-biochemistry-4']});
+  }
   const profiles=rows.map(([id,name,title,lab,families,style,budget,research,achievement,strength,tradeoff,practice])=>{const level=['su-zhi','han-shu','song-qi'].includes(id)?'young':title==='教授'?'senior':'associate';return {id,name,title:levels[level].title,level,lab,families,style,budget,research,achievement,strength,tradeoff,practice,directionIds:directions[id]};});
   const find=id=>profiles.find(p=>p.id===id)||null;
   function matches(p,config){const routes=config.mixProjects||[config.project];return routes.some(id=>p.families.includes(C.projects.find(d=>d.id===id)?.family));}

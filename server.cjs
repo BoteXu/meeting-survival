@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = __dirname;
 const port = Number(process.env.MEETING_PORT || 8768);
-const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.png':'image/png'};
+const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.png':'image/png','.webmanifest':'application/manifest+json','.json':'application/json'};
 http.createServer((req,res) => {
   let route;
   try { route = decodeURIComponent(new URL(req.url,'http://localhost').pathname); }

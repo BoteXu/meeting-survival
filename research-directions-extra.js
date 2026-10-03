@@ -53,4 +53,5 @@
   ];
   const icons=['🧩','📐','🗂️'],kinds=['literature','method','record'];
   for(const [route,...items] of rows)items.forEach((s,i)=>{const [name,topic,tags]=s.split('|');D.all.push({id:route+'-'+(i+4),route,name,topic,tags:tags.split(','),kind:kinds[i%3],icon:icons[i%3]});});
+  window.MEETING_MEDICAL?.installDirections(D);
 })();
