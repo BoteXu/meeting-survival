@@ -14,9 +14,11 @@ source_files = [
 ]
 html = (root / 'index.html').read_text(encoding='utf-8')
 for css in ['style.css', 'week.css', 'campus.css', 'preparation.css', 'v06.css', 'opportunities.css']:
-    html = html.replace('<link rel="stylesheet" href="'+css+'?v=0.7.0">', '<style>\n' + (root / css).read_text(encoding='utf-8') + '\n</style>')
+    asset_version = '0.7.0.1' if css == 'opportunities.css' else '0.7.0'
+    html = html.replace('<link rel="stylesheet" href="'+css+'?v='+asset_version+'">', '<style>\n' + (root / css).read_text(encoding='utf-8') + '\n</style>')
 for filename in ['content.js', 'content-expand.js', 'content-disciplines.js', 'content-v03.js', 'content-week.js', 'campus-content.js', 'campus-engine.js', 'preparation.js', 'uncertainty.js', 'life-surprise-content.js', 'life-surprises.js', 'content-expansion-v06.js', 'cross-discipline.js', 'group-dynamics.js', 'assignments.js', 'side-stories.js', 'engine.js', 'week-engine.js', 'game.js', 'campus-ui.js', 'preparation-ui.js', 'weekly-ui.js', 'locale-data.js', 'i18n.js']:
-    tag = '<script src="' + filename + '?v=0.7.0"></script>'
+    asset_version = '0.7.0.1' if filename == 'i18n.js' else '0.7.0'
+    tag = '<script src="' + filename + '?v=' + asset_version + '"></script>'
     assert html.count(tag) == 1
     js = (root / filename).read_text(encoding='utf-8')
     assert '</script' not in js.lower()
