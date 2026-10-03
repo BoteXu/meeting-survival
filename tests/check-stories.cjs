@@ -1,0 +1,21 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),path=require('path'),root=path.resolve(__dirname,'..'),box={window:{}};vm.createContext(box);
+for(const file of ['content.js','content-expand.js','content-disciplines.js','content-v03.js','content-week.js','campus-content.js','campus-engine.js','preparation.js','uncertainty.js','life-surprise-content.js','life-surprises.js','content-expansion-v06.js','cross-discipline.js','group-dynamics.js','assignments.js','side-stories.js','engine.js','week-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),box);
+const {MEETING_SIDE_STORIES:S,MEETING_WEEK:W,MEETING_ENGINE:E,MEETING_PREPARATION:P,MEETING_ASSIGNMENTS:A}=box.window,copy=x=>JSON.parse(JSON.stringify(x)),config={project:'data',campus:true,preparation:true,role:'newbie',difficulty:'normal'},orders=new Set(),statuses=new Set();let branches=0,natural=0,followups=0;
+// Each story's three paths obey its actual work ledger, with a stable order across rerenders and save/reload.
+for(const d of S.stories)for(const action of [0,1,2]){
+ const w=W.create(config,branches+10);w.group.news.handled=true;w.assignments.offers=[];w.surprise=null;w.sideStories.active={id:d.id,route:'data',step:0,checked:0,started:1,next:0,status:'open',source:null};w.sideStories.plan=null;
+ for(let n=0;n<3&&w.sideStories.active;n++){S.prepare(w,()=>.17+(n%2)*.58);const e=W.current(w),snapshot=JSON.stringify(e);assert.equal(snapshot,JSON.stringify(W.current(w)));assert.equal(snapshot,JSON.stringify(W.current(copy(w))));orders.add(e.choices.map(c=>c.storyAction).join(''));const index=e.choices.findIndex(c=>c.storyAction===action),cloned=copy(w),r=W.choose(w,index),r2=W.choose(cloned,index);assert.deepEqual(copy(r),copy(r2));assert.equal(JSON.stringify(w),JSON.stringify(cloned));assert(W.isValid(w));assert.equal(W.choose(w,index),null);assert.equal(w.log.length,n+1);if(action===0)assert.equal(P.level(w.preparation,'data',d.kind),n===2?2:1);else assert.equal(P.level(w.preparation,'data',d.kind),0);if(w.sideStories.active){w.sideStories.active.next=(w.number-1)*14+w.day*2+w.slot+1;W.advance(w);}w.surprise=null;}
+ const t=w.sideStories.history.at(-1);assert.equal(t.status,['verified','shared','abandoned'][action]);statuses.add(t.status);const s=E.create({...config,seed:1,weekContext:W.meetingContext(w)});s.eventId='side-story-question';assert.equal(S.question(s).choices[0].prepared.available,action===0);if(action===0)assert.equal(S.question(s).choices[0].prepared.source.eventId,'side-story-'+d.id+'-2');branches++;
+}
+// Natural play: no injected story selection, continuing across weeks, actual assignment priority and one time slot per choice.
+for(let seed=1;seed<=48;seed++){
+ let previous=null;for(let week=1;week<=3;week++){
+ const w=W.create(config,seed*500+week,previous,week);for(let safety=0;w.status!=='report'&&safety<200;safety++){
+  assert(W.isValid(w));if(w.pending){W.advance(w);A.drain(w);continue;}
+  if(w.status==='meeting'){const s=E.create({...config,seed:seed+week,weekContext:W.meetingContext(w)});for(let i=0;!s.ended&&i<160;i++){if(s.pending){E.advance(s);continue;}const e=E.current(s);if(e.id==='side-story-question')followups++;const choice=e.choices.findIndex(c=>c.prepared?.available!==false&&!c.hardStop&&!c.flags.chaos);assert(E.choose(s,choice<0?0:choice));}assert(s.ended);W.completeMeeting(w,s);continue;}
+  const e=W.current(w),index=e.choices.findIndex(c=>c.storyAction===(seed%3));let pick=index>=0?index:seed%3;if(!P.lifePreview(w,e,pick).available)pick=e.choices.findIndex((c,i)=>P.lifePreview(w,e,i).available);assert(W.choose(w,pick),e.id+JSON.stringify(e.choices.map((c,i)=>P.lifePreview(w,e,i))));natural++;
+ }
+ assert.equal(w.status,'report');assert.equal(w.log.length,13);const state=copy(w.sideStories.active),next=W.create(config,90000+seed+week,w,week+1);if(state)assert.deepEqual(copy(next.sideStories.active),state);previous=w;
+ }
+}
+assert(orders.size>1);assert(followups>0);const result={passed:true,stories:S.stories.length,scenes:S.stories.length*3,choices:S.stories.length*9,branches,naturalWeeks:144,naturalActions:natural,meetingFollowups:followups,orders:[...orders],statuses:[...statuses],crossWeek:true,noFreeRepeat:true};fs.writeFileSync(path.join(root,'.qa/story-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));

@@ -13,3 +13,7 @@ desktop.ini
 node_modules/
 .env
 .env.*
+
+meeting-survival-en.html
+meeting-survival-ja.html
+meeting-survival-ko.html

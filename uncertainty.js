@@ -15,7 +15,7 @@ window.MEETING_UNCERTAINTY=(()=>{
       // 熟悉仍有帮助，但旧的100信任不等于这周的免死金牌。
       s.relations[id]=clamp(Math.round(50+(s.relations[id]-50)*.72+rand(s)*8-4),0,95);
     }
-    s.live.socialWeek=s.weekContext?.socialWeek||window.MEETING_LIFE_SURPRISES?.socialState(s,rand,null,career.peer)||null;
+    if(s.weekContext?.group)s.live.group=copy(s.weekContext.group);s.live.socialWeek=s.weekContext?.socialWeek||window.MEETING_LIFE_SURPRISES?.socialState(s,rand,null,career.peer)||null;
     for(const id of ['boss','stats','senior']){const effect=s.live.socialWeek?.events[id]?.effects||{},p=s.live.profiles[id];p.severity=clamp(p.severity+(effect.severity||0),1,5);p.temper+=effect.temper||0;if(effect.preference)p.preference=effect.preference;for(const key of ['mood','patience','evidence','time'])if(effect[key])s.stats[key]=clamp(s.stats[key]+effect[key],0,key==='time'?65:100);}
   }
   function shuffle(a,rand,s){for(let i=a.length-1;i>0;i--){const j=Math.floor(rand(s)*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
@@ -24,13 +24,13 @@ window.MEETING_UNCERTAINTY=(()=>{
     if(v.crisisDone&&!v.followupDone)return {id:'live-followup',phase:6};
     if(!v.crisisDone&&s.choicesMade>=v.crisisAt)return {id:'live-flaw-'+v.crisisId,phase:5};return null;
   }
-  function prepareRound(s,rand){if(!active(s))return;const v=s.live,raw=rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),id=['boss','stats','senior'].includes(raw?.who)?raw.who:'boss',p=v.profiles[id];
+  function prepareRound(s,rand){if(!active(s))return;const v=s.live,raw=window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),id=['boss','stats','senior'].includes(raw?.who)?raw.who:'boss',p=v.profiles[id];
     const focus=rand(s)<.64?p.preference:modes[Math.floor(rand(s)*modes.length)];
     const observed=rand(s)<.76?focus:modes[Math.floor(rand(s)*modes.length)];
     v.round={eventId:s.eventId,examiner:id,focus,observed,pressure:p.severity+(s.choicesMade>=5?1:0),tone:Math.floor(rand(s)*5)-2,order:shuffle([0,1,2],rand,s)};
   }
   const choice=(text,approach,effects,flags={},hardStop=false)=>({text,approach,label:'现场回应',effects,flags,hardStop,result:'漏洞没有因为一句话消失。',flavor:'这件事需要继续核对。'});
-  function rawEvent(s){if(!active(s)||!s.eventId.startsWith('live-'))return null;const topic=C.projects.find(p=>p.id===s.project).topics,carry=s.weekContext?.unresolvedFlaws?.[0],id=s.eventId;
+  function rawEvent(s){if(!active(s)||!s.eventId.startsWith('live-'))return null;const carry=s.weekContext?.unresolvedFlaws?.[0],route=carry?.route||window.MEETING_MIX?.meetingRoute(s)||s.project,topic=C.projects.find(p=>p.id===route).topics,id=s.eventId;
     if(id==='live-followup')return {id,phase:6,who:'boss',title:'“先别翻页。刚才那个漏洞，你打算怎么处理？”',scene:`对方回到了「${s.live.flaw?.topic||topic[2]}」。这次要选一个实际承担的后果；一句“下周再说”不会自动销项。`,quote:'“现在给一个范围明确的处理方案。”',choices:[
       choice('撤回这一部分结论，保留已经核对的内容。','cautious',{evidence:-8,patience:-3,mood:-4,time:-2},{honest:1,rigor:1}),
       choice('暂停推进，列出补查顺序和可交付的记录。','detail',{evidence:-4,patience:-6,mood:-3,time:-3},{rigor:1,debt:1}),
@@ -41,7 +41,7 @@ window.MEETING_UNCERTAINTY=(()=>{
       records:{kind:'record',topic:topic[2],who:'senior',title:'原始记录和投影上的这一页，出现了版本冲突。',scene:'师兄打开了另一份记录，两页的关键细节对不上。原因还没查清；老师明确要求先核对，不能把矛盾当作不存在。',quote:'“记录就在这里。你现在准备怎么处理？”',choices:[choice('撤下这页，承认版本没有核对一致，回去查清。','cautious',{evidence:-15,patience:-5,mood:-8,time:-3},{honest:1,debt:1}),choice('停止解释结论，和师兄当场比对两份记录的来源。','detail',{evidence:-7,patience:-10,mood:-5,time:-5},{rigor:1,help:1}),choice('拒绝核对，否认刚刚展示的记录，坚持继续讲。','direct',{evidence:-25,patience:-25,mood:-15,time:-2},{chaos:1},true)]},
       promise:{kind:'record',topic:topic[2],who:'boss',title:'“这个承诺，你准备拿什么兑现？”',scene:'导师把一个范围很大的后续要求落到了具体记录上。你现在的材料只能完成其中一部分；三个回应都要放弃一些进度或现场评价。',quote:'“今天给不了结果，也别再许一个更大的愿。”',choices:[choice('把交付范围缩小，只承诺已经能核对的部分。','brief',{evidence:-9,patience:-7,mood:-4,time:-2},{honest:1}),choice('解释现有缺口，逐项列出补查顺序。','detail',{evidence:-5,patience:-10,mood:-5,time:-4},{rigor:1,debt:1}),choice('暂缓原承诺，邀请同门帮忙重新安排分工。','cooperate',{evidence:-10,patience:-5,mood:-7,time:-3},{help:1,debt:1})]}
     }[crisis];if(!data)return null;
-    return {id,phase:5,project:s.project,who:data.who,title:carry?(carry.from===s.weekContext?.number?'这周生活里留下的疑点，老师现在问到了。':'上周留下的漏洞，今天又被翻了出来。'):data.title,scene:carry?`「${carry.title}」尚未完成。${data.scene}`:data.scene,quote:data.quote,flaw:{kind:carry?.prepKind||data.kind,topic:carry?.topic||data.topic},choices:data.choices};
+    return {id,phase:5,project:s.project,who:data.who,title:carry?(carry.from===s.weekContext?.number?'这周生活里留下的疑点，老师现在问到了。':'上周留下的漏洞，今天又被翻了出来。'):data.title,scene:carry?`「${carry.title}」尚未完成。${data.scene}`:data.scene,quote:data.quote,flaw:{route,kind:carry?.prepKind||data.kind,topic:carry?.topic||data.topic},choices:data.choices};
   }
   function decorate(s,original){if(!active(s)||!original)return original;const e=copy(original),round=s.live.round;
     // 准备仍决定可回答范围，表现好坏要到现场才知道。
@@ -80,16 +80,16 @@ window.MEETING_UNCERTAINTY=(()=>{
     if(s.relations[id]>75&&(c.flags.chaos||c.flags.debt))d-=3;
     if(c.hardStop)d-=id==='boss'?30:18;
     const old=s.relations[id];s.relations[id]=changeTrust(old,d);out[id]=s.relations[id]-old;
-  }return out;}
+  }if(s.live.group){const id=reaction?.examiner||'boss';window.MEETING_GROUP.trust({group:s.live.group},person(s,id).id,out[id]);}return out;}
   function afterMeeting(w,s){if(!active(s)||!s.live.flaw)return;const f=s.live.flaw;
-    if(!w.tasks.some(t=>!t.done&&t.liveFlaw&&t.route===s.project&&t.prepKind===f.kind))w.tasks.push({title:`补查组会漏洞：${f.topic}`,topic:f.topic,prepKind:f.kind,route:s.project,done:false,from:w.number,liveFlaw:true});
+    if(!w.tasks.some(t=>!t.done&&t.liveFlaw&&t.route===(f.route||s.project)&&t.prepKind===f.kind))w.tasks.push({title:`补查组会漏洞：${f.topic}`,topic:f.topic,prepKind:f.kind,route:f.route||s.project,done:false,from:w.number,liveFlaw:true});
     w.meeting.live={crisis:f.title,followup:s.live.followupDone,badAnswers:s.live.badAnswers};
   }
   function valid(s){if(!active(s))return true;const v=s.live,r=v.round;return v.version===1&&v.minAnswers===10&&Number.isInteger(v.crisisAt)&&v.crisisAt>=6&&v.crisisAt<=8&&['method','counterexample','records','promise'].includes(v.crisisId)&&typeof v.crisisDone==='boolean'&&typeof v.followupDone==='boolean'&&Number.isInteger(v.badAnswers)&&v.badAnswers>=0&&Number.isInteger(v.goodAnswers)&&v.goodAnswers>=0&&Array.isArray(v.prepSchedule)&&new Set(v.prepSchedule).size===4&&v.prepSchedule.every(n=>Number.isInteger(n)&&n>=1&&n<=5)&&['boss','stats','senior'].every(id=>modes.includes(v.profiles?.[id]?.preference)&&[1,2,3,4,5].includes(v.profiles[id].severity))&&r&&r.eventId===s.eventId&&modes.includes(r.focus)&&modes.includes(r.observed)&&['boss','stats','senior'].includes(r.examiner)&&Array.isArray(r.order)&&r.order.length===3&&new Set(r.order).size===3&&r.order.every(n=>[0,1,2].includes(n));}
   function score(s,base){return !active(s)?base:clamp(Math.round(s.stats.evidence*.35+s.stats.patience*.25+s.stats.mood*.2+10-s.live.badAnswers*1.5-(s.live.flaw?5:0)));}
   function choiceHint(s,c){if(!active(s))return '';if(c.hardStop)return '拒绝核对已暴露的矛盾，会直接结束本场。';const tradeoff={detail:'解释更细，会占用时间，也可能引出新问题。',brief:'先保住节奏，细节可能被继续追问。',cautious:'收窄当前承诺，也可能被认为进展不足。',cooperate:'借助同门复核，会牵动关系与后续分工。',direct:'当场给出立场，对方可能继续追着依据问。',deflect:'试着缓和或转移话题，对方未必接得住。'}[c.approach];return (s.eventId.startsWith('live-')?'这次没有无损回应。':'')+tradeoff+' 现场后果选后揭晓。';}
-  function summary(s){if(!active(s))return '';return `现场观察：${clues[s.live.round.observed]} 性格与关注点会变化，这只是线索。${s.live.socialWeek?'周老师这周'+s.live.socialWeek.events.boss.text:''}正常收尾需完成至少10次问答；状态归零会提前翻车。`;}
-  function failureEnding(s,final=false){if(!active(s)||!s.live.crisisDone||!s.live.flaw)return null;return (s.stats.mood<=0||s.stats.patience<=0||s.stats.time<=0||(final&&s.stats.evidence<35))&&C.endings.some(e=>e.id==='failure-'+s.project)?'failure-'+s.project:null;}
-  function person(s,id){return {...C.people[id],...(id==='senior'?s?.live?.socialWeek?.cast?.senior:{})};}
+  function summary(s){if(!active(s))return '';return `现场观察：${clues[s.live.round.observed]} 性格与关注点会变化，这只是线索。${s.live.socialWeek?person(s,'boss').name+'这周'+s.live.socialWeek.events.boss.text:''}正常收尾需完成至少10次问答；状态归零会提前翻车。`;}
+  function failureEnding(s,final=false){if(!active(s)||!s.live.crisisDone||!s.live.flaw)return null;return (s.stats.mood<=0||s.stats.patience<=0||s.stats.time<=0||(final&&s.stats.evidence<35))&&C.endings.some(e=>e.id==='failure-'+(s.live.flaw.route||s.project))?'failure-'+(s.live.flaw.route||s.project):null;}
+  function person(s,id){if(s?.live?.group)return window.MEETING_GROUP.person(s,id);return {...C.people[id],...(id==='senior'?s?.live?.socialWeek?.cast?.senior:{})};}
   return {active,init,canWrap,schedule,prepareRound,rawEvent,decorate,preview,roll,rapport,changeTrust,afterMeeting,valid,score,choiceHint,summary,person,failureEnding};
 })();
