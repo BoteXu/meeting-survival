@@ -14,15 +14,15 @@ source_files = [
 ]
 html = (root / 'index.html').read_text(encoding='utf-8')
 for css in ['style.css', 'week.css', 'campus.css', 'preparation.css']:
-    html = html.replace('<link rel="stylesheet" href="'+css+'?v=0.5">', '<style>\n' + (root / css).read_text(encoding='utf-8') + '\n</style>')
+    html = html.replace('<link rel="stylesheet" href="'+css+'?v=0.5.1">', '<style>\n' + (root / css).read_text(encoding='utf-8') + '\n</style>')
 for filename in ['content.js', 'content-expand.js', 'content-disciplines.js', 'content-v03.js', 'content-week.js', 'campus-content.js', 'campus-engine.js', 'preparation.js', 'engine.js', 'week-engine.js', 'game.js', 'campus-ui.js', 'preparation-ui.js', 'weekly-ui.js']:
-    tag = '<script src="' + filename + '?v=0.5"></script>'
+    tag = '<script src="' + filename + '?v=0.5.1"></script>'
     assert html.count(tag) == 1
     js = (root / filename).read_text(encoding='utf-8')
     assert '</script' not in js.lower()
     html = html.replace(tag, '<script>\n' + js + '\n</script>')
 assert not re.search(r'<script\s+src=|<link[^>]+stylesheet', html)
-assert '原创娱乐小游戏 / v0.5' in html
+assert '原创娱乐小游戏 / v0.5.1' in html
 portable = root / '组会求生_直接玩.html'
 portable.write_text(html, encoding='utf-8', newline='\n')
 bundle = root / '组会求生_试玩包.zip'
@@ -33,7 +33,7 @@ with zipfile.ZipFile(bundle) as z:
     assert z.testzip() is None
     assert z.read('组会求生/' + portable.name) == portable.read_bytes()
 print(json.dumps({
-    'version': '0.5', 'portable': portable.name, 'zip': bundle.name,
+    'version': '0.5.1', 'portable': portable.name, 'zip': bundle.name,
     'portable_sha256': hashlib.sha256(portable.read_bytes()).hexdigest(),
     'zip_sha256': hashlib.sha256(bundle.read_bytes()).hexdigest(),
 }, ensure_ascii=True))

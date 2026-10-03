@@ -61,7 +61,7 @@ window.MEETING_PREPARATION=(() => {
     for(const [kind,strength] of Object.entries(gained)){const a={kind,level:strength,route:w.config.project,week:w.number,day:w.day,eventId:e.id,action:record.answer,title:e.title};w.preparation.sources.push(a);sources.push(a);}
     w.preparation.sources=w.preparation.sources.slice(-100);const repaired=[];
     for(const task of w.tasks.filter(t=>!t.done&&t.prepKind&&t.route===w.config.project)){if((gained[task.prepKind]||0)>=2){task.done=true;repaired.push(task.title);}}
-    record.preparation={sources:copy(sources),repaired};if(repaired.length)record.taskDone=[record.taskDone,...repaired].filter(Boolean).join('；');
+    record.preparation={sources:copy(sources),repaired};if(repaired.length){if(!record.taskDone&&w.campus)w.campus.weekTaskDone++;record.taskDone=[record.taskDone,...repaired].filter(Boolean).join('；');}
   }
   function upgrade(w){if(!w||!w.config.campus||w.status==='meeting'||w.meeting||w.day>=5||enabled(w))return w;w.config.preparation=true;init(w,null);
     for(const record of w.log){const e=C.lifeEvents.find(e=>e.id===record.eventId)||C.campusEvents.find(e=>e.id===record.eventId);const index=e?.choices.findIndex(c=>c.text===record.answer);if(index>=0){const day=w.day;w.day=record.day;afterLife(w,e,index,record);w.day=day;}}
@@ -72,10 +72,11 @@ window.MEETING_PREPARATION=(() => {
   const active=s=>!!s.weekContext?.preparation;
   function meetingInit(s){if(active(s))s.preparation={version:1,answered:[],gaps:[],attempts:[]};}
   function scheduledQuestion(s){if(!active(s)||s.wrapUp||s.choicesMade<1||s.choicesMade>4)return null;return C.preparationQuestions.find(e=>e.project===s.project&&e.prepKind===kinds[s.choicesMade-1]);}
-  function requirement(e,c){if(e.prepKind)return c.flags?.rigor?{kind:e.prepKind,minimum:2}:null;if(!c.flags?.rigor&&!(['plot-version','plot-small'].includes(e.id)&&c===e.choices[0]))return null;if(common[e.id])return {kind:common[e.id][0],minimum:common[e.id][1]};
+  function requirement(e,c){if(e.prepKind)return c.flags?.rigor?{kind:e.prepKind,minimum:2}:null;if(!c.flags?.rigor&&!(['plot-version','plot-small'].includes(e.id)&&c===e.choices[0]))return null;if(e.answerKind)return {kind:e.answerKind,minimum:2};if(common[e.id])return {kind:common[e.id][0],minimum:common[e.id][1]};
     if(e.project&&e.phase>=1&&e.phase<=4)return {kind:kinds[e.phase-1],minimum:e.phase===1?1:2};return null;
   }
   function event(s,original){if(!active(s)||!original)return original;const e=copy(original),book=s.weekContext.preparation;
+    if(e.weekRequires){const action=s.weekContext.sourceActions.find(a=>(a.traits?.[e.weekRequires]||0)>0);if(action){const day=C.weekDays[action.day];e.title=e.title.replace(/周[一二三四五六日]/g,day);e.scene+=` 那天你实际选择了「${action.answer}」。`;if(e.id==='week-echo-study'){const notes=book.sources.filter(a=>a.week===s.weekContext.number&&a.day===action.day&&a.action===action.answer);const best=notes.find(a=>a.level===2)||notes[0];e.answerKind=best?.kind||'literature';}if(e.id==='week-echo-meal')e.title='这周被你提起的饭点，今天轮到所有人的胃表态。';}}
     if(e.id==='question-memory'&&!s.weekContext.carryTasks.length){e.title='导师翻开了这周的进展记录。';e.scene='老师指着本周的记录，想确认你已经核对到了哪一步。';e.quote='“这周具体检查了什么？”';e.choices[0].result='本周的核对有了回执。';e.choices[0].flavor='老师在这周的记录旁做了一个标记。';e.choices[2].flavor='导师建议把思考落实到一个可以检查的问题。';}
     e.choices=e.choices.map((c,index)=>{const req=requirement(e,c);if(req){const got=level(book,s.project,req.kind),a=source(book,s.project,req.kind,req.minimum);c.prepared={...req,level:got,available:got>=req.minimum,source:copy(a)};if(c.prepared.available){c.effects.evidence=(c.effects.evidence||0)+3;c.effects.patience=(c.effects.patience||0)+2;}}
       if(e.id==='question-memory'&&index===0&&s.weekContext.carryTasks.length){const receipt=book.taskReceipts?.at(-1);if(!receipt){c.prepared.available=false;c.prepared.reason='需要本周实际补查过上次组会的遗留事项；整理文件或收拾工位不算核对。';}else if(c.prepared.available)c.prepared.source={...copy(receipt),kind:'record',level:2};}

@@ -16,13 +16,14 @@ for(const p of C.projects)for(const strategy of ['full','skim','none']){
  if(strategy==='full'){assert.equal(s.preparation.gaps.length,0);assert.equal(s.preparation.answered.filter(k=>k!=='rehearsal').length,4);}else assert.equal(s.preparation.gaps.length,4);
  answered+=s.preparation.answered.length;gaps+=s.preparation.gaps.length;assert(W.completeMeeting(w,s));assert.equal(W.completeMeeting(w,s),false);
  const tasks=w.tasks.filter(t=>t.prepKind&&!t.done);assert.equal(tasks.length,s.preparation.gaps.length);
- if(strategy==='full'){for(let i=0;i<4;i++)life(w,'rest',0);}else{for(const kind of P.kinds.slice(0,4)){const r=life(w,kind,0);assert(r.preparation.repaired.some(title=>title.includes(P.names[kind])));repaired++;}}
+ if(strategy==='full'){for(let i=0;i<4;i++)life(w,'rest',0);}else{for(const kind of P.kinds.slice(0,4)){const r=life(w,kind,0);assert(r.preparation.repaired.some(title=>title.includes(P.names[kind])));repaired++;}assert(w.campus.weekTaskDone>=4,'匹配补查计入处理遗留事项的挑战进度');}
  assert.equal(w.status,'report');assert.equal(w.tasks.filter(t=>t.prepKind&&!t.done).length,0);assert.equal(w.log.length,13);
  const next=W.create(w.config,8824,w,2),snapshot=JSON.stringify(w);assert.equal(P.level(next.preparation,p.id,'literature'),2);assert.equal(P.level(next.preparation,p.id,'method'),2);assert.equal(P.level(next.preparation,p.id,'record'),1);assert.equal(P.level(next.preparation,p.id,'boundary'),1);
  for(let i=0;i<9;i++)life(next,i===0?'record':i===1?'boundary':'rest',0);const s2=enter(next,9191);assert.equal(play(s2).size,4);assert.equal(s2.preparation.gaps.length,0);assert.equal(JSON.stringify(w),snapshot,'新周不改变原周的回答依据');meetings+=2;
  const switched=W.create(configs(C.projects[(C.projects.indexOf(p)+1)%36].id),932,w,3);assert.equal(switched.preparation.sources.length,0,'不同学科不借用上一学科的准备');
 }
 assert.equal(allQuestions.size,144);
+const echoWeek=W.create(configs('classic'),71);life(echoWeek,'literature',0);for(let i=0;i<8;i++)life(echoWeek,'rest',0);const echoState=enter(echoWeek,77),echo=P.event(echoState,C.events.find(e=>e.id==='week-echo-study'));assert(echo.title.includes('周一'));assert(echo.scene.includes('读原文'));assert.equal(echo.choices[0].prepared.kind,'literature');assert(echo.choices[0].prepared.available);
 // 高数值、手牌、库存与技能不能越过准备门槛。
 const unprepared=W.create(configs('classic'),22);for(let i=0;i<9;i++)life(unprepared,'rest',0);unprepared.resources.notes=100;unprepared.resources.slides=100;for(const id of ['summary','sleep'])G.toggleCard(unprepared,id);const no=enter(unprepared,31);E.choose(no,0);E.advance(no);assert.equal(E.current(no).prepKind,'literature');assert.equal(E.previewChoice(no,0).available,false);E.useItem(no,'skill');E.useItem(no,'coffee');E.useItem(no,'charm');assert.equal(E.previewChoice(no,0).available,false);
 // 只读摘要不等于精读；预演不能冒充文献阅读。
