@@ -73,7 +73,7 @@ education;教学|课堂|课程;一个教学目标怎样转成能检验掌握的�
   if(b.packet==='physics'&&!/量子|凝聚/.test(d.name))ids=[];
   if(b.packet==='anatomy'&&!/神经|脑/.test(d.name))ids=[];
   if(b.packet==='ecology'&&/土壤|水文|地质/.test(d.name))ids=[];
-  item.references=ids.map(k=>sources[k]);return Object.freeze(item);
+  item.references=ids.map(k=>sources[k]);item=window.MEETING_DIRECTION_DOSSIERS?.agenda(item)||item;return Object.freeze(item);
  }
  function active(holder){const b=L.active(holder);return b?get(b.id):null;}
  function mode(holder){const p=holder?.world?.artifact||holder?.weekContext?.world?.artifact,t=p?.researchTheme,b=L.active(holder);return t&&t.direction===b?.id&&t.version===p.version&&Object.hasOwn(labels,t.mode)?t.mode:'foundation';}
@@ -87,8 +87,9 @@ education;教学|课堂|课程;一个教学目标怎样转成能检验掌握的�
  function contextText(a,m){return m==='frontier'?a.frontierBoundary:a.foundationAnchor;}
  function question(a,m,kind){const q=focusText(a,m),b=L.get(a.id);return ({method:q,literature:P(q+' 两篇文献若答案不同，先比较哪些前提？',()=>`${E(q)} If two papers disagree, which premises do you compare?`),record:P(q+' 只看汇总页能判断吗？请说明'+b.material+'怎样支持核对。',()=>`${E(q)} Can summaries decide this? Explain how ${E(b.material)} supports checking.`),boundary:P(q+' 如果'+b.snag+'，哪些解释必须暂缓？',()=>`${E(q)} If ${E(b.snag)}, which interpretations must wait?`),rehearsal:P(q+' 请向非本专业的人说明核心思路和未决部分。',()=>`${E(q)} Explain the core reasoning and unresolved parts to a non-specialist.`)})[kind]||q;}
  function life(w,raw){const a=active(w);if(!a||w.config.challenge||!raw?.bankId)return raw;const m=mode(w);return {...raw,researchMode:m,researchAgendaId:a.id,scene:P('本版侧重：'+labels[m]+'。这一段围绕「'+a.direction+'」的一个研究提案：'+focusText(a,m),()=>`Emphasis: ${E(labels[m])}. This slot addresses a proposal in ${E(a.direction)}: ${E(focusText(a,m))}`)+'\n\n'+contextText(a,m)+'\n\n'+raw.scene};}
- function meeting(s,raw){const a=active(s);if(!a||s.config?.challenge||s.weekContext?.world?.challenge||!raw?.bankId)return raw;const m=mode(s),q=question(a,m,raw.bankKind||raw.prepKind);const e={...raw,researchMode:m,researchAgendaId:a.id};if(!raw.flaw&&raw.id!=='live-followup'&&!raw.academicTalk&&!raw.id?.includes('story-question')){e.title=P('「'+a.direction+'」· '+labels[m]+'：'+q,()=>`${E(a.direction)} · ${E(labels[m])}: ${E(q)}`);e.quote=e.title;}
+ function meeting(s,raw){const a=active(s);if(!a||s.config?.challenge||s.weekContext?.world?.challenge||!raw?.bankId||raw.bankId!==a.id)return raw;const m=mode(s),q=question(a,m,raw.bankKind||raw.prepKind);const e={...raw,researchMode:m,researchAgendaId:a.id};if(!raw.flaw&&raw.id!=='live-followup'&&!raw.academicTalk&&!raw.id?.includes('story-question')){e.title=P('「'+a.direction+'」· '+labels[m]+'：'+q,()=>`${E(a.direction)} · ${E(labels[m])}: ${E(q)}`);e.quote=e.title;}
   e.scene=P('研究提案：'+focusText(a,m),()=>`Research proposal: ${E(focusText(a,m))}`)+'\n'+contextText(a,m)+'\n\n'+raw.scene;
+  const actual=raw.choices.find(c=>c.prepared?.available&&c.prepared.source?.researchDossier===a.id)?.prepared.source;if(actual)e.scene+='\n\n'+P('你的实际记录：第 '+actual.week+' 周，你选择了「'+actual.action+'」。这条准备属于当前方向与课题版本；这轮要解释它怎样支持问题，记录存在并不代表疑点已经排除。',()=>`Your actual record: in week ${actual.week}, you chose ${E(actual.action)}. This preparation belongs to the current direction and version; explain how it supports the question. A record does not mean the concern is ruled out.`);
   // Preserve promises, source availability, RNG and explicit failure choices.
   e.choices=raw.choices.map(c=>c.hardStop||c.semantic==='joint'||c.semantic==='promise'||c.semantic==='complete'||raw.flaw||raw.academicTalk?c:c.prepared||c.semantic==='bounded'||c.flags?.honest?{...c,text:c.text+' '+P('这项提案先按这个条件讨论：'+contextText(a,m),()=>`Discuss this proposal under the condition that ${E(contextText(a,m))}`)}:c);return e;
  }

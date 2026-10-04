@@ -1,6 +1,6 @@
 /* A week remains a week. Experience limits produce checkpoints, not degrees. */
 window.MEETING_TIMELINE=(()=>{
- const modes=[{id:'meeting',name:'一场组会',weeks:0,desc:'直接进入会议室，一场结束后仍可继续。'},{id:'week',name:'一周生活',weeks:1,desc:'准备、周五组会与周末，体验完整的一周。'},{id:'month',name:'一个月',weeks:4,desc:'四个游戏周，观察任务、关系与投稿的变化。'},{id:'year',name:'一年',weeks:52,desc:'经历一个学年，年度报告不等于毕业。'},{id:'full',name:'完整生涯',weeks:null,desc:'硕士约三学年、博士约四学年的游戏时间线，也能继续自由生涯。'}];
+ const modes=[{id:'meeting',name:'一场组会',weeks:0,desc:'直接进入会议室，一场结束后仍可继续。'},{id:'week',name:'一周生活',weeks:1,desc:'日常、研究与周末；按所选频率安排组会。'},{id:'month',name:'一个月',weeks:4,desc:'四个游戏周，观察任务、关系与投稿的变化。'},{id:'year',name:'一年',weeks:52,desc:'经历一个学年，年度报告不等于毕业。'},{id:'full',name:'完整生涯',weeks:null,desc:'硕士约三学年、博士约四学年的游戏时间线，也能继续自由生涯。'}];
  const copy=x=>JSON.parse(JSON.stringify(x)),mode=id=>modes.find(m=>m.id===id)||modes[4];
  function init(w,previous){w.timeline=previous?.timeline?copy(previous.timeline):{version:1,mode:mode(w.config.experienceMode).id,start:w.number,extended:false,checkpoints:[],transitions:[]};}
  function finished(w){const t=w.timeline,m=mode(t?.mode);return !!t&&!t.extended&&m.weeks!==null&&m.weeks>0&&w.status==='report'&&w.number-t.start+1>=m.weeks;}
@@ -9,7 +9,7 @@ window.MEETING_TIMELINE=(()=>{
  function barrier(w,wholeWeek=false){
    if(w.config.challenge)return '同局挑战逐段进行，时间跳过未开放。';
    if(w.pending)return '先查看这次选择的后果，再决定时间安排。';
-   if(w.status==='meeting'||w.day===4)return '周五组会到了，先处理这场汇报。';
+   if(w.status==='meeting'||w.day===4&&(window.MEETING_WEEK_RHYTHM?.due(w)??true))return '本周组会到了，先处理这场汇报。';
    if(wholeWeek&&w.status!=='report')return '跨周跳过从本周报告开始。';
    if(!wholeWeek&&w.status!=='life')return '当前节点可以结算或继续下一周。';
    if(w.tasks.some(t=>!t.done))return '仍有组会遗留事项，先处理或明确调整安排。';

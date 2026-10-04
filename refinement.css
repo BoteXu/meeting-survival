@@ -39,3 +39,16 @@
 .agenda-boundary{border-left:3px solid #8a805d;padding-left:12px}.research-agenda .study-reference{border-top:1px solid #b4c4af}
 @media(max-width:700px){.direction-library-dialog{padding-top:0}.direction-library-dialog .dialog-head{margin:0 -20px 12px;padding:14px 20px}}
 @media(max-width:700px){.meeting-scene{padding:12px}.meeting-scene .group-scene article{flex:1 1 64px;min-width:0}.meeting-scene .group-scene article strong{font-size:12px;overflow-wrap:anywhere}.faculty-tools{grid-template-columns:1fr 1fr}.faculty-tools>label:first-child{grid-column:1/-1}.faculty-tools .segmented,#faculty-random{grid-column:1/-1}.feedback-bottom small{max-width:none}.direction-library-entry>button{width:100%;text-align:left}.event-area{padding:18px 16px}}
+/* Research details stay behind compact entrances. */
+.dossier-plan{margin:12px 0;padding:14px;border:1px solid #9eb8ad;border-radius:12px;background:#f6faf7;color:#173e34}
+.dossier-plan summary{cursor:pointer;font-weight:800;color:#163d32}
+.dossier-plan dl{margin:14px 0 0;display:block}
+.dossier-plan dt{font-weight:800;color:#173e34;margin:15px 0 5px}
+.dossier-plan dd{margin:0;color:#263e35;line-height:1.85;overflow-wrap:anywhere}
+.dossier-story{margin:12px 0;padding:14px;border-left:3px solid #4d7865;background:#f7faf6;color:#1e3d32}
+.dossier-story li{margin:8px 0;line-height:1.8;overflow-wrap:anywhere}
+.meeting-cadence{margin-top:18px;padding:16px;background:#f1f6ef;border:1px solid #b9cdbb;border-radius:14px;color:#153c2c}
+.meeting-cadence label{display:block;font-weight:800;margin-bottom:8px}
+.meeting-cadence select{width:100%;max-width:100%;min-height:44px;background:#fff;color:#173c2d;border:1px solid #718e75;border-radius:8px;padding:10px;font:inherit}
+.meeting-cadence p{margin-bottom:0;line-height:1.8;color:#294532}
+.meeting-schedule{padding:12px 16px;border:1px solid #abc3b1;border-radius:12px;background:#edf5ec;color:#173c2d;font-weight:700;line-height:1.7;overflow-wrap:anywhere}
