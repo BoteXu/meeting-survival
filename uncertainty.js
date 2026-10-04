@@ -17,6 +17,7 @@ window.MEETING_UNCERTAINTY=(()=>{
     }
     if(s.weekContext?.group)s.live.group=copy(s.weekContext.group);s.live.socialWeek=s.weekContext?.socialWeek||window.MEETING_LIFE_SURPRISES?.socialState(s,rand,null,career.peer)||null;
     for(const id of ['boss','stats','senior']){const effect=s.live.socialWeek?.events[id]?.effects||{},p=s.live.profiles[id];p.severity=clamp(p.severity+(effect.severity||0),1,5);p.temper+=effect.temper||0;if(effect.preference)p.preference=effect.preference;for(const key of ['mood','patience','evidence','time'])if(effect[key])s.stats[key]=clamp(s.stats[key]+effect[key],0,key==='time'?65:100);}
+    window.MEETING_MENTOR_APPOINTMENTS?.initMeeting?.(s);
   }
   function shuffle(a,rand,s){for(let i=a.length-1;i>0;i--){const j=Math.floor(rand(s)*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
   function canWrap(s){return !active(s)||(s.choicesMade>=s.live.minAnswers&&s.live.crisisDone&&s.live.followupDone);}
@@ -48,7 +49,7 @@ window.MEETING_UNCERTAINTY=(()=>{
     if(!round)return original;e.scene+=' '+clues[round.observed];
     e.choices=e.choices.map((c,i)=>({...c,sourceIndex:i,approach:c.approach||(c.flags.chaos?'deflect':c.flags.help||c.flags.social?'cooperate':c.flags.rigor?'detail':c.flags.honest?'cautious':'direct'),label:'现场回应'}));
     // 同一份真实笔记可用不同的表达方式，代价不同，不额外生成知识。
-    if(e.prepKind){const c=e.choices[0],variants=[['detail',c.text],['brief','先给一句结论，再说明笔记中能支持它的依据。'],['cautious','从已核对的范围讲起，先指出目前还不能回答的部分。']];const mode=variants[(s.seed+e.phase+s.meetingNumber)%variants.length];c.approach=mode[0];c.text=mode[1];}
+    if(e.prepKind){const c=e.choices[0],variants=[['detail',c.text],['brief','先给一句结论，再说明笔记中能支持它的依据。'],['cautious','从已核对的范围讲起，先指出目前还不能回答的部分。']];const mode=variants[(s.seed+e.phase+s.meetingNumber)%variants.length];c.approach=mode[0];c.text=e.bankId&&mode[0]!=='detail'?window.MEETING_DIRECTION_LIBRARY.delivery(e.bankId,e.prepKind,mode[0]):mode[1];}
     const peer=s.live.socialWeek?.cast.senior;if(peer){for(const k of ['title','scene','quote'])e[k]=e[k]?.replaceAll('陈师兄',peer.name).replaceAll('师兄',peer.name.endsWith('师姐')?'师姐':'师兄');for(const c of e.choices)c.text=c.text.replaceAll('陈师兄',peer.name).replaceAll('师兄',peer.name.endsWith('师姐')?'师姐':'师兄');}
     e.choices=round.order.map(i=>e.choices[i]);return e;
   }
@@ -72,7 +73,7 @@ window.MEETING_UNCERTAINTY=(()=>{
     if(e.flaw){v.crisisDone=true;v.flaw={...e.flaw,title:e.title,approach:c.approach};text='漏洞被记下了。你付出了现场代价，下一轮仍会被问到怎样处理。';}
     if(e.id==='live-followup'){v.followupDone=true;text='你把处理方案说清楚了，但核对本身仍要在组会后完成。';}
     if(c.hardStop){effects.patience=-100;v.badAnswers++;text='老师要求核对矛盾记录，你明确拒绝。组会当场结束；此前的高信任也没有改变这条底线。';}
-    return {quality,negative,positive,fit,hardStop:!!c.hardStop,text,examiner:r.examiner,focus:r.focus,approach:c.approach};
+    const reaction={quality,negative,positive,fit,hardStop:!!c.hardStop,text,examiner:r.examiner,focus:r.focus,approach:c.approach};return window.MEETING_MENTOR_APPOINTMENTS?.reaction?.(s,e,c,reaction,effects)||reaction;
   }
   function changeTrust(value,delta){return clamp(value+(delta>0?Math.max(0,Math.round(delta*(1-value/110))):delta));}
   function rapport(s,c,base,reaction){if(!active(s))return base;const out={};for(const id of ['boss','stats','senior']){

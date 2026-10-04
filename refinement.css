@@ -1,0 +1,33 @@
+/* Labels and people now occupy their own rows, including large and translated text. */
+.meeting-scene{display:flex;flex-wrap:wrap;gap:10px;padding:14px 16px}
+.meeting-scene .room-label,.meeting-scene .room-status{position:static;max-width:100%;line-height:1.6;overflow-wrap:anywhere}
+.meeting-scene .room-status{margin-left:auto}
+.meeting-scene .group-scene{flex:1 0 100%;min-width:0;padding:0;min-height:0}
+.meeting-scene .group-scene>p{margin:4px 0 12px;font-size:13px;line-height:1.7}
+.meeting-scene .npc-roster{position:static;flex:1 0 100%;flex-wrap:wrap;gap:6px}
+.meeting-scene .scene{flex:1 0 100%}
+.phase-label,.feedback-bottom,.faculty-tools,.faculty-pagination{flex-wrap:wrap;gap:10px}
+.close{flex-shrink:0}
+.event-area .narration{white-space:pre-line;color:#40594b;font-size:14px;line-height:1.9}
+.event-area h2{overflow-wrap:anywhere;font-size:clamp(19px,2.4vw,23px)}
+.choice strong{font-size:14px;line-height:1.85}
+.direction-library-entry{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 18px}
+.direction-library-dialog{width:min(760px,94vw);padding-top:0}
+.direction-library-dialog .dialog-head{position:sticky;top:0;z-index:2;background:#fffdf3;margin:0 -28px 12px;padding:18px 28px;border-bottom:1px solid #bccbbb}
+.library-section,.learning-note{padding:16px 0;border-top:1px solid var(--line)}
+.library-section h3,.learning-note h3{font-size:16px;margin:0 0 8px;line-height:1.65}
+.library-section p,.learning-note p,.library-topic,.learning-explanation p{font-size:14px;line-height:1.9;white-space:pre-line;margin:8px 0;color:#304f41}
+.learning-explanation{margin-top:16px;border-top:1px solid #b6c5b6;padding-top:14px}
+.learning-explanation summary{font-size:14px;font-weight:700;color:#244c3b}
+.learning-explanation small,.learning-note small{font-size:12px;line-height:1.8;color:#435d4d}
+.faculty-tools label{min-width:0}
+.faculty-appointment{padding:12px;border-left:3px solid #789772;background:#edf2e5;line-height:1.85}
+.study-fold{border-top:1px solid #bccbbb;padding:14px 0;font-size:14px;line-height:1.85;color:#304f41}
+.study-fold summary{font-weight:700;color:#244c3b}
+.study-fold small,.study-reference small{display:block;font-size:12px;color:#435d4d;line-height:1.8}
+.study-fold ol{padding-left:24px}.study-fold li{margin:10px 0}
+.study-choices{display:grid;gap:10px;margin:14px 0}.study-choices button{text-align:left;white-space:normal;font-size:14px;line-height:1.8}
+#study-explanation{padding:14px;background:#e9f0e4;border-left:3px solid #678568;color:#244c3b}
+.study-reference{padding:12px 0;overflow-wrap:anywhere}.study-reference a{color:#205a47;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:700px){.direction-library-dialog{padding-top:0}.direction-library-dialog .dialog-head{margin:0 -20px 12px;padding:14px 20px}}
+@media(max-width:700px){.meeting-scene{padding:12px}.meeting-scene .group-scene article{flex:1 1 64px;min-width:0}.meeting-scene .group-scene article strong{font-size:12px;overflow-wrap:anywhere}.faculty-tools{grid-template-columns:1fr 1fr}.faculty-tools>label:first-child{grid-column:1/-1}.faculty-tools .segmented,#faculty-random{grid-column:1/-1}.feedback-bottom small{max-width:none}.direction-library-entry>button{width:100%;text-align:left}.event-area{padding:18px 16px}}

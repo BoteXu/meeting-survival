@@ -8,7 +8,7 @@ window.MEETING_FACULTY_DOSSIER=(()=>{
   function view(w,id){
     const member=w.group?.members.find(m=>m.profileId===id),p=M.find(id);if(!member||!p)return null;
     const stored=w.campus?.facultyMemories,known=window.MEETING_STORY_EDITORIAL.memoriesValid(stored)?stored?.[id]||[]:[];
-    return {name:p.name,lab:p.lab,title:M.levels[member.level||p.level].title,publicExperience:p.biography.publicExperience||p.achievement,
+    return {name:p.name,lab:p.lab,title:window.MEETING_MENTOR_APPOINTMENTS?.titleOf(member)||M.levels[member.level||p.level].title,publicExperience:p.biography.publicExperience||p.achievement,
       sections:known.filter(key=>labels[key]&&p.biography[key]).map(key=>({key,title:labels[key],text:p.biography[key]})),
       history:(member.promotion?.history||[]).filter(h=>h.status==='promoted').map(h=>({week:h.week,text:h.text}))};
   }

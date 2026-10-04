@@ -1,0 +1,41 @@
+/* Rank, appointment series and workload are separate. Existing rank IDs survive. */
+window.MEETING_MENTOR_APPOINTMENTS=(()=>{
+ 'use strict';
+ const M=window.MEETING_MENTORS,N=window.MEETING_NARRATIVE_WORLD;if(!N)return {};
+ const P=N.pair,E=N.english;
+ const series={faculty:{name:P('教师序列','Faculty series'),titles:{young:P('助理教授','Assistant professor'),associate:P('副教授','Associate professor'),senior:P('教授','Professor')}},researcher:{name:P('研究员序列','Research staff series'),titles:{young:P('助理研究员','Assistant research fellow'),associate:P('副研究员','Associate research fellow'),senior:P('研究员','Research fellow')}}};
+ const tracks={
+  teaching:{name:P('教学型','Teaching-focused'),description:P('主要承担课程、课程建设和学生培养，研究课题通常围绕教学实践或一条稳定的小方向。科研资源需要单独争取。','Main responsibilities are courses, curriculum and student development. Research usually follows teaching practice or a focused area, with resources negotiated separately.'),calendar:P('备课、作业反馈和教学检查会占用讨论时间；学期初先约好固定时段。','Preparation, feedback and teaching reviews compete for discussion time; book recurring slots early.'),review:P('晋升材料侧重课程建设、教学反馈与培养记录，论文是其中一部分。','Promotion emphasizes curriculum, teaching feedback and training records, alongside publications.')},
+  research:{name:P('科研型','Research-focused'),description:P('主要承担研究项目、平台或合作工作；常规课程较少，仍需履行约定的研究生指导与训练。项目截止会影响响应时间。','Main responsibilities are research, platforms or collaborations, with fewer regular courses and continuing agreed graduate supervision. Project deadlines affect availability.'),calendar:P('项目验收、基金申报和合作交付期间容易连着几天没空；稿件最好先发一页问题清单。','Project reviews, grant applications and partner deliveries can block several days; send a short question list ahead.'),review:P('晋升材料侧重研究贡献、项目职责与合作记录，不因一次投稿自动通过。','Promotion emphasizes research contributions, project responsibilities and collaboration records, without automatic success from one submission.')},
+  balanced:{name:P('教学科研型','Teaching and research'),description:P('课程与研究同时承担。组内有稳定的讨论制度，但教学周、项目周和申请季需要重新安排优先级。','Balances courses and research. Regular discussion routines remain subject to teaching, project and application priorities.'),calendar:P('平时按固定讨论时间走，临近考试和项目截止时需要提前协调。','Regular discussions need adjustment near examinations and project deadlines.'),review:P('晋升同时审议教学、培养与研究贡献，材料需要互相对应。','Promotion reviews teaching, supervision and research together, requiring consistent records.')}
+ };
+ for(const p of M.profiles){const option=/option-(\d+)$/.exec(p.id),j=option?Number(option[1]):0;p.appointmentSeries=[1,3,5].includes(j)?'researcher':'faculty';p.workload=j===2?'teaching':[1,3,5].includes(j)?'research':'balanced';if(p.appointmentSeries==='researcher')p.title=series.researcher.titles[p.level];const t=tracks[p.workload],bio=p.biography,priorAvailability=bio.availability;bio.appointment=P(series[p.appointmentSeries].name+' · '+t.name+'。'+t.description,()=>`${E(series[p.appointmentSeries].name)} · ${E(t.name)}. ${E(t.description)}`);bio.promotionCriteria=t.review;bio.availability=P(t.calendar+' '+priorAvailability,()=>`${E(t.calendar)} ${E(priorAvailability)}`);
+  if(p.appointmentSeries==='researcher'){
+   bio.identity=P(p.name+'，'+bio.institution+' '+window.MEETING_WORLD_SETTING.department(window.MEETING_DIRECTIONS.find(p.directionIds[0]).route)+p.title+'，'+p.lab+'负责人。主要研究'+p.research+'。在游戏设定中持有本方向的研究生指导资格。',()=>`${E(p.name)}, ${E(p.title)} in ${E(window.MEETING_WORLD_SETTING.department(window.MEETING_DIRECTIONS.find(p.directionIds[0]).route))} at ${E(bio.institution)}, leads ${E(p.lab)}. Research: ${E(p.research)}. Holds graduate-supervision eligibility for these game directions.`);
+   bio.teaching=P('不固定承担本科基础课。本学年参与组内方法训练和研究生专题讨论，也应学院邀请开一次短课；指导研究生是独立安排，不能用少上课代替。','Does not routinely teach undergraduate foundation courses. Leads method training and graduate discussions and an invited short course; graduate supervision remains a separate commitment.');
+   for(const item of bio.timeline){if(item.label==='职级晋升')item.text=P(item.year+'年晋升'+p.title+'，继续负责研究项目与研究生指导；主要申报材料来自研究贡献和项目履职。',()=>`Promoted to ${E(p.title)} in ${item.year}, continuing projects and graduate supervision with research and project responsibilities as the main dossier.`);if(item.label==='加入现校')item.text=P(item.year+'年加入'+bio.institution+'的研究岗位，逐步建立项目合作和组内训练安排。',()=>`Joined a research appointment at ${E(bio.institution)} in ${item.year}, developing collaborations and training routines.`);}
+  }
+  if(p.workload==='teaching'){bio.teaching=P('本学年承担《'+window.MEETING_DIRECTIONS.find(p.directionIds[0]).name+'专题研讨》和基础课，参与课程修订、作业反馈与教学检查。研究生小课题尽量沿着已有材料推进，重大新资源要另行申请。',()=>`Teaches a seminar in ${E(window.MEETING_DIRECTIONS.find(p.directionIds[0]).name)} and a foundation course, revising curricula and assessing work. Graduate projects begin from established materials; major resources need separate applications.`);p.strength=P('课程与带教经验较多，愿意陪学生反复讲清问题，反馈会具体到一页讲义或一段材料。','Experienced in teaching and mentoring, with feedback on a specific page or passage.');p.tradeoff=P('教学事务较重，研究经费和外部入口需要另行争取；不适合把资源到位当作默认条件。','Teaching is substantial and research resources require separate negotiation.');}
+ }
+ const practices=[
+  {id:'patient',support:2,strictness:1,text:P('愿意陪新人拆问题。遇到不理想的结果先问做过什么，再一起找下一步；对来源和过大承诺仍会追问。','Patient with newcomers, asks what was actually done before planning recovery, while questioning provenance and overpromising.')},
+  {id:'structured',support:1,strictness:2,text:P('认真看工作记录，反馈具体到某一步。会留出讨论时间，但不会因为关系好就认可未核对的结论。','Reads working records closely and gives specific feedback, making discussion time without endorsing unchecked claims.')},
+  {id:'teacher',support:2,strictness:1,text:P('重视把学生教会，会给修改机会。解释清楚以后还会换一个例子追问，确认你理解而不是背熟了答案。','Teaches for understanding and offers revision, then tests the reasoning on another example rather than rewarding memorized replies.')},
+  {id:'direct',support:0,strictness:2,text:P('反馈直接，日程紧时会缩短讨论。坏结果可以谈，隐瞒问题和不断扩大承诺容易失去信任。','Direct and time-constrained; bad results are discussable, while concealment and expanding promises erode trust.')},
+  {id:'fair-demanding',support:1,strictness:3,text:P('要求高，但会区分新人的基础问题和真正的证据漏洞。必要时帮助收住课题，正式汇报仍按同一标准追问。','Demanding but distinguishes foundational questions from evidence gaps, helps narrow projects and applies the same standards in formal talks.')},
+  {id:'exploratory',support:1,strictness:2,text:P('接受意外与转向，也会承认自己的建议走偏。讨论容易展开，需要师生一起把本周能做的部分写下来。','Accepts surprises and pivots and admits mistaken suggestions; expansive discussions need a jointly written weekly scope.')}
+ ];
+ for(const p of M.profiles){const j=/option-(\d+)$/.exec(p.id),index=j?Number(j[1]):N.hash(p.id)%practices.length;p.mentoring={...practices[index]};p.biography.mentoring=p.mentoring.text;}
+ function initMeeting(s){if(!s.live||s.weekContext?.world?.challenge)return;const p=M.find(s.mentorId);if(!p)return;s.live.mentoring={id:p.mentoring.id,support:p.mentoring.support,strictness:p.mentoring.strictness};s.live.profiles.boss.severity=Math.max(s.live.profiles.boss.severity,p.mentoring.strictness);}
+ function reaction(s,e,c,r,effects){const m=s.live?.mentoring;if(!m||s.live.round.examiner!=='boss'||c.hardStop||c.flags?.chaos)return r;
+  if(m.support>0&&r.negative&&(c.flags?.honest||c.prepared?.available)){
+   // Support protects morale a little, never deletes an evidence gap, repairs a
+   // crisis, supplies a receipt, or changes the hard-stop/refusal rule.
+   if((effects.mood||0)<0)effects.mood=Math.min(-1,effects.mood+Math.min(2,m.support));r.text+=' '+P('老师把问题留在纸上，说这一步可以散会后一起拆，但今天的结论仍要收住。','The supervisor offers to work through this step later, while keeping today’s claim limited.');r.supported=true;
+  }return r;
+ }
+ function titleOf(member){const p=M.find(member?.profileId||member?.id),seq=member?.appointmentSeries||p?.appointmentSeries||'faculty';return series[seq]?.titles[member?.level||p?.level]||M.levels[member?.level||p?.level]?.title||P('导师','Supervisor');}
+ function apply(w){if(w.config.challenge)return;for(const m of w.group?.members||[]){if(m.rank!=='mentor')continue;const p=M.find(m.profileId);if(p){m.appointmentSeries=p.appointmentSeries;m.workload=p.workload;}}}
+ function criteria(member){const p=M.find(member?.profileId),track=tracks[member?.workload||p?.workload||'balanced'];return track;}
+ return {series,tracks,titleOf,apply,criteria,practices,initMeeting,reaction};
+})();
