@@ -54,7 +54,7 @@ window.MEETING_STORY_EDITORIAL=(()=>{
   if(!event||event.surprise||!w.campus||!w.config?.mentorId)return event;
   if(!memoriesValid(w.campus.facultyMemories))return event;
   const p=window.MEETING_MENTORS.find(w.config.mentorId),mentor=w.group?.members.find(m=>m.id==='mentor-0');if(!p?.biography)return event;
-  const contact=w.campus.plan?.location==='mentor'&&event.location==='mentor'||event.worldType==='npc'&&event.worldId==='mentor-0'||event.academyType==='person'&&event.academyTarget==='mentor-0'||event.academyType==='collab-work';if(!contact)return event;
+  const contact=w.campus.plan?.location==='mentor'&&event.location==='mentor'||event.worldType==='npc'&&event.worldId==='mentor-0'||event.academyType==='person'&&event.academyTarget==='mentor-0';if(!contact)return event;
   const visits=w.campus.visits?.mentor||0,trust=mentor?.trust??w.campus.bonds?.boss??0,known=w.campus.facultyMemories?.[p.id]||[];
   const candidates=[['labHistory',2,1,50],['turningPoint',3,2,55],['studentMemory',4,2,60],['life',5,3,65],['privateTrace',6,4,70]].filter(([id,week,count,min])=>w.number>=week&&visits>=count&&trust>=min&&!known.includes(id));if(!candidates.length)return event;
   const id=candidates[0][0],intro=P(p.name+'谈起一段此前的经历。你以前只在招生主页上见过简历，这是这次交谈里听到的往事：',()=>`${E(p.name)} recalls an earlier episode beyond the recruitment profile during this conversation:`);

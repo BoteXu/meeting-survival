@@ -5,3 +5,7 @@
 
 .save-modal .close{color:#f5f6e9;background:#254c3e;border-color:#789374}
 #app .academy-fold>summary{color:#f6f6e9}#app .academy-stage-panel .tag,#app .academy-fold .tag{color:#f5e0a3;background:#2a5142;border-color:#6d8261}.save-modal .close{color:#f5f6e9!important}
+
+.faculty-dossier{width:min(720px,calc(100vw - 32px));max-height:85vh;overflow:auto;padding:24px;border:1px solid #415169;border-radius:18px;color:#183d35;background:#fffdf5;box-sizing:border-box}.faculty-dossier::backdrop{background:rgb(0 0 0 / .7)}.faculty-dossier p{white-space:pre-line;line-height:1.85;overflow-wrap:anywhere}.faculty-dossier h2{font-size:1.3rem}.faculty-dossier .faculty-rank,.faculty-dossier .dossier-empty{color:#435747}.faculty-dossier .faculty-about{background:#f0f3e7;color:#183d35}.group-members [data-faculty-dossier]{margin-top:8px;font-size:.85rem}@media(max-width:520px){.faculty-dossier{padding:18px}.faculty-dossier .dialog-head h2{font-size:1.12rem}}
+
+.faculty-dossier .faculty-about p{color:#264238}.faculty-dossier .faculty-about summary,.faculty-dossier .close{color:#183d35}

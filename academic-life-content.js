@@ -1,4 +1,7 @@
+window.MEETING_NARRATIVE_WORLD?.pair('已有投稿经历，学位阶段仍在进行；继续课程与下一段研究。','Publication experience gained; the degree continues with coursework and further research.');
+window.MEETING_NARRATIVE_WORLD?.pair('参与联合讨论，毕业由合作团队指导。','Participates in joint discussions; the partner team supervises degree completion.');
 /* All people, institutions, reviews and study milestones are fictional game content. */
+window.MEETING_NARRATIVE_WORLD?.pair('继续研究与阶段准备','Continued research and degree preparation');
 window.MEETING_ACADEMIC_CONTENT=(()=>{
   const stages=[{id:'master',name:'硕士阶段',weeks:156,desc:'约三学年的游戏时间线：开题、中期、年度报告、申请与毕业检查逐步到来。'}, {id:'doctor',name:'博士阶段',weeks:208,desc:'约四学年的游戏时间线，多轮研究与年度检查，成果和合作需要持续安排。'}, {id:'free',name:'自由生涯',weeks:52,desc:'没有学位倒计时，年度展示和申请窗口仍会出现，可以一直继续。'}];
   const scenarios=[
@@ -10,7 +13,7 @@ window.MEETING_ACADEMIC_CONTENT=(()=>{
     {id:'dual',name:'跨学科双导师',desc:'两位导师、两个学科，两侧资源和共同范围都要协调。'}
   ];
   const phases={proposal:'开题检查',midterm:'中期检查',annual:'年度汇报',application:'申请季',graduation:'毕业检查'};
-  const careers={learning:'熟悉研究',draft:'自己的课题',submitted:'投稿等待',revision:'修稿截止',defense:'准备答辩',job:'求职与去向',alumni:'已经离组'};
+  const careers={learning:'熟悉研究',draft:'自己的课题',submitted:'投稿等待',revision:'修稿截止',research:'继续研究与阶段准备',defense:'准备答辩',job:'求职与去向',alumni:'已经离组'};
   const resources=[
     {id:'bench',name:'设备与批次排期',icon:'🔬',wait:14,window:7,cost:10,condition:'设备条件和材料批次',start:'预约表上只剩下下周的一小段设备时间。批次标签、值班安排和复核时间需要对应。',change:'设备维护把时间挪走了，等待没有产生结果。',question:'“设备恢复后，这份记录还对应原来的批次吗？”'},
     {id:'compute',name:'算力队列与环境版本',icon:'💻',wait:7,window:9,cost:7,condition:'软件环境和输入版本',start:'算力队列还没轮到你，另一台机器使用了不同环境。今天可以先固定输入与环境清单。',change:'队列轮到了，但环境更新导致旧任务退出，需要重新安排。',question:'“这次运行的输入与环境，对得回哪一版？”'},

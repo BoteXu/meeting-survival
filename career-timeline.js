@@ -27,11 +27,11 @@ window.MEETING_TIMELINE=(()=>{
    return '';
  }
  function transition(w,kind,requested,elapsed,reason){const t={kind,requested,elapsed,reason,week:w.number,day:w.day,slot:w.slot};w.timeline.transitions.push(t);w.timeline.transitions=w.timeline.transitions.slice(-24);return t;}
- function skipDays(w,requested){if(!w.timeline)init(w);const wanted=requested||1+Math.floor(window.MEETING_WEEK.random(w)*3),first=barrier(w);let slots=0,reason=first;
+ function skipDays(w,requested){if(!w.timeline)init(w);const first=barrier(w);if(requested!==undefined&&(!Number.isInteger(requested)||requested<1||requested>3))return null;const wanted=requested??(first?1:1+Math.floor(window.MEETING_WEEK.random(w)*3));let slots=0,reason=first;
    while(!reason&&slots<wanted*2){window.MEETING_WEEK.passTime(w);slots++;reason=barrier(w);}
    return transition(w,'days',wanted,slots/2,reason||'平静的片段已过去，回到当前事件。');
  }
- function skipWeeks(w,requested){if(!w.timeline)init(w);const W=window.MEETING_WEEK,wanted=requested||1+Math.floor(W.random(w)*3);let current=w,elapsed=0,reason=barrier(w,true);
+ function skipWeeks(w,requested){if(!w.timeline)init(w);const W=window.MEETING_WEEK,first=barrier(w,true);if(requested!==undefined&&(!Number.isInteger(requested)||requested<1||requested>3))return null;const wanted=requested??(first?1:1+Math.floor(W.random(w)*3));let current=w,elapsed=0,reason=first;
    while(!reason&&elapsed<wanted&&!finished(current)){
      const n=current.number+1,root=current.world?.root||current.seed;
      const next=W.create(current.config,window.MEETING_WORLD?.derive(root,n)||root+n,current,n);

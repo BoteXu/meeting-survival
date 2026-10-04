@@ -26,7 +26,7 @@ window.MEETING_HUB_UI=(()=>{
  ['02 · 总览与当天事件','总览显示日期、精力、资料、压力和功能入口。打开当天安排作出选择；临时交办和突发用弹窗出现，收起弹窗不会替你完成事件。'],
  ['03 · 准备与生活','这个入口可以读文献、去图书馆、吃饭、放松或处理临时交办。每次安排占用当前时间片段，后果在选择后显示。'],
  ['04 · 课题与投稿','这里管理方向、资源预约、实际核对、合作贡献与投稿。排期和外审需要等待，窗口开放后仍要亲自处理；修稿、拒稿和接收会连续影响后续。'],
- ['05 · 课题组与关系','这里看导师、师兄师姐和师弟师妹的消息与研究进度，也能求助、带教、安排归还和回看年鉴。别人有自己的截止日期，不一定随时有空。'],
+ ['05 · 课题组与关系','这里看导师、师兄师姐和师弟师妹的消息与研究进度，也能求助、带教、安排归还、回看年鉴与已了解的人物往事。别人有自己的截止日期，不一定随时有空。'],
  ['06 · 组会与准备依据','周五进入组会。精读与实际核对留下当前方向、当前版本的记录，决定哪些回答有依据。追问会接回前面的承诺，翻车后也能继续生活。'],
  ['07 · 结算、暂停与存档','结算本段会留下当前经历，可继续或保存暂停。体验时长只是阶段节点，毕业另按学位时间线检查。存档与安装入口能导出、导入完整备份；时间跳过遇到重要事件会停下。']];
    function render(){e.innerHTML=`<div class="dialog-head"><h2>新手引导 · ${step+1}/${slides.length}</h2><button class="close" id="guide-close" aria-label="关闭引导">×</button></div><p class="eyebrow">${slides[step][0]}</p><p>${slides[step][1]}</p><div class="guide-actions"><button class="secondary" id="guide-skip">跳过，我先试试</button><button class="primary" id="guide-next">${step===slides.length-1?'开始探索':'下一步'} →</button></div>`;e.querySelector('#guide-close').onclick=finish;e.querySelector('#guide-skip').onclick=finish;e.querySelector('#guide-next').onclick=()=>{if(step===slides.length-1)finish();else{step++;render();}};}
