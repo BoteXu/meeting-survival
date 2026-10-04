@@ -29,5 +29,13 @@
 .study-choices{display:grid;gap:10px;margin:14px 0}.study-choices button{text-align:left;white-space:normal;font-size:14px;line-height:1.8}
 #study-explanation{padding:14px;background:#e9f0e4;border-left:3px solid #678568;color:#244c3b}
 .study-reference{padding:12px 0;overflow-wrap:anywhere}.study-reference a{color:#205a47;text-decoration:underline;text-underline-offset:3px}
+.research-agenda{margin:18px 0;padding:16px;background:#edf3e6;border:1px solid #9bb29b;border-radius:14px;color:#244c3b;overflow-wrap:anywhere}
+.research-agenda p{font-size:14px;line-height:1.85;white-space:pre-line}.research-agenda h3{font-size:16px;line-height:1.7;margin:12px 0}
+.research-agenda small{display:block;color:#3f5848;font-size:12px;line-height:1.8}.agenda-caption{font-weight:700;margin-top:0}
+.agenda-controls{display:flex;flex-wrap:wrap;gap:10px}.agenda-controls button{flex:1 1 180px;white-space:normal;line-height:1.7;min-width:0}
+.agenda-controls button[aria-pressed=true]{border:2px solid #315e48;background:#d9e7cf;color:#183d2c;font-weight:700}
+.agenda-controls button:disabled{opacity:1;color:#4c5c4e;cursor:not-allowed;background:#e4e8dd}
+.agenda-controls button[aria-pressed=true]:disabled{background:#d9e7cf;color:#183d2c}
+.agenda-boundary{border-left:3px solid #8a805d;padding-left:12px}.research-agenda .study-reference{border-top:1px solid #b4c4af}
 @media(max-width:700px){.direction-library-dialog{padding-top:0}.direction-library-dialog .dialog-head{margin:0 -20px 12px;padding:14px 20px}}
 @media(max-width:700px){.meeting-scene{padding:12px}.meeting-scene .group-scene article{flex:1 1 64px;min-width:0}.meeting-scene .group-scene article strong{font-size:12px;overflow-wrap:anywhere}.faculty-tools{grid-template-columns:1fr 1fr}.faculty-tools>label:first-child{grid-column:1/-1}.faculty-tools .segmented,#faculty-random{grid-column:1/-1}.feedback-bottom small{max-width:none}.direction-library-entry>button{width:100%;text-align:left}.event-area{padding:18px 16px}}
