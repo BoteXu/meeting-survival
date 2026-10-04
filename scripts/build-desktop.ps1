@@ -10,7 +10,8 @@ $iconPath = Join-Path $gameRoot 'icons\app.ico'
 & $compilerPath /nologo /target:winexe /r:System.Windows.Forms.dll "/win32icon:$iconPath" "/out:$exePath" $sourcePath
 if ($LASTEXITCODE -ne 0) { throw 'Desktop launcher compilation failed.' }
 Copy-Item -LiteralPath (Join-Path $gameRoot '组会求生_直接玩.html') -Destination $packagePath
+Copy-Item -LiteralPath (Join-Path $gameRoot '世界设定集.html') -Destination $packagePath
 Copy-Item -LiteralPath (Join-Path $gameRoot 'docs\APPS.md') -Destination (Join-Path $packagePath '安装与存档说明.md')
-$zipPath = Join-Path $gameRoot '.publish\meeting-survival-windows-v0.13.0.zip'
-Compress-Archive -LiteralPath $exePath,(Join-Path $packagePath '组会求生_直接玩.html'),(Join-Path $packagePath '安装与存档说明.md') -DestinationPath $zipPath -Force
+$zipPath = Join-Path $gameRoot '.publish\meeting-survival-windows-v0.14.0.zip'
+Compress-Archive -LiteralPath $exePath,(Join-Path $packagePath '组会求生_直接玩.html'),(Join-Path $packagePath '安装与存档说明.md'),(Join-Path $packagePath '世界设定集.html') -DestinationPath $zipPath -Force
 Write-Output $zipPath

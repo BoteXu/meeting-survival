@@ -15,11 +15,11 @@ window.MEETING_SIDE_STORIES=(()=>{
   const statuses={open:'支线进行中',verified:'支线核对完成',shared:'只做了交流，依据未核对',abandoned:'支线已放下'};
   const tick=w=>(w.number-1)*14+w.day*2+w.slot;
   function init(w,previous){if(window.MEETING_EXPERIENCE?.enabled(w,'sideStories')===false||w.config.uncertainty===false)return;const old=previous?.sideStories;w.sideStories={version:1,active:copy(old?.active||null),history:copy(old?.history||[]).slice(-16),seen:[...(old?.seen||[])].slice(-8),plan:null};}
-  function build(w,t,rand){const d=stories.find(e=>e.id===t.id),topic=P.topic(t.route,d.kind),step=t.step,proof=t.checked===2;
+  function build(w,t,rand){const d=stories.find(e=>e.id===t.id),topic=window.MEETING_DIRECTION_REVIEW?.topic(w,d.kind)||P.topic(t.route,d.kind),step=t.step,proof=t.checked===2;
     const texts=step===0?['用这半天寻找原始材料，先记下能核对的出处。','先和当事人聊聊，交换线索，暂时不作确定判断。','说清自己的安排，放下这条支线，留出一点休息时间。']:step===1?['打开两边的材料对照，把不一致的条件写进记录。','找另一位同学一起讨论，收集不同解释，但暂不替它背书。','说明自己暂时接不住后续，到这里停止。']:['打开此前留下的原始材料，逐项核对范围，再说明能确认的部分。','把它当作一段有趣经历分享，明确说自己还没核对完。','停止继续扩展，交回线索，不把故事讲成已经验证的发现。'];
     const choices=texts.map((text,action)=>({text,storyAction:action,storyId:t.id,storyStep:step,effects:action===0?{energy:-9,notes:4,stress:3}:action===1?{energy:-4,stress:-2}:{energy:8,stress:-4},traits:action===0?{study:1}:action===1?{collaboration:1}:{rest:1},career:{},work:{progress:0,quality:0},preparationGains:action===0?{[d.kind]:step===2&&proof?2:1}:{},flavor:'后续和具体后果将在选择后揭晓。',continueOriginal:false}));
     for(let i=choices.length-1;i>0;i--){const j=Math.floor(rand(w)*(i+1));[choices[i],choices[j]]=[choices[j],choices[i]];}
-    return {id:`side-story-${t.id}-${step}`,day:w.day,slot:w.slot,project:t.route,title:`校园支线 · ${d.title} · ${step+1}/3`,scene:d.scenes[step]+` 这次需要弄清的是「${topic}」。后续会记住之前的选择；本片段只用于这条支线，原定安排不会同时完成。`,choices};
+    return {id:`side-story-${t.id}-${step}`,day:w.day,slot:w.slot,project:t.route,title:`校园支线 · ${d.title} · ${step+1}/3`,scene:d.scenes[step]+` 这次需要弄清的是「${topic}」。`,choices};
   }
   function prepare(w,rand){const a=w.sideStories;if(!a)return;a.plan=null;let t=a.active;const now=tick(w);if(t&&now>=t.next){a.plan=build(w,t,rand);return;}if(t||w.day===4||rand(w)>.19)return;const pool=stories.filter(e=>!a.seen.includes(e.id)),d=(pool.length?pool:stories)[Math.floor(rand(w)*(pool.length||stories.length))],route=window.MEETING_MIX?.route(w)||w.config.project;t={id:d.id,route,step:0,checked:0,started:w.number,next:now,status:'open',source:null};a.active=t;a.seen.push(t.id);a.seen=a.seen.slice(-8);a.plan=build(w,t,rand);}
   function event(w,raw){const plan=w.sideStories?.plan;if(!plan||!raw||(w.pending&&!w.pending.sideStory)||raw.choices?.some(c=>c.assignmentAction||c.groupAction)||raw.joint)return raw;return copy(plan);}

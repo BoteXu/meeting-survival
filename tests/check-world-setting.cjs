@@ -1,0 +1,9 @@
+const fs=require('fs'),vm=require('vm'),path=require('path'),assert=require('assert/strict'),root=path.resolve(__dirname,'..'),b={window:{}};vm.createContext(b);
+const files=[...fs.readFileSync(path.join(root,'index.html'),'utf8').matchAll(/<script src="([^?]+)\?/g)].map(x=>x[1]);for(const f of files){if(f==='save-manager.js')break;vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),b);}
+const {MEETING_NARRATIVE_WORLD:N,MEETING_WORLD_SETTING:S,MEETING_MENTORS:M,MEETING_CONTENT:C}=b.window;
+assert.equal(S.sections.length,12);assert.equal(S.institutions.length,10);assert.equal(Object.values(N.journals).flat().length,78);assert.equal(new Set(Object.values(N.journals).flat().map(j=>j.name)).size,78);
+for(const school of N.schools){assert(school.region&&school.profile&&school.campus);assert(school.founded>=1800&&school.founded<1960);assert(school.name.includes('大学')||school.name.includes('研究院'));assert(!/知衡|潮序|见微|循证|文境|构源|折光|远岸|镜河|序桥/.test(school.name));}
+for(const p of M.profiles){const home=N.schools.find(s=>s.name===p.biography.institution);assert(home);assert(p.biography.identity.includes(S.department(p.directionIds.map(id=>b.window.MEETING_DIRECTIONS.find(id))[0].route)));assert(p.biography.timeline.every(t=>t.year>=home.founded));}
+for(const route of C.projects){const list=N.journalSet(route.id);assert.equal(list.length,3);for(const j of list)assert(j.publisher&&j.frequency);}
+assert.equal(N.journalKey('law'),'law');assert.equal(N.journalKey('nursing'),'nursing');assert.equal(N.journalKey('pharmacy'),'pharmacy');assert.equal(N.journalKey('publichealth'),'publichealth');
+const data={schools:N.schools,cities:N.cities,sections:S.sections,journals:N.journals};fs.writeFileSync(path.join(root,'.qa/world-setting-data.json'),JSON.stringify(data,null,2));console.log(JSON.stringify({passed:true,universities:10,handbookSections:12,journalNames:78,mentorAffiliations:M.profiles.length,subjectMatchedJournals:true}));

@@ -40,6 +40,15 @@ window.MEETING_WEEK=(() => {
   }
   function passTime(w){if(w.status!=='life'||w.pending)return false;const record={day:w.day,slot:w.slot,eventId:w.eventId,title:'平静时段',answer:'略过这个片段，没有新增准备记录。',flavor:'时间继续，已有约定保持。',deltas:{},traits:{},career:{},timeSkipped:true};w.log.push(record);w.pending=record;return advance(w);}
   function isValid(w){return !!w&&w.version===1&&typeof w.id==='string'&&Number.isInteger(w.number)&&w.number>0&&Number.isInteger(w.rng)&&C.projects.some(p=>p.id===w.config?.project)&&Number.isInteger(w.day)&&w.day>=0&&w.day<7&&[0,1].includes(w.slot)&&['life','meeting','report'].includes(w.status)&&['energy','notes','slides','stress'].every(k=>Number.isFinite(w.resources?.[k])&&w.resources[k]>=0&&w.resources[k]<=100)&&w.traits&&Object.values(w.traits).every(v=>Number.isInteger(v)&&v>=0)&&Array.isArray(w.tasks)&&Array.isArray(w.log)&&w.log.length<=13&&Array.isArray(w.seen)&&(!w.pending||w.log.at(-1)?.eventId===w.pending.eventId)&&(!w.config.campus||window.MEETING_CAMPUS?.isValid(w.campus))&&(!w.config.preparation||window.MEETING_PREPARATION?.bookValid(w.preparation))&&(w.status!=='life'||current(w)?.day===w.day||(current(w)?.location===w.campus?.plan?.location&&w.campus.plan.day===w.day&&w.campus.plan.slot===w.slot))&&(window.MEETING_LIFE_SURPRISES?.valid(w)??true)&&(window.MEETING_MIX?.valid(w)??true)&&(window.MEETING_ASSIGNMENTS?.valid(w)??true)&&(window.MEETING_GROUP?.valid(w)??true)&&(window.MEETING_SIDE_STORIES?.valid(w)??true)&&(window.MEETING_WORLD?.valid(w)??true)&&(window.MEETING_ROUTE_STORIES?.valid(w)??true)&&(window.MEETING_MENTORS?.valid(w)??true)&&(window.MEETING_PUBLICATION?.valid(w)??true)&&(window.MEETING_ACADEMY?.valid(w)??true)&&(window.MEETING_TIMELINE?.valid(w)??true)&&(window.MEETING_EXPERIENCE?.valid(w)??true);}
-  const dispatch=(w,location)=>location==='food'?window.MEETING_LIFE_SURPRISES?.food(w,random)||null:location==='friends'?window.MEETING_LIFE_SURPRISES?.friends(w,random)||null:window.MEETING_CAMPUS?.dispatch(w,location,random)||null;
-  return {passTime,random,create,current,choose,advance,useLocation:dispatch,meetingContext,completeMeeting,isValid};
+  function actionReason(w){
+    if(w.status!=='life')return '这时不能再安排日常行动。请先完成组会或进入下一周。';
+    if(w.pending)return '这半天已经作出选择。查看行动后果，点击“时间往前走”再安排下一项。';
+    if(w.campus?.plan)return '这半天已有安排。先打开当天事件，完成这次行动。';
+    if(w.day===0&&w.slot===0&&w.group&&!w.group.news.handled)return '先在当天事件中商量本周经费与安排，再开始个人准备。';
+    if(window.MEETING_ASSIGNMENTS?.offer(w))return '有一条临时交办需要回复。先打开当天事件，决定接下、协商或婉拒。';
+    if(w.world?.focus||w.jointPlan)return '有一件连续事件正在等你回应。先打开当天事件，处理后再安排下一项。';
+    return '';
+  }
+  const dispatch=(w,location)=>actionReason(w)?null:location==='food'?window.MEETING_LIFE_SURPRISES?.food(w,random)||null:location==='friends'?window.MEETING_LIFE_SURPRISES?.friends(w,random)||null:window.MEETING_CAMPUS?.dispatch(w,location,random)||null;
+  return {passTime,random,create,current,choose,advance,useLocation:dispatch,actionReason,meetingContext,completeMeeting,isValid};
 })();
