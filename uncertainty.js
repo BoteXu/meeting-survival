@@ -53,17 +53,17 @@ window.MEETING_UNCERTAINTY=(()=>{
     const peer=s.live.socialWeek?.cast.senior;if(peer){for(const k of ['title','scene','quote'])e[k]=e[k]?.replaceAll('陈师兄',peer.name).replaceAll('师兄',peer.name.endsWith('师姐')?'师姐':'师兄');for(const c of e.choices)c.text=c.text.replaceAll('陈师兄',peer.name).replaceAll('师兄',peer.name.endsWith('师姐')?'师姐':'师兄');}
     e.choices=round.order.map(i=>e.choices[i]);return e;
   }
-  function preview(s,c,effects){if(!active(s))return effects;const out={...effects};for(const k of ['mood','evidence','patience'])if(out[k]>0)out[k]=Math.ceil(out[k]*.5);return out;}
+  function preview(s,c,effects){if(!active(s))return effects;const out={...effects};for(const k of ['mood','evidence','patience'])if(out[k]>0)out[k]=Math.ceil(out[k]*(window.MEETING_DAILY_TIME?.balanced(s)?s.difficulty==='normal'?1:.75:.5));return out;}
   function roll(s,e,c,effects,rand){if(!active(s))return null;const v=s.live,r=v.round,p=v.profiles[r.examiner],fit=c.approach===r.focus?1:c.approach==='deflect'?-1:0;
-    const prepared=!!c.prepared?.available,noise=Math.floor(rand(s)*19)-9,quality=fit*7+noise+p.temper+r.tone+(prepared?2:0)-r.pressure;
-    const positive=quality>=4,negative=quality<=-4;
+    const gentle=window.MEETING_DAILY_TIME?.balanced(s)&&s.difficulty==='normal',prepared=!!c.prepared?.available,credible=window.MEETING_DAILY_TIME?.reasonable(c),noise=Math.floor(rand(s)*(gentle?13:19))-(gentle?6:9),quality=fit*(gentle?4:7)+noise+p.temper+r.tone+(prepared?(gentle?4:2):0)+(gentle&&credible?2:0)-(gentle?Math.max(0,r.pressure-3):r.pressure);
+    const positive=quality>=(gentle?3:4),negative=quality<=(gentle?-5:-4)&&!(gentle&&credible&&!e.flaw&&e.id!=='live-followup');
     if(e.flaw||e.id==='live-followup'){
       // 危机的三个回答始终都有代价，准备能减轻，不能变成全加分。
       for(const k of ['evidence','mood','patience'])effects[k]=Math.min(-1,(effects[k]||0)+(prepared?2:0)+Math.min(0,Math.floor(quality/3)));
     }else{
-      effects.patience=(effects.patience||0)+Math.round(quality*.65)-3;
-      effects.evidence=(effects.evidence||0)+(negative?-4:positive?2:-1);
-      effects.mood=(effects.mood||0)+(negative?-5:positive?1:-2);
+      effects.patience=(effects.patience||0)+Math.round(quality*(gentle?.45:.65))-(gentle?0:3);
+      effects.evidence=(effects.evidence||0)+(negative?(gentle?-2:-4):positive?(gentle?3:2):gentle?0:-1);
+      effects.mood=(effects.mood||0)+(negative?(gentle?-2:-5):positive?(gentle?2:1):gentle?0:-2);
       if(r.focus==='brief'&&c.approach==='detail')effects.time=(effects.time||0)-1;
     }
     if(negative)v.badAnswers++;if(positive)v.goodAnswers++;
@@ -77,7 +77,7 @@ window.MEETING_UNCERTAINTY=(()=>{
   }
   function changeTrust(value,delta){return clamp(value+(delta>0?Math.max(0,Math.round(delta*(1-value/110))):delta));}
   function rapport(s,c,base,reaction){if(!active(s))return base;const out={};for(const id of ['boss','stats','senior']){
-    let d=base[id]||0;if(reaction?.negative)d-=id===reaction.examiner?6:2;if(reaction?.positive&&id===reaction.examiner)d+=2;
+    let d=base[id]||0;if(reaction?.negative)d-=id===reaction.examiner?(window.MEETING_DAILY_TIME?.balanced(s)&&s.difficulty==='normal'?3:6):(window.MEETING_DAILY_TIME?.balanced(s)&&s.difficulty==='normal'?1:2);if(reaction?.positive&&id===reaction.examiner)d+=2;
     if(s.relations[id]>75&&(c.flags.chaos||c.flags.debt))d-=3;
     if(c.hardStop)d-=id==='boss'?30:18;
     const old=s.relations[id];s.relations[id]=changeTrust(old,d);out[id]=s.relations[id]-old;

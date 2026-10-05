@@ -6,7 +6,7 @@ vm.runInContext(fs.readFileSync(path.join(root,'locale-data.js'),'utf8'),b);vm.r
 const T=x.MEETING_I18N;
 const stable=p=>({id:p.id,name:p.name,level:p.level,style:p.style,budget:p.budget,directionIds:p.directionIds});
 assert.deepEqual(JSON.parse(JSON.stringify(M.profiles.map(stable))),JSON.parse(JSON.stringify(baseline.MEETING_MENTORS.profiles.map(stable))));
-assert(!JSON.stringify(M.profiles).includes('《《'));assert.equal(C.projects.length,219);assert.equal(M.profiles.length,4974);assert.equal(C.endings.length,766);
+assert(!JSON.stringify(M.profiles).includes('《《'));assert.equal(C.projects.length,219);assert.equal(M.profiles.length,5010);assert.equal(C.endings.length,766);
 assert.equal(R.stories.length,10);assert.equal(S.stories.length,8);assert.equal(new Set(M.profiles.map(p=>p.biography.experience)).size,M.profiles.length,'Every full biography has a distinct career anchor');
 let prose=0,abroad=0,domestic=0;const en=text=>{const result=T.translate(text,'en');assert(result&&!/[\u3400-\u9fff]/u.test(result),result);prose++;};
 for(const p of M.profiles){const bio=p.biography;assert(bio.timeline.length>=5);assert(bio.identity.includes(p.name));assert(bio.experience.includes(String(bio.timeline.find(t=>t.label==='博士毕业').year)));assert(bio.timeline.every((t,i,a)=>t.year<=2026&&(!i||t.year>=a[i-1].year)));assert(bio.publicationNote.includes('游戏内'));assert(bio.overseas?bio.timeline.some(t=>t.label==='海外研究与合作'):bio.timeline.some(t=>t.label==='国内跨组合作'));bio.overseas?abroad++:domestic++;assert(bio.timeline.find(t=>t.label==='加入现校').year>=bio.timeline.find(t=>t.label==='博士毕业').year+Math.ceil(bio.overseasMonths/12));

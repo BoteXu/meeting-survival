@@ -30,7 +30,10 @@ window.MEETING_ENGINE = (() => {
     const introduction=fresh.filter(e=>(window.MEETING_MIX?.meetingRoutes(s)||[s.project]).includes(e.project)&&!e.requires);
     if(s.phase>=1&&s.phase<=3&&!introduced&&introduction.length)pool=introduction;
     const echoes=pool.filter(e=>e.weekRequires);if(echoes.length&&(s.phase===0||random(s)<.65))pool=echoes;
-    s.eventId=weighted(s,pool.length?pool:all).id;s.seen.push(s.eventId);finish();
+    // An exhausted phase must not immediately recycle a question when other
+    // eligible ordinary questions remain. Scheduled follow-ups keep their gates.
+    if(s.balanceVersion>=1&&!s.config?.challenge&&!s.weekContext?.world?.challenge&&s.phase>0&&s.phase<8&&pool.every(e=>s.seen.includes(e.id))){const unused=C.events.filter(e=>e.phase>=1&&e.phase<=7&&!s.seen.includes(e.id)&&(!e.project||(window.MEETING_MIX?.meetingRoutes(s)||[s.project]).includes(e.project))&&(!e.requires||s.flags[e.requires]>0)&&(!e.weekRequires||(s.weekContext?.traits?.[e.weekRequires]||0)>0));if(unused.length)pool=unused;}
+    const selected=weighted(s,pool.length?pool:all);s.eventId=selected.id;s.phase=selected.phase;s.seen.push(s.eventId);finish();
   }
   function create({role='newbie',difficulty='normal',name='小同学',seed=1,project='classic',persona='random',career={},weekContext=null,uncertainty=true,mixProjects=null,mentorId=null,direction=null,balanceVersion=0,challenge=false}={}){
     const faculty=window.MEETING_MENTORS?.find(mentorId);if(faculty)persona=faculty.style;const r=C.roles.find(r=>r.id===role)||C.roles[0],d=difficulties[difficulty]||difficulties.normal,p=C.projects.find(p=>p.id===project)||C.projects[0];
@@ -43,7 +46,7 @@ window.MEETING_ENGINE = (() => {
     if(s.weekContext){apply(s,s.weekContext.deltas);s.flags.debt=Math.min(6,s.flags.debt+s.weekContext.debt);}
     window.MEETING_MIX?.meetingInit(s,{project:s.project,mixProjects},random);window.MEETING_PREPARATION?.meetingInit(s);if(uncertainty)window.MEETING_UNCERTAINTY?.init(s,random,career);window.MEETING_WORLD?.meetingInit(s);window.MEETING_DIALOGUE?.init(s,random);if(s.difficulty==='surprise')apply(s,{patience:-8});window.MEETING_DAILY_TIME?.initMeeting(s);selectEvent(s);return s;
   }
-  function current(s){const raw=window.MEETING_DIALOGUE?.question(s)||window.MEETING_PUBLICATION?.question(s)||window.MEETING_ROUTE_STORIES?.question(s)||window.MEETING_WORLD?.question(s)||window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||window.MEETING_UNCERTAINTY?.rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),prepared=window.MEETING_PREPARATION?.event(s,raw)||raw;const directed=window.MEETING_DIRECTION_REVIEW?.context(s,prepared)||prepared;const reviewed=window.MEETING_PROFESSIONAL?.annotate(s,directed)||directed;const banked=window.MEETING_DIRECTION_LIBRARY?.meeting(s,reviewed)||reviewed;const continuous=window.MEETING_DIRECTION_DOSSIERS?.meeting(s,banked)||banked;const themed=window.MEETING_RESEARCH_AGENDA?.meeting(s,continuous)||continuous;return window.MEETING_UNCERTAINTY?.decorate(s,themed)||themed;}
+  function current(s){const raw=window.MEETING_DIALOGUE?.question(s)||window.MEETING_PUBLICATION?.question(s)||window.MEETING_ROUTE_STORIES?.question(s)||window.MEETING_WORLD?.question(s)||window.MEETING_SIDE_STORIES?.question(s)||window.MEETING_ASSIGNMENTS?.question(s)||window.MEETING_MIX?.jointQuestion(s)||window.MEETING_UNCERTAINTY?.rawEvent(s)||C.events.find(e=>e.id===s.eventId)||C.preparationQuestions?.find(e=>e.id===s.eventId),prepared=window.MEETING_PREPARATION?.event(s,raw)||raw;const directed=window.MEETING_DIRECTION_REVIEW?.context(s,prepared)||prepared;const reviewed=window.MEETING_PROFESSIONAL?.annotate(s,directed)||directed;const banked=window.MEETING_DIRECTION_LIBRARY?.meeting(s,reviewed)||reviewed;const continuous=window.MEETING_DIRECTION_DOSSIERS?.meeting(s,banked)||banked;const themed=window.MEETING_RESEARCH_AGENDA?.meeting(s,continuous)||continuous;const spoken=window.MEETING_DIRECTION_DIALOGUE?.meeting(s,themed)||themed;return window.MEETING_UNCERTAINTY?.decorate(s,spoken)||spoken;}
   function previewChoice(s,choice,raw=false){const c=typeof choice==='number'?current(s)?.choices[choice]:choice;if(!c)return null;
     const effects={...c.effects},tax=difficulties[s.difficulty].tax;
     if(tax){effects.patience=(effects.patience||0)-tax;effects.mood=(effects.mood||0)-tax;}
@@ -54,7 +57,7 @@ window.MEETING_ENGINE = (() => {
     if(s.persona==='strict'){if(c.flags.honest)plus('patience',2);if(c.flags.chaos)plus('patience',-3);}
     if(s.relations.boss>=70&&c.flags.social)plus('patience',1);
     if(s.relations.stats>=70&&c.flags.rigor)plus('evidence',2);
-    const projected=window.MEETING_UNCERTAINTY?.preview(s,c,effects)||effects;return {effects:raw?projected:window.MEETING_DAILY_TIME?.meetingEffects(s,c,projected)||projected,chance:c.risk?clamp(c.risk.chance+(s.persona==='strict'?.08:0),1):0,available:c.prepared?.available!==false,preparation:c.prepared||null};
+    const projected=window.MEETING_UNCERTAINTY?.preview(s,c,effects)||effects;return {effects:raw?projected:window.MEETING_DAILY_TIME?.meetingEffects(s,c,projected,current(s))||projected,chance:c.risk?clamp(c.risk.chance+(s.persona==='strict'?.08:0),1):0,available:c.prepared?.available!==false,preparation:c.prepared||null};
   }
   function rapport(s,c,reaction){const change={boss:0,stats:0,senior:0};
     if(c.flags.rigor){change.boss++;change.stats+=3;}
@@ -109,10 +112,10 @@ window.MEETING_ENGINE = (() => {
     const preview=previewChoice(s,c,true);let effects={...preview.effects};const riskUnlucky=c.risk?random(s)<preview.chance:false;
     if(riskUnlucky)for(const [k,v] of Object.entries(c.risk.effects))effects[k]=(effects[k]||0)+v;
     const reaction=window.MEETING_UNCERTAINTY?.roll(s,e,c,effects,random),unlucky=riskUnlucky||!!reaction?.negative;
-    window.MEETING_DIALOGUE?.before(s,e,c,effects);effects=window.MEETING_DAILY_TIME?.meetingEffects(s,c,effects)||effects;const deltas=apply(s,effects),relations=rapport(s,c,reaction);addFlags(s,c.flags);
+    window.MEETING_DIALOGUE?.before(s,e,c,effects);effects=window.MEETING_DAILY_TIME?.meetingEffects(s,c,effects,e)||effects;const deltas=apply(s,effects),relations=rapport(s,c,reaction);addFlags(s,c.flags);
     if(e.phase===8)s.wrapUp=2;
     if(e.phase!==8&&e.phase!==9)s.progress=clamp(s.progress+(c.flags.chaos?4:c.flags.social?7:9)+Math.floor(random(s)*5));
-    s.choicesMade++;const record={phase:s.phase,eventId:e.id,title:e.title,answer:c.text,result:reaction?(reaction.hardStop?'核对被拒绝，组会当场结束。':e.flaw?'漏洞被点名，下一轮继续追问。':reaction.negative?'这次回应没有接住追问。':reaction.positive?'这次回应接住了现场。':'对方暂时继续听。'):c.result,flavor:reaction?reaction.text+(riskUnlucky?' '+c.risk.flavor:''):riskUnlucky?c.risk.flavor:c.flavor,deltas,relations,unlucky,type:'choice'};if(reaction)record.live=reaction;window.MEETING_DIALOGUE?.after(s,e,c,record);window.MEETING_PREPARATION?.afterAnswer(s,e,c,c.sourceIndex??index,record);window.MEETING_ASSIGNMENTS?.afterAnswer(s,e,record);window.MEETING_SIDE_STORIES?.afterAnswer(s,e,record);window.MEETING_WORLD?.afterAnswer(s,e,c,record);window.MEETING_ROUTE_STORIES?.afterAnswer(s,e,c,record);window.MEETING_PUBLICATION?.afterAnswer(s,e,c,record);window.MEETING_MIX?.afterAnswer(s,e,c,record);window.MEETING_DIRECTION_LIBRARY?.lesson?.(s,e,c,record);window.MEETING_RESEARCH_AGENDA?.lesson(s,e,c,record);s.log.push(record);s.pending=record;s.ending=terminal(s)||(e.phase===9?decideEnding(s):null);if(reaction?.hardStop)s.ending=window.MEETING_UNCERTAINTY?.failureEnding(s)||'patience';return record;
+    s.choicesMade++;const record={phase:s.phase,eventId:e.id,title:e.title,answer:c.text,result:reaction?(reaction.hardStop?'核对被拒绝，组会当场结束。':e.flaw?'漏洞被点名，下一轮继续追问。':reaction.negative?'这次回应没有接住追问。':reaction.positive?'这次回应接住了现场。':'对方暂时继续听。'):c.result,flavor:reaction?reaction.text+(riskUnlucky?' '+c.risk.flavor:''):riskUnlucky?c.risk.flavor:c.flavor,deltas,relations,unlucky,type:'choice'};if(e.bankQuestion)record.bankQuestion={...e.bankQuestion};if(reaction)record.live=reaction;window.MEETING_DIALOGUE?.after(s,e,c,record);window.MEETING_PREPARATION?.afterAnswer(s,e,c,c.sourceIndex??index,record);window.MEETING_ASSIGNMENTS?.afterAnswer(s,e,record);window.MEETING_SIDE_STORIES?.afterAnswer(s,e,record);window.MEETING_WORLD?.afterAnswer(s,e,c,record);window.MEETING_ROUTE_STORIES?.afterAnswer(s,e,c,record);window.MEETING_PUBLICATION?.afterAnswer(s,e,c,record);window.MEETING_MIX?.afterAnswer(s,e,c,record);window.MEETING_DIRECTION_LIBRARY?.lesson?.(s,e,c,record);window.MEETING_RESEARCH_AGENDA?.lesson(s,e,c,record);s.log.push(record);s.pending=record;s.ending=terminal(s)||(e.phase===9?decideEnding(s):null);if(reaction?.hardStop)s.ending=window.MEETING_UNCERTAINTY?.failureEnding(s)||'patience';return record;
   }
   function advance(s){if(s.ended||!s.pending)return false;if(s.ending){s.ended=true;s.pending=null;return true;}s.pending=null;selectEvent(s);return true;}
   function useItem(s,id){if(s.ended||s.pending)return null;
@@ -124,7 +127,7 @@ window.MEETING_ENGINE = (() => {
     const end=terminal(s);if(end){s.ending=end;s.pending=record;}return record;
   }
   function requestEnd(s){if(s.ended||s.pending||s.wrapUp||s.choicesMade<5||!(window.MEETING_UNCERTAINTY?.canWrap(s)??true)||s.lastRequestRound===s.choicesMade)return null;s.lastRequestRound=s.choicesMade;
-    const accepted=(s.stats.evidence>=60&&s.stats.patience>=40)||s.stats.time<=8,deltas=apply(s,{time:-1,...(accepted?{}:{patience:-4})});
+    const gentle=window.MEETING_DAILY_TIME?.balanced(s)&&s.difficulty==='normal',accepted=(s.stats.evidence>=(gentle?45:60)&&s.stats.patience>=(gentle?20:40))||s.stats.time<=8,deltas=apply(s,{time:-1,...(accepted||gentle?{}:{patience:-4})});
     const record={phase:s.phase,type:'request',title:'申请散会',result:accepted?'导师终于允许你收尾。':'“先把这个问题讲清楚。”',flavor:accepted?'你说出了大家都想说的话：“要不我们先总结一下？”导师看了一眼时间，点头了。':'你试着合上电脑。导师伸出一根手指，表示只是再问一个问题。你应该知道这句话的分量。',deltas};s.log.push(record);s.pending=record;if(accepted)s.wrapUp=1;s.ending=terminal(s);return record;
   }
   function score(s){const base=clamp(Math.round(s.stats.evidence*.45+s.stats.patience*.25+s.stats.mood*.2+Math.min(s.choicesMade,10)));return window.MEETING_UNCERTAINTY?.score(s,base)??base;}
