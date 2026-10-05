@@ -32,12 +32,12 @@ window.MEETING_CAMPUS=(() => {
     return effects;
   }
   function previewWork(w,c){if(!enabled(w))return null;const g=w.campus,r=g.research,location=g.plan?.location,twist=C.weekTwists.find(t=>t.id===g.twist);
-    const changes={progress:c.work?.progress??(c.traits?.study?2:0),quality:c.work?.quality??(c.traits?.negative?1:0)};
+    if(c.dailyRest)return {progress:0,quality:0};const changes={progress:c.work?.progress??(c.traits?.study?2:0),quality:c.work?.quality??(c.traits?.negative?1:0)};
     if(location==='lab'){if(r.style==='steady'){changes.progress-=2;changes.quality+=4;}if(r.style==='sprint'){changes.progress+=4;changes.quality-=3;}changes.progress+=twist.work||0;if(g.talents.includes('focus'))changes.progress+=2;if(g.talents.includes('careful'))changes.quality+=3;}
     if(location==='cafe'&&r.style==='team')changes.progress+=3;
     return changes;
   }
-  function afterChoice(w,e,c,record){if(!enabled(w))return;const g=w.campus,r=g.research,location=g.plan?.location,changes=previewWork(w,c);
+  function afterChoice(w,e,c,record){if(!enabled(w))return;const g=w.campus,r=g.research,location=c.dailyRest?null:g.plan?.location,changes=previewWork(w,c);
     const actual={};for(const [k,v] of Object.entries(changes)){const before=r[k];r[k]=clamp(before+v);actual[k]=r[k]-before;}
     if(location){g.visits[location]=(g.visits[location]||0)+1;g.weekVisits[location]=(g.weekVisits[location]||0)+1;}
     for(const k of ['boss','stats','senior'])g.bonds[k]=window.MEETING_UNCERTAINTY&&w.config.uncertainty!==false?window.MEETING_UNCERTAINTY.changeTrust(g.bonds[k],c.career?.[k]||0):clamp(g.bonds[k]+(c.career?.[k]||0));

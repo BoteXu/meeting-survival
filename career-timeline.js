@@ -4,12 +4,12 @@ window.MEETING_TIMELINE=(()=>{
  const copy=x=>JSON.parse(JSON.stringify(x)),mode=id=>modes.find(m=>m.id===id)||modes[4];
  function init(w,previous){w.timeline=previous?.timeline?copy(previous.timeline):{version:1,mode:mode(w.config.experienceMode).id,start:w.number,extended:false,checkpoints:[],transitions:[]};}
  function finished(w){const t=w.timeline,m=mode(t?.mode);return !!t&&!t.extended&&m.weeks!==null&&m.weeks>0&&w.status==='report'&&w.number-t.start+1>=m.weeks;}
- function summary(w){const t=w.timeline;return {week:w.number,day:w.day,slot:w.slot,status:w.status,mode:t?.mode||'full',direction:w.world?.artifact.direction||w.config.direction,checks:w.world?.artifact.checks.length||0,accepted:(w.publication?.history||[]).filter(p=>p.status==='accepted').length,pendingTasks:w.tasks.filter(t=>!t.done).length,meetings:w.world?.runCareer?.meetings||0,resources:{...w.resources},graduated:!!w.academy?.term.graduated};}
+ function summary(w){const t=w.timeline;return {...(w.clock?{minute:w.clock.minute}:{}),week:w.number,day:w.day,slot:w.slot,status:w.status,mode:t?.mode||'full',direction:w.world?.artifact.direction||w.config.direction,checks:w.world?.artifact.checks.length||0,accepted:(w.publication?.history||[]).filter(p=>p.status==='accepted').length,pendingTasks:w.tasks.filter(t=>!t.done).length,meetings:w.world?.runCareer?.meetings||0,resources:{...w.resources},graduated:!!w.academy?.term.graduated};}
  function checkpoint(w){if(!w.timeline)init(w);const s=summary(w),last=w.timeline.checkpoints.at(-1);if(!last||JSON.stringify(last)!==JSON.stringify(s))w.timeline.checkpoints.push(s);w.timeline.checkpoints=w.timeline.checkpoints.slice(-24);return s;}
  function barrier(w,wholeWeek=false){
    if(w.config.challenge)return '同局挑战逐段进行，时间跳过未开放。';
    if(w.pending)return '先查看这次选择的后果，再决定时间安排。';
-   if(w.status==='meeting'||w.day===4&&(window.MEETING_WEEK_RHYTHM?.due(w)??true))return '本周组会到了，先处理这场汇报。';
+   if(w.status==='meeting'||w.day===4&&(window.MEETING_WEEK_RHYTHM?.pending(w)??true)&&(!window.MEETING_DAILY_TIME?.enabled(w)||window.MEETING_DAILY_TIME.minute(w)>=840))return '本周组会到了，先处理这场汇报。';
    if(wholeWeek&&w.status!=='report')return '跨周跳过从本周报告开始。';
    if(!wholeWeek&&w.status!=='life')return '当前节点可以结算或继续下一周。';
    if(w.tasks.some(t=>!t.done))return '仍有组会遗留事项，先处理或明确调整安排。';
@@ -27,9 +27,9 @@ window.MEETING_TIMELINE=(()=>{
    return '';
  }
  function transition(w,kind,requested,elapsed,reason){const t={kind,requested,elapsed,reason,week:w.number,day:w.day,slot:w.slot};w.timeline.transitions.push(t);w.timeline.transitions=w.timeline.transitions.slice(-24);return t;}
- function skipDays(w,requested){if(!w.timeline)init(w);const first=barrier(w);if(requested!==undefined&&(!Number.isInteger(requested)||requested<1||requested>3))return null;const wanted=requested??(first?1:1+Math.floor(window.MEETING_WEEK.random(w)*3));let slots=0,reason=first;
-   while(!reason&&slots<wanted*2){window.MEETING_WEEK.passTime(w);slots++;reason=barrier(w);}
-   return transition(w,'days',wanted,slots/2,reason||'平静的片段已过去，回到当前事件。');
+ function skipDays(w,requested){if(!w.timeline)init(w);const first=barrier(w);if(requested!==undefined&&(!Number.isInteger(requested)||requested<1||requested>3))return null;const wanted=requested??(first?1:1+Math.floor(window.MEETING_WEEK.random(w)*3));const hourly=window.MEETING_DAILY_TIME?.enabled(w),start=w.day*720+(w.clock?.minute||540)-540;let slots=0,reason=first;
+   while(!reason&&(hourly?w.day*720+w.clock.minute-540-start<wanted*720:slots<wanted*2)){window.MEETING_WEEK.passTime(w);slots++;reason=barrier(w);}
+   return transition(w,'days',wanted,hourly?(w.day*720+w.clock.minute-540-start)/720:slots/2,reason||'平静的片段已过去，回到当前事件。');
  }
  function skipWeeks(w,requested){if(!w.timeline)init(w);const W=window.MEETING_WEEK,first=barrier(w,true);if(requested!==undefined&&(!Number.isInteger(requested)||requested<1||requested>3))return null;const wanted=requested??(first?1:1+Math.floor(W.random(w)*3));let current=w,elapsed=0,reason=first;
    while(!reason&&elapsed<wanted&&!finished(current)){

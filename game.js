@@ -9,7 +9,7 @@
   function remove(key){try{localStorage.removeItem(key);window.MEETING_SAVES?.schedule();}catch{}}
   let state=null,selectedRole='newbie',difficulty='normal',playerName='小同学',selectedProject='classic',selectedPersona='random',toastTimer;
   let album=read(ALBUM,[]);if(!Array.isArray(album))album=[];album=album.filter(x=>C.endings.some(e=>e.id===x.id)&&Number.isFinite(x.score));
-  let saved=E.upgrade(read(SAVE,null));if(!E.isValid(saved))saved=null;
+  let saved=E.upgrade(read(SAVE,null));if(!E.isValid(saved))saved=null;else if(!saved.weekContext?.world?.challenge)saved.balanceVersion=1;
   const freshCareer=()=>({meetings:0,experience:0,reputation:50,debt:0,totalTurns:0,history:[],coins:4,bag:E.blankBag(),relations:{boss:50,stats:50,senior:50},recentEvents:[],moodBoost:0,evidenceBoost:0,cat:0,robot:0,wander:0,intermission:null});
   let career=read(CAREER,freshCareer());
   if(!career||!['meetings','experience','reputation','debt','totalTurns'].every(k=>Number.isFinite(career[k])&&career[k]>=0)||!Array.isArray(career.history))career=freshCareer();

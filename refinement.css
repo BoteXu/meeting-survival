@@ -52,3 +52,5 @@
 .meeting-cadence select{width:100%;max-width:100%;min-height:44px;background:#fff;color:#173c2d;border:1px solid #718e75;border-radius:8px;padding:10px;font:inherit}
 .meeting-cadence p{margin-bottom:0;line-height:1.8;color:#294532}
 .meeting-schedule{padding:12px 16px;border:1px solid #abc3b1;border-radius:12px;background:#edf5ec;color:#173c2d;font-weight:700;line-height:1.7;overflow-wrap:anywhere}
+
+.activity-duration{display:block;color:#294d3d;font-weight:700;line-height:1.6}.life-choice:disabled{opacity:1;background:#f0f1ed;color:#4d5650;border-color:#9ea99e}.daily-overview-card #finish-day{margin-top:12px}.life-choice:disabled .activity-duration{color:#6a3430}
