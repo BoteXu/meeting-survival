@@ -24,6 +24,7 @@ window.MEETING_TAXONOMY=(()=>{
  ['musicology-studies','历史与社会:1,2,10,11,12','作品与表演:3,4,5,6','教育与技术:7,8,9']
  ];
  const groups=Object.fromEntries(rows.map(([route,...items])=>[route,items.map((s,i)=>{const [name,indices]=s.split(':');return {id:route+'-field-'+i,name,directionIds:indices.split(',').map(n=>route+'-'+n)};})]));
+ for(const d of D.all.filter(d=>d.knowledgeAddition)){const g=groups[d.route]?.find(g=>g.directionIds.includes(d.parentDirection));if(g&&!g.directionIds.includes(d.id))g.directionIds.push(d.id);}
  let family=null,route=null,field=null,deferred=false,explicit=false;
  function chooseFamily(id){if(!C.families.some(f=>f.id===id))return false;if(id!==family){window.MEETING_MEDICAL_TAXONOMY?.reset();window.MEETING_DISCIPLINE_TREE?.reset();route=null;field=null;deferred=false;explicit=false;}family=id;return true;}
  function chooseRoute(id){const p=C.projects.find(p=>p.id===id);if(!p||p.family!==family)return false;if(route!==id){field=null;deferred=true;explicit=false;}route=id;return true;}

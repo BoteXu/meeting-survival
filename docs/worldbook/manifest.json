@@ -1,16 +1,16 @@
 {
-  "version": "0.14.8",
+  "version": "0.14.9",
   "title": "组会求生：世界设定与校园故事集",
   "asOf": "2026",
-  "method": "人工编写共享场景与人物背景，再按稳定人物ID、方向、年代、学校和合作关系编排；包含复用段落。不是全部逐篇独立手写，也不是单一长篇小说。设定集从219条学科路线中精选不同阶段的导师，游戏保留全部5010位导师的扩充小传。",
+  "method": "人工编写共享场景与人物背景，再按稳定人物ID、方向、年代、学校和合作关系编排；包含复用段落。不是全部逐篇独立手写，也不是单一长篇小说。设定集从219条学科路线中精选不同阶段的导师，游戏保留全部5262位导师的扩充小传。",
   "counting": "按章节正文 Unicode 汉字计数；外层章标题、HTML、代码、目录、英文和数字不计，正文内的小标题与说明计入。计入各章复用的完整正文，另列共享场景与去重段落指标。",
-  "chineseCharacters": 2310754,
-  "encyclopediaCharacters": 1237791,
-  "novelCharacters": 1072963,
-  "encyclopediaShare": 0.5356654148386197,
+  "chineseCharacters": 2696668,
+  "encyclopediaCharacters": 1402362,
+  "novelCharacters": 1294306,
+  "encyclopediaShare": 0.5200350951618813,
   "chapters": 1108,
   "mentorProfiles": 405,
-  "gameMentorProfiles": 5010,
+  "gameMentorProfiles": 5262,
   "novelStories": 405,
   "novelScenes": 1620,
   "sharedSceneFamilies": {
@@ -39,260 +39,260 @@
       "kind": "encyclopedia",
       "family": "philosophy",
       "chapters": 23,
-      "chineseCharacters": 44635,
-      "bytes": 157035,
-      "sha256": "1943ec6c3e9c97fb84fcd8dd791a3cf30527c311dc0eb4126333455b282d7e58"
+      "chineseCharacters": 50755,
+      "bytes": 178664,
+      "sha256": "4d4584e8b10a22e0a6312b92b629cd4ad2f95ad7d3caf78f4b6c0bb1072a00e9"
     },
     {
       "file": "encyclopedia-economics.md",
       "kind": "encyclopedia",
       "family": "economics",
       "chapters": 29,
-      "chineseCharacters": 56153,
-      "bytes": 197949,
-      "sha256": "a42e076ca3f02665538bd8e50dc5d40e1037f0371e1ae9096c5cfe34938fd837"
+      "chineseCharacters": 63853,
+      "bytes": 224970,
+      "sha256": "0cf6c171311f04cc01533d1b598ddc17511cf108e447ada2a4c9e8f2023adb96"
     },
     {
       "file": "encyclopedia-law.md",
       "kind": "encyclopedia",
       "family": "law",
       "chapters": 49,
-      "chineseCharacters": 94263,
-      "bytes": 331444,
-      "sha256": "6cd0c792c85ac025941a90942033f6cf23c8bb9c2644cabbd806231e0a61d133"
+      "chineseCharacters": 108014,
+      "bytes": 379887,
+      "sha256": "365e0d50aa7e1e4e99291f37d308c1849377e61639c7f48fdcd5ac710173071e"
     },
     {
       "file": "encyclopedia-education.md",
       "kind": "encyclopedia",
       "family": "education",
       "chapters": 32,
-      "chineseCharacters": 61700,
-      "bytes": 216883,
-      "sha256": "603c17e61814d4f31bb159d3d7d27695e08d3e963e38bfcdfa29129c19fc72c4"
+      "chineseCharacters": 69724,
+      "bytes": 245162,
+      "sha256": "935635d4adc51dfed8f209c6d135c71cae7b842b971a9133790c3c4157b4c5be"
     },
     {
       "file": "encyclopedia-literature.md",
       "kind": "encyclopedia",
       "family": "literature",
       "chapters": 25,
-      "chineseCharacters": 47382,
-      "bytes": 167035,
-      "sha256": "ab82bc15fb2006cf0462ddac501217f4d00a88ac807171941ddd68d51362ffd4"
+      "chineseCharacters": 53611,
+      "bytes": 189014,
+      "sha256": "ed78722f035f415e5eec21148dce36e2804253e8612fbaf43e90ea2fe1cd40b1"
     },
     {
       "file": "encyclopedia-history.md",
       "kind": "encyclopedia",
       "family": "history",
       "chapters": 23,
-      "chineseCharacters": 43729,
-      "bytes": 153949,
-      "sha256": "7a7255d6fe8643424f8630f2b8762c8c1f80809773384600e0c5dd77b61d6d9a"
+      "chineseCharacters": 50663,
+      "bytes": 178173,
+      "sha256": "c292960fc30085263dbe7f93144e1fa10013fae295c836b21f75f0c3657885fa"
     },
     {
       "file": "encyclopedia-science.md",
       "kind": "encyclopedia",
       "family": "science",
       "chapters": 49,
-      "chineseCharacters": 91178,
-      "bytes": 321100,
-      "sha256": "9023c6b5c1087682a93b9dca93a4b3eb9d1b1fdb576a061a7c08e7ee0173bf8f"
+      "chineseCharacters": 102863,
+      "bytes": 362538,
+      "sha256": "dc9fdd2d449e4c29a68841cd0e5b35b38fbc971e9dd8c2b101cb2bfd32cca637"
     },
     {
       "file": "encyclopedia-engineering.md",
       "kind": "encyclopedia",
       "family": "engineering",
       "chapters": 113,
-      "chineseCharacters": 217831,
-      "bytes": 765857,
-      "sha256": "3e298b7c332adcd8517f1dbce3717c58e51b0d9a3e1128e20225d2846ff513e8"
+      "chineseCharacters": 248384,
+      "bytes": 873410,
+      "sha256": "63d935f1388cc448bcb1bbe375d746ef65d7068a432c61de42bd21f86de695ca"
     },
     {
       "file": "encyclopedia-agriculture.md",
       "kind": "encyclopedia",
       "family": "agriculture",
       "chapters": 35,
-      "chineseCharacters": 67591,
-      "bytes": 237906,
-      "sha256": "5b085c366ab76b9e4015dea5f612522cf1588a2db3cf8e989d4ef214a2a758b6"
+      "chineseCharacters": 76168,
+      "bytes": 268252,
+      "sha256": "1be9f87b8af4c66b6f8e3dc66032e121c63850356a3396d78856b633b11b4489"
     },
     {
       "file": "encyclopedia-medicine.md",
       "kind": "encyclopedia",
       "family": "medicine",
       "chapters": 141,
-      "chineseCharacters": 280116,
-      "bytes": 985022,
-      "sha256": "d47a6b852eefcc50e99b3044eae71b71371847ffefb6941bdfcf990f0b52855b"
+      "chineseCharacters": 316560,
+      "bytes": 1114044,
+      "sha256": "b9b3b93f74b452efdc5657cca12cb21eddca5047c35518f153a4c8bcf34270a0"
     },
     {
       "file": "encyclopedia-military.md",
       "kind": "encyclopedia",
       "family": "military",
       "chapters": 20,
-      "chineseCharacters": 39475,
-      "bytes": 138617,
-      "sha256": "78df43e408d11c56e1b0b0e799b91cd4d062acdecf230f602c266e51c7c03883"
+      "chineseCharacters": 45139,
+      "bytes": 158435,
+      "sha256": "d288e7bb264d5c30a8d487708049011bb61aa09e1fa4c364866395d8fe5bd0a8"
     },
     {
       "file": "encyclopedia-management.md",
       "kind": "encyclopedia",
       "family": "management",
       "chapters": 29,
-      "chineseCharacters": 55889,
-      "bytes": 196999,
-      "sha256": "d462b228351eb787b1f59718620c233a8b7ab0d71ee33826e3db7a228520743f"
+      "chineseCharacters": 63399,
+      "bytes": 223330,
+      "sha256": "59a194850bb2855fe63a4a231d717bde0b6f9381a7f21bd305fbfcdfa9b95ccb"
     },
     {
       "file": "encyclopedia-arts.md",
       "kind": "encyclopedia",
       "family": "arts",
       "chapters": 28,
-      "chineseCharacters": 52994,
-      "bytes": 186763,
-      "sha256": "3b1e04b29479b44d9bdd2069b4f4ce7a6353265e047f24102bb2b1d21d683de9"
+      "chineseCharacters": 60546,
+      "bytes": 213466,
+      "sha256": "4c3f94e884c7520eca1c2dc8c7770d7d997ba0946f56886bf4e8287b7635e0c4"
     },
     {
       "file": "encyclopedia-interdisciplinary.md",
       "kind": "encyclopedia",
       "family": "interdisciplinary",
       "chapters": 28,
-      "chineseCharacters": 54514,
-      "bytes": 191775,
-      "sha256": "5027c32c034d45bcc87b03eac767033f45d807eeeed3d935230549420c985f3a"
+      "chineseCharacters": 62342,
+      "bytes": 219264,
+      "sha256": "d13f0ce2965d7f4f650a7b5d3fb1f01278b9217ce6f385068ceea30534e1c225"
     },
     {
       "file": "novel-philosophy.md",
       "kind": "novel",
       "family": "philosophy",
       "chapters": 15,
-      "chineseCharacters": 39839,
-      "bytes": 134002,
-      "sha256": "0bad55e49026224b99d3bf683d51ecacf1a59457ce7e443a4704350f70c86a95"
+      "chineseCharacters": 48178,
+      "bytes": 164547,
+      "sha256": "999d54fcac3e8141b266667c240d0a345fd7ce46aced7c4d1d827bf21561bdbe"
     },
     {
       "file": "novel-economics.md",
       "kind": "novel",
       "family": "economics",
       "chapters": 19,
-      "chineseCharacters": 50324,
-      "bytes": 169469,
-      "sha256": "3a7909a3122896039afe4b92dd89cedf5441ba85c24f29db0e104001b37c1e45"
+      "chineseCharacters": 60513,
+      "bytes": 206573,
+      "sha256": "e37532020f3e150f290b2e04a05aaf247c97dffa46cd9799f688e5fae4917828"
     },
     {
       "file": "novel-law.md",
       "kind": "novel",
       "family": "law",
       "chapters": 32,
-      "chineseCharacters": 84961,
-      "bytes": 286054,
-      "sha256": "daae4260dc23c3eeaeb7eea0e8be05f8c2b6a3dae76d3e5888ecdef661d84676"
+      "chineseCharacters": 102547,
+      "bytes": 350745,
+      "sha256": "0d6d6e9f7fca201f048f855b2e115ee096e0d1f01a02edcb6d31f502158a03f5"
     },
     {
       "file": "novel-education.md",
       "kind": "novel",
       "family": "education",
       "chapters": 21,
-      "chineseCharacters": 55642,
-      "bytes": 187380,
-      "sha256": "6cd9a2d45fc47cb5c765cdf6696d8fa551e42df4fb5e5646fd35cf95f4676164"
+      "chineseCharacters": 66881,
+      "bytes": 228142,
+      "sha256": "d49294d9c91edec1cc8295cb28572af6dd56a23c501072074dbd6be4ffa398f2"
     },
     {
       "file": "novel-literature.md",
       "kind": "novel",
       "family": "literature",
       "chapters": 16,
-      "chineseCharacters": 42018,
-      "bytes": 141551,
-      "sha256": "552a2667ca390b27c2bc1d48adc440d65b72ee8d7815c706b85fae1731bb4d74"
+      "chineseCharacters": 50451,
+      "bytes": 172150,
+      "sha256": "cda57d6c292e440f19fa83443311acbcf7dd60c4e58fa894c071a4379980ccb5"
     },
     {
       "file": "novel-history.md",
       "kind": "novel",
       "family": "history",
       "chapters": 15,
-      "chineseCharacters": 39720,
-      "bytes": 133688,
-      "sha256": "8aa9a4358d2727dffa421c493353e65d9bc9d5c3132e0531aca7c4397303b61e"
+      "chineseCharacters": 47963,
+      "bytes": 164257,
+      "sha256": "62b85bec6d03301f3c5123b115bfaa7283df59966a1bb12005a39c621e71f525"
     },
     {
       "file": "novel-science.md",
       "kind": "novel",
       "family": "science",
       "chapters": 31,
-      "chineseCharacters": 81702,
-      "bytes": 274935,
-      "sha256": "77df6aede9b0088b24680447897ae761920cb15a55a6051354069d84c94654d5"
+      "chineseCharacters": 98040,
+      "bytes": 334255,
+      "sha256": "5849ced47a8a05b97a9d59514d5e289aca109f91b5e0743cef7c27bbd31bf355"
     },
     {
       "file": "novel-engineering.md",
       "kind": "novel",
       "family": "engineering",
       "chapters": 75,
-      "chineseCharacters": 198777,
-      "bytes": 668815,
-      "sha256": "962cdda278c86f574d11ffa8f2ceb834d25ab9104b868ea082252ba8e6fe9190"
+      "chineseCharacters": 240501,
+      "bytes": 822326,
+      "sha256": "4556e258a018607069609f96b173e16a45070f46186e100e36adf43f9bbd8f34"
     },
     {
       "file": "novel-agriculture.md",
       "kind": "novel",
       "family": "agriculture",
       "chapters": 23,
-      "chineseCharacters": 60685,
-      "bytes": 204288,
-      "sha256": "0506634e9cd43590eb9efd866ceb03260da35eeeb7b23625c5b5f7c83c5bf1c4"
+      "chineseCharacters": 73008,
+      "bytes": 249142,
+      "sha256": "fcceda47add9c33cb59902ae060ea5ed57823dc472a4475f9c5a8e2db95b33cc"
     },
     {
       "file": "novel-medicine.md",
       "kind": "novel",
       "family": "medicine",
       "chapters": 90,
-      "chineseCharacters": 238979,
-      "bytes": 804043,
-      "sha256": "2e605c2ab208fdc1995c307dc029d524590d2d40594d062f7ba27f8fbe8c1429"
+      "chineseCharacters": 289242,
+      "bytes": 988424,
+      "sha256": "09fc35a25d772e0aceeb2713690a685d9307c24b905b722ca47bff7d112e822f"
     },
     {
       "file": "novel-military.md",
       "kind": "novel",
       "family": "military",
       "chapters": 13,
-      "chineseCharacters": 34580,
-      "bytes": 116377,
-      "sha256": "2b9288b03c8fcb72c6ba7301bf0007cfe1a4862b931b0216adcec5872c12a184"
+      "chineseCharacters": 41749,
+      "bytes": 142632,
+      "sha256": "dc5f3219fc62838067ae8738cfff5a8fd92c79b64b39bcfec4e420df8d462b61"
     },
     {
       "file": "novel-management.md",
       "kind": "novel",
       "family": "management",
       "chapters": 19,
-      "chineseCharacters": 50349,
-      "bytes": 169450,
-      "sha256": "da3a0c91e93f26dd501027a70148d71dfde2b9148622b3998816b9d39e556192"
+      "chineseCharacters": 60353,
+      "bytes": 205931,
+      "sha256": "d4e7ad97bb9dbebc892d14bfaf1cc2e19a702b3f09269f409f60cd779c7e9fa5"
     },
     {
       "file": "novel-arts.md",
       "kind": "novel",
       "family": "arts",
       "chapters": 18,
-      "chineseCharacters": 47504,
-      "bytes": 160004,
-      "sha256": "db9d2f91a497b15a8ce6fe7bef84c374e447ef4de575f4b5f1861735f4f301f1"
+      "chineseCharacters": 57524,
+      "bytes": 197347,
+      "sha256": "5ef8158b137b950c12e6eaba720d943ad8c816a81eb6e9c69556f5478871aaef"
     },
     {
       "file": "novel-interdisciplinary.md",
       "kind": "novel",
       "family": "interdisciplinary",
       "chapters": 18,
-      "chineseCharacters": 47883,
-      "bytes": 161185,
-      "sha256": "cf34b54dbf7aad442c9379d1b914c725a6cb5f0ed0d5ef40ecd750eb27dff318"
+      "chineseCharacters": 57356,
+      "bytes": 195780,
+      "sha256": "4858d506ad6827e7971ba69757f2d30dae960606943d22eb9bce79b28177101d"
     }
   ],
-  "uniqueParagraphs": 17385,
-  "paragraphs": 25401,
-  "distinctBodyCharacters": 1834644,
+  "uniqueParagraphs": 18372,
+  "paragraphs": 26573,
+  "distinctBodyCharacters": 2194183,
   "reader": {
     "file": "世界设定集.html",
-    "bytes": 8292042,
-    "sha256": "8a6167c44ef06b1027b252bdca374897ca81bee7db2c1f1456389b4b3bf62c78"
+    "bytes": 9687150,
+    "sha256": "e6b8c75fda9f68e17aa22854b72559aaf3d50d74eb5ad56fca7bd2fecf3eee4e"
   }
 }

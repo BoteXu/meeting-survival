@@ -193,6 +193,7 @@ custom;interdisciplinary;自由交叉组合;自己选两个学科@interdisciplin
  'integrated-circuits':['理论器件与仿真','测量可靠性与架构','工艺能耗与芯片教育'],
  'remote-sensing':['遥感物理与信息','标定反演与时序','精度质量与社会应用']
  };
+ for(const d of D.all.filter(d=>d.knowledgeAddition)){for(const p of primaries){const s=p.children.find(s=>s.routes.includes(d.route)&&s.directionIds.includes(d.parentDirection));if(s&&!s.directionIds.includes(d.id))s.directionIds.push(d.id);}}
  for(const p of primaries)p.children=p.children.flatMap(s=>{if(s.routes.length!==1||s.directionIds.length<7||s.routes[0]==='interdisciplinary')return [s];const route=s.routes[0],existing=T.groups[route],names=fieldNames[route],actual=s.directionIds.map(id=>D.find(id));const pieces=existing?existing.map(g=>({name:g.name,ids:g.directionIds.filter(id=>s.directionIds.includes(id))})):Array.from({length:3},(_,i)=>({name:names?.[i]||actual[i*Math.ceil(actual.length/3)]?.name+'等研究领域',ids:s.directionIds.slice(i*Math.ceil(actual.length/3),(i+1)*Math.ceil(actual.length/3))}));return pieces.filter(g=>g.ids.length).map((g,i)=>({...s,id:s.id+'-sub-'+i,name:s.name+' · '+g.name,directionIds:g.ids,type:'院校专业领域 / 研究主题'}));});
  let primary=null,secondary=null,mentorScope=null;
  const current=()=>primaries.find(p=>p.id===primary),branch=()=>current()?.children.find(s=>s.id===secondary),reset=()=>{primary=null;secondary=null;mentorScope=null;};
